@@ -1,0 +1,21 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2021.5.13)  13 MAY 2021 00:47
+entering extended mode
+**./_DatosTFM.tex
+(_DatosTFM.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-05-07>)
+! Emergency stop.
+<*> ./_DatosTFM.tex
+                   
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 24 strings out of 481116
+ 602 string characters out of 2905334
+ 282074 words of memory out of 3000000
+ 17492 multiletter control sequences out of 15000+600000
+ 403430 words of font info for 27 fonts, out of 8000000 for 9000
+ 0 hyphenation exceptions out of 8191
+ 12i,0n,13p,176b,10s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!
