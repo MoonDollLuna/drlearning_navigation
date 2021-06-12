@@ -5,7 +5,8 @@
 
 %%-----------------------------------------------
 %% Importar Preámbulo:
-\input{include/Preambulo}
+\input{secciones/00A_Preambulo}
+\addbibresource{secciones/08_Bibliografia.bib} 
 %%-----------------------------------------------
 %% Cargar datos relativos al TFM:
 %% (actualizar estos datos en secciones/_DatosTFM.tex) 
@@ -14,13 +15,13 @@
 %%-----------------------------------------------
 %% Documento:
 \begin{document}
-\input{include/Portada}
+\input{secciones/00B_Portada}
 
 %%-----------------------------------------------
 %% Numeración romana:
 \frontmatter
 %%-----------------------------------------------
-\input{secciones/00_Resumen}
+\input{secciones/00C_Resumen}
 \tableofcontents
 
 %%-----------------------------------------------
@@ -29,17 +30,29 @@
 %%----------------------------------------------- 
 \input{secciones/01_Introduccion}
 
-\input{secciones/02_Desarrollo}
+\input{secciones/02_Descripcion_del_problema}
 
-\input{secciones/03_Resultados}
+\input{secciones/03_Estado_del_arte}
 
-\input{secciones/04_Bibliografia}
+\input{secciones/04_Diseno}
+
+\input{secciones/05_Programacion}
+
+\input{secciones/06_Experimentacion}
+
+\input{secciones/07_Conclusiones}
+
+%------------------------------------------------
+%% Bibliografia:
+
 \addcontentsline{toc}{chapter}{Bibliografía}
+\printbibliography
+
 %%-----------------------------------------------
 %% Anexos
 \appendix
 \clearpage 
 \addcontentsline{toc}{chapter}{Anexo}
-\input{secciones/05_Anexos}
+\input{secciones/09_Anexos}
 %%---------------------------------------------------------
 \end{document}
