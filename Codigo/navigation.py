@@ -6,7 +6,7 @@
 #
 # The developed agents are contained in the "agents" folder, in separate files.
 #
-# Structure of the file:
+# Structure of the code:
 #   1 - Imports
 #   2 - Global variables
 #   3 -
@@ -14,3 +14,15 @@
 ###############
 # 1 - IMPORTS #
 ###############
+
+import argparse
+
+import cv2
+import habitat
+
+
+
+########################
+# 2 - GLOBAL VARIABLES #
+########################
+
