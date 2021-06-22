@@ -40,9 +40,6 @@ from utils.log_manager import LogManager
 # DEFAULT: matterport
 dataset = "matterport"
 
-
-
-
 #################
 # 3 - MAIN CODE #
 #################
@@ -52,4 +49,7 @@ if __name__ == "__main__":
 
     # ARGUMENT DECLARATION #
     # Arguments are declared using argparse
-    parser = argparse.ArgumentParser(description="")
+    parser = argparse.ArgumentParser(description="LMAO")
+
+    # test
+    test = LogManager("prueba", dataset)
