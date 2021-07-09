@@ -45,8 +45,12 @@ class LogManager:
         path = join("Resultados", self._agent_name, self._dataset)
         makedirs(path)
 
+        # Generate a timestamp to identify the file
+
         # Create and store the handle of the log file
         # If the log file already exists, it will be emptied to avoid overlapping executions
+
+        # TODO: TIMESTAMP, CAMBIAR NOMBRE TEST
         self._file = open(join(path, "test.txt"), "w")
 
     # PUBLIC METHODS #
