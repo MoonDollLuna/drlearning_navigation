@@ -8,14 +8,15 @@
 #
 # Structure of the file:
 #   1 - Imports
-#   2 - User-defined variables
-#   3 - Main code loops
-#       3A - Training loop
-#       3
-#   4 - Init code
-#       4A - Argument declaration
-#       4B - Argument parsing
-#       4C - Argument processing and program launch
+#   2 - Program variables
+#   3 - User-defined variables
+#   4 - Main code loops
+#       4A - Training loop
+#       4
+#   5 - Init code
+#       5A - Argument declaration
+#       5B - Argument parsing
+#       5C - Argument processing and program launch
 
 # NOTA: EL TIPO DE COMENTARIO SE LLAMA SPHINX MARKUP
 # (garantiza compatibilidad con el mayor numero de sistemas posibles)
@@ -34,8 +35,26 @@ import numpy as np
 
 from utils.log_manager import LogManager
 
+#########################
+# 2 - PROGRAM VARIABLES #
+#########################
+
+# These variables refer mostly to static values, such as paths to files.
+# They are declared here (instead of being hard-coded in the code) for ease of use
+# and for easier modification of the code by third parties
+
+# Config file path
+config_path = "./configs/navigation_base_config.yaml"
+
+# Dataset paths
+# If an extra dataset was to be added, the path can be specified as a new value
+dataset_paths = {
+    "matterport": "data/datasets/pointnav/mp3d/v1/{split}/{split}.json.gz",
+    "gibson": "data/datasets/pointnav/gibson/v1/{split}/{split}.json.gz"
+}
+
 ##############################
-# 2 - USER-DEFINED VARIABLES #
+# 3 - USER-DEFINED VARIABLES #
 ##############################
 
 # These variables are defined via arguments when the script is launched
@@ -118,9 +137,13 @@ min_epsilon = 0.05
 # epsilon decreases linearly from epsilon to min_epsilon epoch by epoch
 min_epsilon_percentage = 0.75
 
+#######################
+# 4 - MAIN CODE LOOPS #
+#######################
+
 
 #################
-# 3 - MAIN CODE #
+# 5 - MAIN CODE #
 #################
 
 # Execute this code only when this script is run directly
@@ -130,7 +153,7 @@ if __name__ == "__main__":
     # to show the user that the program has not crashed
     print("All dependencies have been successfully loaded.")
 
-    # 4A - ARGUMENT DECLARATION #
+    # 5A - ARGUMENT DECLARATION #
 
     # All arguments have been specified in section 2 (USER-DEFINED VARIABLES)
 
@@ -270,7 +293,7 @@ if __name__ == "__main__":
                                         Epsilon will decrease linearly from epsilon to min_epsilon. Value must be between 0.0 and 1.0.
                                         DEFAULT: {}""".format(min_epsilon_percentage)))
 
-    # 4B - ARGUMENT PARSING #
+    # 5B - ARGUMENT PARSING #
 
     # Parse the arguments for their use and checks that the arguments are valid
     # The program will exit if any invalid arguments are detected
@@ -358,5 +381,5 @@ if __name__ == "__main__":
         print("Bad arguments have been detected, program will shut down.")
         sys.exit()
 
-    # 4C - ARGUMENT PROCESSING #
+    # 5C - ARGUMENT PROCESSING #
 
