@@ -43,8 +43,13 @@ from utils.log_manager import LogManager
 # They are declared here (instead of being hard-coded in the code) for ease of use
 # and for easier modification of the code by third parties
 
-# Config file path
-config_path = "./configs/navigation_base_config.yaml"
+# Config file paths
+# If an extra config file was to be added, the path can be specified as a new value
+config_path = {
+    "training": "./configs/navigation_train_config.yaml",
+    "evaluation": "./configs/navigation_eval_config.yaml",
+    "showcase": "./configs/navigation_eval_config.yaml"
+}
 
 # Dataset paths
 # If an extra dataset was to be added, the path can be specified as a new value
@@ -106,7 +111,7 @@ total_episodes = 10000
 
 # max_steps - Maximum steps made by the agent during each episode
 # If this value is exceeded (the goal is not reached within this time), the episode will be considered failed
-max_steps = 500
+max_steps = 10000
 
 # goal_radius - Size of the goal (in meters)
 # The agent must be within this distance of the goal for it to be considered reached
@@ -141,6 +146,18 @@ min_epsilon_percentage = 0.75
 # 4 - MAIN CODE LOOPS #
 #######################
 
+def training_main():
+    """
+    Main loop for agent training.
+
+    """
+    pass
+
+def evaluation_main():
+    pass
+
+def showcase_main():
+    pass
 
 #################
 # 5 - MAIN CODE #

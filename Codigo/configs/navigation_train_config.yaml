@@ -32,6 +32,7 @@ DATASET:
 #  DATA_PATH:
 
 # TASK: Success distance is specified via argument
+
 TASK:
   TYPE: Nav-v0
 #  SUCCESS_DISTANCE: 
