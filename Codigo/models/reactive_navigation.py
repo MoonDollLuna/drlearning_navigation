@@ -41,13 +41,14 @@ class ReactiveNavigationModel:
     """
     # TODO: ACABA
 
+    # ATTRIBUTES #
     _image_size: int
     _action_list: list
-    _cnn: Model
+    _cnn_model: Model
 
     # CONSTRUCTOR #
 
-    def __init__(self, image_size, action_list):
+    def __init__(self, image_size, action_list, weights=None):
         """
         Constructor method
 
@@ -55,14 +56,18 @@ class ReactiveNavigationModel:
         :type image_size: int
         :param action_list: List of available actions
         :type action_list: list
+        :param weights: (OPTIONAL) Path to the file containing the pre-trained weights of the CNN
+        :type weights: str
         """
 
         # Store the given values
         self._image_size = image_size
         self._action_list = action_list
 
-        # Prepare the CNN
+        # Prepare the CNN and, if available, load the weights
         self._initialize_cnn(self._image_size, len(self._action_list))
+        if weights is not None:
+            self._cnn_model.load_weights(weights)
 
     # INTERNAL METHODS #
 
@@ -155,13 +160,17 @@ class ReactiveNavigationModel:
         model = Model(inputs=[image_input, scalar_input],
                       outputs=output)
         model.summary()
+        # TODO: PASA EL LEARNING RATE AQUI LUEGO SEGURAMENTE
         model.compile(optimizer="adam",
                       loss="mse")
 
         # Store the model
-        self._cnn = model
+        self._cnn_model = model
 
     # PUBLIC METHODS
     # TODO: ACABA
+    def act(self):
+        pass
+
     def train_model(self):
         pass
