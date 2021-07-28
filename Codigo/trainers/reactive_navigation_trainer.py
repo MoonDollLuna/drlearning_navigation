@@ -1,8 +1,8 @@
 # REACTIVE NAVIGATION - TRAINER
 # Developed by: Luna Jimenez Fernandez
 #
-# This file contains the Reactive Navigation trainer, used to train the
-# Reactive Navigation Agent
+# This file contains the definition for aReactive Navigation trainer,
+# used to train the Reactive Navigation Agent (using our proposed algorithm)
 #
 # Deep Q-Learning is used as the method of training, with the possibility of using
 # Prioritized Experience Replay as an option
