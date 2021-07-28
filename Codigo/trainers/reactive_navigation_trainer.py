@@ -9,12 +9,15 @@
 
 # IMPORTS #
 
-# Habitat Baselines
 from typing import Dict
 
+# Habitat Baselines
 from habitat_baselines.common.baseline_registry import baseline_registry
 from habitat_baselines.common.base_trainer import BaseRLTrainer
 from habitat_baselines.common.tensorboard_utils import TensorboardWriter
+
+# Reactive navigation
+from models.reactive_navigation import ReactiveNavigationModel
 
 
 @baseline_registry.register_trainer(name="reactive")
