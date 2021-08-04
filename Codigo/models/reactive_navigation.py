@@ -7,10 +7,21 @@
 #
 # The model consists of a CNN with the following structure:
 #
-# TODO: [ STRUCTURE ]
+#     * Input of the image (in grayscale, with shape image_size x image_size)
+#     * First layer of convolution:
+#         * Two convolutional layers with 32 3x3 filters (2D, using ReLU)
+#         * A pooling layer (Max-Pool of size 3)
+#     * Second layer of convolution:
+#         * Two convolutional layers with 64 3x3 filters (2D, using ReLU)
+#         * A pooling layer (Max-Pool of size 2)
+#     * A Merge layer where the result of the previous convolution is joined with
+#       the scalar inputs (Distance and Angle to the goal)
+#     * Two fully connected layers (ReLU) of 1024 neurons
+#     * Output neurons (Linear) equal to the number of actions
+#
 # This structure has been developed ad-hoc
 #
-# The input of the CNN is as follows:
+# The inputs of the CNN are as follows:
 #   * A 256x256 (shape can be specified) grayscale image (obtained from the Depth Camera)
 #   * A pair of scalar values, Distance and Angle to the goal (obtained from the GPS)
 #
@@ -38,12 +49,25 @@ class ReactiveNavigationModel:
     """
     The proposed Reactive Navigation model, using a CNN (trained using Deep Q-Learning)
     to allow an embodied agent to travel through an interior environment (such as a house).
+
+    The model takes a grayscale image (taken from a depth camera) and the distance and angle
+    to the goal (provided by the GPS) as inputs, outputting the actual action that needs to be
+    performed.
+
+    In addition, the model is prepared for batch training.
     """
-    # TODO: ACABA
 
     # ATTRIBUTES #
+
+    # Size of the image. Images have a shape of (_image_size x _image_size)
     _image_size: int
-    _action_list: list
+    # Dictionary containing each action (str, key) with its assigned neuron (int, value)
+    # Example: "stop" => 0
+    _action_to_int_dict: dict
+    # Dictionary containing each neuron (int, key) with its assigned action (str, value)
+    # Example: 0 => "stop"
+    _int_to_action_dict: dict
+    # CNN contained by the model, to be trained and used
     _cnn_model: Model
 
     # CONSTRUCTOR #
@@ -60,18 +84,21 @@ class ReactiveNavigationModel:
         :type weights: str
         """
 
-        # Store the given values
+        # Store the given image size
         self._image_size = image_size
-        self._action_list = action_list
+
+        # Generate the dictionaries from the action list
+        self._action_to_int_dict, self._int_to_action_dict = self._initialize_dicts(action_list)
 
         # Prepare the CNN and, if available, load the weights
-        self._initialize_cnn(self._image_size, len(self._action_list))
+        self._cnn_model = self._initialize_cnn(self._image_size, len(action_list))
         if weights is not None:
             self._cnn_model.load_weights(weights)
 
     # INTERNAL METHODS #
 
-    def _initialize_cnn(self, image_size, action_size):
+    @staticmethod
+    def _initialize_cnn(image_size, action_size):
         """
         Initializes the Convolutional Neural Network (CNN) used by the model.
 
@@ -98,6 +125,8 @@ class ReactiveNavigationModel:
         :type image_size: int
         :param action_size: Number of actions available for the agent
         :type action_size: int
+        :return: A CNN with the specified structure, with random initial weights
+        :rtype: Model
         """
 
         # All layers are randomly initialized using Glorot initializer
@@ -164,8 +193,30 @@ class ReactiveNavigationModel:
         model.compile(optimizer="adam",
                       loss="mse")
 
-        # Store the model
-        self._cnn_model = model
+        return model
+
+    @staticmethod
+    def _initialize_dicts(action_list):
+        """
+        Generates the appropriate dictionaries from the provided action list
+
+        :param action_list: List of available actions
+        :type action_list: list
+        :return: Tuple containing (in order):
+            Dictionary containing each action (str, key) with its assigned neuron (int, value) /
+            Dictionary containing each neuron (int, key) with its assigned action (str, value)
+        :rtype: tuple
+        """
+
+        act_to_int = {}
+        int_to_act = {}
+
+        # Loop through the list and store it in the dictionaries
+        for i, action in enumerate(action_list):
+            act_to_int[action] = i
+            int_to_act[i] = action
+
+        return act_to_int, int_to_act
 
     # PUBLIC METHODS
     # TODO: ACABA
