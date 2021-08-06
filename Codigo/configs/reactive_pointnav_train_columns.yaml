@@ -1,0 +1,99 @@
+# REACTIVE NAVIGATION
+# Reactive Navigation Agent training configuration
+# Developed by Luna Jimenez Fernandez
+#
+# This file contains all the specific parameters used by the agent training, including
+# both the Deep Q Learning and the Reward computation parameters
+#
+# Note that this config is added on top of "base_config.yaml", so both files need to be configured
+# The following arguments can be found in "base_config.yaml":
+#	- Steps per episode (ENVIRONMENT->MAX_EPISODE_STEPS)
+#	- Goal radius (TASK->SUCCESS_DISTANCE)
+#
+# NOTE: Not all parameters are configured via config, the following parameters can be specified
+# as arguments when launching the script:
+#	- Agent type
+#	- Dataset to be used
+#	- Path to pre-trained weights
+#
+
+VERBOSE: False
+
+BASE_TASK_CONFIG_PATH: "configs/base_config.yaml"
+TRAINER_NAME: "reactive"
+ENV_NAME: "ReactiveNavEnv"
+SIMULATOR_GPU_ID: 0
+TORCH_GPU_ID: 0
+VIDEO_OPTION: []
+# Can be uncommented to generate videos.
+# VIDEO_OPTION: ["disk", "tensorboard"]
+TENSORBOARD_DIR: "tb"
+VIDEO_DIR: "video_dir"
+# Evaluate on all episodes
+TEST_EPISODE_COUNT: -1
+EVAL_CKPT_PATH_DIR: "data/reactive/checkpoints"
+NUM_ENVIRONMENTS: 6
+SENSORS: ["DEPTH_SENSOR"]
+CHECKPOINT_FOLDER: "data/reactive/checkpoints"
+TOTAL_NUM_STEPS: 75e6
+LOG_INTERVAL: 25
+NUM_CHECKPOINTS: 100
+
+# Reinforcement Learning specific configs
+RL:
+  # Seed used for all experiments. Can be commented to use a random seed
+  seed: 0
+
+  # Deep Q-Learning parameters
+  DQL:
+    # Learning rate of the neural network
+    learning_rate: 0.001
+    # Maximum size of the Experience Replay (once full, older experiences will be removed)
+    er_size: 20000
+    # Batch size when sampling the Experience Replay
+    batch_size: 64
+    # Gamma value (learning rate of DQL)
+    gamma: 0.99
+    # Epsilon value (initial chance to perform a random action due to exploration-exploitation)
+    epsilon: 1.00
+    # Minimum epsilon value, achieved after a percentage of epochs (min_epsilon_percentage)
+    min_epsilon: 0.05
+    # Percentage of epochs (between 0 and 1) after which epsilon will reach min_epsilon.
+    # The value of epsilon will decrease linearly from epsilon to min_epsilon
+    min_epsilon_percentage: 0.8
+  
+  # Image pre-processing parameters (used to compute the rewards)
+  IMAGE:
+    # Pixels to be trimmed of the bottom of the image (the depth view seen by the camera)
+    # This parameter is relevant since the robot is an embodied agent that will always see the floor at a constant height
+    # Therefore, it can be trimmed without problem
+    bottom_trim: 65
+    # Threshold to consider a part of the image an obstacle. Note that the image is a grayscale image from 0.0 to 1.0, where 0 (black) means the closest and 1.0 (white) means the furthest
+    # This also doubles as the maximum distance to an obstacle.
+    obstacle_threshold: 0.25
+    # Minimum area (in pixels) for contours. Contours smaller than this size will be ignored
+    min_contour_area: 200
+    # Total columns to be used when using the column reward method. Ignored when using the contour reward_method
+    reward_columns: 8
+    
+  # Reward parameters
+  REWARD:
+    # Reward method to be used. There are two possibilities:
+    #	- contour: Contour based approach, imitating the original laser-based proposal
+    #	- column: Column based approach, dividing the image into smaller columns and computing each column as obstacle / no obstacle.
+    reward_method: contour
+    # Approximate distance (in simulator units) at which obstacles are when they are at the threshold.
+    obstacle_distance: 2
+    # Positive gain applied to the attractive field, to increase it
+    attraction_gain: 3
+    # Positive gain applied to the repulsive field, to increase it
+    repulsive_gain: 4
+    # Value used to limit the repulsive field's maximum value
+    repulsive_limit: 0.04
+    # Percentage (between 0 and 1). When the goal is closer than repulsive_goal_influence * obstacle_distance, the effect of the repulsive field gets decreased
+    repulsive_goal_influence: 0.75
+    # Success reward. Note that positive rewards will also be clipped to this value
+    success_reward: 10
+    # Failure penalty. Note that negative rewards will also be clipped to this value
+    failure_penalty: -10
+    

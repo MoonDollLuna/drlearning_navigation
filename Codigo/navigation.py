@@ -2,7 +2,7 @@
 # Developed by: Luna Jimenez Fernandez
 #
 # This file contains the main structure of the reactive navigation system developed
-# (including the arguments, parameters for the simulator, data display...)
+# TODO: ACABAR ESTO
 #
 #
 # Structure of the file:
@@ -31,6 +31,8 @@ import sys
 import cv2
 import habitat
 import numpy as np
+
+from habitat.core.simulator import DepthSensor
 
 from utils.log_manager import LogManager
 
@@ -141,6 +143,7 @@ min_epsilon = 0.05
 # epsilon decreases linearly from epsilon to min_epsilon epoch by epoch
 min_epsilon_percentage = 0.75
 
+
 #######################
 # 4 - MAIN CODE LOOPS #
 #######################
@@ -152,11 +155,14 @@ def training_main():
     """
     pass
 
+
 def evaluation_main():
     pass
 
+
 def showcase_main():
     pass
+
 
 #################
 # 5 - MAIN CODE #
@@ -177,6 +183,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Runs a simulation of an embodied agent in an indoor environment "
                                                  "for training.",
                                      formatter_class=argparse.RawTextHelpFormatter)
+    # TODO: Añade al corolario / epilogo / como se diga QUE argumentos hay en config
 
     # agent_type
     parser.add_argument("-ag",

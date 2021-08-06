@@ -1,18 +1,52 @@
-\BOOKMARK [0][-]{chapter.1}{Introducci\363n y objetivos}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 1
 \BOOKMARK [1][-]{section.1.1}{Introducci\363n}{chapter.1}% 2
 \BOOKMARK [1][-]{section.1.2}{Motivaci\363n}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.3}{Estructura}{chapter.1}% 4
 \BOOKMARK [0][-]{chapter.2}{Descripci\363n del problema}{}% 5
-\BOOKMARK [1][-]{section.2.1}{Antecedentes}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.2}{Objetivos}{chapter.2}% 7
-\BOOKMARK [0][-]{chapter.3}{Revisi\363n de t\351cnicas}{}% 8
-\BOOKMARK [1][-]{section.3.1}{Aprendizaje por refuerzo}{chapter.3}% 9
-\BOOKMARK [2][-]{subsection.3.1.1}{T\351cnicas de aprendizaje por refuerzo cl\341sico}{section.3.1}% 10
-\BOOKMARK [2][-]{subsection.3.1.2}{T\351cnicas de aprendizaje por refuerzo profundo}{section.3.1}% 11
-\BOOKMARK [1][-]{section.3.2}{Algoritmos de navegaci\363n autom\341tica}{chapter.3}% 12
-\BOOKMARK [0][-]{chapter.4}{Dise\361o}{}% 13
-\BOOKMARK [0][-]{chapter.5}{Implementaci\363n}{}% 14
-\BOOKMARK [0][-]{chapter.6}{Experimentaci\363n}{}% 15
-\BOOKMARK [0][-]{chapter.7}{Conclusiones}{}% 16
-\BOOKMARK [0][-]{chapter.7}{Bibliograf\355a}{}% 17
-\BOOKMARK [0][-]{chapter.7}{Anexo}{}% 18
+\BOOKMARK [1][-]{section.2.1}{Problema}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{Antecedentes}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.3}{Objetivos}{chapter.2}% 8
+\BOOKMARK [0][-]{chapter.3}{Revisi\363n de t\351cnicas}{}% 9
+\BOOKMARK [1][-]{section.3.1}{Deep Learning}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.2}{Aprendizaje por refuerzo}{chapter.3}% 11
+\BOOKMARK [2][-]{subsection.3.2.1}{Algoritmos de aprendizaje por refuerzo cl\341sicos}{section.3.2}% 12
+\BOOKMARK [2][-]{subsection.3.2.2}{Algoritmos de aprendizaje por refuerzo profundos}{section.3.2}% 13
+\BOOKMARK [1][-]{section.3.3}{Algoritmos de navegaci\363n autom\341tica}{chapter.3}% 14
+\BOOKMARK [0][-]{chapter.4}{Simulador: Habitat Sim y Habitat Lab}{}% 15
+\BOOKMARK [1][-]{section.4.1}{Habitat Sim}{chapter.4}% 16
+\BOOKMARK [2][-]{subsection.4.1.1}{Instalaci\363n del simulador}{section.4.1}% 17
+\BOOKMARK [1][-]{section.4.2}{Habitat Lab}{chapter.4}% 18
+\BOOKMARK [2][-]{subsection.4.2.1}{Instalaci\363n de la librer\355a}{section.4.2}% 19
+\BOOKMARK [2][-]{subsection.4.2.2}{Principales conceptos usados por la librer\355a}{section.4.2}% 20
+\BOOKMARK [3][-]{subsubsection.4.2.2.1}{Tareas}{subsection.4.2.2}% 21
+\BOOKMARK [3][-]{subsubsection.4.2.2.2}{Conjuntos de datos}{subsection.4.2.2}% 22
+\BOOKMARK [3][-]{subsubsection.4.2.2.3}{Entornos}{subsection.4.2.2}% 23
+\BOOKMARK [3][-]{subsubsection.4.2.2.4}{Ficheros de configuraci\363n}{subsection.4.2.2}% 24
+\BOOKMARK [3][-]{subsubsection.4.2.2.5}{Entrenadores}{subsection.4.2.2}% 25
+\BOOKMARK [3][-]{subsubsection.4.2.2.6}{Agentes}{subsection.4.2.2}% 26
+\BOOKMARK [3][-]{subsubsection.4.2.2.7}{Benchmarks}{subsection.4.2.2}% 27
+\BOOKMARK [0][-]{chapter.5}{Dise\361o del agente}{}% 28
+\BOOKMARK [1][-]{section.5.1}{Caracterizaci\363n del conocimiento}{chapter.5}% 29
+\BOOKMARK [2][-]{subsection.5.1.1}{Estado}{section.5.1}% 30
+\BOOKMARK [2][-]{subsection.5.1.2}{Acciones}{section.5.1}% 31
+\BOOKMARK [2][-]{subsection.5.1.3}{Recompensas}{section.5.1}% 32
+\BOOKMARK [1][-]{section.5.2}{Arquitectura del agente}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.3}{Actuaci\363n del agente}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.4}{Entrenamiento del agente}{chapter.5}% 35
+\BOOKMARK [2][-]{subsection.5.4.1}{Experience Replay}{section.5.4}% 36
+\BOOKMARK [2][-]{subsection.5.4.2}{Memorizaci\363n de experiencias}{section.5.4}% 37
+\BOOKMARK [2][-]{subsection.5.4.3}{Aprendizaje a partir de las experiencias}{section.5.4}% 38
+\BOOKMARK [1][-]{section.5.5}{Otros agentes propuestos}{chapter.5}% 39
+\BOOKMARK [2][-]{subsection.5.5.1}{Active Neural SLAM}{section.5.5}% 40
+\BOOKMARK [2][-]{subsection.5.5.2}{Proximity Policy Optimization}{section.5.5}% 41
+\BOOKMARK [2][-]{subsection.5.5.3}{SLAM cl\341sico}{section.5.5}% 42
+\BOOKMARK [0][-]{chapter.6}{Experimentaci\363n}{}% 43
+\BOOKMARK [1][-]{section.6.1}{Experimentos realizados y parametros utilizados}{chapter.6}% 44
+\BOOKMARK [1][-]{section.6.2}{Resultados durante el entrenamiento}{chapter.6}% 45
+\BOOKMARK [1][-]{section.6.3}{Resultados durante la evaluaci\363n}{chapter.6}% 46
+\BOOKMARK [0][-]{chapter.7}{Conclusiones}{}% 47
+\BOOKMARK [1][-]{section.7.1}{Conclusiones}{chapter.7}% 48
+\BOOKMARK [1][-]{section.7.2}{Trabajo futuro}{chapter.7}% 49
+\BOOKMARK [1][-]{section.7.3}{Agradecimientos}{chapter.7}% 50
+\BOOKMARK [0][-]{section.7.3}{Bibliograf\355a}{}% 51
+\BOOKMARK [0][-]{section.7.3}{Anexo}{}% 52

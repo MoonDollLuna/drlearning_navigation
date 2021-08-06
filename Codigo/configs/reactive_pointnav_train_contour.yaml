@@ -71,7 +71,7 @@ RL:
     # Threshold to consider a part of the image an obstacle. Note that the image is a grayscale image from 0.0 to 1.0, where 0 (black) means the closest and 1.0 (white) means the furthest
     # This also doubles as the maximum distance to an obstacle.
     obstacle_threshold: 0.25
-    # Minimum area (in pixels) for contours. Contours smaller than this size will be ignored
+    # Minimum area (in pixels) for contours / columns. Contours / columns smaller than this size will be ignored
     min_contour_area: 200
     # Total columns to be used when using the column reward method. Ignored when using the contour reward_method
     reward_columns: 8
@@ -83,6 +83,7 @@ RL:
     #	- column: Column based approach, dividing the image into smaller columns and computing each column as obstacle / no obstacle.
     reward_method: contour
     # Approximate distance (in simulator units) at which obstacles are when they are at the threshold.
+    # Can also be seen as the maximum distance the camera will detect obstacles
     obstacle_distance: 2
     # Positive gain applied to the attractive field, to increase it
     attraction_gain: 10
@@ -95,5 +96,5 @@ RL:
     # Success reward. Note that positive rewards will also be clipped to this value
     success_reward: 10
     # Failure penalty. Note that negative rewards will also be clipped to this value
-    failure_penalty: -100
+    failure_penalty: -10
     
