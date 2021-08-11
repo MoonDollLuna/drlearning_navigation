@@ -353,3 +353,5 @@ class PrioritizedExperienceReplay:
     def update_errors(self, errors):
         pass
         # TODO: ACABA ESTE METODO CUANDO SE NECESITE
+    # TODO: POR AHORA 1505 LINEAS DE CODIGO, NI TAN MAL
+    # TODO: PARA VERLAS, find .-name '*.py' | xargs wc -l

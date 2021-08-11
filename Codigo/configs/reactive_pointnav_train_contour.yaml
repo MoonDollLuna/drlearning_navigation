@@ -13,7 +13,7 @@
 # NOTE: Not all parameters are configured via config, the following parameters can be specified
 # as arguments when launching the script:
 #	- Agent type
-#	- Dataset to be used
+#	- Dataset and splits to be used
 #	- Path to pre-trained weights
 #
 
@@ -61,6 +61,12 @@ RL:
     # Percentage of epochs (between 0 and 1) after which epsilon will reach min_epsilon.
     # The value of epsilon will decrease linearly from epsilon to min_epsilon
     min_epsilon_percentage: 0.8
+    # Chooses between standard DQL (False) or Prioritized DQL (True)
+    prioritized: False
+    # (PRIORITIZED ONLY) Alpha value (priority degree). The higher alpha is, the higher the probability of choosing higher error experiences is
+    prioritized_alpha: 0.5
+    # (PRIORITIZED ONLY) Beta value (bias degree). The higher the value is, the less weight variations have (to avoid big oscillations)
+    prioritized_beta: 0.5
   
   # Image pre-processing parameters (used to compute the rewards)
   IMAGE:
@@ -73,7 +79,7 @@ RL:
     obstacle_threshold: 0.25
     # Minimum area (in pixels) for contours / columns. Contours / columns smaller than this size will be ignored
     min_contour_area: 200
-    # Total columns to be used when using the column reward method. Ignored when using the contour reward_method
+    # (COLUMN REWARDS ONLY) Total columns to be used when using the column reward method. Ignored when using the contour reward_method
     reward_columns: 8
     
   # Reward parameters

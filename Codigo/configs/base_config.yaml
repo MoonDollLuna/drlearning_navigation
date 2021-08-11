@@ -1,18 +1,23 @@
 # REACTIVE NAVIGATION
-# Evaluation / Showcase configuration
+# General evaluation / showcase configuration
 # Developed by Luna Jimenez Fernandez
 #
-# This file is used to specify the configuration of agents during evaluation 
+# This file contains all general parameters to be used while evaluating 
+# or showcasing the trained agents.
+# 
+# In addition, the contents of this file are also used as a basis for the configuration
+# used while training the agents. Training specific parameters can be found in the 
+# method-specific files (such as reactive_pointnav_train.yaml)
 #
-# NOTE: Some of the arguments are not included in the config file, since
-# they are instead passed as arguments by the user.
-# These arguments will still be specified in the code with comment blocks
+# Finally, some of the parameters are specified via arguments during program launch:
+#	- Agent type
+#	- Dataset and splits to be used
+#	- Path to pre-trained weights
+#
 
 
-
-# ENVIRONMENT: Max Steps are specified via arguments
-#ENVIRONMENT:
-#  MAX_EPISODE_STEPS:
+ENVIRONMENT:
+  MAX_EPISODE_STEPS: 500
 
 SIMULATOR:
   AGENT_0:
@@ -30,10 +35,9 @@ DATASET:
 #  SPLIT:
 #  DATA_PATH:
 
-# TASK: Success distance is specified via argument
 TASK:
   TYPE: Nav-v0
-#  SUCCESS_DISTANCE: 
+  SUCCESS_DISTANCE: 0.2
   SENSORS: ['POINTGOAL_WITH_GPS_COMPASS_SENSOR']
   POSSIBLE_ACTIONS: ['STOP', 'MOVE_FORWARD', 'TURN_LEFT', 'TURN_RIGHT']
   POINTGOAL_WITH_GPS_COMPASS_SENSOR:
@@ -41,6 +45,6 @@ TASK:
     DIMENSIONALITY: 2
   GOAL_SENSOR_UUID: pointgoal_with_gps_compass
   MEASUREMENTS: ['DISTANCE_TO_GOAL', 'SUCCESS', 'SPL', 'SOFT_SPL']
-  # SUCCESS:
-    # SUCCESS_DISTANCE:
+   SUCCESS:
+     SUCCESS_DISTANCE: 0.2
 

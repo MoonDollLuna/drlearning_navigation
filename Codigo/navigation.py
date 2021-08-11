@@ -399,7 +399,7 @@ if __name__ == "__main__":
             bad_arguments = True
             print("ERROR: Minimum epsilon percentage must be between 0.0 and 1.0. Value provided: {}".format(min_epsilon_percentage))
 
-    # If the bad arguments flag was raised, exit the program
+    # If the Bad Arguments flag was raised, exit the program
     if bad_arguments:
         print("Bad arguments have been detected, program will shut down.")
         sys.exit()
