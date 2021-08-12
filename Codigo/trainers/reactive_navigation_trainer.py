@@ -22,9 +22,10 @@
 
 import copy
 import os
+import random
 import time
 
-from typing import Dict
+import numpy as np
 
 # Habitat (Baselines)
 from habitat import Config
@@ -35,6 +36,7 @@ from habitat_baselines.common.tensorboard_utils import TensorboardWriter
 # Reactive navigation
 from models.reactive_navigation import ReactiveNavigationModel
 from models.experience_replay import ExperienceReplay, PrioritizedExperienceReplay
+from utils.log_manager import LogManager
 
 
 @baseline_registry.register_trainer(name="reactive")
@@ -71,6 +73,8 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
     _agent_actions: list
 
     # DQL PARAMETERS
+    # Seed for all experiments. May be None to use a random seed
+    _seed: int
     # Learning rate of the neural network
     _learning_rate: float
     # Maximum size of the Experience Replay
@@ -130,6 +134,8 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         self._image_size = config.SIMULATOR.DEPTH_SENSOR.WIDTH
         self._agent_actions = config.TASK.POSSIBLE_ACTIONS
 
+
+        self._seed = _rl_config.seed if _rl_config.seed else None
         self._prioritized = _dql_config.prioritized
         self._learning_rate = _dql_config.learning_rate
         self._er_size = _dql_config.er_size
@@ -155,9 +161,14 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             * Neural networks are initialized (both the Q Network and the Target Network)
             * The Experience Replay is instantiated (either standard or prioritized)
             * Initial training time is stored
+            * All necessary seeds are initialized
             * Necessary folders for the log and checkpoints are created
+            * Creates and returns the Log Manager object
 
         This allows the training process to start properly
+
+        :return: Log Manager, used to write the necessary log information
+        :rtype: LogManager
         """
         # Initialize the neural networks
         self._q_network = ReactiveNavigationModel(self._image_size,
@@ -176,9 +187,17 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         # Store the initial time
         self._start_time = time.time()
 
+        # Initialize the seeds if necessary
+        if self._seed:
+            random.seed(self._seed)
+            np.random.seed(self._seed)
+
         # Create the folder structure for both log and checkpoints
         os.makedirs(self._checkpoint_folder)
         os.makedirs(self._log_folder)
+
+        # Create and return the appropriate log manager
+
 
     ####################
     # 5 - MAIN METHODS #
@@ -186,6 +205,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
     # PRIVATE METHODS #
 
+    # TODO
     def _eval_checkpoint(self, checkpoint_path: str, writer: TensorboardWriter, checkpoint_index: int = 0) -> None:
         pass
 
@@ -202,18 +222,44 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
         self._target_network.save_weights(self._checkpoint_folder, file_name)
 
-    # TODO - FALTAN ESTOS
-    def load_checkpoint(self, checkpoint_path, *args, **kwargs) -> Dict:
-        pass
+    def load_checkpoint(self, checkpoint_path, *args, **kwargs):
+        """
+        Loads a checkpoint (the pre-trained weights of the neural network) using
+        the specified filename
 
+        NOTE: Trainers are supposed to return a Dict object (to be used with Torch),
+        but None is returned in this case (since the Reactive Navigation agent uses Keras)
+
+        :param checkpoint_path: Path to the checkpoint (pre-trained weights)
+        :type checkpoint_path: str
+        :param args: Positional arguments
+        :param kwargs: Keyword arguments
+        :return: None (for compatibility reasons)
+        :rtype: None
+        """
+
+        # Load the weights for both networks
+        self._q_network.load_weights(checkpoint_path)
+        self._target_network.load_weights(checkpoint_path)
+
+    # TODO
     def train(self):
         """
         Main method. Trains a Reactive Navigation agent using the proposed rewards systems
         using Deep Q-Learning (either standard or prioritized)
+
+        Deep Q-Learning uses the following structure for training:
+
         """
+        # TODO ACABA ESTO
 
         # Do all the necessary pre-steps
         self._init_train()
+
+        # Loop while the training process is not finished yet
+        while not self.is_done():
+
+
 
 
 

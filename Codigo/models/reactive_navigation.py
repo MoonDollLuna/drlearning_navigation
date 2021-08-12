@@ -96,7 +96,7 @@ class ReactiveNavigationModel:
         # Prepare the CNN and, if available, load the weights
         self._cnn_model = self._initialize_cnn(self._image_size, len(action_list), learning_rate)
         if weights is not None:
-            self._cnn_model.load_weights(weights)
+            self.load_weights(weights)
 
     # INTERNAL METHODS #
 
@@ -231,6 +231,17 @@ class ReactiveNavigationModel:
 
     def train_model(self):
         pass
+
+    def load_weights(self, file_path):
+        """
+        Load pre-trained weights for the CNN from the specified path
+
+        :param file_path: Location of the pre-trained weights (in .h5 format)
+        :type file_path: str
+        """
+
+        # Load the weights
+        self._cnn_model.load_weights(file_path)
 
     def save_weights(self, file_path, file_name):
         """
