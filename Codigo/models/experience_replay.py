@@ -211,7 +211,7 @@ class ExperienceReplay:
         return random.sample(self._experience_replay, size)
 
 
-class PrioritizedExperienceReplay:
+class PrioritizedExperienceReplay(ExperienceReplay):
     """
     Prioritized Experience Replay is a proposed improvement of the original Experience Replay,
     with the following key differences:
@@ -270,9 +270,9 @@ class PrioritizedExperienceReplay:
         """
 
         # Initialize the queue
-        self._experience_replay = deque(maxlen=max_size)
+        super().__init__(max_size)
 
-        # Store the parameters
+        # Store the prioritized parameters
         self._alpha = alpha
         self._beta = beta
 

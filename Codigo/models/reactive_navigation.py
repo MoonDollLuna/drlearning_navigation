@@ -36,6 +36,7 @@
 # Keras
 from keras import Input
 from keras.models import Model
+from keras.optimizers import Adam
 
 # Layers
 from keras.layers.core import Dense, Flatten
@@ -71,7 +72,7 @@ class ReactiveNavigationModel:
 
     # CONSTRUCTOR #
 
-    def __init__(self, image_size, action_list, weights=None):
+    def __init__(self, image_size, action_list, learning_rate=None, weights=None):
         """
         Constructor method
 
@@ -79,6 +80,8 @@ class ReactiveNavigationModel:
         :type image_size: int
         :param action_list: List of available actions
         :type action_list: list
+        :param learning_rate: (OPTIONAL) Learning rate of the neural network
+        :type learning_rate: float
         :param weights: (OPTIONAL) Path to the file containing the pre-trained weights of the CNN
         :type weights: str
         """
@@ -90,14 +93,14 @@ class ReactiveNavigationModel:
         self._action_to_int_dict, self._int_to_action_dict = self._initialize_dicts(action_list)
 
         # Prepare the CNN and, if available, load the weights
-        self._cnn_model = self._initialize_cnn(self._image_size, len(action_list))
+        self._cnn_model = self._initialize_cnn(self._image_size, len(action_list), learning_rate)
         if weights is not None:
             self._cnn_model.load_weights(weights)
 
     # INTERNAL METHODS #
 
     @staticmethod
-    def _initialize_cnn(image_size, action_size):
+    def _initialize_cnn(image_size, action_size, learning_rate=None):
         """
         Initializes the Convolutional Neural Network (CNN) used by the model.
 
@@ -126,6 +129,8 @@ class ReactiveNavigationModel:
         :type action_size: int
         :return: A CNN with the specified structure, with random initial weights
         :rtype: Model
+        :param learning_rate: (OPTIONAL) Learning rate of the neural network
+        :type learning_rate: float
         """
 
         # All layers are randomly initialized using Glorot initializer
@@ -187,9 +192,9 @@ class ReactiveNavigationModel:
         # (since MSE is the value trying to be minimized)
         model = Model(inputs=[image_input, scalar_input],
                       outputs=output)
+        # TODO ESTO ES DEBUG
         model.summary()
-        # TODO: PASA EL LEARNING RATE AQUI LUEGO SEGURAMENTE
-        model.compile(optimizer="adam",
+        model.compile(optimizer=Adam(learning_rate=learning_rate) if learning_rate else "adam",
                       loss="mse")
 
         return model

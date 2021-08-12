@@ -31,10 +31,15 @@ TENSORBOARD_DIR: "tb"
 VIDEO_DIR: "video_dir"
 # Evaluate on all episodes
 TEST_EPISODE_COUNT: -1
-EVAL_CKPT_PATH_DIR: "data/reactive/checkpoints"
+
+
 NUM_ENVIRONMENTS: 6
 SENSORS: ["DEPTH_SENSOR"]
-CHECKPOINT_FOLDER: "data/reactive/checkpoints"
+
+CHECKPOINT_FOLDER: "Training/Reactive/Checkpoints"
+LOG_FOLDER: "Training/Reactive/Log"
+EVAL_CKPT_PATH_DIR: "Training/Reactive/Checkpoints"
+
 TOTAL_NUM_STEPS: 75e6
 LOG_INTERVAL: 25
 NUM_CHECKPOINTS: 100
