@@ -199,8 +199,10 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         :param file_name: Filename to be used when storing the checkpoint
         :type file_name: str
         """
-        pass
 
+        self._target_network.save_weights(self._checkpoint_folder, file_name)
+
+    # TODO - FALTAN ESTOS
     def load_checkpoint(self, checkpoint_path, *args, **kwargs) -> Dict:
         pass
 

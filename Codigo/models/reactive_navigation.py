@@ -32,6 +32,7 @@
 #   * TURN LEFT
 
 # IMPORTS #
+from os.path import join
 
 # Keras
 from keras import Input
@@ -223,9 +224,27 @@ class ReactiveNavigationModel:
         return act_to_int, int_to_act
 
     # PUBLIC METHODS
+
     # TODO: ACABA
     def act(self):
         pass
 
     def train_model(self):
         pass
+
+    def save_weights(self, file_path, file_name):
+        """
+        Stores the weights of the CNN in the specified location, using the specified name
+
+        :param file_path: Path where the weights will be stored (without the file name)
+        :type file_path: str
+        :param file_name: Name of the file storing the weights (WITHOUT THE EXTENSION)
+        :type file_name: str
+        """
+
+        # Join the path with the file name and append the extension (h5)
+        path = join(file_path, file_name)
+        path = path + ".h5"
+
+        # Store the weights
+        self._cnn_model.save_weights(path)
