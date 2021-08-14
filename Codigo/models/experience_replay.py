@@ -22,6 +22,7 @@ from collections import deque
 
 from habitat.core.simulator import Observations
 
+
 class State:
     """
     State represents the knowledge the Reactive Navigation agent has about the world in an specific instant.
@@ -35,11 +36,11 @@ class State:
     # ATTRIBUTES #
 
     # Distance to the goal (in simulator units)
-    _distance: float
+    distance: float
     # Angle to the goal (in radians)
-    _angle: float
+    angle: float
     # View of the world (as perceived by the depth camera)
-    _image: ndarray
+    image: ndarray
 
     # CONSTRUCTOR #
 
@@ -92,7 +93,7 @@ class State:
         :rtype: list
         """
 
-        return [self._image, [self._distance, self._angle]]
+        return [self.image, [self.distance, self.angle]]
 
 
 class Experience:
@@ -192,7 +193,7 @@ class ExperienceReplay:
     # ATTRIBUTES #
     # Queue where the experiences of the agent are stored
     # This queue has a maximum size specified during construction
-    _experience_replay: deque
+    experience_replay: deque
 
     # CONSTRUCTOR #
     def __init__(self, max_size=None):
@@ -207,7 +208,7 @@ class ExperienceReplay:
         """
         
         # Construct the queue
-        self._experience_replay = deque(maxlen=max_size)
+        self.experience_replay = deque(maxlen=max_size)
 
     # PUBLIC METHODS #
 
@@ -229,7 +230,7 @@ class ExperienceReplay:
 
         # Create the experience and enqueue it
         experience = Experience(initial_state, action, reward, next_state, final)
-        self._experience_replay.append(experience)
+        self.experience_replay.append(experience)
 
     def sample_memory(self, sample_size):
         """
@@ -245,13 +246,23 @@ class ExperienceReplay:
         """
 
         # Ensure that the size of the sample is not larger than the current memory
-        if len(self._experience_replay) < sample_size:
-            size = len(self._experience_replay)
+        if len(self.experience_replay) < sample_size:
+            size = len(self.experience_replay)
         else:
             size = sample_size
 
         # Generate and return the memories
-        return random.sample(self._experience_replay, size)
+        return random.sample(self.experience_replay, size)
+
+    def update_errors(self, errors, error_ids):
+        """
+        Abstract method.
+
+        Only Prioritized Experience Replay implements errors that need to be updated, so this method
+        is only here to guarantee compatibility and to allow other classes to access the method
+        """
+
+        raise NotImplementedError
 
 
 class PrioritizedExperienceReplay(ExperienceReplay):
@@ -283,7 +294,7 @@ class PrioritizedExperienceReplay(ExperienceReplay):
     #
     # Note that a Priority Queue is not used since we want to conserve the original functionality
     # (experiences keep their order, and once the ER is full the oldest experiences are removed)
-    _experience_replay: deque
+    experience_replay: deque
 
     # Alpha value (priority degree). The higher alpha is, the higher the probability of choosing
     # higher error experiences is
@@ -344,7 +355,7 @@ class PrioritizedExperienceReplay(ExperienceReplay):
         # Create and store the structure for the experience
         # Experiences are initialized with infinite error
         experience = (Experience(initial_state, action, reward, next_state, final), math.inf)
-        self._experience_replay.append(experience)
+        self.experience_replay.append(experience)
 
     def sample_memory(self, sample_size):
         """
@@ -365,9 +376,12 @@ class PrioritizedExperienceReplay(ExperienceReplay):
 
         # PROBABILITIES
 
+        # Order the queue by error
+        ordered_queue = sorted(self.experience_replay, key=lambda x: x[1], reverse=True)
+
         # Compute the probability of each element based on its rank
         # Since experiences will be ordered (from the highest to the lowest error) it can be computed directly
-        ranks = [(1/x) for x in range(1, len(self._experience_replay) + 1)]
+        ranks = [(1/x) for x in range(1, len(ordered_queue) + 1)]
 
         # Compute the divisor of the function (the addition of all probabilities to the power of alpha)
         divisor = sum([x ** self._alpha for x in ranks])
@@ -378,23 +392,31 @@ class PrioritizedExperienceReplay(ExperienceReplay):
         # SAMPLING
 
         # Ensure that the size of the sample is not larger than the current memory
-        if len(self._experience_replay) < sample_size:
-            size = len(self._experience_replay)
+        if len(self.experience_replay) < sample_size:
+            size = len(self.experience_replay)
         else:
             size = sample_size
 
         # Sample the ids and return both experiences and ids
-        id_samples = np.random.choice(np.arange(0, len(self._experience_replay)),
+        id_samples = np.random.choice(np.arange(0, len(self.experience_replay)),
                                       size,
                                       False,
                                       probabilities)
         # The deque is temporarily converted into a list to simplify the process
-        deque_list = np.array(list(self._experience_replay))
+        deque_list = np.array(list(ordered_queue))
 
         return deque_list[id_samples].tolist(), id_samples.tolist()
 
-    def update_errors(self, errors):
-        pass
-        # TODO: ACABA ESTE METODO CUANDO SE NECESITE
-    # TODO: POR AHORA 1505 LINEAS DE CODIGO, NI TAN MAL
-    # TODO: PARA VERLAS, find .-name '*.py' | xargs wc -l
+    def update_errors(self, errors, error_ids):
+        """
+        Update the errors of the specified ID positions in the queue to the specified values
+
+        :param errors: List containing the error values to update
+        :type errors: list
+        :param error_ids: List containing the ID positions to be updated
+        :type error_ids: list
+        """
+
+        for error, id_value in zip(errors, error_ids):
+            self.experience_replay[id_value] = error
+

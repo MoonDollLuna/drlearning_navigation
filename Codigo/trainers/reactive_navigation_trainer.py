@@ -269,20 +269,23 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         # With the updated predictions, fit the Q network
         self._q_network.fit_model(sampled_initial_states, current_state_predictions)
 
-    def _train_network_standard(self):
+    # TODO ACABA ESTE METODO
+    def _train_network_prioritized(self):
         """
-        Auxiliary method used to train the Q-Network when using Standard Prioritized Replay
+        Auxiliary method used to train the Q-Network when using Prioritized Prioritized Replay
 
         This method does the following:
             * Sample the ER to obtain the experiences
             * Unwraps the experiences into usable forms
             * Computes the Q values for the current and next state
-            * Computes the UPDATED Q values from these previous Q values
+            * Computes the UPDATED Q values from these previous Q values (using weights)
+            * Update the errors in the Experience Replay
         :return:
         """
 
-        # Sample the ER to obtain the experiences
-        sampled_experiences = self._experience_replay.sample_memory(self._batch_size)
+        # Sample the ER to obtain the experiences AND the experiences IDs
+        # (to be used later, to update errors)
+        (sampled_experiences, sampled_errors), sampled_ids = self._experience_replay.sample_memory(self._batch_size)
 
         # Unwrap the experiences
         (sampled_initial_states,
@@ -296,22 +299,52 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         current_state_predictions = self._q_network.predict(sampled_initial_states)
         next_state_predictions = self._target_network.predict(sampled_next_states)
 
-        # Compute the updated Q values
+        # WEIGHT COMPUTING
+
+        # Compute the probabilities of the full Experience Replay
+        ranks = [(1 / x) for x in range(1, len(self._experience_replay.experience_replay) + 1)]
+        # Compute the divisor of the function (the addition of all probabilities to the power of alpha)
+        divisor = sum([x ** self._prioritized_alpha for x in ranks])
+        # Compute the actual probability of every element when normalized
+        probabilities = [(x ** self._prioritized_alpha) / divisor for x in ranks]
+
+        # Compute the weight of all experiences
+        weights = [((1/len(self._experience_replay.experience_replay)) * (1/probability)) ** self._prioritized_beta for
+                   probability in probabilities]
+        # Normalize all weights (dividing them by max_weight)
+        weights = [weight/max(weights) for weight in weights]
+
+        # Create a list to store the errors (to update them later)
+        error_list = []
+
+        # Compute the new Q value and error of each experience
         for index in range(len(sampled_experiences)):
+
+            # Compute the new Q value.
+            # Note that all Q values must be normalized by their weight due to Prioritized Experience Replay
 
             # Check if the experience is a final one or not
             if sampled_finals[index]:
                 # Final experience: the Q Value of the state is simply the reward / penalty
-                # q_value(t) = reward
-                current_state_predictions[index][self._action_to_index[sampled_actions[index]]] = sampled_rewards[index]
+                # q_value(t) = reward * weight
+                new_q = sampled_rewards[index] * weights[sampled_ids[index]]
+                current_state_predictions[index][self._action_to_index[sampled_actions[index]]] = new_q
             else:
                 # Not a final experience: the Q value is based on the obtained reward
                 # and the max Q value for the next state
-                # q_value(t) = reward + gamma * next_state_best_q
-                current_state_predictions[index][self._action_to_index[sampled_actions[index]]] = sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])
+                # q_value(t) = (reward + gamma * next_state_best_q) * weight
+                new_q = (sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])) * weights[sampled_ids[index]]
+                current_state_predictions[index][self._action_to_index[sampled_actions[index]]] = new_q
 
-        # With the updated predictions, fit the Q network
+            # Compute and append the error of the experience
+            # The error is the quadratic error between the new Q value and the actually obtained one
+            # error = (predicted_q - updated_q) ^ 2
+            error = (current_state_predictions[index][self._action_to_index[sampled_actions[index]]] - new_q) ** 2
+            error_list.append(error)
+
+        # With the updated predictions, fit the Q network and update the errors in the experience replay
         self._q_network.fit_model(sampled_initial_states, current_state_predictions)
+        self._experience_replay.update_errors(error_list, sampled_ids)
 
     ####################
     # 5 - MAIN METHODS #
@@ -356,7 +389,6 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         self._q_network.load_weights(checkpoint_path)
         self._target_network.load_weights(checkpoint_path)
 
-    # TODO
     def train(self):
         """
         Main method. Trains a Reactive Navigation agent using the proposed rewards systems
@@ -430,21 +462,26 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                 if not self._prioritized:
                     # Standard ER
                     self._train_network_standard()
-
                 else:
                     # Prioritized ER
-                    # Sample the ER to obtain the experiences AND the experiences IDs
-                    # (to be used later, to update errors)
-                    (sampled_experiences, sampled_errors), sampled_ids = self._experience_replay.sample_memory(self._batch_size)
+                    self._train_network_prioritized()
 
-                    # Unwrap the experiences
-                    (sampled_initial_states,
-                     sampled_actions,
-                     sampled_rewards,
-                     sampled_next_states,
-                     sampled_finals) = Experience.unwrap_experiences(sampled_experiences)
+                # 5 - Update the trainer step counter and, if necessary, break the loop
+                self.num_steps_done += 1
+                if self.is_done():
+                    break
 
+            # Episode is over, update the target network
+            self._target_network = copy.deepcopy(self._q_network)
 
+            # Update the value of epsilon
 
+            # Track the necessary info in the log manager
+            # TODO
 
+            # Increase the update counter
+            self.num_updates_done += 1
 
+        # After the training process is over, close the environment and the log manager
+        self._env.close()
+        log_manager.close()

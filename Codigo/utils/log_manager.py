@@ -138,3 +138,10 @@ class LogManager:
     # PUBLIC METHODS #
     def write_epoch(self):
         pass
+
+    def close(self):
+        """
+        Write the final training details, flush the data and close the writers
+        """
+
+        self._file.close()
