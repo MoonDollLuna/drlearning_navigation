@@ -20,6 +20,7 @@ import numpy as np
 from numpy import ndarray
 from collections import deque
 
+from habitat.core.simulator import Observations
 
 class State:
     """
@@ -60,11 +61,26 @@ class State:
         """
 
         # Store all values
-        self._distance = distance
-        self._angle = angle
-        self._image = image
+        self.distance = distance
+        self.angle = angle
+        self.image = image
 
     # PUBLIC METHODS #
+
+    @staticmethod
+    def get_state(observations):
+        """
+        Given the full observations from the agent, creates the current state
+
+        :param observations: Full observations from the agent
+        :type observations: Observations
+        :return: The state described by the observations
+        :rtype: State
+        """
+
+        return State(observations["pointgoal_with_gps_compass"][0],
+                     observations["pointgoal_with_gps_compass"][1],
+                     observations["depth"])
 
     def unwrap_state(self):
         """
@@ -96,15 +112,15 @@ class Experience:
     # ATTRIBUTES #
 
     # Initial state of the agent (s)
-    _initial_state: State
+    initial_state: State
     # Action performed by the agent in state s (a)
-    _action: str
+    action: str
     # Reward obtained by the agent after performing an action a in state s (r)
-    _reward: float
+    reward: float
     # State reached after performing an action a in state s (s')
-    _next_state: State
+    next_state: State
     # Indicates whether a reached state is final (f)
-    _final: bool
+    final: bool
 
     # CONSTRUCTOR
 
@@ -126,11 +142,37 @@ class Experience:
         """
 
         # Store the parameters
-        self._initial_state = initial_state
-        self._action = action
-        self._reward = reward
-        self._next_state = next_state
-        self._final = final
+        self.initial_state = initial_state
+        self.action = action
+        self.reward = reward
+        self.next_state = next_state
+        self.final = final
+
+    # PUBLIC METHODS
+
+    @staticmethod
+    def unwrap_experiences(experiences):
+        """
+        Given a list of experiences, returns five lists containing the 5 elements of each experience, ordered
+
+        Thus, the method returns the following 5 lists:
+            * List of initial states
+            * List of actions taken
+            * List of rewards obtained
+            * List of next states
+            * List of final flags
+
+        :param experiences: List of experiences, sampled from the Experience Replay
+        :type experiences: list
+        :return: Five lists as described in the method body
+        :rtype: tuple
+        """
+
+        return ([exp.initial_state for exp in experiences],
+                [exp.action for exp in experiences],
+                [exp.reward for exp in experiences],
+                [exp.next_state for exp in experiences],
+                [exp.final for exp in experiences])
 
 
 class ExperienceReplay:
@@ -168,6 +210,7 @@ class ExperienceReplay:
         self._experience_replay = deque(maxlen=max_size)
 
     # PUBLIC METHODS #
+
     def insert_experience(self, initial_state, action, reward, next_state, final):
         """
         Creates and inserts a new experience into the Experience Replay

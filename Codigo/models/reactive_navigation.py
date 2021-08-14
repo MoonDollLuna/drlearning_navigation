@@ -35,6 +35,7 @@
 from os.path import join
 
 # Keras
+import numpy as np
 from keras import Input
 from keras.models import Model
 from keras.optimizers import Adam
@@ -44,6 +45,9 @@ from keras.layers.core import Dense, Flatten
 from keras.layers.convolutional import Conv2D
 from keras.layers.pooling import MaxPooling2D
 from keras.layers import concatenate
+
+# Reactive Navigation
+from models.experience_replay import State, Experience
 
 
 class ReactiveNavigationModel:
@@ -225,13 +229,6 @@ class ReactiveNavigationModel:
 
     # PUBLIC METHODS
 
-    # TODO: ACABA
-    def act(self):
-        pass
-
-    def train_model(self):
-        pass
-
     def load_weights(self, file_path):
         """
         Load pre-trained weights for the CNN from the specified path
@@ -259,3 +256,58 @@ class ReactiveNavigationModel:
 
         # Store the weights
         self._cnn_model.save_weights(path)
+
+    def predict(self, states):
+        """
+        Batch predicts the Q-Values of an array of States
+
+        :param states: List of States
+        :type states: State
+        :return: List of Q-Values for each of the states
+        """
+
+        # Prepare the list of states using the network format
+        unwrapped_states = [state.unwrap_state() for state in states]
+
+        # Process and return the Q values
+        return self._cnn_model.predict(np.array(unwrapped_states), batch_size=len(unwrapped_states))
+
+    def act(self, state):
+        """
+        Given a state, returns the optimal action (according to the model policy)
+        to be taken.
+
+        :param state: Current state perceived by the agent
+        :type state: State
+        :return: Action to be performed and Q-Value for the chosen action
+        :rtype: tuple
+        """
+
+        # Prepare the state for the neural network
+        unfolded_state = np.array(state.unwrap_state())
+
+        # Predict the action using the CNN
+        predicted_actions = self._cnn_model.predict(unfolded_state)
+
+        # Return the best action
+        best_action_index = np.argmax(predicted_actions[0])
+        return self._int_to_action_dict[best_action_index]
+
+    def fit_model(self, states, predictions):
+        """
+        Given a list of states and their updated predictions, fit the CNN to learn weights for these new values
+
+        :param states: List of current states
+        :type states: list
+        :param predictions: List of predicted Q-Values for each pair state-action
+        :type predictions: list
+        """
+
+        # Prepare the list of states to use the neural network format
+        unwrapped_states = [state.unwrap_state() for state in states]
+
+        # Fit the network
+        self._cnn_model.fit(np.array(unwrapped_states),
+                            np.array(predictions),
+                            batch_size=len(states),
+                            epochs=1, verbose=0)

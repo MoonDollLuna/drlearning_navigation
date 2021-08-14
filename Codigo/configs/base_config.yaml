@@ -15,7 +15,6 @@
 #	- Path to pre-trained weights
 #
 
-
 ENVIRONMENT:
   MAX_EPISODE_STEPS: 500
 

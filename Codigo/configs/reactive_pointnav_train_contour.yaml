@@ -27,20 +27,26 @@ TORCH_GPU_ID: 0
 VIDEO_OPTION: []
 # Can be uncommented to generate videos.
 # VIDEO_OPTION: ["disk", "tensorboard"]
-TENSORBOARD_DIR: "tb"
-VIDEO_DIR: "video_dir"
+TENSORBOARD_DIR: "Training/Reactive/Tensorboard"
+VIDEO_DIR: "Training/Reactive/Video"
 # Evaluate on all episodes
 TEST_EPISODE_COUNT: -1
 
-
-NUM_ENVIRONMENTS: 6
 SENSORS: ["DEPTH_SENSOR"]
 
 CHECKPOINT_FOLDER: "Training/Reactive/Checkpoints"
 LOG_FOLDER: "Training/Reactive/Log"
+# If True, the log will not output messages to the console screen during training
+LOG_SILENT: False
 EVAL_CKPT_PATH_DIR: "Training/Reactive/Checkpoints"
 
-TOTAL_NUM_STEPS: 75e6
+# One of these two parameters must be present:
+#	TOTAL_NUM_STEPS: Maximum number of steps the agent will take across all epochs
+#	NUM_UPDATES: Number of updates (completed episodes) that have been performed
+# Training stops when either of these values are reached
+
+# TOTAL_NUM_STEPS: 75e6
+NUM_UPDATES: 2000
 LOG_INTERVAL: 25
 NUM_CHECKPOINTS: 100
 

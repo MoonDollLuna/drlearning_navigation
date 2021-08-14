@@ -42,6 +42,8 @@ class LogManager:
     # Flag for the log manager. If TRUE, the log will not be output to the screen
     _silent: bool
 
+    # TODO: Recompensa media por episodio
+
     # CONSTRUCTOR #
 
     def __init__(self, agent_type, dataset, timestamp, silent=False, **parameters):
@@ -57,7 +59,6 @@ class LogManager:
         :param silent: If TRUE, logs will not be output to the screen
         :type silent: bool
         :param parameters: (OPTIONAL) Extra parameters to be specified on the header of the file
-        :type parameters: dict
         """
 
         # Compute a date from the timestamp

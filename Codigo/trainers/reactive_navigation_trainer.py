@@ -35,7 +35,8 @@ from habitat_baselines.common.tensorboard_utils import TensorboardWriter
 
 # Reactive navigation
 from models.reactive_navigation import ReactiveNavigationModel
-from models.experience_replay import ExperienceReplay, PrioritizedExperienceReplay
+from envs.reactive_navigation_env import ReactiveNavigationEnv
+from models.experience_replay import State, Experience, ExperienceReplay, PrioritizedExperienceReplay
 from utils.log_manager import LogManager
 
 
@@ -51,26 +52,30 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
     # Note that some attributes are contained in the superclass (BaseRLTrainer)
 
-    # NETWORKS
-    # Q Network used by the trainer. This network is updated after each action taken
-    _q_network: ReactiveNavigationModel
-    # Target network used by the trainer. This network is used to obtain the target Q Values,
-    # and is updated by copying the Q Network at the end of each epoch
-    _target_network: ReactiveNavigationModel
-
-    # EXPERIENCE REPLAY
-    # Flag to specify whether standard or prioritized Deep Q-Learning is to be used
-    _prioritized: bool
-    # Experience Replay used by the trainer, to store all experiences that happened during training
-    # Can be either standard or prioritized Experience Replay
-    _experience_replay: ExperienceReplay
-
     # ENVIRONMENT PARAMETERS
+    # Identifier for the environment, used to grab it from the Habitat Baseline Registry
+    _env_name: str
+    # Handle for the environment to be used during training
+    _env: ReactiveNavigationEnv
     # Size of the image
     _image_size: int
     # List of actions available for the agent
     # This is stored as a list of strings
     _agent_actions: list
+    # Dictionary of actions (key) and their associated indexes (value)
+    _action_to_index: dict
+
+    # NETWORKS AND EXPERIENCE REPLAY PARAMETERS
+    # Q Network used by the trainer. This network is updated after each action taken
+    _q_network: ReactiveNavigationModel
+    # Target network used by the trainer. This network is used to obtain the target Q Values,
+    # and is updated by copying the Q Network at the end of each epoch
+    _target_network: ReactiveNavigationModel
+    # Flag to specify whether standard or prioritized Deep Q-Learning is to be used
+    _prioritized: bool
+    # Experience Replay used by the trainer, to store all experiences that happened during training
+    # Can be either standard or prioritized Experience Replay
+    _experience_replay: ExperienceReplay
 
     # DQL PARAMETERS
     # Seed for all experiments. May be None to use a random seed
@@ -102,8 +107,12 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
     _checkpoint_folder: str
     # Location of the log folder
     _log_folder: str
+    # Flag to indicate whether the log is silent (doesn't output messages to the screen, TRUE) or not (FALSE)
+    _silent: bool
     # Initial time when the agent started training
     _start_time: float
+    # Rewards method used
+    _rewards_method: str
 
     ###################
     # 3 - CONSTRUCTOR #
@@ -131,9 +140,10 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         _rl_config = config.RL
         _dql_config = _rl_config.DQL
 
+        self._env_name = config.ENV_NAME
+
         self._image_size = config.SIMULATOR.DEPTH_SENSOR.WIDTH
         self._agent_actions = config.TASK.POSSIBLE_ACTIONS
-
 
         self._seed = _rl_config.seed if _rl_config.seed else None
         self._prioritized = _dql_config.prioritized
@@ -149,6 +159,13 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
         self._checkpoint_folder = config.CHECKPOINT_FOLDER
         self._log_folder = config.LOG_FOLDER
+        self._silent = config.LOG_SILENT
+        self._rewards_method = _rl_config.REWARD.reward_method
+
+        # Create the dictionary
+        self._action_to_index = {}
+        for index, action in enumerate(self._agent_actions):
+            self._action_to_index[action] = index
 
     #########################
     # 4 - AUXILIARY METHODS #
@@ -163,6 +180,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             * Initial training time is stored
             * All necessary seeds are initialized
             * Necessary folders for the log and checkpoints are created
+            * Instantiates the environment
             * Creates and returns the Log Manager object
 
         This allows the training process to start properly
@@ -187,17 +205,113 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         # Store the initial time
         self._start_time = time.time()
 
-        # Initialize the seeds if necessary
-        if self._seed:
-            random.seed(self._seed)
-            np.random.seed(self._seed)
-
         # Create the folder structure for both log and checkpoints
         os.makedirs(self._checkpoint_folder)
         os.makedirs(self._log_folder)
 
-        # Create and return the appropriate log manager
+        # Instantiate the environment
+        env_init = baseline_registry.get_env(self._env_name)
+        self._env = env_init(self.config)
 
+        # Initialize the seeds if necessary
+        if self._seed:
+            random.seed(self._seed)
+            np.random.seed(self._seed)
+            self._env.seed(self._seed)
+
+        # Create and return the appropriate log manager
+        return LogManager("rective",
+                          "dataset",  # TODO APAÑA DATASET
+                          self._start_time,
+                          self._silent,
+                          reward_method=self._rewards_method)
+
+    def _train_network_standard(self):
+        """
+        Auxiliary method used to train the Q-Network when using Standard Prioritized Replay
+
+        This method does the following:
+            * Sample the ER to obtain the experiences
+            * Unwraps the experiences into usable forms
+            * Computes the Q values for the current and next state
+            * Computes the UPDATED Q values from these previous Q values
+        """
+
+        # Sample the ER to obtain the experiences
+        sampled_experiences = self._experience_replay.sample_memory(self._batch_size)
+
+        # Unwrap the experiences
+        (sampled_initial_states,
+         sampled_actions,
+         sampled_rewards,
+         sampled_next_states,
+         sampled_finals) = Experience.unwrap_experiences(sampled_experiences)
+
+        # Compute the Q values for the current state (using the Q network)
+        # and the Q values for the next state (using the target network)
+        current_state_predictions = self._q_network.predict(sampled_initial_states)
+        next_state_predictions = self._target_network.predict(sampled_next_states)
+
+        # Compute the updated Q values
+        for index in range(len(sampled_experiences)):
+
+            # Check if the experience is a final one or not
+            if sampled_finals[index]:
+                # Final experience: the Q Value of the state is simply the reward / penalty
+                # q_value(t) = reward
+                current_state_predictions[index][self._action_to_index[sampled_actions[index]]] = sampled_rewards[index]
+            else:
+                # Not a final experience: the Q value is based on the obtained reward
+                # and the max Q value for the next state
+                # q_value(t) = reward + gamma * next_state_best_q
+                current_state_predictions[index][self._action_to_index[sampled_actions[index]]] = sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])
+
+        # With the updated predictions, fit the Q network
+        self._q_network.fit_model(sampled_initial_states, current_state_predictions)
+
+    def _train_network_standard(self):
+        """
+        Auxiliary method used to train the Q-Network when using Standard Prioritized Replay
+
+        This method does the following:
+            * Sample the ER to obtain the experiences
+            * Unwraps the experiences into usable forms
+            * Computes the Q values for the current and next state
+            * Computes the UPDATED Q values from these previous Q values
+        :return:
+        """
+
+        # Sample the ER to obtain the experiences
+        sampled_experiences = self._experience_replay.sample_memory(self._batch_size)
+
+        # Unwrap the experiences
+        (sampled_initial_states,
+         sampled_actions,
+         sampled_rewards,
+         sampled_next_states,
+         sampled_finals) = Experience.unwrap_experiences(sampled_experiences)
+
+        # Compute the Q values for the current state (using the Q network)
+        # and the Q values for the next state (using the target network)
+        current_state_predictions = self._q_network.predict(sampled_initial_states)
+        next_state_predictions = self._target_network.predict(sampled_next_states)
+
+        # Compute the updated Q values
+        for index in range(len(sampled_experiences)):
+
+            # Check if the experience is a final one or not
+            if sampled_finals[index]:
+                # Final experience: the Q Value of the state is simply the reward / penalty
+                # q_value(t) = reward
+                current_state_predictions[index][self._action_to_index[sampled_actions[index]]] = sampled_rewards[index]
+            else:
+                # Not a final experience: the Q value is based on the obtained reward
+                # and the max Q value for the next state
+                # q_value(t) = reward + gamma * next_state_best_q
+                current_state_predictions[index][self._action_to_index[sampled_actions[index]]] = sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])
+
+        # With the updated predictions, fit the Q network
+        self._q_network.fit_model(sampled_initial_states, current_state_predictions)
 
     ####################
     # 5 - MAIN METHODS #
@@ -248,16 +362,87 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         Main method. Trains a Reactive Navigation agent using the proposed rewards systems
         using Deep Q-Learning (either standard or prioritized)
 
+        Note that the training process used by Habitat Lab is the following:
+
+        while training is not over (the agent hasn't reached the max number of steps or updates):
+            * execute the steps in the environment (and increase the step counter for each step)
+            * after the steps, update the agent (and increase the update counter once)
+            * log all necessary information
+
         Deep Q-Learning uses the following structure for training:
 
         """
         # TODO ACABA ESTO
 
-        # Do all the necessary pre-steps
-        self._init_train()
+        # Do all the necessary pre-steps and create the log manager
+        log_manager = self._init_train()
+
+        # Store the current epsilon (chance for random action) value
+        # and the linear decrease between epsilons
+        current_epsilon = self._epsilon
 
         # Loop while the training process is not finished yet
         while not self.is_done():
+
+            # Reset the environment to the start of the episode and get the initial state
+            observations = self._env.reset()
+            current_state = State.get_state(observations)
+
+            # Act until the episode is finished
+            # Note that the agent is trained after each step
+            while self._env.get_done(observations):
+
+                # DEEP Q-LEARNING
+
+                # 1 - Act according to the state
+                # Note that, due to exploration-exploitation, there is a chance for a random action
+                # to be performed
+
+                # Compute the random value
+                random_value = random.random()
+
+                # Act accordingly
+                if random_value < current_epsilon:
+                    # Random action (exploration)
+                    action = random.choice(self._agent_actions)
+                else:
+                    # Greedy action (exploitation)
+                    action = self._q_network.act(current_state)
+
+                # Step using the action (apply the action to the environment)
+                observations, reward, done, info = self._env.step(action)
+                new_state = State.get_state(observations)
+
+                # 2 - Store the new information into the experience replay
+                self._experience_replay.insert_experience(current_state,
+                                                          action,
+                                                          reward,
+                                                          new_state,
+                                                          done)
+
+                # 3 - Set the new current state
+                current_state = new_state
+
+                # 4 - Sample from the Experience Replay and train the network with said samples
+                # Note that the sampling process differs between Standard and Prioritized Experience Replay
+                # (and thus, will be treated separately)
+
+                if not self._prioritized:
+                    # Standard ER
+                    self._train_network_standard()
+
+                else:
+                    # Prioritized ER
+                    # Sample the ER to obtain the experiences AND the experiences IDs
+                    # (to be used later, to update errors)
+                    (sampled_experiences, sampled_errors), sampled_ids = self._experience_replay.sample_memory(self._batch_size)
+
+                    # Unwrap the experiences
+                    (sampled_initial_states,
+                     sampled_actions,
+                     sampled_rewards,
+                     sampled_next_states,
+                     sampled_finals) = Experience.unwrap_experiences(sampled_experiences)
 
 
 

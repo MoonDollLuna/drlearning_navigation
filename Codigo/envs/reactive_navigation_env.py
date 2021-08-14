@@ -22,6 +22,7 @@ import numpy as np
 
 from numpy import ndarray
 from habitat import Config, Dataset
+from habitat.core.simulator import Observations
 from habitat_baselines.common.baseline_registry import baseline_registry
 from habitat_baselines.common.environments import NavRLEnv
 
@@ -347,15 +348,20 @@ class ReactiveNavigationEnv(NavRLEnv):
         Sets up the agent and the environment at the start of an episode.
 
         In addition to the standard reset procedures, this also computes the initial shaping value
+
+        :return: A dictionary containing all initial observations
+        :rtype: Observations
         """
 
         # Set up everything (provided by the superclass NavRLEnv)
-        super().reset()
+        # In addition, get the initial observations
+        initial_observations = super().reset()
 
         # Compute the initial shaping value
-        # TODO: ESTO POSIBLEMENTE FALLE, MOVERLO A GET_REWARD
-        self._previous_shaping = self._compute_shaping_value(self._env.get_metrics()["pointgoal_with_gps_compass"][0],
-                                                             self._env.get_metrics()["depth"])
+        self._previous_shaping = self._compute_shaping_value(initial_observations["pointgoal_with_gps_compass"][0],
+                                                             initial_observations["depth"])
+
+        return initial_observations
 
     def get_reward_range(self):
         """
