@@ -28,11 +28,12 @@ SIMULATOR:
     WIDTH: 256
     HEIGHT: 256
 
-# DATASET: Data path and split are specified via argument
+# DATASET: Data path, split and name are specified via argument
 DATASET:
   TYPE: PointNav-v1
-#  SPLIT:
+#  SPLIT: 
 #  DATA_PATH:
+#  NAME:
 
 TASK:
   TYPE: Nav-v0

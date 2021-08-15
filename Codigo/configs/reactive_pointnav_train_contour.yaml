@@ -25,17 +25,18 @@ ENV_NAME: "ReactiveNavEnv"
 SIMULATOR_GPU_ID: 0
 TORCH_GPU_ID: 0
 VIDEO_OPTION: []
-# Can be uncommented to generate videos.
+# Can be uncommented to generate videos during training.
 # VIDEO_OPTION: ["disk", "tensorboard"]
-TENSORBOARD_DIR: "Training/Reactive/Tensorboard"
-VIDEO_DIR: "Training/Reactive/Video"
+TENSORBOARD_DIR: "Evaluation/Reactive/Tensorboard"
+VIDEO_DIR: "Evaluation/Reactive/Video"
 # Evaluate on all episodes
 TEST_EPISODE_COUNT: -1
 
 SENSORS: ["DEPTH_SENSOR"]
 
 CHECKPOINT_FOLDER: "Training/Reactive/Checkpoints"
-LOG_FOLDER: "Training/Reactive/Log"
+TRAINING_LOG_FOLDER: "Training/Reactive/Log"
+EVALUATION_LOG_FOLDER: "Evaluation/Reactive/Log"
 # If True, the log will not output messages to the console screen during training
 LOG_SILENT: False
 EVAL_CKPT_PATH_DIR: "Training/Reactive/Checkpoints"

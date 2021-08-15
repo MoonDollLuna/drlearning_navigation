@@ -24,6 +24,7 @@ import copy
 import os
 import random
 import time
+import datetime
 
 import numpy as np
 
@@ -57,6 +58,8 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
     _env_name: str
     # Handle for the environment to be used during training
     _env: ReactiveNavigationEnv
+    # Name of the dataset
+    _dataset_name: str
     # Size of the image
     _image_size: int
     # List of actions available for the agent
@@ -105,8 +108,12 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
     # DOCUMENTATION PARAMETERS
     # Location of the checkpoints folder
     _checkpoint_folder: str
-    # Location of the log folder
-    _log_folder: str
+    # Count of checkpoints
+    _checkpoint_count: int
+    # Location of the log folder during training
+    _training_log_folder: str
+    # Location of the log folder during evaluation
+    _evaluation_log_folder: str
     # Flag to indicate whether the log is silent (doesn't output messages to the screen, TRUE) or not (FALSE)
     _silent: bool
     # Initial time when the agent started training
@@ -142,6 +149,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
         self._env_name = config.ENV_NAME
 
+        self._dataset_name = config.DATASET.NAME
         self._image_size = config.SIMULATOR.DEPTH_SENSOR.WIDTH
         self._agent_actions = config.TASK.POSSIBLE_ACTIONS
 
@@ -158,7 +166,8 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         self._prioritized_beta = _dql_config.prioritized_beta
 
         self._checkpoint_folder = config.CHECKPOINT_FOLDER
-        self._log_folder = config.LOG_FOLDER
+        self._training_log_folder = config.TRAINING_LOG_FOLDER
+        self._evaluation_log_folder = config.EVALUATION_LOG_FOLDER
         self._silent = config.LOG_SILENT
         self._rewards_method = _rl_config.REWARD.reward_method
 
@@ -205,9 +214,10 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         # Store the initial time
         self._start_time = time.time()
 
-        # Create the folder structure for both log and checkpoints
+        # Create the folder structure and variables for both log and checkpoints
         os.makedirs(self._checkpoint_folder)
         os.makedirs(self._log_folder)
+        self._checkpoint_count = 0
 
         # Instantiate the environment
         env_init = baseline_registry.get_env(self._env_name)
@@ -220,10 +230,11 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             self._env.seed(self._seed)
 
         # Create and return the appropriate log manager
-        return LogManager("rective",
-                          "dataset",  # TODO APAÑA DATASET
+        return LogManager("reactive",
+                          self._dataset_name,
                           self._start_time,
                           self._silent,
+                          epoch_parameters=["average_reward"],
                           reward_method=self._rewards_method)
 
     def _train_network_standard(self):
@@ -269,7 +280,6 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         # With the updated predictions, fit the Q network
         self._q_network.fit_model(sampled_initial_states, current_state_predictions)
 
-    # TODO ACABA ESTE METODO
     def _train_network_prioritized(self):
         """
         Auxiliary method used to train the Q-Network when using Prioritized Prioritized Replay
@@ -352,7 +362,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
     # PRIVATE METHODS #
 
-    # TODO
+    # TODO EVAL FALTA IMPLEMENTARLO
     def _eval_checkpoint(self, checkpoint_path: str, writer: TensorboardWriter, checkpoint_index: int = 0) -> None:
         pass
 
@@ -403,8 +413,13 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
         Deep Q-Learning uses the following structure for training:
 
+        for each epoch, perceive the initial state and while the epoch is not finished:
+            * choose an action randomly (exploration) or greedily (exploitation)
+            * apply the action to the state and perceive the next state and reward
+            * store the experience <s, a, r, s', f> into the experience replay
+            * sample the experience replay
+            * fit the Q network using the experiences
         """
-        # TODO ACABA ESTO
 
         # Do all the necessary pre-steps and create the log manager
         log_manager = self._init_train()
@@ -474,10 +489,28 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             # Episode is over, update the target network
             self._target_network = copy.deepcopy(self._q_network)
 
+            # TODO DEBUG EH
             # Update the value of epsilon
+            # The value of epsilon decreases linearly with the training progress
+            # This formula comes from plotting a straight line between the initial and final point
+            current_epsilon = abs((((self._epsilon - self._min_epsilon) / self._min_epsilon_percentage)
+                                   * self.percent_done()) - self._epsilon)
+            # Clamp the current epsilon to the minimum
+            if current_epsilon < self._min_epsilon:
+                current_epsilon = self._min_epsilon
+
+            # If it is necessary, store a checkpoint
+            if self.should_checkpoint():
+
+                # Generate a timestamp for the checkpoint
+                timestamp = datetime.datetime.fromtimestamp(self._start_time).strftime('%Y-%m-%d_%H:%M:%S')
+
+                # Store the checkpoint and increase the counter
+                self.save_checkpoint(self._target_network.save_weights(self._checkpoint_folder,
+                                                                       "reactive_weight_{}_{}".format(timestamp, self._checkpoint_count + 1)))
+                self._checkpoint_count += 1
 
             # Track the necessary info in the log manager
-            # TODO
 
             # Increase the update counter
             self.num_updates_done += 1
@@ -485,3 +518,9 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         # After the training process is over, close the environment and the log manager
         self._env.close()
         log_manager.close()
+
+    # def eval(self):
+    #    """
+    #    Overload of the eval method, used to include the log manager
+    #    """
+

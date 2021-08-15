@@ -5,8 +5,18 @@
 # A log is automatically created within a new folder, in order to store the performance of
 # the agent during the episodes
 #
-# Metrics measured:
+# The following metrics are measured during training:
+#   * Episode ID
+#   * Time taken to finish the episode
+#   * Actions taken to finish the episode
+#   * Final distance to the goal
+#   * Whether the episode was successful or not
 #
+# In addition, Reactive Navigation also tracks the following metrics:
+#   * Average reward per episode
+#
+# These metrics can be tracked for both training and evaluation
+
 
 # IMPORTS #
 import csv
@@ -16,19 +26,22 @@ from typing import TextIO, Any
 
 
 # CLASS DEFINITION #
+# TODO ADAPTA EL LOG MANAGER PARA EVAL TAMBIEN
 
 class LogManager:
     """
-    Class used to handle the logging process used by the agents
+    Class used to handle the logging process used by the agents during training and evaluation
 
     This class automatically handles the locking and writing of text files,
     as well as the creation of folders to store the data created.
 
-    The log manager keeps track of the following attributes for each episode:
-        *
-
+    The log manager keeps track of the following attributes for each episode / checkpoint:
+        * Episode ID
+        * Time taken to finish the episode
+        * Actions taken to finish the episode
+        * Distance to the goal
+        * Whether the episode was a success or not
     """
-    # TODO ACABAR
 
     # ATTRIBUTES #
 
@@ -41,12 +54,12 @@ class LogManager:
     _csv_writer: Any
     # Flag for the log manager. If TRUE, the log will not be output to the screen
     _silent: bool
-
-    # TODO: Recompensa media por episodio
+    # List containing the extra parameters specified when constructed
+    _extra_parameters: list
 
     # CONSTRUCTOR #
 
-    def __init__(self, agent_type, dataset, timestamp, silent=False, **parameters):
+    def __init__(self, agent_type, dataset, timestamp, silent=False, epoch_parameters=None, **header_parameters):
         """
         A basic instance of the LogManager class.
 
@@ -58,11 +71,14 @@ class LogManager:
         :type timestamp: float
         :param silent: If TRUE, logs will not be output to the screen
         :type silent: bool
-        :param parameters: (OPTIONAL) Extra parameters to be specified on the header of the file
+        :param epoch_parameters: (OPTIONAL) List of extra parameters to be included in each episode
+        :type epoch_parameters: list
+        :param header_parameters: (OPTIONAL) Extra parameters to be specified on the header of the file
+        :type header_parameters: str
         """
 
         # Compute a date from the timestamp
-        date = datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
+        date = datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d_%H:%M:%S')
 
         # Create and store the handle of the log file
         self._filename = "{}-{}-{}.csv".format(agent_type, dataset, date)
@@ -74,8 +90,13 @@ class LogManager:
         # Store the silent flag
         self._silent = silent
 
-        # Write the header of the log file
-        self._write_header(agent_type, dataset, date, **parameters)
+        # Store the additional parameters
+        self._extra_parameters = epoch_parameters
+
+        # Write the header of the log file and the column names
+        self._write_header(agent_type, dataset, date, **header_parameters)
+        self._write_column_titles(["episode", "time_taken", "actions_taken", "goal_distance", "successful"],
+                                  self._extra_parameters)
 
     # PRIVATE METHODS #
     def _write_comment(self, comment):
@@ -135,9 +156,72 @@ class LogManager:
         # Print the title for the epoch values
         self._write_comment("# = EPOCH TRAINING RESULTS\n")
 
+    def _write_column_titles(self, column_names, extra_parameters):
+        """
+        Writes the column names, including any extra parameter managed by the log manager
+
+        :param column_names: List containing all of the common column names
+        :type column_names: list
+        :param extra_parameters: List containing the column name for the additional epoch parameters
+        :type extra_parameters: list
+        """
+
+        # Concatenate the lists
+        columns = column_names + extra_parameters
+
+        # Write the column titles
+        self._csv_writer.writerow(columns)
+
     # PUBLIC METHODS #
-    def write_epoch(self):
-        pass
+    def write_epoch(self, episode_id, time_taken, actions_taken, goal_distance, successful, extra_parameters=None):
+        """
+        Writes an epoch using the following parameters:
+            * Episode ID
+            * Time taken
+            * Actions taken
+            * Goal distance
+            * Successful
+
+        In addition, will take a list with extra parameters that must be added in the same order they were declared
+        when creating the log manager
+
+        :param episode_id: ID of the current episode
+        :type episode_id: int
+        :param time_taken: Time taken (in seconds) to train the current episode
+        :type time_taken: float
+        :param actions_taken: Actions needed to complete the current episode
+        :type actions_taken: int
+        :param goal_distance: Distance to the goal when the episode was finished
+        :type goal_distance: float
+        :param successful: Flag to specify whether the episode was successful (True) or not (False)
+        :type successful: bool
+        :param extra_parameters: (OPTIONAL) List containing the extra parameters specified during construction
+        :type extra_parameters: list
+        """
+
+        # Assert the length of the extra parameters (must be equal to the number of extra parameters)
+        assert len(extra_parameters) == len(self._extra_parameters), \
+            "Number of additional parameters must be equal to the parameters declared when creating this manager"
+
+        # Create and write the list of parameters to the file
+        parameter_list = [episode_id, time_taken, actions_taken, goal_distance, successful] + extra_parameters
+        self._csv_writer.writerow(parameter_list)
+
+        # If the log is not silent, print the parameters to the screen
+        if not self._silent:
+            # Create the message
+            message = "Episode: {} / Time taken: {}s / Actions taken: {} / " \
+                      "Distance to the goal: {} / Successful: {}".format(episode_id,
+                                                                         time_taken,
+                                                                         actions_taken,
+                                                                         goal_distance,
+                                                                         successful)
+            # Append the additional parameters
+            for title, value in zip(self._extra_parameters, extra_parameters):
+                message = message + " / {}: {}".format(title, value)
+
+            # Print the message
+            print(message)
 
     def close(self):
         """
@@ -145,3 +229,4 @@ class LogManager:
         """
 
         self._file.close()
+        # TODO aqui habra que escribir info al final
