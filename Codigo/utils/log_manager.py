@@ -173,9 +173,9 @@ class LogManager:
         self._csv_writer.writerow(columns)
 
     # PUBLIC METHODS #
-    def write_epoch(self, episode_id, time_taken, actions_taken, goal_distance, successful, extra_parameters=None):
+    def write_episode(self, episode_id, time_taken, actions_taken, goal_distance, successful, extra_parameters=None):
         """
-        Writes an epoch using the following parameters:
+        Writes an episode using the following parameters:
             * Episode ID
             * Time taken
             * Actions taken

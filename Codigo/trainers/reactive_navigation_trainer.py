@@ -435,6 +435,11 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             observations = self._env.reset()
             current_state = State.get_state(observations)
 
+            # Track the needed variables for the log
+            train_time = time.time()
+            actions_taken = 0
+            average_reward = 0
+
             # Act until the episode is finished
             # Note that the agent is trained after each step
             while self._env.get_done(observations):
@@ -467,6 +472,8 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                                                           new_state,
                                                           done)
 
+                average_reward += reward
+
                 # 3 - Set the new current state
                 current_state = new_state
 
@@ -483,11 +490,15 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
                 # 5 - Update the trainer step counter and, if necessary, break the loop
                 self.num_steps_done += 1
+                actions_taken += 1
                 if self.is_done():
                     break
 
             # Episode is over, update the target network
             self._target_network = copy.deepcopy(self._q_network)
+
+            # Compute the time needed to finish the episode
+            train_time = time.time() - train_time
 
             # TODO DEBUG EH
             # Update the value of epsilon
@@ -511,7 +522,13 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                 self._checkpoint_count += 1
 
             # Track the necessary info in the log manager
-
+            log_manager.write_episode(self.num_updates_done + 1,
+                                      train_time,
+                                      actions_taken,
+                                      observations["pointgoal_with_gps_compass"][0],
+                                      self._env.get_metrics()[self._success_measure_name],
+                                      extra_parameters=self._env.get_metrics()[self._success_measure_name])
+            
             # Increase the update counter
             self.num_updates_done += 1
 
