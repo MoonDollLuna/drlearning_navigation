@@ -528,7 +528,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                                       observations["pointgoal_with_gps_compass"][0],
                                       self._env.get_metrics()[self._success_measure_name],
                                       extra_parameters=self._env.get_metrics()[self._success_measure_name])
-            
+
             # Increase the update counter
             self.num_updates_done += 1
 
