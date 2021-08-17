@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.12)  5 AUG 2021 01:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.12)  15 AUG 2021 23:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -949,8 +949,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.23 	\item \textbf
-                   {Capítulo 6:} En este capítulo se detalla la experiment...
+l.21 	\item \textbf
+                   {Capítulo 5:} En este capítulo se detalla el diseño de...
 [1
 
 
@@ -986,13 +986,22 @@ Overfull \hbox (9.72607pt too wide) in paragraph at lines 15--16
 EX-PLI-CAR QUE OFRE-
  []
 
-) (./secciones/05_Diseno_Agentes.tex [7] [8
 
-]
+Overfull \hbox (0.52823pt too wide) in paragraph at lines 30--31
+[]\T1/pbk/l/n/10.95 [PROBABLEMENTE MEN-CIO-NAR SEC-CIO-NES CLA-VES Y ELE-MEN-TO
+S CLA-VES QUE
+ []
+
+[7]) (./secciones/05_Diseno_Agentes.tex
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [8]
 Cap\'{\i }tulo 5.
 LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <12> not available
 (Font)              Font shape `T1/pbk/db/it' tried instead on input line 22.
-) (./secciones/06_Experimentacion.tex [9]
+) (./secciones/06_Experimentacion.tex [9
+
+]
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [10]
@@ -1021,7 +1030,7 @@ LaTeX Info: Redefining \% on input line 31.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 58.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 58.
 Package rerunfilecheck Info: File `plantilla_TFM.out' has not changed.
-(rerunfilecheck)             Checksum: 6787429D352FA63CDED42D8E87D9A2CD;3654.
+(rerunfilecheck)             Checksum: 738E2666492E592DAA6E0284822FADC7;3655.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 58.
 Package logreq Info: Writing requests to 'plantilla_TFM.run.xml'.
 \openout1 = `plantilla_TFM.run.xml'.
@@ -1040,7 +1049,7 @@ e/texmf-dist/fonts/type1/urw/bookman/ubkd8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/bookman/ubkdi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/bookman/ubkl8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/bookman/u
 bkli8a.pfb>
-Output written on plantilla_TFM.pdf (23 pages, 169465 bytes).
+Output written on plantilla_TFM.pdf (23 pages, 170834 bytes).
 PDF statistics:
  407 PDF objects out of 1000 (max. 8388607)
  370 compressed objects within 4 object streams

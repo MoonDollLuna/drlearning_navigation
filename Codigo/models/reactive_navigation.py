@@ -47,8 +47,7 @@ from keras.layers.pooling import MaxPooling2D
 from keras.layers import concatenate
 
 # Reactive Navigation
-from models.experience_replay import State, Experience
-
+from models.experience_replay import State
 
 class ReactiveNavigationModel:
     """
@@ -100,7 +99,7 @@ class ReactiveNavigationModel:
         # Prepare the CNN and, if available, load the weights
         self._cnn_model = self._initialize_cnn(self._image_size, len(action_list), learning_rate)
         if weights is not None:
-            self.load_weights(weights)
+            self.load_weights_file(weights)
 
     # INTERNAL METHODS #
 
@@ -111,15 +110,10 @@ class ReactiveNavigationModel:
 
         The CNN has the following structure (in order):
             * Input of the image (in grayscale, with shape image_size x image_size)
-            * First layer of convolution:
-                * Two convolutional layers with 32 3x3 filters (2D, using ReLU)
-                * A pooling layer (Max-Pool of size 3)
-            * Second layer of convolution:
-                * Two convolutional layers with 64 3x3 filters (2D, using ReLU)
-                * A pooling layer (Max-Pool of size 2)
+            *
             * A Merge layer where the result of the previous convolution is joined with
               the scalar inputs (Distance and Angle to the goal)
-            * Two fully connected layers (ReLU) of 1024 neurons
+            * Two fully connected layers (ReLU) of 256 neurons
             * action_size neurons (Linear)
 
         The CNN uses the following hyperparameters:
@@ -141,47 +135,40 @@ class ReactiveNavigationModel:
         # All layers are randomly initialized using Glorot initializer
 
         # Create the Inputs of the Neural Network
-        image_input = Input(shape=(image_size, image_size))
+        image_input = Input(shape=(image_size, image_size, 1))
         scalar_input = Input(shape=(2,))
 
-        # Create the first layers of convolution
-        # (Convolution: 32 3x3 filters, ReLU)
-        # (Pooling: Max, 3x3)
-        conv1_1 = Conv2D(filters=32,
-                         kernel_size=3,
-                         activation="relu",
-                         kernel_initializer="glorot_uniform")(image_input)
-        conv1_2 = Conv2D(filters=32,
-                         kernel_size=3,
-                         activation="relu",
-                         kernel_initializer="glorot_uniform")(conv1_1)
-        pool1 = MaxPooling2D(pool_size=3)(conv1_2)
+        # Create the first layer of convolution
+        conv1 = Conv2D(filters=16,
+                       kernel_size=5,
+                       activation="relu")(image_input)
 
-        # Create the second layers of convolution
-        # (Convolution: 64 3x3 filters, ReLU)
-        # (Pooling: Max, 2x2)
-        conv2_1 = Conv2D(filters=64,
-                         kernel_size=3,
-                         activation="relu",
-                         kernel_initializer="glorot_uniform")(pool1)
-        conv2_2 = Conv2D(filters=64,
-                         kernel_size=3,
-                         activation="relu",
-                         kernel_initializer="glorot_uniform")(conv2_1)
-        pool2 = MaxPooling2D(pool_size=2)(conv2_2)
+        pool1 = MaxPooling2D(pool_size=3)(conv1)
+
+        # Create the second layer of convolution
+        conv2 = Conv2D(filters=16,
+                       kernel_size=3,
+                       activation="relu")(pool1)
+        pool2 = MaxPooling2D(pool_size=3)(conv2)
+
+        # Create the third layer of convolution
+        conv3 = Conv2D(filters=32,
+                       kernel_size=3,
+                       activation="relu")(pool2)
+        pool3 = MaxPooling2D(pool_size=2)(conv3)
 
         # Flatten the input, so it can be used with dense layers
-        flatten = Flatten()(pool2)
+        flatten = Flatten()(pool3)
 
         # Merge the results of the convolutional layers with the scalar input
         merge = concatenate([flatten, scalar_input])
 
         # Create the dense layers
-        # (1024 neurons, ReLU)
-        dense1 = Dense(1024,
+        # (256 neurons, ReLU)
+        dense1 = Dense(256,
                        activation="relu",
                        kernel_initializer="glorot_uniform")(merge)
-        dense2 = Dense(1024,
+        dense2 = Dense(256,
                        activation="relu",
                        kernel_initializer="glorot_uniform")(dense1)
 
@@ -189,7 +176,7 @@ class ReactiveNavigationModel:
         # Note that the output MUST be lineal (instead of the typical sigmoid function)
         # for Deep Reinforcement Learning
         output = Dense(action_size,
-                       activation="lineal",
+                       activation="linear",
                        kernel_initializer="glorot_uniform")(dense2)
 
         # Create and compile the model of the full CNN (Adam optimizer, MSE)
@@ -199,6 +186,7 @@ class ReactiveNavigationModel:
                       outputs=output)
         # TODO ESTO ES DEBUG
         model.summary()
+        # TODO - PROBABLEMENTE REDUCIR EL TAMAÑO DEL MODELO
         model.compile(optimizer=Adam(learning_rate=learning_rate) if learning_rate else "adam",
                       loss="mse")
 
@@ -229,7 +217,25 @@ class ReactiveNavigationModel:
 
     # PUBLIC METHODS
 
-    def load_weights(self, file_path):
+    def get_weights(self):
+        """
+        Returns the weights of the neural network
+
+        :return: Weights of the neural network
+        """
+
+        return self._cnn_model.get_weights()
+
+    def set_weights(self, weights):
+        """
+        Loads the weights of the neural network
+
+        :param weights: Weights of the neural network
+        """
+
+        self._cnn_model.set_weights(weights)
+
+    def load_weights_file(self, file_path):
         """
         Load pre-trained weights for the CNN from the specified path
 
@@ -240,7 +246,7 @@ class ReactiveNavigationModel:
         # Load the weights
         self._cnn_model.load_weights(file_path)
 
-    def save_weights(self, file_path, file_name):
+    def save_weights_file(self, file_path, file_name):
         """
         Stores the weights of the CNN in the specified location, using the specified name
 
@@ -251,8 +257,7 @@ class ReactiveNavigationModel:
         """
 
         # Join the path with the file name and append the extension (h5)
-        path = join(file_path, file_name)
-        path = path + ".h5"
+        path = join(file_path, "{}.h5".format(file_name))
 
         # Store the weights
         self._cnn_model.save_weights(path)
@@ -262,15 +267,21 @@ class ReactiveNavigationModel:
         Batch predicts the Q-Values of an array of States
 
         :param states: List of States
-        :type states: State
+        :type states: list
         :return: List of Q-Values for each of the states
+        :rtype: list
         """
 
         # Prepare the list of states using the network format
         unwrapped_states = [state.unwrap_state() for state in states]
 
+        # Extract the list of images and scalar values, and convert them to np format
+        images = np.asarray([state[0] for state in unwrapped_states])
+        scalars = np.asarray([state[1] for state in unwrapped_states])
+
         # Process and return the Q values
-        return self._cnn_model.predict(np.array(unwrapped_states), batch_size=len(unwrapped_states))
+        return self._cnn_model.predict([images, scalars],
+                                       batch_size=len(unwrapped_states))
 
     def act(self, state):
         """
@@ -284,10 +295,11 @@ class ReactiveNavigationModel:
         """
 
         # Prepare the state for the neural network
-        unfolded_state = np.array(state.unwrap_state())
+        state_image, state_scalars = state.unwrap_state()
 
         # Predict the action using the CNN
-        predicted_actions = self._cnn_model.predict(unfolded_state)
+        predicted_actions = self._cnn_model.predict([np.asarray([state_image]),
+                                                     np.asarray([state_scalars])])
 
         # Return the best action
         best_action_index = np.argmax(predicted_actions[0])
@@ -303,11 +315,15 @@ class ReactiveNavigationModel:
         :type predictions: list
         """
 
-        # Prepare the list of states to use the neural network format
+        # Prepare the list of states using the network format
         unwrapped_states = [state.unwrap_state() for state in states]
 
+        # Extract the list of images and scalar values, and convert them to np format
+        images = np.asarray([state[0] for state in unwrapped_states])
+        scalars = np.asarray([state[1] for state in unwrapped_states])
+
         # Fit the network
-        self._cnn_model.fit(np.array(unwrapped_states),
+        self._cnn_model.fit([images, scalars],
                             np.array(predictions),
                             batch_size=len(states),
                             epochs=1, verbose=0)

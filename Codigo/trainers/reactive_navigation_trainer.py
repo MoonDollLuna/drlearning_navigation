@@ -20,7 +20,6 @@
 # 1 - IMPORTS #
 ###############
 
-import copy
 import os
 import random
 import time
@@ -67,6 +66,12 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
     _agent_actions: list
     # Dictionary of actions (key) and their associated indexes (value)
     _action_to_index: dict
+    # Distance to the goal at which it is considered successful
+    _goal_distance: float
+    # Total number of steps to perform during training (-1 means not limited)
+    _total_number_steps: int
+    # Total number of updates to perform during training (-1 means not limited)
+    _number_updates: int
 
     # NETWORKS AND EXPERIENCE REPLAY PARAMETERS
     # Q Network used by the trainer. This network is updated after each action taken
@@ -149,9 +154,12 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
         self._env_name = config.ENV_NAME
 
-        self._dataset_name = config.DATASET.NAME
-        self._image_size = config.SIMULATOR.DEPTH_SENSOR.WIDTH
-        self._agent_actions = config.TASK.POSSIBLE_ACTIONS
+        self._dataset_name = config.TASK_CONFIG.DATASET.NAME
+        self._image_size = config.TASK_CONFIG.SIMULATOR.DEPTH_SENSOR.WIDTH
+        self._agent_actions = config.TASK_CONFIG.TASK.POSSIBLE_ACTIONS
+        self._goal_distance = config.TASK_CONFIG.TASK.SUCCESS_DISTANCE
+        self._total_number_steps = config.TOTAL_NUM_STEPS
+        self._number_updates = config.NUM_UPDATES
 
         self._seed = _rl_config.seed if _rl_config.seed else None
         self._prioritized = _dql_config.prioritized
@@ -201,7 +209,9 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         self._q_network = ReactiveNavigationModel(self._image_size,
                                                   self._agent_actions,
                                                   learning_rate=self._learning_rate)
-        self._target_network = copy.deepcopy(self._q_network)
+        self._target_network = ReactiveNavigationModel(self._image_size,
+                                                       self._agent_actions,
+                                                       learning_rate=self._learning_rate)
 
         # Initialize the Experience Replay (depending on the type of DQL to be applied)
         if self._prioritized:
@@ -215,8 +225,8 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         self._start_time = time.time()
 
         # Create the folder structure and variables for both log and checkpoints
-        os.makedirs(self._checkpoint_folder)
-        os.makedirs(self._log_folder)
+        os.makedirs(self._checkpoint_folder, exist_ok=True)
+        os.makedirs(self._training_log_folder, exist_ok=True)
         self._checkpoint_count = 0
 
         # Instantiate the environment
@@ -229,9 +239,17 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             np.random.seed(self._seed)
             self._env.seed(self._seed)
 
+        # Compute the approximate length of the training, for the log
+        if self._total_number_steps != -1:
+            training_length = "{} steps".format(self._total_number_steps)
+        else:
+            training_length = "{} episodes".format(self._number_updates)
+
         # Create and return the appropriate log manager
-        return LogManager("reactive",
+        return LogManager(self._training_log_folder,
+                          "reactive",
                           self._dataset_name,
+                          training_length,
                           self._start_time,
                           self._silent,
                           epoch_parameters=["average_reward"],
@@ -377,7 +395,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         :type file_name: str
         """
 
-        self._target_network.save_weights(self._checkpoint_folder, file_name)
+        self._target_network.save_weights_file(self._checkpoint_folder, file_name)
 
     def load_checkpoint(self, checkpoint_path, *args, **kwargs):
         """
@@ -396,8 +414,8 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         """
 
         # Load the weights for both networks
-        self._q_network.load_weights(checkpoint_path)
-        self._target_network.load_weights(checkpoint_path)
+        self._q_network.load_weights_file(checkpoint_path)
+        self._target_network.load_weights_file(checkpoint_path)
 
     def train(self):
         """
@@ -421,6 +439,9 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             * fit the Q network using the experiences
         """
 
+        # Message to ensure that everything has loaded properly
+        print("Starting reactive navigation training")
+
         # Do all the necessary pre-steps and create the log manager
         log_manager = self._init_train()
 
@@ -442,7 +463,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
             # Act until the episode is finished
             # Note that the agent is trained after each step
-            while self._env.get_done(observations):
+            while not self._env.get_done(observations):
 
                 # DEEP Q-LEARNING
 
@@ -462,7 +483,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                     action = self._q_network.act(current_state)
 
                 # Step using the action (apply the action to the environment)
-                observations, reward, done, info = self._env.step(action)
+                observations, reward, done, info = self._env.step(action=action)
                 new_state = State.get_state(observations)
 
                 # 2 - Store the new information into the experience replay
@@ -481,26 +502,31 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                 # Note that the sampling process differs between Standard and Prioritized Experience Replay
                 # (and thus, will be treated separately)
 
-                if not self._prioritized:
-                    # Standard ER
-                    self._train_network_standard()
-                else:
-                    # Prioritized ER
-                    self._train_network_prioritized()
+                # NOTE: The sampling will only be done if the size of the Experience Replay is already
+                # bigger than the batch size. This is done to speed up the training (to avoid retracing calls
+                # as the sample size grows up to the batch size)
+
+                if self._experience_replay.experience_replay_size() >= self._batch_size:
+                    if not self._prioritized:
+                        # Standard ER
+                        self._train_network_standard()
+                    else:
+                        # Prioritized ER
+                        self._train_network_prioritized()
 
                 # 5 - Update the trainer step counter and, if necessary, break the loop
                 self.num_steps_done += 1
                 actions_taken += 1
+
                 if self.is_done():
                     break
 
             # Episode is over, update the target network
-            self._target_network = copy.deepcopy(self._q_network)
+            self._target_network.set_weights(self._q_network.get_weights())
 
             # Compute the time needed to finish the episode
             train_time = time.time() - train_time
 
-            # TODO DEBUG EH
             # Update the value of epsilon
             # The value of epsilon decreases linearly with the training progress
             # This formula comes from plotting a straight line between the initial and final point
@@ -517,17 +543,19 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                 timestamp = datetime.datetime.fromtimestamp(self._start_time).strftime('%Y-%m-%d_%H:%M:%S')
 
                 # Store the checkpoint and increase the counter
-                self.save_checkpoint(self._target_network.save_weights(self._checkpoint_folder,
-                                                                       "reactive_weight_{}_{}".format(timestamp, self._checkpoint_count + 1)))
+                self.save_checkpoint("reactive_weight_{}_{}".format(timestamp, self._checkpoint_count + 1))
                 self._checkpoint_count += 1
+
+                # Print a message to notify it
+                print("Checkpoint written")
 
             # Track the necessary info in the log manager
             log_manager.write_episode(self.num_updates_done + 1,
                                       train_time,
                                       actions_taken,
                                       observations["pointgoal_with_gps_compass"][0],
-                                      self._env.get_metrics()[self._success_measure_name],
-                                      extra_parameters=self._env.get_metrics()[self._success_measure_name])
+                                      observations["pointgoal_with_gps_compass"][0] < self._goal_distance,
+                                      extra_parameters=[average_reward/actions_taken])
 
             # Increase the update counter
             self.num_updates_done += 1
@@ -540,4 +568,3 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
     #    """
     #    Overload of the eval method, used to include the log manager
     #    """
-

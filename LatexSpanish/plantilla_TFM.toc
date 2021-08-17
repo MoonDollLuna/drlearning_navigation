@@ -47,13 +47,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {4.2.2.3}Entornos}{7}{subsubsection.4.2.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.2.4}Ficheros de configuración}{7}{subsubsection.4.2.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.2.4}Ficheros de configuración}{8}{subsubsection.4.2.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.2.5}Entrenadores}{7}{subsubsection.4.2.2.5}%
+\contentsline {subsubsection}{\numberline {4.2.2.5}Entrenadores}{8}{subsubsection.4.2.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.2.6}Agentes}{7}{subsubsection.4.2.2.6}%
+\contentsline {subsubsection}{\numberline {4.2.2.6}Agentes}{8}{subsubsection.4.2.2.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.2.7}\textit {Benchmarks}}{7}{subsubsection.4.2.2.7}%
+\contentsline {subsubsection}{\numberline {4.2.2.7}\textit {Benchmarks}}{8}{subsubsection.4.2.2.7}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {5}Diseño del agente}{9}{chapter.5}%
 \defcounter {refsection}{0}\relax 
@@ -103,4 +103,4 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{Bibliografía}{13}{section.7.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Anexo}{14}{section.7.3}%
+\contentsline {chapter}{Anexos}{14}{section.7.3}%

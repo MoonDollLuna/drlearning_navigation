@@ -27,10 +27,17 @@
 
 import argparse
 import textwrap
+import tensorflow as tf
 
 # Habitat imports
+
+import habitat
 from habitat_baselines.config.default import get_config
 from habitat_baselines.common.baseline_registry import baseline_registry
+
+# Reactive navigation imports
+from trainers.reactive_navigation_trainer import ReactiveNavigationTrainer
+from envs.reactive_navigation_env import ReactiveNavigationEnv
 
 
 #########################
@@ -57,8 +64,8 @@ config_paths = {
 # Dataset paths
 # If an extra dataset was to be added, the path can be specified as a new value
 dataset_paths = {
-    "matterport": "data/datasets/pointnav/mp3d/v1/{split}/{split}.json.gz",
-    "gibson": "data/datasets/pointnav/gibson/v1/{split}/{split}.json.gz"
+    "matterport": "./data/datasets/pointnav/mp3d/v1/{split}/{split}.json.gz",
+    "gibson": "./data/datasets/pointnav/gibson/v1/{split}/{split}.json.gz"
 }
 
 ##############################
@@ -69,8 +76,6 @@ dataset_paths = {
 # The values written below are considered the DEFAULT values, and will be the values
 # used for the script unless specified otherwise
 # Note that most parameters for the agents are actually specified within their config files
-
-# SIMULATOR RELATED #
 
 # agent_type - Specifies the agent type to be used
 # Possible agent types:
@@ -95,12 +100,7 @@ dataset = "matterport"
 # Note that not all agents may be able to run in all modes
 mode = "training"
 
-# TRAINING RELATED #
 # These variables are used by Reinforcement Learning agents
-
-# seed - Specifies a seed to be used for all random choices
-# If not specified, a random seed will be used instead
-seed = None
 
 # weights - For trainable agents, specifies the pre-trained weights for the neural network
 # If specified, the program will be launched into "play" mode instead (showcasing the performance)
@@ -129,18 +129,21 @@ def training_main(config_path, training_dataset):
     :type training_dataset: str
     """
 
+    # Initial message
+    print("Starting program in training mode...")
+
     # Instantiate the Config from the config file
     training_config = get_config(config_path)
 
     # Add the dataset info to the config file
     training_config.defrost()
-    training_config.DATASET.DATA_PATH = dataset_paths[training_dataset]
-    training_config.DATASET.SPLIT = "train"
-    training_config.DATASET.NaME = training_dataset
+    training_config.TASK_CONFIG.DATASET.DATA_PATH = dataset_paths[training_dataset]
+    training_config.TASK_CONFIG.DATASET.SPLIT = "train"
+    training_config.TASK_CONFIG.DATASET.NAME = training_dataset
     training_config.freeze()
 
     # Get the appropriate trainer from the config file and instantiate it using the Baseline Registry
-    trainer_name = config.TRAINER_NAME
+    trainer_name = training_config.TRAINER_NAME
     trainer_init = baseline_registry.get_trainer(trainer_name)
     trainer = trainer_init(training_config)
 
@@ -219,13 +222,6 @@ if __name__ == "__main__":
                         help="Path to the file containing pretrained weights for the agent. "
                              "If not specified, random initial weights will be used.")
 
-    # seed
-    parser.add_argument('-s',
-                        '--seed',
-                        type=int,
-                        help="Seed to be used during training and evaluation of the agents. "
-                             "If not specified, a random seed will be used.")
-
     # config
     parser.add_argument('-c',
                         '--config',
@@ -247,9 +243,6 @@ if __name__ == "__main__":
     if arguments["mode"] is not None:
         mode = arguments["mode"]
 
-    if arguments["seed"] is not None:
-        seed = arguments["seed"]
-
     if arguments["weights"] is not None:
         weights = arguments["weights"]
 
@@ -265,6 +258,11 @@ if __name__ == "__main__":
     else:
         # Use the default config file
         config_file = config_paths[agent_type]
+
+    # Limit the memory usage of TensorFlow
+    # This is done to avoid OutOfMemory errors during execution
+    physical_devices = tf.config.experimental.list_physical_devices("GPU")
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
     # Depending on the execution mode, run the appropriate main code
     if mode == "training":

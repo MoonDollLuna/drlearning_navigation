@@ -102,9 +102,6 @@ class ReactiveNavigationEnv(NavRLEnv):
         :type dataset: Dataset
         """
 
-        # Construct the super parent
-        super().__init__(config, dataset)
-
         # Store the necessary values from the Config
         _rl_config = config.RL
         _image_config = _rl_config.IMAGE
@@ -123,6 +120,10 @@ class ReactiveNavigationEnv(NavRLEnv):
         self._repulsive_goal_influence = _reward_config.repulsive_goal_influence
         self._success_reward = _reward_config.success_reward
         self._failure_penalty = _reward_config.failure_penalty
+
+        # Construct the super parent
+        # Parent needs to be constructed AFTER attribute declaration to avoid null references
+        super().__init__(config, dataset)
 
     # PRIVATE METHODS #
 

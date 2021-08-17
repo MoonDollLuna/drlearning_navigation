@@ -27,6 +27,12 @@ SIMULATOR:
   DEPTH_SENSOR:
     WIDTH: 256
     HEIGHT: 256
+    
+  # Physics are explicitely disabled, to avoid segmentation faults
+  HABITAT_SIM_V0:
+    ENABLE_PHYSICS: False
+    # PHYSICS_CONFIG_FILE: "None"
+    
 
 # DATASET: Data path, split and name are specified via argument
 DATASET:
@@ -45,6 +51,6 @@ TASK:
     DIMENSIONALITY: 2
   GOAL_SENSOR_UUID: pointgoal_with_gps_compass
   MEASUREMENTS: ['DISTANCE_TO_GOAL', 'SUCCESS', 'SPL', 'SOFT_SPL']
-   SUCCESS:
-     SUCCESS_DISTANCE: 0.2
+  SUCCESS:
+    SUCCESS_DISTANCE: 0.2
 

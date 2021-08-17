@@ -87,13 +87,13 @@ class State:
         """
         Unwraps the state into a form that can be directly used to train the neural networks
 
-        The state is returned with shape [image, [distance, angle]]
+        The state is returned with shape [[image], [distance, angle]]
 
-        :return: A list containing all elements of the state, as described above
-        :rtype: list
+        :return: A tuple containing all elements of the state, as described above
+        :rtype: tuple
         """
 
-        return [self.image, [self.distance, self.angle]]
+        return self.image, (self.distance, self.angle)
 
 
 class Experience:
@@ -253,6 +253,15 @@ class ExperienceReplay:
 
         # Generate and return the memories
         return random.sample(self.experience_replay, size)
+
+    def experience_replay_size(self):
+        """
+        Returns the size (number of experiences contained within) of the Experience replay
+
+        :return: Number of experiences within the experience replay
+        """
+
+        return len(self.experience_replay)
 
     def update_errors(self, errors, error_ids):
         """

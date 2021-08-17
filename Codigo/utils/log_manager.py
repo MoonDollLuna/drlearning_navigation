@@ -59,14 +59,19 @@ class LogManager:
 
     # CONSTRUCTOR #
 
-    def __init__(self, agent_type, dataset, timestamp, silent=False, epoch_parameters=None, **header_parameters):
+    def __init__(self, file_path, agent_type, dataset, training_length, timestamp, silent=False, epoch_parameters=None, **header_parameters):
         """
         A basic instance of the LogManager class.
 
+        :param file_path: Path to the file
+        :type file_path: str
         :param agent_type: Agent type, used to name the log file
         :type agent_type: str
         :param dataset: Dataset used to train the agent, used to name the log file
         :type dataset: str
+        :param training_length: Expected length of the training (in frames or episodes).
+                                Must be a full string in the shape "X frames" or "X episodes"
+        :type training_length: str
         :param timestamp: Timestamp when the training process was created, used for the filename
         :type timestamp: float
         :param silent: If TRUE, logs will not be output to the screen
@@ -81,7 +86,7 @@ class LogManager:
         date = datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d_%H:%M:%S')
 
         # Create and store the handle of the log file
-        self._filename = "{}-{}-{}.csv".format(agent_type, dataset, date)
+        self._filename = "{}/{}-{}-{}.csv".format(file_path, agent_type, dataset, date)
         self._file = open(self._filename, "w")
 
         # Create and store the handle for the CSV writer
@@ -94,7 +99,7 @@ class LogManager:
         self._extra_parameters = epoch_parameters
 
         # Write the header of the log file and the column names
-        self._write_header(agent_type, dataset, date, **header_parameters)
+        self._write_header(agent_type, dataset, training_length, date, **header_parameters)
         self._write_column_titles(["episode", "time_taken", "actions_taken", "goal_distance", "successful"],
                                   self._extra_parameters)
 
@@ -110,17 +115,21 @@ class LogManager:
         """
 
         # Write the comment into the log
-        self._file.write(comment)
+        self._file.write(comment + "\n")
 
         # If appropriate, print the comment into the screen
         if not self._silent:
             print(comment)
 
-    def _write_header(self, agent_type, dataset, date, **parameters):
+        # Flush the file
+        self._file.flush()
+
+    def _write_header(self, agent_type, dataset, training_length, date, **parameters):
         """
         Writes the header for the log file, containing all initial data:
             * Type of agent
             * Dataset used
+            * Length of the training (either in frames or episodes)
             * Date of the training (in YY/MM/DD HH:MM:SS format)
             * If additional parameters are specified, they are also included here
 
@@ -130,6 +139,9 @@ class LogManager:
         :type agent_type: str
         :param dataset: Dataset that has been used for training
         :type dataset: str
+        :param training_length: Expected length of the training (in frames or episodes).
+                                Must be a full string in the shape "X frames" or "X episodes"
+        :type training_length: str
         :param date: Date of the start of training (with YY/MM/DD HH:MM:SS format)
         :type date: str
         :param parameters: Additional parameters of the agent, passed as a dictionary
@@ -137,14 +149,13 @@ class LogManager:
         """
 
         # Write and print the main header
-        header = """# =*= AGENT TRAINING =*=
-        #
-        # = AGENT PARAMETERS =
-        #   * Agent type: {}
-        #   * Dataset used: {}
-        #   * Date: {}
-        #""".format(agent_type, dataset, date)
-        self._write_comment(header)
+        self._write_comment("# =*= AGENT TRAINING =*=")
+        self._write_comment("#")
+        self._write_comment("# = TRAINING PARAMETERS =")
+        self._write_comment("#  * Agent type: {}".format(agent_type))
+        self._write_comment("#  * Dataset used: {}".format(dataset))
+        self._write_comment("#  * Training length: {}".format(training_length))
+        self._write_comment("#  * Date / hour: {}".format(date))
 
         # If there are additional parameters, print them below the main parameters
         if parameters:
@@ -153,8 +164,8 @@ class LogManager:
                 self._write_comment("#  * {}: {}".format(parameter, parameters[parameter]))
             self._write_comment("#")
 
-        # Print the title for the epoch values
-        self._write_comment("# = EPOCH TRAINING RESULTS\n")
+        # Print the title for the episode values
+        self._write_comment("# = EPISODE TRAINING RESULTS\n")
 
     def _write_column_titles(self, column_names, extra_parameters):
         """
@@ -222,6 +233,9 @@ class LogManager:
 
             # Print the message
             print(message)
+
+        # Flush the file
+        self._file.flush()
 
     def close(self):
         """
