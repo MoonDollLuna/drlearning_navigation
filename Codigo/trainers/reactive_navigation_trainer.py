@@ -147,7 +147,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             * Standard
             * Prioritized
 
-        :param config: Config class, containing the necessary parameters for this environment.
+        :param config: Config class, containing the necessary parameters for this training script.
         :type config: Config
         """
 
@@ -527,12 +527,9 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                         # Prioritized ER
                         self._train_network_prioritized()
 
-                # 5 - Update the trainer step counter and, if necessary, break the loop
+                # 5 - Update the trainer step counter
                 self.num_steps_done += 1
                 actions_taken += 1
-
-                if self.is_done():
-                    break
 
             # Episode is over, update the target network
             self._target_network.set_weights(self._q_network.get_weights())

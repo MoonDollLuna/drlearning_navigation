@@ -181,7 +181,7 @@ class ReactiveNavigationModel:
         # (since MSE is the value trying to be minimized)
         model = Model(inputs=[image_input, scalar_input],
                       outputs=output)
-        model.summary()
+        # model.summary()
         model.compile(optimizer=Adam(learning_rate=learning_rate) if learning_rate else "adam",
                       loss="mse")
 
@@ -285,8 +285,8 @@ class ReactiveNavigationModel:
 
         :param state: Current state perceived by the agent
         :type state: State
-        :return: Action to be performed and Q-Value for the chosen action
-        :rtype: tuple
+        :return: Action to be performed
+        :rtype: str
         """
 
         # Prepare the state for the neural network
