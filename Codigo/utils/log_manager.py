@@ -237,10 +237,18 @@ class LogManager:
         # Flush the file
         self._file.flush()
 
-    def close(self):
+    def close(self, total_time):
         """
         Write the final training details, flush the data and close the writers
+
+        :param total_time: Total time taken for the agent training (in seconds)
+        :type total_time: float
         """
 
+        # Print the final training information
+        self._write_comment("\n")
+        self._write_comment("# = FINAL TRAINING RESULTS =")
+        self._write_comment("#  * Total training time: {} s".format(total_time))
+
+        # Close the file to release the handle
         self._file.close()
-        # TODO aqui habra que escribir info al final

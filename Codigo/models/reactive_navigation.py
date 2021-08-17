@@ -8,15 +8,11 @@
 # The model consists of a CNN with the following structure:
 #
 #     * Input of the image (in grayscale, with shape image_size x image_size)
-#     * First layer of convolution:
-#         * Two convolutional layers with 32 3x3 filters (2D, using ReLU)
-#         * A pooling layer (Max-Pool of size 3)
-#     * Second layer of convolution:
-#         * Two convolutional layers with 64 3x3 filters (2D, using ReLU)
-#         * A pooling layer (Max-Pool of size 2)
+#     * Three layers of Convolution (16 filters, kernel sizes 5/3/3) -
+#                       Pooling (sizes 3/3/2)
 #     * A Merge layer where the result of the previous convolution is joined with
 #       the scalar inputs (Distance and Angle to the goal)
-#     * Two fully connected layers (ReLU) of 1024 neurons
+#     * Two fully connected layers (ReLU) of 256 neurons
 #     * Output neurons (Linear) equal to the number of actions
 #
 # This structure has been developed ad-hoc
@@ -48,6 +44,7 @@ from keras.layers import concatenate
 
 # Reactive Navigation
 from models.experience_replay import State
+
 
 class ReactiveNavigationModel:
     """
@@ -110,7 +107,7 @@ class ReactiveNavigationModel:
 
         The CNN has the following structure (in order):
             * Input of the image (in grayscale, with shape image_size x image_size)
-            *
+            * Three layers of Convolution (16 filters, kernel sizes 5/3/3) - Pooling (sizes 3/3/2)
             * A Merge layer where the result of the previous convolution is joined with
               the scalar inputs (Distance and Angle to the goal)
             * Two fully connected layers (ReLU) of 256 neurons
@@ -152,7 +149,7 @@ class ReactiveNavigationModel:
         pool2 = MaxPooling2D(pool_size=3)(conv2)
 
         # Create the third layer of convolution
-        conv3 = Conv2D(filters=32,
+        conv3 = Conv2D(filters=16,
                        kernel_size=3,
                        activation="relu")(pool2)
         pool3 = MaxPooling2D(pool_size=2)(conv3)
@@ -184,9 +181,7 @@ class ReactiveNavigationModel:
         # (since MSE is the value trying to be minimized)
         model = Model(inputs=[image_input, scalar_input],
                       outputs=output)
-        # TODO ESTO ES DEBUG
         model.summary()
-        # TODO - PROBABLEMENTE REDUCIR EL TAMAÑO DEL MODELO
         model.compile(optimizer=Adam(learning_rate=learning_rate) if learning_rate else "adam",
                       loss="mse")
 

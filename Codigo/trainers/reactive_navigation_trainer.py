@@ -43,7 +43,13 @@ from utils.log_manager import LogManager
 @baseline_registry.register_trainer(name="reactive")
 class ReactiveNavigationTrainer(BaseRLTrainer):
     """
+    A implementation of the trainer used by the Reactive Navigation agent, in order to train it
+    using Deep Q-Learning
 
+    The trainer is developed specifically for this agent, and can train:
+        * Standard or Prioritized Deep Q-Learning
+        * Deep Q-Learning using Contours or Column based rewards (based on the environment)
+        * Standard or Weighted action choosing
     """
 
     ########################
@@ -380,9 +386,13 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
     # PRIVATE METHODS #
 
-    # TODO EVAL FALTA IMPLEMENTARLO
     def _eval_checkpoint(self, checkpoint_path: str, writer: TensorboardWriter, checkpoint_index: int = 0) -> None:
-        pass
+        """
+        Since this method is not used by this specific implementation,
+        it remains unimplemented
+        """
+
+        raise NotImplementedError
 
     # PUBLIC METHODS #
 
@@ -448,6 +458,9 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         # Store the current epsilon (chance for random action) value
         # and the linear decrease between epsilons
         current_epsilon = self._epsilon
+
+        # Keep track of the starting training time
+        starting_time = time.time()
 
         # Loop while the training process is not finished yet
         while not self.is_done():
@@ -560,11 +573,9 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             # Increase the update counter
             self.num_updates_done += 1
 
+        # Compute the final training time
+        starting_time = time.time() - starting_time
+
         # After the training process is over, close the environment and the log manager
         self._env.close()
-        log_manager.close()
-
-    # def eval(self):
-    #    """
-    #    Overload of the eval method, used to include the log manager
-    #    """
+        log_manager.close(starting_time)
