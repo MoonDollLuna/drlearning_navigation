@@ -25,20 +25,30 @@
 # 1 - IMPORTS #
 ###############
 
+# General imports
 import argparse
+import sys
 import textwrap
 import tensorflow as tf
 
 # Habitat imports
-
 import habitat
+from habitat import Benchmark
 from habitat_baselines.config.default import get_config
 from habitat_baselines.common.baseline_registry import baseline_registry
 
-# Reactive navigation imports
+# Reactive Navigation imports
+#
+# Even if these imports seem unused, it's necessary to pre-import them
+# to ensure that the decorator (function used to register
+# them in the baseline registry) is run
 from trainers.reactive_navigation_trainer import ReactiveNavigationTrainer
 from envs.reactive_navigation_env import ReactiveNavigationEnv
 
+# Agent imports
+from agents.reactive_navigation_agent import ReactiveNavigationAgent
+from habitat_baselines.agents.simple_agents import RandomAgent, RandomForwardAgent, GoalFollower
+from habitat_baselines.agents.ppo_agents import PPOAgent
 
 #########################
 # 2 - PROGRAM VARIABLES #
@@ -48,18 +58,20 @@ from envs.reactive_navigation_env import ReactiveNavigationEnv
 # They are declared here (instead of being hard-coded in the code) for ease of use
 # and for easier modification of the code by third parties
 
-# Config file paths
-# Each agent has its own specific config file, and a base config file shared by all of them
+# Config file paths - Training
+# Each agent has its own specific training config file
 # Note that a config file can be specified via argument, overloading this value
-
-# TODO - Faltan los configs del resto de agentes
-config_paths = {
-    "base": "./configs/base_config.yaml",
-    "slam": None,
+# TODO - Faltan los configs del PPO
+config_paths_training = {
     "ppo": None,
-    "neural_slam": None,
     "reactive": "./configs/reactive_pointnav_train_contour.yaml"
 }
+
+# Benchmark config file
+# All agents share the same config file to be used during the benchmarking process
+config_path_benchmark = None
+# TODO haz el config
+
 
 # Dataset paths
 # If an extra dataset was to be added, the path can be specified as a new value
@@ -79,11 +91,18 @@ dataset_paths = {
 
 # agent_type - Specifies the agent type to be used
 # Possible agent types:
-#   - slam - A basic agent using SLAM provided by habitat-lab (BENCHMARK)
-#   - ppo - A more advanced, reinforcement learning based agent using Proximal Policy Optimization (ppo)
-#           provided by habitat-lab (BENCHMARK)
-#   - neural_slam - A version of SLAM implementing Deep Reinforcement Learning to improve its performance
-#   - reactive - The developed agent, using reactive navigation and deep reinforcement learning
+# BENCHMARKS:
+#   - random            - A completely random agent, to be used as a benchmark
+#   - random_forward    - An agent that randomly moves, with bias towards
+#                         moving forward, to be used as a benchmark
+#   - goal_follower     - An agent that always tries to move towards the goal,
+#                         to be used as a benchmark
+# GOLD STANDARD:
+#   - ppo               - A more advanced, reinforcement learning based agent using Proximal Policy Optimization (ppo)
+#                         provided by habitat-lab
+# PROPOSED:
+#   - reactive          - The developed agent, using reactive navigation and deep reinforcement learning
+#                         Note that there are several variations of the proposed algorithm
 agent_type = "reactive"
 
 # dataset - Specifies the dataset to be used
@@ -95,12 +114,11 @@ dataset = "matterport"
 # mode - Specifies the mode in which the simulator will be launched
 # Possible values:
 #   - training - Trains the agent via reinforcement learning with a training set
-#   - evaluation - Evaluates the performance of the agent in a validation set
 #   - benchmark - Evaluates the performance of the agent using the provided Habitat Lab benchmark tool
-# Note that not all agents may be able to run in all modes
+# Note that benchmark agents cannot run in Training mode
 mode = "training"
 
-# These variables are used by Reinforcement Learning agents
+# These variables can be used by Reinforcement Learning agents
 
 # weights - For trainable agents, specifies the pre-trained weights for the neural network
 # If specified, the program will be launched into "play" mode instead (showcasing the performance)
@@ -120,8 +138,11 @@ def training_main(config_path, training_dataset):
     """
     Main method for agent training
 
-    Trains the specified agent using the specified environment and configuration.
-    Note that both the agent trainer and the environment are actually specified in the config file.
+    Trains the specified agent using the specified environment, configuration
+    and dataset
+
+    Note that both the agent trainer and the environment
+    are actually specified in the config file.
 
     :param config_path: Path to the config file
     :type config_path: str
@@ -151,13 +172,66 @@ def training_main(config_path, training_dataset):
     trainer.train()
 
 
-def evaluation_main():
-    pass
+def benchmark_main(config_path, training_dataset, pretrained_weights=None):
+    """
+    Main method for agent evaluation
 
+    Evaluates the performance of the agent using the specified environment, configuration
+    and dataset
 
-def benchmark_main():
-    pass
+    The following metrics are considered for evaluation:
+    # TODO METRICAS
 
+    In addition, videos of the training process are provided
+
+    :param config_path: Path to the config file
+    :type config_path: str
+    :param training_dataset: Name of the dataset to use
+    :type training_dataset: str
+    :param pretrained_weights: (OPTIONAL) Path to the pre-trained weights used by the agents
+    :type pretrained_weights: str
+    """
+
+    # Initial message
+    print("Starting program in benchmark mode...")
+
+    # Instantiate the Config from the config file
+    benchmark_config = get_config(config_path)
+
+    # Add the dataset info to the config file
+    benchmark_config.defrost()
+    benchmark_config.TASK_CONFIG.DATASET.DATA_PATH = dataset_paths[training_dataset]
+    benchmark_config.TASK_CONFIG.DATASET.SPLIT = "val"
+    benchmark_config.TASK_CONFIG.DATASET.NAME = training_dataset
+
+    # Add the path to the pre-trained weights (if applicable) to the config file
+    if pretrained_weights:
+        benchmark_config.MODEL_PATH = pretrained_weights
+
+    benchmark_config.freeze()
+
+    # Instantiate the appropriate agent and the benchmark
+    if agent_type == "random":
+        agent = RandomAgent(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
+                            benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+    elif agent_type == "random_forward":
+        agent = RandomForwardAgent(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
+                                   benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+    elif agent_type == "goal_follower":
+        agent = GoalFollower(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
+                             benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+    elif agent_type == "ppo":
+        agent = PPOAgent(benchmark_config)
+    elif agent_type == "reactive":
+        agent = ReactiveNavigationAgent(benchmark_config,
+                                        pretrained_weights)
+
+    benchmark = Benchmark(benchmark_config)
+
+    # Evaluate the agent and print the metrics
+    metrics = benchmark.evaluate(benchmark_config)
+
+    # TODO - IMPRIME LAS METRICAS
 
 #################
 # 5 - MAIN CODE #
@@ -186,13 +260,18 @@ if __name__ == "__main__":
     # agent_type
     parser.add_argument("-ag",
                         "--agent_type",
-                        choices=["slam", "ppo", "neural_slam", "reactive"],
+                        choices=["random", "random_forward", "goal_follower", "ppo", "reactive"],
                         help=textwrap.dedent("""\
                         Agent type used by the simulator. Agent types are as follows:
-                            * slam: A basic agent using SLAM provided by habitat-lab. (BENCHMARK)
-                            * ppo: A more advanced, reinforcement learning based agent using Proximal Policy Optimization (ppo) provided by habitat-lab. (BENCHMARK)
-                            * neural_slam: A version of SLAM implementing Deep Reinforcement Learning to improve its performance.
-                            * reactive: The developed agent, using reactive navigation and deep reinforcement learning.
+                            * random: A completely random agent, to be used as a benchmark
+                            * random_forward: An agent that randomly moves, with bias towards
+                                              moving forward, to be used as a benchmark
+                            * goal_follower: An agent that always tries to move towards the goal,
+                                             to be used as a benchmark
+                            * ppo: A more advanced, reinforcement learning based agent using Proximal Policy Optimization (ppo)
+                                   provided by habitat-lab
+                            * reactive: The developed agent, using reactive navigation and deep reinforcement learning
+                                        Note that there are several variations of the proposed algorithm
                         DEFAULT: {}""".format(agent_type)))
 
     # dataset
@@ -206,14 +285,13 @@ if __name__ == "__main__":
     # mode
     parser.add_argument("-m",
                         "--mode",
-                        choices=["training", "evaluation", "benchmark"],
+                        choices=["training", "benchmark"],
                         help=textwrap.dedent("""\
                         Execution mode of the program. The program can run in the following modes:
                             * training: Trains the agent via reinforcement learning with a training set.
-                            * evaluation: Evaluates the performance of the agent in a validation set.
-                            * showcase: Shows and stores the performance of the agent in a randomly selected scenario.
-                    
-                        Note that not some agents may be unable to be used in some of these modes.
+                            * benchmark: Evaluates the performance of the agent in a validation set, using the
+                                         benchmarking tool provided by Habitat Lab
+                        Note that only the RL-capable agents (ppo and reactive) are able to be used in training mode
                         DEFAULT: {}""".format(mode)))
 
     # weights
@@ -251,16 +329,27 @@ if __name__ == "__main__":
 
     # 5C - ARGUMENT PROCESSING #
 
+    # Ensure that the combination of agent type / mode is appropriate
+    if mode == "training" and agent_type not in ["ppo", "reactive"]:
+        # Print an error message and abort the execution
+        print("ERROR: Only RL-capable agents (ppo and reactive) can be used in training mode")
+        sys.exit()
+
     # Choose the appropriate config file to be used
     if config:
         # User has specified a config file
         config_file = config
     else:
-        # Use the default config file
-        config_file = config_paths[agent_type]
+        # Config file depends on the selected mode
+        if mode == "training":
+            # Choose the appropriate config file for the agent
+            config_file = config_paths_training[agent_type]
+        else:
+            # Choose the generic benchmarking config file
+            config_file = config_path_benchmark
 
     # Limit the memory usage of TensorFlow
-    # This is done to avoid OutOfMemory errors during execution
+    # This is done to avoid OutOfMemory errors during training
     physical_devices = tf.config.experimental.list_physical_devices("GPU")
     tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
@@ -268,8 +357,8 @@ if __name__ == "__main__":
     if mode == "training":
         # TRAINING MODE
         training_main(config_file, dataset)
-    elif mode == "evaluation":
-        # EVALUATION MODE
-        evaluation_main()
+    elif mode == "benchmark":
+        # BENCHMARK MODE
+        benchmark_main()
 
 

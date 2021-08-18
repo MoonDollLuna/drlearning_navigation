@@ -1,2 +1,4 @@
 Codigo/data/
 Codigo/Training/*/Checkpoints/
+*.pyc
+*/__pycache__/
