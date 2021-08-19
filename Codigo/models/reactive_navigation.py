@@ -257,12 +257,14 @@ class ReactiveNavigationModel:
         # Store the weights
         self._cnn_model.save_weights(path)
 
-    def predict(self, states):
+    def predict(self, states, chunk_size):
         """
-        Batch predicts the Q-Values of an array of States
+        Batch predicts the Q-Values of a batch of States
 
         :param states: List of States
         :type states: list
+        :param chunk_size: The batch of states is divided into chunks of this size
+        :type chunk_size: int
         :return: List of Q-Values for each of the states
         :rtype: list
         """
@@ -270,13 +272,25 @@ class ReactiveNavigationModel:
         # Prepare the list of states using the network format
         unwrapped_states = [state.unwrap_state() for state in states]
 
-        # Extract the list of images and scalar values, and convert them to np format
-        images = np.asarray([state[0] for state in unwrapped_states])
-        scalars = np.asarray([state[1] for state in unwrapped_states])
+        # Split the list of states into chunks of chunk_size
+        number_of_lists = len(unwrapped_states) / chunk_size
+        chunked_states = np.array_split(unwrapped_states, number_of_lists)
 
-        # Process and return the Q values
-        return self._cnn_model.predict([images, scalars],
-                                       batch_size=len(unwrapped_states))
+        # Store the results of the process in a list
+        predicted_values = []
+
+        # Process each chunk independently
+        for chunk in chunked_states:
+            # Extract the list of images and scalar values, and convert them to np format
+            images = np.asarray([state[0] for state in chunk])
+            scalars = np.asarray([state[1] for state in chunk])
+
+            # Process and add the Q values
+            q_values = self._cnn_model.predict([images, scalars],
+                                               batch_size=len(chunk))
+            predicted_values.extend(q_values)
+
+        return predicted_values
 
     def act(self, state):
         """
@@ -300,7 +314,7 @@ class ReactiveNavigationModel:
         best_action_index = np.argmax(predicted_actions[0])
         return self._int_to_action_dict[best_action_index]
 
-    def fit_model(self, states, predictions):
+    def fit_model(self, states, predictions, chunk_size):
         """
         Given a list of states and their updated predictions, fit the CNN to learn weights for these new values
 
@@ -308,17 +322,27 @@ class ReactiveNavigationModel:
         :type states: list
         :param predictions: List of predicted Q-Values for each pair state-action
         :type predictions: list
+        :param chunk_size: The batch of states is divided into chunks of this size
+        :type chunk_size: int
         """
 
         # Prepare the list of states using the network format
         unwrapped_states = [state.unwrap_state() for state in states]
 
-        # Extract the list of images and scalar values, and convert them to np format
-        images = np.asarray([state[0] for state in unwrapped_states])
-        scalars = np.asarray([state[1] for state in unwrapped_states])
+        # Split the list of states and predictions into chunks of chunk_size
+        number_of_lists = len(unwrapped_states) / chunk_size
+        chunked_states = np.array_split(unwrapped_states, number_of_lists)
+        chunked_predictions = np.array_split(predictions, number_of_lists)
 
-        # Fit the network
-        self._cnn_model.fit([images, scalars],
-                            np.array(predictions),
-                            batch_size=len(states),
-                            epochs=1, verbose=0)
+        # Process each chunk independently
+        for chunk_states, chunk_predictions in zip(chunked_states, chunked_predictions):
+
+            # Extract the list of images and scalar values, and convert them to np format
+            images = np.asarray([state[0] for state in chunk_states])
+            scalars = np.asarray([state[1] for state in chunk_states])
+
+            # Fit the network
+            self._cnn_model.fit([images, scalars],
+                                np.array(chunk_predictions),
+                                batch_size=len(chunk_states),
+                                epochs=1, verbose=0)

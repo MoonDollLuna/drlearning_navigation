@@ -151,22 +151,28 @@ class ReactiveNavigationEnv(NavRLEnv):
         # STEP 2 - Trim the bottom of the image (to avoid the floor interfering)
         trimmed_image = original_image[0:255 - self._bottom_trim, :]
 
-        # STEP 3 - Threshold the image
+        # STEP 3 - Fill pure black values (0) with pure white (255) values
+        # This is done to avoid visual glitches, since pure black typically correlates with
+        # bugs in the simulator
+        filled_image = trimmed_image
+        filled_image[filled_image == 0] = 255
+
+        # STEP 4 - Threshold the image
         # All pixels with a value lower than (_obstacle_threshold * 255) will be kept with a value of 1 (OBSTACLES),
         # while all other pixels will be changed to 0s. This way, only obstacles are kept.
         # This is done using an inverse binary threshold
-        thresholded_image = cv2.threshold(trimmed_image,
+        thresholded_image = cv2.threshold(filled_image,
                                           int(self._obstacle_threshold * 255),
                                           255, cv2.THRESH_BINARY_INV)[1]
 
-        # STEP 4 - Remove noise, using morphological transformation.
+        # STEP 5 - Remove noise, using morphological transformation.
         # Specifically, an opening morphological transformation (erosion, followed by dilation) is used.
         # The kernel to use is a rectangle of shape (3, 3)
         cleaned_image = cv2.morphologyEx(thresholded_image,
                                          cv2.MORPH_OPEN,
                                          cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3)))
 
-        # STEP 5 - Increase the size of the objects in the image (to remove possible holes).
+        # STEP 6 - Increase the size of the objects in the image (to remove possible holes).
         # This is done with a dilation morphological transformation
         dilated_image = cv2.dilate(cleaned_image,
                                    cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3)))
@@ -301,6 +307,7 @@ class ReactiveNavigationEnv(NavRLEnv):
         # Compute the ATTRACTIVE field force, with the following formula:
         # attractive_field = attraction_gain * distance_to_goal
         attractive_field = self._attraction_gain * goal_distance
+        attractive_field = self._attraction_gain * goal_distance
 
         # REPULSIVE
         # Pre-process the depth image to obtain a thresholded and cleaned image
@@ -320,7 +327,8 @@ class ReactiveNavigationEnv(NavRLEnv):
         # beta = repulsive_gain / e^(4 * ((repulsive_goal_influence * obstacle_distance) - goal_distance))
         # otherwise
         goal_influence = self._repulsive_goal_influence * self._obstacle_distance
-        if goal_influence > goal_distance:
+
+        if goal_distance > goal_influence:
             beta = self._repulsive_gain
         else:
             beta = self._repulsive_gain / math.exp(4 * (goal_influence - goal_distance))
@@ -407,5 +415,8 @@ class ReactiveNavigationEnv(NavRLEnv):
         # Compute and clamp the reward
         reward = shaping - self._previous_shaping
         reward = max(min(reward, self._success_reward), self._failure_penalty)
+
+        # Update the shaping value
+        self._previous_shaping = shaping
 
         return reward
