@@ -2,3 +2,4 @@ Codigo/data/
 Codigo/Training/*/Checkpoints/
 *.pyc
 */__pycache__/
+Codigo/wipe_gpu.sh
