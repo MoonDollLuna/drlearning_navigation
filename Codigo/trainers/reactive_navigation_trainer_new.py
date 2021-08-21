@@ -26,6 +26,7 @@ import time
 import datetime
 
 import numpy as np
+import torch
 
 # Habitat (Baselines)
 from habitat import Config
@@ -100,6 +101,9 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
     _er_size: int
     # Batch size to use when sampling the Experience Replay
     _batch_size: int
+    # When training the network, batches of experiences are divided into sub-batches of this size
+    # Improves memory usage at the cost ot training time
+    _training_batch_size: int
     # Gamma value (learning rate of DQL)
     _gamma: float
     # Epsilon value (initial chance to perform a random action due to exploration-exploitation)
@@ -172,6 +176,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         self._learning_rate = _dql_config.learning_rate
         self._er_size = _dql_config.er_size
         self._batch_size = _dql_config.batch_size
+        self._training_batch_size = _dql_config.training_batch_size
         self._gamma = _dql_config.gamma
         self._epsilon = _dql_config.epsilon
         self._min_epsilon = _dql_config.min_epsilon
@@ -198,6 +203,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
     def _init_train(self):
         """
         Initializes the following:
+            * Creates the device to be used during training
             * Neural networks are initialized (both the Q Network and the Target Network)
             * The Experience Replay is instantiated (either standard or prioritized)
             * Initial training time is stored
@@ -208,16 +214,25 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
         This allows the training process to start properly
 
-        :return: Log Manager, used to write the necessary log information
-        :rtype: LogManager
+        :return: Log Manager, used to write the necessary log information / device used by pyTorch
+        :rtype: tuple
         """
+
+        # Creates the device, using CUDA if possible
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
         # Initialize the neural networks
         self._q_network = ReactiveNavigationModel(self._image_size,
                                                   self._agent_actions,
-                                                  learning_rate=self._learning_rate)
+                                                  device,
+                                                  learning_rate=self._learning_rate).to(device)
         self._target_network = ReactiveNavigationModel(self._image_size,
                                                        self._agent_actions,
-                                                       learning_rate=self._learning_rate)
+                                                       device,
+                                                       learning_rate=self._learning_rate).to(device)
+
+        # Copy the weight from the Q Network to the Target network
+        self._target_network.load_state_dict(self._q_network.state_dict())
 
         # Initialize the Experience Replay (depending on the type of DQL to be applied)
         if self._prioritized:
@@ -243,6 +258,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         if self._seed:
             random.seed(self._seed)
             np.random.seed(self._seed)
+            torch.manual_seed(self._seed)
             self._env.seed(self._seed)
 
         # Compute the approximate length of the training, for the log
@@ -251,7 +267,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         else:
             training_length = "{} episodes".format(self._number_updates)
 
-        # Create and return the appropriate log manager
+        # Create and return the appropriate log manager, along the device
         return LogManager(self._training_log_folder,
                           "reactive",
                           self._dataset_name,
@@ -259,7 +275,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                           self._start_time,
                           self._silent,
                           epoch_parameters=["average_reward"],
-                          reward_method=self._rewards_method)
+                          reward_method=self._rewards_method), device
 
     def _train_network_standard(self):
         """
@@ -284,25 +300,30 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
         # Compute the Q values for the current state (using the Q network)
         # and the Q values for the next state (using the target network)
-        current_state_predictions = self._q_network.predict(sampled_initial_states)
-        next_state_predictions = self._target_network.predict(sampled_next_states)
+        current_state_values = self._q_network.predict(sampled_initial_states, self._training_batch_size)
+        next_state_predictions = self._target_network.predict(sampled_next_states, self._training_batch_size)
+
+        # Store the updated values in a different list
+        updated_current_state_values = current_state_values.copy()
 
         # Compute the updated Q values
         for index in range(len(sampled_experiences)):
-
             # Check if the experience is a final one or not
             if sampled_finals[index]:
                 # Final experience: the Q Value of the state is simply the reward / penalty
                 # q_value(t) = reward
-                current_state_predictions[index][self._action_to_index[sampled_actions[index]]] = sampled_rewards[index]
+                updated_current_state_values[index][self._action_to_index[sampled_actions[index]]] = sampled_rewards[index]
             else:
                 # Not a final experience: the Q value is based on the obtained reward
                 # and the max Q value for the next state
                 # q_value(t) = reward + gamma * next_state_best_q
-                current_state_predictions[index][self._action_to_index[sampled_actions[index]]] = sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])
+                updated_current_state_values[index][self._action_to_index[sampled_actions[index]]] = sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])
 
         # With the updated predictions, fit the Q network
-        self._q_network.fit_model(sampled_initial_states, current_state_predictions)
+        self._q_network.fit_model(sampled_initial_states,
+                                  current_state_values,
+                                  updated_current_state_values,
+                                  self._training_batch_size)
 
     def _train_network_prioritized(self):
         """
@@ -330,8 +351,11 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
         # Compute the Q values for the current state (using the Q network)
         # and the Q values for the next state (using the target network)
-        current_state_predictions = self._q_network.predict(sampled_initial_states)
-        next_state_predictions = self._target_network.predict(sampled_next_states)
+        current_state_values = self._q_network.predict(sampled_initial_states, self._training_batch_size)
+        next_state_predictions = self._target_network.predict(sampled_next_states, self._training_batch_size)
+
+        # Store the updated values in a different list
+        updated_current_state_values = current_state_values.copy()
 
         # WEIGHT COMPUTING
 
@@ -362,22 +386,25 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                 # Final experience: the Q Value of the state is simply the reward / penalty
                 # q_value(t) = reward * weight
                 new_q = sampled_rewards[index] * weights[sampled_ids[index]]
-                current_state_predictions[index][self._action_to_index[sampled_actions[index]]] = new_q
+                updated_current_state_values[index][self._action_to_index[sampled_actions[index]]] = new_q
             else:
                 # Not a final experience: the Q value is based on the obtained reward
                 # and the max Q value for the next state
                 # q_value(t) = (reward + gamma * next_state_best_q) * weight
                 new_q = (sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])) * weights[sampled_ids[index]]
-                current_state_predictions[index][self._action_to_index[sampled_actions[index]]] = new_q
+                updated_current_state_values[index][self._action_to_index[sampled_actions[index]]] = new_q
 
             # Compute and append the error of the experience
             # The error is the quadratic error between the new Q value and the actually obtained one
             # error = (predicted_q - updated_q) ^ 2
-            error = (current_state_predictions[index][self._action_to_index[sampled_actions[index]]] - new_q) ** 2
+            error = (current_state_values[index][self._action_to_index[sampled_actions[index]]] - new_q) ** 2
             error_list.append(error)
 
         # With the updated predictions, fit the Q network and update the errors in the experience replay
-        self._q_network.fit_model(sampled_initial_states, current_state_predictions)
+        self._q_network.fit_model(sampled_initial_states,
+                                  current_state_values,
+                                  updated_current_state_values,
+                                  self._training_batch_size)
         self._experience_replay.update_errors(error_list, sampled_ids)
 
     ####################
@@ -452,8 +479,8 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         # Message to ensure that everything has loaded properly
         print("Starting reactive navigation training")
 
-        # Do all the necessary pre-steps and create the log manager
-        log_manager = self._init_train()
+        # Do all the necessary pre-steps and create the log manager and the Torch device
+        log_manager, device = self._init_train()
 
         # Store the current epsilon (chance for random action) value
         # and the linear decrease between epsilons
@@ -505,7 +532,6 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                                                           reward,
                                                           new_state,
                                                           done)
-
                 average_reward += reward
 
                 # 3 - Set the new current state
@@ -532,7 +558,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                 actions_taken += 1
 
             # Episode is over, update the target network
-            self._target_network.set_weights(self._q_network.get_weights())
+            self._target_network.load_state_dict(self._q_network.state_dict())
 
             # Compute the time needed to finish the episode
             train_time = time.time() - train_time
@@ -545,7 +571,6 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             # Clamp the current epsilon to the minimum
             if current_epsilon < self._min_epsilon:
                 current_epsilon = self._min_epsilon
-
             # If it is necessary, store a checkpoint
             if self.should_checkpoint():
 
@@ -574,5 +599,5 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         starting_time = time.time() - starting_time
 
         # After the training process is over, close the environment and the log manager
-        self._env.close()
         log_manager.close(starting_time)
+        self._env.close()

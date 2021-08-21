@@ -42,7 +42,7 @@ from habitat_baselines.common.baseline_registry import baseline_registry
 # Even if these imports seem unused, it's necessary to pre-import them
 # to ensure that the decorator (function used to register
 # them in the baseline registry) is run
-from trainers.reactive_navigation_trainer import ReactiveNavigationTrainer
+from trainers.reactive_navigation_trainer_keras import ReactiveNavigationTrainer
 from envs.reactive_navigation_env import ReactiveNavigationEnv
 
 # Agent imports
@@ -233,6 +233,7 @@ def benchmark_main(config_path, training_dataset, pretrained_weights=None):
 
     # TODO - IMPRIME LAS METRICAS
 
+
 #################
 # 5 - MAIN CODE #
 #################
@@ -350,6 +351,7 @@ if __name__ == "__main__":
 
     # Limit the memory usage of TensorFlow
     # This is done to avoid OutOfMemory errors during training
+    # GPU usage should be set to max in the nVidia control panel in addition
     physical_devices = tf.config.experimental.list_physical_devices("GPU")
     tf.config.experimental.set_memory_growth(physical_devices[0], True)
 

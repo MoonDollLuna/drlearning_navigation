@@ -234,8 +234,9 @@ class LogManager:
             # Print the message
             print(message)
 
-        # Flush the file
-        self._file.flush()
+        # Flush the file every 100 episodes, to keep progress
+        if episode_id % 100 == 0:
+            self._file.flush()
 
     def close(self, total_time):
         """

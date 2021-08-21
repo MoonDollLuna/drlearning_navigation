@@ -32,7 +32,7 @@ VIDEO_DIR: "Evaluation/Reactive/Video"
 # Evaluate on all episodes
 TEST_EPISODE_COUNT: -1
 
-SENSORS: ["DEPTH_SENSOR"]
+SENSORS: ['DEPTH_SENSOR', 'POINTGOAL_WITH_GPS_COMPASS_SENSOR']
 
 CHECKPOINT_FOLDER: "Training/Reactive/Checkpoints"
 TRAINING_LOG_FOLDER: "Training/Reactive/Log"
@@ -47,9 +47,9 @@ EVAL_CKPT_PATH_DIR: "Training/Reactive/Checkpoints"
 # Training stops when either of these values are reached
 
 # TOTAL_NUM_STEPS: 2000.0
-NUM_UPDATES: 50
+NUM_UPDATES: 10000
 LOG_INTERVAL: 25
-NUM_CHECKPOINTS: 10
+NUM_CHECKPOINTS: 100
 
 # Reinforcement Learning specific configs
 RL:
@@ -63,8 +63,10 @@ RL:
     # Maximum size of the Experience Replay (once full, older experiences will be removed)
     er_size: 20000
     # Batch size when sampling the Experience Replay
-    # batch_size: 32
-    batch_size: 16
+    batch_size: 32
+    # Batches of experiences are split into chunks of this size during training
+    # Reduces training speed, but improves memory usage
+    training_batch_size: 16
     # Gamma value (learning rate of DQL)
     gamma: 0.99
     # Epsilon value (initial chance to perform a random action due to exploration-exploitation)
@@ -91,7 +93,7 @@ RL:
     # This also doubles as the maximum distance to an obstacle.
     obstacle_threshold: 0.25
     # Minimum area (in pixels) for contours / columns. Contours / columns smaller than this size will be ignored
-    min_contour_area: 200
+    min_contour_area: 250
     # (COLUMN REWARDS ONLY) Total columns to be used when using the column reward method. Ignored when using the contour reward_method
     reward_columns: 8
     
@@ -113,7 +115,7 @@ RL:
     # Percentage (between 0 and 1). When the goal is closer than repulsive_goal_influence * obstacle_distance, the effect of the repulsive field gets decreased
     repulsive_goal_influence: 0.75
     # Success reward. Note that positive rewards will also be clipped to this value
-    success_reward: 20
+    success_reward: 10
     # Failure penalty. Note that negative rewards will also be clipped to this value
     failure_penalty: -100
     
