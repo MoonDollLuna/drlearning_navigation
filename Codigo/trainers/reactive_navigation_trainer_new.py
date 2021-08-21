@@ -428,31 +428,51 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         Saves a checkpoint (the weights of the neural network) using the specified
         filename
 
+        The checkpoint includes:
+            * State dictionary of the CNN
+            * Config file used
+
         :param file_name: Filename to be used when storing the checkpoint
         :type file_name: str
         """
 
-        self._target_network.save_weights_file(self._checkpoint_folder, file_name)
+        # Create the dictionary
+        checkpoint = {
+            "state_dict": self._target_network.state_dict(),
+            "config": self.config
+        }
+
+        # Compute the path
+        path = os.path.join(self._checkpoint_folder, "{}.pt".format(file_name))
+
+        # Store the checkpoint
+        torch.save(checkpoint, path)
 
     def load_checkpoint(self, checkpoint_path, *args, **kwargs):
         """
         Loads a checkpoint (the pre-trained weights of the neural network) using
         the specified filename
 
-        NOTE: Trainers are supposed to return a Dict object (to be used with Torch),
-        but None is returned in this case (since the Reactive Navigation agent uses Keras)
+        The checkpoint includes:
+            * State dictionary of the CNN
+            * Config file used
 
         :param checkpoint_path: Path to the checkpoint (pre-trained weights)
         :type checkpoint_path: str
         :param args: Positional arguments
         :param kwargs: Keyword arguments
-        :return: None (for compatibility reasons)
-        :rtype: None
+        :return: Loaded dictionary as described above
+        :rtype: dict
         """
 
+        # Load the checkpoint
+        checkpoint = torch.load(checkpoint_path, *args, **kwargs)
+
         # Load the weights for both networks
-        self._q_network.load_weights_file(checkpoint_path)
-        self._target_network.load_weights_file(checkpoint_path)
+        self._q_network.load_state_dict(checkpoint["state_dict"])
+        self._target_network.load_state_dict(checkpoint["state_dict"])
+
+        return checkpoint
 
     def train(self):
         """
