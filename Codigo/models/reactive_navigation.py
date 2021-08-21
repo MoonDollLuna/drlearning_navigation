@@ -82,7 +82,7 @@ class ReactiveNavigationModel(Module):
 
     # CONSTRUCTOR #
 
-    def __init__(self, image_size, action_list, device, learning_rate=None, weights=None):
+    def __init__(self, image_size, action_list, device_used, learning_rate=None, weights=None):
         """
         Constructor method
 
@@ -90,8 +90,8 @@ class ReactiveNavigationModel(Module):
         :type image_size: int
         :param action_list: List of available actions
         :type action_list: list
-        :param device: Device in which to perform all operations
-        :type device: device
+        :param device_used: Device in which to perform all operations
+        :type device_used: device
         :param learning_rate: (OPTIONAL) Learning rate of the neural network
         :type learning_rate: float
         :param weights: (OPTIONAL) Path to the file containing the pre-trained weights of the CNN
@@ -108,7 +108,7 @@ class ReactiveNavigationModel(Module):
         self._action_to_int_dict, self._int_to_action_dict = self._initialize_dicts(action_list)
 
         # Store a handle to the device
-        self._device = device
+        self._device = device_used
 
         # Create the optimizer and the loss function
         self._optimizer = Adam(self.parameters(), lr=learning_rate) if learning_rate else Adam(self.parameters())
@@ -117,7 +117,8 @@ class ReactiveNavigationModel(Module):
         # Create the CNN structure and, if available, load the weights
         self._prepare_cnn(self._image_size, len(action_list))
         if weights is not None:
-            self.load_weights_file(weights)
+            checkpoint_dict = torch.load(weights)
+            self.load_state_dict(checkpoint_dict["state_dict"])
 
     # INTERNAL METHODS #
 

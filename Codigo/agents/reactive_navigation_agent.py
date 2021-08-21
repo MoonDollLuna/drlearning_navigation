@@ -12,16 +12,12 @@
 
 # IMPORTS #
 
-import random
-from typing import Union, Dict, Any
-
-import numpy as np
+import torch
 
 # Habitat Lab
 from habitat.config import Config
 from habitat.core.agent import Agent
 from habitat.core.simulator import Observations
-
 
 # Reactive Navigation
 from models.reactive_navigation import ReactiveNavigationModel
@@ -52,6 +48,9 @@ class ReactiveNavigationAgent(Agent):
         :type weights: str
         """
 
+        # Creates the device, using CUDA if possible
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
         # Extract the necessary parameters from the config
         image_size = config.TASK_CONFIG.SIMULATOR.DEPTH_SENSOR.WIDTH
         action_list = config.TASK_CONFIG.TASK.POSSIBLE_ACTIONS
@@ -59,7 +58,8 @@ class ReactiveNavigationAgent(Agent):
         # Instantiate the model
         self._model = ReactiveNavigationModel(image_size,
                                               action_list,
-                                              weights=weights)
+                                              device,
+                                              weights=weights).to(device)
 
     # PUBLIC (INHERITED) METHODS #
 
