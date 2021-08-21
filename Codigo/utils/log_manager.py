@@ -59,7 +59,8 @@ class LogManager:
 
     # CONSTRUCTOR #
 
-    def __init__(self, file_path, agent_type, dataset, training_length, timestamp, silent=False, epoch_parameters=None, **header_parameters):
+    def __init__(self, file_path, agent_type, dataset, training_length,
+                 timestamp, silent=False, epoch_parameters=None, **header_parameters):
         """
         A basic instance of the LogManager class.
 

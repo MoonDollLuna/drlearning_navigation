@@ -29,7 +29,6 @@
 import argparse
 import sys
 import textwrap
-import tensorflow as tf
 
 # Habitat imports
 import habitat
@@ -42,7 +41,7 @@ from habitat_baselines.common.baseline_registry import baseline_registry
 # Even if these imports seem unused, it's necessary to pre-import them
 # to ensure that the decorator (function used to register
 # them in the baseline registry) is run
-from trainers.reactive_navigation_trainer_keras import ReactiveNavigationTrainer
+from trainers.reactive_navigation_trainer import ReactiveNavigationTrainer
 from envs.reactive_navigation_env import ReactiveNavigationEnv
 
 # Agent imports
@@ -212,24 +211,29 @@ def benchmark_main(config_path, training_dataset, pretrained_weights=None):
 
     # Instantiate the appropriate agent and the benchmark
     if agent_type == "random":
+        # Random agent
         agent = RandomAgent(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
                             benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
     elif agent_type == "random_forward":
+        # Random forward agent
         agent = RandomForwardAgent(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
                                    benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
     elif agent_type == "goal_follower":
+        # Goal follower
         agent = GoalFollower(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
                              benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
     elif agent_type == "ppo":
+        # PPO agent
         agent = PPOAgent(benchmark_config)
-    elif agent_type == "reactive":
+    else:
+        # Reactive agent (default)
         agent = ReactiveNavigationAgent(benchmark_config,
                                         pretrained_weights)
 
-    benchmark = Benchmark(benchmark_config)
+    benchmark = Benchmark(config_path)
 
     # Evaluate the agent and print the metrics
-    metrics = benchmark.evaluate(benchmark_config)
+    metrics = benchmark.evaluate(agent, 50)
 
     # TODO - IMPRIME LAS METRICAS
 
@@ -269,8 +273,8 @@ if __name__ == "__main__":
                                               moving forward, to be used as a benchmark
                             * goal_follower: An agent that always tries to move towards the goal,
                                              to be used as a benchmark
-                            * ppo: A more advanced, reinforcement learning based agent using Proximal Policy Optimization (ppo)
-                                   provided by habitat-lab
+                            * ppo: A more advanced reinforcement learning based agent using Proximal Policy Optimization 
+                                   (ppo) provided by habitat-lab
                             * reactive: The developed agent, using reactive navigation and deep reinforcement learning
                                         Note that there are several variations of the proposed algorithm
                         DEFAULT: {}""".format(agent_type)))
@@ -349,18 +353,13 @@ if __name__ == "__main__":
             # Choose the generic benchmarking config file
             config_file = config_path_benchmark
 
-    # Limit the memory usage of TensorFlow
-    # This is done to avoid OutOfMemory errors during training
-    # GPU usage should be set to max in the nVidia control panel in addition
-    physical_devices = tf.config.experimental.list_physical_devices("GPU")
-    tf.config.experimental.set_memory_growth(physical_devices[0], True)
-
     # Depending on the execution mode, run the appropriate main code
     if mode == "training":
         # TRAINING MODE
-        training_main(config_file, dataset)
+        training_main(config_file,
+                      dataset)
     elif mode == "benchmark":
         # BENCHMARK MODE
-        benchmark_main()
-
-
+        benchmark_main(config_path_benchmark,
+                       dataset,
+                       weights)

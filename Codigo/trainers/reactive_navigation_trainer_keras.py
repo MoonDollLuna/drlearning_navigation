@@ -27,6 +27,7 @@ import datetime
 import gc
 
 import numpy as np
+import tensorflow as tf
 
 # Habitat (Baselines)
 from habitat import Config
@@ -35,7 +36,7 @@ from habitat_baselines.common.base_trainer import BaseRLTrainer
 from habitat_baselines.common.tensorboard_utils import TensorboardWriter
 
 # Reactive navigation
-from models.reactive_navigation import ReactiveNavigationModel
+from models.reactive_navigation_keras import ReactiveNavigationModelKeras
 from envs.reactive_navigation_env import ReactiveNavigationEnv
 from models.experience_replay import State, Experience, ExperienceReplay, PrioritizedExperienceReplay
 from utils.log_manager import LogManager
@@ -84,10 +85,10 @@ class ReactiveNavigationTrainerKeras(BaseRLTrainer):
 
     # NETWORKS AND EXPERIENCE REPLAY PARAMETERS
     # Q Network used by the trainer. This network is updated after each action taken
-    _q_network: ReactiveNavigationModel
+    _q_network: ReactiveNavigationModelKeras
     # Target network used by the trainer. This network is used to obtain the target Q Values,
     # and is updated by copying the Q Network at the end of each epoch
-    _target_network: ReactiveNavigationModel
+    _target_network: ReactiveNavigationModelKeras
     # Flag to specify whether standard or prioritized Deep Q-Learning is to be used
     _prioritized: bool
     # Experience Replay used by the trainer, to store all experiences that happened during training
@@ -219,12 +220,12 @@ class ReactiveNavigationTrainerKeras(BaseRLTrainer):
         :rtype: LogManager
         """
         # Initialize the neural networks
-        self._q_network = ReactiveNavigationModel(self._image_size,
-                                                  self._agent_actions,
-                                                  learning_rate=self._learning_rate)
-        self._target_network = ReactiveNavigationModel(self._image_size,
+        self._q_network = ReactiveNavigationModelKeras(self._image_size,
                                                        self._agent_actions,
                                                        learning_rate=self._learning_rate)
+        self._target_network = ReactiveNavigationModelKeras(self._image_size,
+                                                            self._agent_actions,
+                                                            learning_rate=self._learning_rate)
 
         # Initialize the Experience Replay (depending on the type of DQL to be applied)
         if self._prioritized:

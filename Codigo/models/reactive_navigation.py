@@ -28,7 +28,6 @@
 #   * TURN LEFT
 
 # IMPORTS #
-from os.path import join
 import numpy as np
 
 # PyTorch
@@ -157,7 +156,7 @@ class ReactiveNavigationModel(Module):
             # Compute the size of the convolution layer
             current_size = np.floor((current_size + 2*0 - 1*(conv_kernel - 1) - 1) + 1)
             # Compute the size of the pooling layer
-            current_size = np.floor(((current_size + 2*0 - 1*(pool_kernel - 1) - 1) //pool_kernel) + 1)
+            current_size = np.floor(((current_size + 2*0 - 1*(pool_kernel - 1) - 1) // pool_kernel) + 1)
 
         # Return the final output
         return current_size
@@ -374,12 +373,10 @@ class ReactiveNavigationModel(Module):
         best_action_index = torch.max(predicted_q_values, 1)[1]
         return self._int_to_action_dict[best_action_index]
 
-    def fit_model(self, states, values, predictions, chunk_size):
+    def fit_model(self, values, predictions, chunk_size):
         """
-        Given a list of states and their updated predictions, fit the CNN to learn weights for these new values
+        Given a list of values and their actual predictions, optimize the CNN weights
 
-        :param states: List of current states
-        :type states: list
         :param values: List of obtained Q-Values for each pair state-action
         :type values: list
         :param predictions: List of predicted Q-Values for each pair state-action
@@ -391,25 +388,16 @@ class ReactiveNavigationModel(Module):
         # The fitting must be done in train mode
         self.train()
 
-        # Prepare the list of states using the network format
-        unwrapped_states = [state.unwrap_state() for state in states]
+        # Split the list values and predictions into chunks of chunk_size
+        number_of_lists = len(values) / chunk_size
 
-        # Split the list of states, values and predictions into chunks of chunk_size
-        number_of_lists = len(unwrapped_states) / chunk_size
-        chunked_states = np.array_split(unwrapped_states, number_of_lists)
         chunked_values = np.array_split(values, number_of_lists)
         chunked_predictions = np.array_split(predictions, number_of_lists)
 
         # Process each chunk independently
-        for chunk_states, chunk_values, chunk_predictions in zip(chunked_states, chunked_values, chunked_predictions):
+        for chunk_values, chunk_predictions in zip(chunked_values, chunked_predictions):
 
-            # Extract the list of images and scalar values, and convert them to Tensor format
-            images = torch.tensor([state[0] for state in chunk_states],
-                                  device=self._device)
-            scalars = torch.tensor([state[1] for state in chunk_states],
-                                   device=self._device)
-
-            # Convert the list of obtained and predicted values to a tensor
+            # Convert the list of obtained and predicted values to Tensor format
             obtained_values = torch.tensor(chunk_values,
                                            device=self._device)
             predicted_values = torch.tensor(chunk_predictions,

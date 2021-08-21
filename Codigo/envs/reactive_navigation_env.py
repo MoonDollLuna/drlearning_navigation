@@ -307,7 +307,6 @@ class ReactiveNavigationEnv(NavRLEnv):
         # Compute the ATTRACTIVE field force, with the following formula:
         # attractive_field = attraction_gain * distance_to_goal
         attractive_field = self._attraction_gain * goal_distance
-        attractive_field = self._attraction_gain * goal_distance
 
         # REPULSIVE
         # Pre-process the depth image to obtain a thresholded and cleaned image

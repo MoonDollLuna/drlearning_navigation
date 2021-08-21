@@ -428,4 +428,3 @@ class PrioritizedExperienceReplay(ExperienceReplay):
 
         for error, id_value in zip(errors, error_ids):
             self.experience_replay[id_value] = error
-

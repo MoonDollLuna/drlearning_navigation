@@ -308,20 +308,24 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
         # Compute the updated Q values
         for index in range(len(sampled_experiences)):
+
+            # Get the index for the action
+            action_index = self._action_to_index[sampled_actions[index]]
+
             # Check if the experience is a final one or not
             if sampled_finals[index]:
                 # Final experience: the Q Value of the state is simply the reward / penalty
                 # q_value(t) = reward
-                updated_current_state_values[index][self._action_to_index[sampled_actions[index]]] = sampled_rewards[index]
+                updated_current_state_values[index][action_index] = sampled_rewards[index]
             else:
                 # Not a final experience: the Q value is based on the obtained reward
                 # and the max Q value for the next state
                 # q_value(t) = reward + gamma * next_state_best_q
-                updated_current_state_values[index][self._action_to_index[sampled_actions[index]]] = sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])
+                new_value = sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])
+                updated_current_state_values[index][action_index] = new_value
 
         # With the updated predictions, fit the Q network
-        self._q_network.fit_model(sampled_initial_states,
-                                  current_state_values,
+        self._q_network.fit_model(current_state_values,
                                   updated_current_state_values,
                                   self._training_batch_size)
 
@@ -378,21 +382,25 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         # Compute the new Q value and error of each experience
         for index in range(len(sampled_experiences)):
 
+            # Get the index for the action
+            action_index = self._action_to_index[sampled_actions[index]]
+
             # Compute the new Q value.
-            # Note that all Q values must be normalized by their weight due to Prioritized Experience Replay
+            # Note that all new Q values must be normalized by their weight due to Prioritized Experience Replay
 
             # Check if the experience is a final one or not
             if sampled_finals[index]:
                 # Final experience: the Q Value of the state is simply the reward / penalty
                 # q_value(t) = reward * weight
                 new_q = sampled_rewards[index] * weights[sampled_ids[index]]
-                updated_current_state_values[index][self._action_to_index[sampled_actions[index]]] = new_q
+                updated_current_state_values[index][action_index] = new_q
             else:
                 # Not a final experience: the Q value is based on the obtained reward
                 # and the max Q value for the next state
                 # q_value(t) = (reward + gamma * next_state_best_q) * weight
-                new_q = (sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])) * weights[sampled_ids[index]]
-                updated_current_state_values[index][self._action_to_index[sampled_actions[index]]] = new_q
+                new_q = (sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])) * \
+                        weights[sampled_ids[index]]
+                updated_current_state_values[index][action_index] = new_q
 
             # Compute and append the error of the experience
             # The error is the quadratic error between the new Q value and the actually obtained one
@@ -401,8 +409,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             error_list.append(error)
 
         # With the updated predictions, fit the Q network and update the errors in the experience replay
-        self._q_network.fit_model(sampled_initial_states,
-                                  current_state_values,
+        self._q_network.fit_model(current_state_values,
                                   updated_current_state_values,
                                   self._training_batch_size)
         self._experience_replay.update_errors(error_list, sampled_ids)
