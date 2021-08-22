@@ -321,7 +321,7 @@ class ReactiveNavigationModel(Module):
         # Input: 16 filters
         # Output: 32 filters of kernel size 3
         # Pooling: kernel size 3
-        self._cnn_conv2 = Conv2d(in_channels=3,
+        self._cnn_conv2 = Conv2d(in_channels=16,
                                  out_channels=32,
                                  kernel_size=3)
         self._cnn_pool2 = MaxPool2d(kernel_size=3)
@@ -349,7 +349,7 @@ class ReactiveNavigationModel(Module):
         # Create a hidden layer (ReLU)
         # Input: cnn_size neurons
         # Output: 64 neurons
-        self._cnn_hidden = Linear(cnn_size, 64)
+        self._cnn_hidden = Linear(int(cnn_size), 64)
 
         # Create an output layer (Linear)
         # Input: 64 neurons
@@ -413,21 +413,21 @@ class ReactiveNavigationModel(Module):
 
         # First layer of convolution:
         # CNN -> ReLU -> Pooling
-        image = relu(self._conv1(image))
-        image = self._pool1(image)
+        image = relu(self._cnn_conv1(image))
+        image = self._cnn_pool1(image)
 
         # Second layer of convolution:
         # CNN -> ReLU -> Pooling
-        image = relu(self._conv2(image))
-        image = self._pool2(image)
+        image = relu(self._cnn_conv2(image))
+        image = self._cnn_pool2(image)
 
         # Third layer of convolution:
         # CNN -> ReLU -> Pooling
-        image = relu(self._conv3(image))
-        image = self._pool3(image)
+        image = relu(self._cnn_conv3(image))
+        image = self._cnn_pool3(image)
 
         # Flatten the CNN output
-        image = self._flatten(image)
+        image = self._cnn_flatten(image)
 
         # Hidden layer (ReLU)
         image = relu(self._cnn_hidden(image))
