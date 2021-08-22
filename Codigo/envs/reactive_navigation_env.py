@@ -43,7 +43,6 @@ class ReactiveNavigationEnv(NavRLEnv):
     # ATTRIBUTES #
 
     # IMAGE PROCESSING ATTRIBUTES
-
     # Pixels to be trimmed from the bottom of the image (the image provided by the depth camera)
     # This parameter is a heuristic used since our robot is an embodied agent that will always see the floor
     # at a constant height (so it can be trimmed to avoid detecting false obstacles)
@@ -82,6 +81,8 @@ class ReactiveNavigationEnv(NavRLEnv):
     _success_reward: float
     # Penalty given for a failed episode. All negative rewards will be clipped to this value
     _failure_penalty: float
+    # Goal distance (goal at which the agent is considered to be at the goal)
+    _goal_distance: float
 
     # REWARD ATTRIBUTES (NOT PROVIDED BY THE CONFIG FILE)
     # Value of the previous shaping, used to compute a reward for each step
@@ -120,6 +121,7 @@ class ReactiveNavigationEnv(NavRLEnv):
         self._repulsive_goal_influence = _reward_config.repulsive_goal_influence
         self._success_reward = _reward_config.success_reward
         self._failure_penalty = _reward_config.failure_penalty
+        self._goal_distance = config.TASK_CONFIG.TASK.SUCCESS_DISTANCE
 
         # Construct the super parent
         # Parent needs to be constructed AFTER attribute declaration to avoid null references
@@ -349,6 +351,33 @@ class ReactiveNavigationEnv(NavRLEnv):
 
         return shaping
 
+    def _check_obstacle_collision(self, observations):
+        """
+        Determine whether the agent is "colliding" (too close) to an obstacle
+
+        An agent is considered to be colliding when its distance to the closest obstacle
+        is less than goal_distance
+
+        If the agent collides with an obstacle, the episode is immediately finished
+
+        :param observations: Observations from the environment taken by the agent
+        :type observations: Observations
+        :return: TRUE if the agent is colliding, false otherwise
+        :rtype: bool
+        """
+
+        # Extract the depth view from the observations
+        depth_view = observations["depth"]
+
+        # Find the closest non-zero distance in the image
+        closest_distance = np.min(depth_view[np.nonzero(depth_view)])
+
+        # Convert the distance from [0, 1] to actual distance
+        distance = (closest_distance * self._obstacle_distance) / self._obstacle_threshold
+
+        # Check if the distance is smaller than goal_distance
+        return distance < self._goal_distance
+
     # PUBLIC METHODS #
 
     def reset(self):
@@ -370,6 +399,20 @@ class ReactiveNavigationEnv(NavRLEnv):
                                                              initial_observations["depth"])
 
         return initial_observations
+
+    def get_done(self, observations):
+        """
+        Checks if the episode has finished already
+
+        Method overridden to add a third additional ending condition: obstacles
+
+        :param observations: Observations from the environment taken by the agent
+        :type observations: Observations
+        :return: TRUE if the episode is over, FALSE otherwise
+        :rtype: bool
+        """
+
+        return super().get_done(observations) or self._check_obstacle_collision(observations)
 
     def get_reward_range(self):
         """
@@ -398,7 +441,7 @@ class ReactiveNavigationEnv(NavRLEnv):
         """
 
         # Check if the episode is over
-        if self._env.episode_over:
+        if self.get_done(observations):
             # Check if the episode was a success
             if self._env.get_metrics()[self._success_measure_name]:
                 # SUCCESS

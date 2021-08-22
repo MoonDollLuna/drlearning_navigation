@@ -111,7 +111,7 @@ RL:
     # Positive gain applied to the repulsive field, to increase it
     repulsive_gain: 2
     # Value used to limit the repulsive field's maximum value
-    repulsive_limit: 0.05
+    repulsive_limit: 0.04
     # Percentage (between 0 and 1). When the goal is closer than repulsive_goal_influence * obstacle_distance, the effect of the repulsive field gets decreased
     repulsive_goal_influence: 0.75
     # Success reward. Note that positive rewards will also be clipped to this value
