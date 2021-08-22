@@ -1,3 +1,8 @@
+# NOTE - THIS FILE IS DEPRECATED AND NOT UP TO DATE / TO BE USED
+# This file is kept only to show the work done and discarded with Tensorflow/Keras
+# In addition, it may contain bugs and design errors
+# Please use ReactiveNavigationTrainer instead
+
 # REACTIVE NAVIGATION - TRAINER
 # Developed by: Luna Jimenez Fernandez
 #
@@ -36,7 +41,7 @@ from habitat_baselines.common.base_trainer import BaseRLTrainer
 from habitat_baselines.common.tensorboard_utils import TensorboardWriter
 
 # Reactive navigation
-from models.reactive_navigation_keras import ReactiveNavigationModelKeras
+from models.DEPRECATED_reactive_navigation_keras import ReactiveNavigationModelKeras
 from envs.reactive_navigation_env import ReactiveNavigationEnv
 from models.experience_replay import State, Experience, ExperienceReplay, PrioritizedExperienceReplay
 from utils.log_manager import LogManager

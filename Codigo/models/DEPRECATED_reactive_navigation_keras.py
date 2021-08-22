@@ -1,5 +1,6 @@
-# NOTE - THIS MODEL IS DEPRECATED AND NOT UP TO DATE
+# NOTE - THIS FILE IS DEPRECATED AND NOT UP TO DATE / TO BE USED
 # This file is kept only to show the work done and discarded with Tensorflow/Keras
+# In addition, it may contain bugs and design errors
 # Please use ReactiveNavigationModel instead
 
 # REACTIVE NAVIGATION - MODEL
