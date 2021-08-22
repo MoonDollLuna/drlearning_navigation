@@ -583,7 +583,16 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                 self.num_steps_done += 1
                 actions_taken += 1
 
-            # Episode is over, update the target network
+            # EPISODE OVER
+
+            # Check if an action has actually been performed
+            # (some episodes may end instantly due to the agent spawning
+            # directly in front of an obstacle)
+            if actions_taken == 0:
+                # No actions performed: skip the episode without updating any value
+                continue
+
+            # Update the target network weight
             self._target_network.load_state_dict(self._q_network.state_dict())
 
             # Compute the time needed to finish the episode
