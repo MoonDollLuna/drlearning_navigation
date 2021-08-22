@@ -43,6 +43,7 @@ from habitat_baselines.common.baseline_registry import baseline_registry
 # them in the baseline registry) is run
 from trainers.reactive_navigation_trainer import ReactiveNavigationTrainer
 from envs.reactive_navigation_env import ReactiveNavigationEnv
+# from trainers.reactive_navigation_trainer_keras import ReactiveNavigationTrainerKeras
 
 # Agent imports
 from agents.reactive_navigation_agent import ReactiveNavigationAgent
@@ -68,7 +69,7 @@ config_paths_training = {
 
 # Benchmark config file
 # All agents share the same config file to be used during the benchmarking process
-config_path_benchmark = None
+config_path_benchmark = "./configs/benchmark_config.yaml"
 # TODO haz el config
 
 

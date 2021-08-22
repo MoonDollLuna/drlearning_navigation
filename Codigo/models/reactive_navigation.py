@@ -29,6 +29,7 @@
 
 # IMPORTS #
 import numpy as np
+from numpy import ndarray
 
 # PyTorch
 import torch
@@ -66,9 +67,6 @@ class ReactiveNavigationModel(Module):
     # Optimizer to use while training the network
     # Adam is used
     _optimizer = Adam
-    # Loss function to use while training the network
-    # Huber loss (an improved approach to MSE) is used
-    _loss = SmoothL1Loss
 
     # Size of the image. Images have a shape of (_image_size x _image_size)
     _image_size: int
@@ -97,6 +95,9 @@ class ReactiveNavigationModel(Module):
         :type weights: str
         """
 
+        # TODO DEBUG
+        # np.warnings.filterwarnings('error', category=np.VisibleDeprecationWarning)
+
         # Construct the parent
         super().__init__()
 
@@ -109,17 +110,43 @@ class ReactiveNavigationModel(Module):
         # Store a handle to the device
         self._device = device_used
 
-        # Create the optimizer and the loss function
-        self._optimizer = Adam(self.parameters(), lr=learning_rate) if learning_rate else Adam(self.parameters())
-        self._loss = SmoothL1Loss()
-
         # Create the CNN structure and, if available, load the weights
         self._prepare_cnn(self._image_size, len(action_list))
+
         if weights is not None:
             checkpoint_dict = torch.load(weights)
             self.load_state_dict(checkpoint_dict["state_dict"])
 
-    # INTERNAL METHODS #
+        # Start the model in eval mode
+        self.eval()
+
+        # Create the optimizer
+        self._optimizer = Adam(self.parameters(), lr=learning_rate) if learning_rate else Adam(self.parameters())
+
+    # STATIC METHODS #
+
+    @staticmethod
+    def _initialize_dicts(action_list):
+        """
+        Generates the appropriate dictionaries from the provided action list
+
+        :param action_list: List of available actions
+        :type action_list: list
+        :return: Tuple containing (in order):
+            Dictionary containing each action (str, key) with its assigned neuron (int, value) /
+            Dictionary containing each neuron (int, key) with its assigned action (str, value)
+        :rtype: tuple
+        """
+
+        act_to_int = {}
+        int_to_act = {}
+
+        # Loop through the list and store it in the dictionaries
+        for i, action in enumerate(action_list):
+            act_to_int[action] = i
+            int_to_act[i] = action
+
+        return act_to_int, int_to_act
 
     @staticmethod
     def _conv_output_size(image_size, conv_kernel_sizes, pool_kernel_sizes):
@@ -160,6 +187,52 @@ class ReactiveNavigationModel(Module):
 
         # Return the final output
         return current_size
+
+    @staticmethod
+    def _image_to_tensor(image, target_device):
+        """
+        Converts a numpy image into a tensor with the appropriate structure
+
+        Numpy arrays have the shape: [height, width, channels]
+        Pytorch tensors have the shape: [batch_size, channels, height, width]
+
+        :param image: Grayscale image in format (image_size, image_size)
+        :type image: ndarray
+        :param target_device: Device where the image will be stored
+        :type target_device: device
+        :return: Tensor of the image in the appropriate scale
+        :rtype: Tensor
+        """
+
+        # Create the tensor from the image
+        image_tensor = torch.as_tensor(image,
+                                       device=target_device)
+
+        # Reorder the channels of the tensor
+        image_tensor = image_tensor.permute(2, 0, 1)
+
+        # Unsqueeze the tensor to gain the extra batch size channel
+        image_tensor = image_tensor.unsqueeze(dim=0)
+
+        return image_tensor
+
+    @staticmethod
+    def _split_into_chunks(initial_list, chunk_size):
+        """
+        Splits a list into chunks of size N
+
+        :param initial_list: List to be chunked
+        :type initial_list: list
+        :param chunk_size: Size of the chunks
+        :type chunk_size: int
+        :return: List containing the chunks (smaller lists of length n)
+        :rtype: list
+        """
+
+        # Use list comprehension to chunk the list
+        return [initial_list[i:i + chunk_size] for i in range(0, len(initial_list), chunk_size)]
+
+    # PRIVATE METHODS #
 
     def _prepare_cnn(self, image_size, action_size):
         """
@@ -222,37 +295,19 @@ class ReactiveNavigationModel(Module):
         self._flatten = Flatten()
 
         # Compute the number of neurons on the next layer
-        # Note that two extra neurons are added, for the extra inputs
-        dense_size = (cnn_size ** 2) * 32 + 2
+        # Note: the output of the CNN is (cnn size x cnn size x number of filters (64))
+        # In addition, 2 extra neurons are added to take into account the scalar values
+        dense_size = (cnn_size ** 2) * 64 + 2
 
-        # Create the final dense output layer
-        # Inputs: dense_size (computed previously)
-        # Outputs: action_size
-        self._dense = Linear(in_features=dense_size,
-                             out_features=action_size)
+        # Create a hidden dense layer
+        # Input: dense_size neurons
+        # Output: 1024 neurons
+        self._hidden = Linear(int(dense_size), 1024)
 
-    @staticmethod
-    def _initialize_dicts(action_list):
-        """
-        Generates the appropriate dictionaries from the provided action list
-
-        :param action_list: List of available actions
-        :type action_list: list
-        :return: Tuple containing (in order):
-            Dictionary containing each action (str, key) with its assigned neuron (int, value) /
-            Dictionary containing each neuron (int, key) with its assigned action (str, value)
-        :rtype: tuple
-        """
-
-        act_to_int = {}
-        int_to_act = {}
-
-        # Loop through the list and store it in the dictionaries
-        for i, action in enumerate(action_list):
-            act_to_int[action] = i
-            int_to_act[i] = action
-
-        return act_to_int, int_to_act
+        # Create a final output layer
+        # Input: 1024 neurons
+        # Output: action_size neurons
+        self._output = Linear(1024, int(action_size))
 
     # PUBLIC METHODS
 
@@ -296,8 +351,12 @@ class ReactiveNavigationModel(Module):
         # Join the two tensor inputs
         joined = torch.cat((image, scalars), dim=1)
 
+        # Pass the tensor through the hidden layer (ReLU)
+        joined = self._hidden(joined)
+        joined = relu(joined)
+
         # Pass the output through the dense layer (linear function) and return it
-        return self._dense(joined)
+        return self._output(joined)
 
     def predict(self, states, chunk_size):
         """
@@ -318,23 +377,29 @@ class ReactiveNavigationModel(Module):
         unwrapped_states = [state.unwrap_state() for state in states]
 
         # Split the list of states into chunks of chunk_size
-        number_of_lists = len(unwrapped_states) / chunk_size
-        chunked_states = np.array_split(unwrapped_states, number_of_lists)
+        number_of_lists = len(unwrapped_states) // chunk_size
+        chunked_states = self._split_into_chunks(unwrapped_states, number_of_lists)
 
         # Store the results of the process in a list
         predicted_values = []
 
         # Process each chunk independently
         for chunk in chunked_states:
-            # Extract the list of images and scalar values, and convert them to tensor format
-            images = torch.tensor([state[0] for state in chunk],
-                                  device=self._device)
-            scalars = torch.tensor([state[1] for state in chunk],
-                                   device=self._device)
+
+            # Extract the list of images and scalars
+            images = [self._image_to_tensor(state[0], self._device) for state in chunk]
+            scalars = [state[1] for state in chunk]
+
+            # Convert both lists to tensors
+            image_tensors = torch.cat(images)
+            scalar_tensors = torch.tensor(scalars,
+                                          dtype=torch.float,
+                                          device=self._device)
 
             # Process and add the Q values (without gradient)
             with torch.no_grad():
-                predicted_q_values = self.__call__(images, scalars)
+                predicted_q_values = self.__call__(image_tensors,
+                                                   scalar_tensors)
                 for q_values in predicted_q_values:
                     predicted_values.append(q_values.tolist())
 
@@ -355,11 +420,14 @@ class ReactiveNavigationModel(Module):
         state_image, state_scalars = state.unwrap_state()
 
         # Prepare tensors for both image and scalar values
-        image_tensor = torch.as_tensor([state_image],
-                                       device=self._device)
-
-        scalar_tensor = torch.tensor([state_scalars],
+        image_tensor = self._image_to_tensor(state_image,
+                                             self._device)
+        scalar_tensor = torch.tensor(state_scalars,
                                      device=self._device)
+
+        # Image tensor already has 4 dimensions
+        # Unsqueeze the scalar tensor to create the extra batch size dimension
+        scalar_tensor = scalar_tensor.unsqueeze(0)
 
         # Obtain the prediction by calling the module
         # Note that this must be done in eval mode and without gradients
@@ -368,19 +436,26 @@ class ReactiveNavigationModel(Module):
         with torch.no_grad():
             predicted_q_values = self.__call__(image_tensor, scalar_tensor)
 
-        # Return the best action
-        # (max returns a tuple (value, index))
+        # Compute the actual action index
+        # (max returns a tensor (value, index))
         best_action_index = torch.max(predicted_q_values, 1)[1]
+        # (item returns the actual value contained in a tensor)
+        best_action_index = best_action_index.item()
         return self._int_to_action_dict[best_action_index]
 
-    def fit_model(self, values, predictions, chunk_size):
+    def fit_model(self, states, expected_q_values, chunk_size):
         """
-        Given a list of values and their actual predictions, optimize the CNN weights
+        Given a list of input states for the CNNs (images and scalars) and their actual values,
+        does a pass through the network to fit the weights
 
-        :param values: List of obtained Q-Values for each pair state-action
-        :type values: list
-        :param predictions: List of predicted Q-Values for each pair state-action
-        :type predictions: list
+        The following hyperparameters are used:
+            * Optimizer: Adam
+            * Loss: Huber loss (Smooth L1 loss)
+
+        :param states: List of states (images and scalar values) to be passed through the network
+        :type states: list
+        :param expected_q_values: List of expected Q values for each pair of (image, scalars)
+        :type expected_q_values: list
         :param chunk_size: The batch of states is divided into chunks of this size
         :type chunk_size: int
         """
@@ -388,25 +463,40 @@ class ReactiveNavigationModel(Module):
         # The fitting must be done in train mode
         self.train()
 
-        # Split the list values and predictions into chunks of chunk_size
-        number_of_lists = len(values) / chunk_size
+        # Prepare the list of states using the network format
+        unwrapped_states = [state.unwrap_state() for state in states]
 
-        chunked_values = np.array_split(values, number_of_lists)
-        chunked_predictions = np.array_split(predictions, number_of_lists)
+        # Split the list values and predictions into chunks of chunk_size
+        number_of_lists = len(unwrapped_states) // chunk_size
+
+        chunked_states = self._split_into_chunks(unwrapped_states, number_of_lists)
+        chunked_q_values = self._split_into_chunks(expected_q_values, number_of_lists)
 
         # Process each chunk independently
-        for chunk_values, chunk_predictions in zip(chunked_values, chunked_predictions):
+        for chunk_states, chunk_q_values in zip(chunked_states,
+                                                chunked_q_values):
 
-            # Convert the list of obtained and predicted values to Tensor format
-            obtained_values = torch.tensor(chunk_values,
-                                           device=self._device)
-            predicted_values = torch.tensor(chunk_predictions,
-                                            device=self._device)
+            # Extract the list of images and scalars
+            images = [self._image_to_tensor(state[0], self._device) for state in chunk_states]
+            scalars = [state[1] for state in chunk_states]
 
-            # Compute the loss
-            loss = self._loss(obtained_values, predicted_values)
+            # Convert both list to tensors
+            image_tensors = torch.cat(images)
+            scalar_tensors = torch.tensor(scalars,
+                                          dtype=torch.float,
+                                          device=self._device)
 
-            # Optimize the model
+            # Convert the list of expected values to a tensor
+            expected_q_tensor = torch.tensor(chunk_q_values,
+                                             dtype=torch.float,
+                                             device=self._device)
+
+            # Instantiate and compute the loss using the model
+            criterion = SmoothL1Loss()
+            loss = criterion(self.__call__(image_tensors, scalar_tensors),
+                             expected_q_tensor)
+
+            # Optimize the model using the computed loss
             self._optimizer.zero_grad()
-            loss.backwards()
+            loss.backward()
             self._optimizer.step()

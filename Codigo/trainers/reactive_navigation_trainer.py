@@ -219,6 +219,11 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         """
 
         # Creates the device, using CUDA if possible
+        if torch.cuda.is_available():
+            print("Using CUDA for training")
+        else:
+            print("CUDA unavailable, using CPU for training")
+        
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         # Initialize the neural networks
@@ -303,9 +308,6 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         current_state_values = self._q_network.predict(sampled_initial_states, self._training_batch_size)
         next_state_predictions = self._target_network.predict(sampled_next_states, self._training_batch_size)
 
-        # Store the updated values in a different list
-        updated_current_state_values = current_state_values.copy()
-
         # Compute the updated Q values
         for index in range(len(sampled_experiences)):
 
@@ -316,17 +318,17 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             if sampled_finals[index]:
                 # Final experience: the Q Value of the state is simply the reward / penalty
                 # q_value(t) = reward
-                updated_current_state_values[index][action_index] = sampled_rewards[index]
+                current_state_values[index][action_index] = sampled_rewards[index]
             else:
                 # Not a final experience: the Q value is based on the obtained reward
                 # and the max Q value for the next state
                 # q_value(t) = reward + gamma * next_state_best_q
                 new_value = sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])
-                updated_current_state_values[index][action_index] = new_value
+                current_state_values[index][action_index] = new_value
 
         # With the updated predictions, fit the Q network
-        self._q_network.fit_model(current_state_values,
-                                  updated_current_state_values,
+        self._q_network.fit_model(sampled_initial_states,
+                                  current_state_values,
                                   self._training_batch_size)
 
     def _train_network_prioritized(self):
@@ -357,9 +359,6 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         # and the Q values for the next state (using the target network)
         current_state_values = self._q_network.predict(sampled_initial_states, self._training_batch_size)
         next_state_predictions = self._target_network.predict(sampled_next_states, self._training_batch_size)
-
-        # Store the updated values in a different list
-        updated_current_state_values = current_state_values.copy()
 
         # WEIGHT COMPUTING
 
@@ -393,14 +392,14 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                 # Final experience: the Q Value of the state is simply the reward / penalty
                 # q_value(t) = reward * weight
                 new_q = sampled_rewards[index] * weights[sampled_ids[index]]
-                updated_current_state_values[index][action_index] = new_q
+                current_state_values[index][action_index] = new_q
             else:
                 # Not a final experience: the Q value is based on the obtained reward
                 # and the max Q value for the next state
                 # q_value(t) = (reward + gamma * next_state_best_q) * weight
                 new_q = (sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])) * \
                         weights[sampled_ids[index]]
-                updated_current_state_values[index][action_index] = new_q
+                current_state_values[index][action_index] = new_q
 
             # Compute and append the error of the experience
             # The error is the quadratic error between the new Q value and the actually obtained one
@@ -409,8 +408,8 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             error_list.append(error)
 
         # With the updated predictions, fit the Q network and update the errors in the experience replay
-        self._q_network.fit_model(current_state_values,
-                                  updated_current_state_values,
+        self._q_network.fit_model(sampled_initial_states,
+                                  current_state_values,
                                   self._training_batch_size)
         self._experience_replay.update_errors(error_list, sampled_ids)
 
