@@ -239,6 +239,31 @@ class ReactiveNavigationModel(Module):
         # Use list comprehension to chunk the list
         return [initial_list[i:i + chunk_size] for i in range(0, len(initial_list), chunk_size)]
 
+    @staticmethod
+    def _clean_image_input(input_image):
+        """
+        Clean the input image to remove graphical glitches
+
+        Habitat-Lab sometimes has wrong renderings (graphical glitches)
+        that are seen as depth 0.0 (pitch black, closest to the camera)
+        by the depth camera
+
+        This method converts those 0.0 values into 1.0 values (pitch white,
+        furthest from the camera)
+
+        :param input_image: Image received by the depth camera
+        :type input_image: ndarray
+        :return: Cleaned image without pitch black (0.0) values
+        :rtype: ndarray
+        """
+
+        # Since the image matrix is made of float values,
+        # check for values smaller than 0.001 instead (floats can have inaccuracies)
+        processed_image = input_image
+        processed_image[processed_image <= 0.001] = 1.0
+
+        return processed_image
+
     # PRIVATE METHODS #
 
     def _prepare_cnn(self, image_size, action_size):
@@ -464,7 +489,7 @@ class ReactiveNavigationModel(Module):
         for chunk in chunked_states:
 
             # Extract the list of images and scalars
-            images = [self._image_to_tensor(state[0], self._device) for state in chunk]
+            images = [self._image_to_tensor(self._clean_image_input(state[0]), self._device) for state in chunk]
             scalars = [state[1] for state in chunk]
 
             # Convert both lists to tensors
@@ -497,7 +522,7 @@ class ReactiveNavigationModel(Module):
         state_image, state_scalars = state.unwrap_state()
 
         # Prepare tensors for both image and scalar values
-        image_tensor = self._image_to_tensor(state_image,
+        image_tensor = self._image_to_tensor(self._clean_image_input(state_image),
                                              self._device)
         scalar_tensor = torch.tensor(state_scalars,
                                      device=self._device)
@@ -554,7 +579,7 @@ class ReactiveNavigationModel(Module):
                                                 chunked_q_values):
 
             # Extract the list of images and scalars
-            images = [self._image_to_tensor(state[0], self._device) for state in chunk_states]
+            images = [self._image_to_tensor(self._clean_image_input(state[0]), self._device) for state in chunk_states]
             scalars = [state[1] for state in chunk_states]
 
             # Convert both list to tensors
