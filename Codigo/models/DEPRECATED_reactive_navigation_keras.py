@@ -1,3 +1,7 @@
+# NOTE - THIS MODEL IS DEPRECATED AND NOT UP TO DATE
+# This file is kept only to show the work done and discarded with Tensorflow/Keras
+# Please use ReactiveNavigationModel instead
+
 # REACTIVE NAVIGATION - MODEL
 # Developed by: Luna Jimenez Fernandez
 #

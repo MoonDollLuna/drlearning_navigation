@@ -68,9 +68,13 @@ class ReactiveNavigationEnv(NavRLEnv):
     _reward_method: str
     # Approximate distance (in simulator units) at which an obstacle is when exactly at _obstacle_threshold distance
     _obstacle_distance: float
+
     # Obstacle mercy steps. The agent will ignore obstacle checks for this amount of steps
     # This solves the problem of agents spawning right next to obstacles immediately ending episodes
     _obstacle_mercy_steps: int
+    # Counter for the mercy steps
+    _mercy_counter: int
+
     # Positive gain applied to the attractive field (used to increase its weight)
     _attraction_gain: float
     # Positive gain applied to the repulsive field (used to increase its weight)
@@ -119,8 +123,6 @@ class ReactiveNavigationEnv(NavRLEnv):
         self._reward_method = _reward_config.reward_method
         self._obstacle_distance = _reward_config.obstacle_distance
         self._obstacle_mercy_steps = _reward_config.obstacle_mercy_steps
-        # Obstacle mercy steps is also used as a counter
-
         self._attraction_gain = _reward_config.attraction_gain
         self._repulsive_gain = _reward_config.repulsive_gain
         self._repulsive_limit = _reward_config.repulsive_limit
@@ -376,7 +378,7 @@ class ReactiveNavigationEnv(NavRLEnv):
         """
 
         # Check if the mercy steps are still in effect
-        if self._obstacle_mercy_steps > 0:
+        if self._mercy_counter > 0:
             # Mercy active: collisions are not checked
             return False
 
@@ -388,6 +390,7 @@ class ReactiveNavigationEnv(NavRLEnv):
             closest_distance = np.min(depth_view[np.nonzero(depth_view)])
         except ValueError:
             # Sanity check: if all values are 0, assume a collision
+            print("SANITY CHECK")
             return True
 
         # Convert the distance from [0, 1] to actual distance
@@ -408,6 +411,9 @@ class ReactiveNavigationEnv(NavRLEnv):
         :rtype: Observations
         """
 
+        # Reset the mercy counter
+        self._mercy_counter = self._obstacle_mercy_steps
+
         # Set up everything (provided by the superclass NavRLEnv)
         # In addition, get the initial observations
         initial_observations = super().reset()
@@ -422,16 +428,18 @@ class ReactiveNavigationEnv(NavRLEnv):
         """
         Steps through the environment
 
-        Overridden method to decrease the mercy counter after each step
+        Overridden method to decrease the mercy counter AFTER each step
         """
 
-        # Decrease the mercy counter (and ensure it doesn't go below 0)
-        self._obstacle_mercy_steps -= 1
-        if self._obstacle_mercy_steps < 0:
-            self._obstacle_mercy_steps = 0
-
         # Perform the normal step process
-        return super().step(*args, **kwargs)
+        step_results = super().step(*args, **kwargs)
+
+        # Decrease the mercy counter (and ensure it doesn't go below 0)
+        self._mercy_counter -= 1
+        if self._mercy_counter < 0:
+            self._mercy_counter = 0
+
+        return step_results
 
     def get_done(self, observations):
         """

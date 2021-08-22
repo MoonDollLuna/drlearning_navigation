@@ -5,21 +5,31 @@
 # reactive navigation trainer (for Reinforcement Learning) and the
 # reactive navigation agent (for evaluation using a Benchmark)
 #
-# The model consists of a CNN with the following structure:
+# The model consists of a hybrid Neural Network using the following structure:
+# CNN:
+#   * Input: One grayscale image of size (image_size x image_size)
+#   * Layer of Convolution (16 filters, kernel size 5) / ReLU / Max Pooling (pool size 3)
+#   * Layer of Convolution (32 filters, kernel size 3) / ReLU / Max Pooling (pool size 3)
+#   * Layer of Convolution (16 filters, kernel size 3) / ReLU / Max Pooling (pool size 2)
+#   * Hidden layer of 64 neurons (ReLU)
+#   * Output layer of 3 neurons (Linear)
+# MLP:
+#   * Input: 2 scalar values (distance and angle to the goal)
+#   * Hidden layer of 10 neurons (ReLU)
+#   * Hidden layer of 10 neurons (ReLU)
+#   * Output: 3 neurons (Linear)
 #
-#     * Input of the image (in grayscale, with shape image_size x image_size)
-#     * Three layers of Convolution (16 filters, kernel sizes 5/3/3) -
-#                       Pooling (sizes 3/3/2)
-#     * A Merge layer where the result of the previous convolution is joined with
-#       the scalar inputs (Distance and Angle to the goal)
-#     * Two fully connected layers (ReLU) of 256 neurons
-#     * Output neurons (Linear) equal to the number of actions
+# HYBRID:
+#   * Input: 6 neurons (3 from the CNN, 3 from the MLP)
+#   * Hidden layer of 32 neurons (ReLU)
+#   * Hidden layer of 32 neurons (ReLU)
+#   * Output: action_size neurons (Linear)
 #
 # This structure has been developed ad-hoc, based on AlexNet
 #
-# The inputs of the CNN are as follows:
-#   * A 256x256 (shape can be specified) grayscale image (obtained from the Depth Camera)
-#   * A pair of scalar values, Distance and Angle to the goal (obtained from the GPS)
+# The inputs of the hybrid network are as follows
+#   * CNN: A 256x256 (shape can be specified) grayscale image (obtained from the Depth Camera)
+#   * MLP: A pair of scalar values, Distance and Angle to the goal (obtained from the GPS)
 #
 # The output of the CNN is four neurons, each representing the Q-Value of a pair of state-action:
 #   * STOP
@@ -94,9 +104,6 @@ class ReactiveNavigationModel(Module):
         :param weights: (OPTIONAL) Path to the file containing the pre-trained weights of the CNN
         :type weights: str
         """
-
-        # TODO DEBUG
-        # np.warnings.filterwarnings('error', category=np.VisibleDeprecationWarning)
 
         # Construct the parent
         super().__init__()
@@ -236,21 +243,37 @@ class ReactiveNavigationModel(Module):
 
     def _prepare_cnn(self, image_size, action_size):
         """
-        Initializes the Convolutional Neural Network (CNN) used by the model.
+        Initializes hybrid neural network (CNN + MLP) used by the model.
 
-        The CNN has the following structure (in order):
-            * Input of the image (in grayscale, with shape image_size x image_size)
-            * Three layers of Convolution (16 filters, kernel sizes 5/3/3) - Pooling (sizes 3/3/2)
-            * A Merge layer where the result of the previous convolution is joined with
-              the scalar inputs (Distance and Angle to the goal)
-            * A connected layer (ReLU)
-            * action_size neurons (Linear)
+        The hybrid network has the following structure:
 
-        The CNN will use the following hyperparameters:
+        CNN:
+            * Input: One grayscale image of size (image_size x image_size)
+            * Layer of Convolution (16 filters, kernel size 5) / ReLU / Max Pooling (pool size 3)
+            * Layer of Convolution (32 filters, kernel size 3) / ReLU / Max Pooling (pool size 3)
+            * Layer of Convolution (16 filters, kernel size 3) / ReLU / Max Pooling (pool size 2)
+            * Hidden layer of 64 neurons (ReLU)
+            * Output layer of 3 neurons (Linear)
+
+        MLP:
+            * Input: 2 scalar values (distance and angle to the goal)
+            * Hidden layer of 10 neurons (ReLU)
+            * Hidden layer of 10 neurons (ReLU)
+            * Output: 3 neurons (Linear)
+
+        HYBRID:
+            * Input: 6 neurons (3 from the CNN, 3 from the MLP)
+            * Hidden layer of 32 neurons (ReLU)
+            * Hidden layer of 32 neurons (ReLU)
+            * Output: action_size neurons (Linear)
+
+        This network structure has been developed ad-hoc for this task
+
+        The network will use the following hyperparameters:
             * Optimizer: Adam
             * Error: Mean Squared Error
 
-        Note that, since the CNN will be used for reinforcement learning, no dropout will be used
+        Note that, since the network will be used for reinforcement learning, no dropout will be used
 
         :param image_size: Size of the image. The shape of the image will be (image_size x image_size)
         :type image_size: int
@@ -258,56 +281,90 @@ class ReactiveNavigationModel(Module):
         :type action_size: int
         """
 
+        # CONVOLUTIONAL NEURAL NETWORK #
+
         # Create the first layer of convolution / pooling
         # Input: one image of 1 layer
         # Output: 16 filters of kernel size 5
         # Pooling: kernel size 3
-        self._conv1 = Conv2d(in_channels=1,
-                             out_channels=16,
-                             kernel_size=5)
-        self._pool1 = MaxPool2d(kernel_size=3)
+        self._cnn_conv1 = Conv2d(in_channels=1,
+                                 out_channels=16,
+                                 kernel_size=5)
+        self._cnn_pool1 = MaxPool2d(kernel_size=3)
 
         # Create the second layer of convolution / pooling
         # Input: 16 filters
         # Output: 32 filters of kernel size 3
         # Pooling: kernel size 3
-        self._conv2 = Conv2d(in_channels=16,
-                             out_channels=32,
-                             kernel_size=3)
-        self._pool2 = MaxPool2d(kernel_size=3)
+        self._cnn_conv2 = Conv2d(in_channels=3,
+                                 out_channels=32,
+                                 kernel_size=3)
+        self._cnn_pool2 = MaxPool2d(kernel_size=3)
 
         # Create the third layer of convolution / pooling
         # Input: 32 filters
-        # Output: 64 filters of kernel size 3
+        # Output: 16 filters of kernel size 3
         # Pooling: kernel size 2
-        self._conv3 = Conv2d(in_channels=32,
-                             out_channels=64,
-                             kernel_size=3)
-        self._pool3 = MaxPool2d(kernel_size=2)
+        self._cnn_conv3 = Conv2d(in_channels=32,
+                                 out_channels=16,
+                                 kernel_size=3)
+        self._cnn_pool3 = MaxPool2d(kernel_size=2)
+
+        # Create a flatten layer, to flatten the output for the concatenation
+        self._cnn_flatten = Flatten()
 
         # Find the size of the CNN layers output
         cnn_size = self._conv_output_size(image_size,
                                           [5, 3, 3],
                                           [3, 3, 2])
+        # CNN output actual size is cnn_size (side of the output) squared,
+        # multiplied by the number of filters
+        cnn_size = (cnn_size ** 2) * 16
 
-        # Create a flatten layer, to flatten the output
-        # for the dense layer
-        self._flatten = Flatten()
+        # Create a hidden layer (ReLU)
+        # Input: cnn_size neurons
+        # Output: 64 neurons
+        self._cnn_hidden = Linear(cnn_size, 64)
 
-        # Compute the number of neurons on the next layer
-        # Note: the output of the CNN is (cnn size x cnn size x number of filters (64))
-        # In addition, 2 extra neurons are added to take into account the scalar values
-        dense_size = (cnn_size ** 2) * 64 + 2
+        # Create an output layer (Linear)
+        # Input: 64 neurons
+        # Output: 3 neurons
+        self._cnn_output = Linear(64, 3)
 
-        # Create a hidden dense layer
-        # Input: dense_size neurons
-        # Output: 1024 neurons
-        self._hidden = Linear(int(dense_size), 1024)
+        # MULTI LAYERED PERCEPTRON #
+
+        # Create the first hidden dense layer (ReLU)
+        # Input: 2 scalar values
+        # Output: 10 neurons - (nn_input (2 values) + nn_output (1 neuron)) * 2
+        self._mlp_hidden1 = Linear(2, 10)
+
+        # Create the second hidden dense layer (ReLU)
+        # Input: 10 neurons
+        # Output: 10 neurons
+        self._mlp_hidden2 = Linear(10, 10)
+
+        # Create the output layer (Linear)
+        # Input: 10 neurons
+        # Output: 3 neurons
+        self._mlp_output = Linear(10, 3)
+
+        # MERGE #
+        # Output concatenation is done in the Forward method
+
+        # Create the first hidden dense layer (ReLU)
+        # Input: 6 neurons
+        # Output: 32
+        self._merged_hidden1 = Linear(6, 32)
+
+        # Create the second hidden dense layer (ReLU)
+        # Input: 32 neurons
+        # Output: 32 neurons
+        self._merged_hidden2 = Linear(32, 32)
 
         # Create a final output layer
-        # Input: 1024 neurons
+        # Input: 32 neurons
         # Output: action_size neurons
-        self._output = Linear(1024, int(action_size))
+        self._merged_output = Linear(32, int(action_size))
 
     # PUBLIC METHODS
 
@@ -327,36 +384,56 @@ class ReactiveNavigationModel(Module):
         image = image.to(self._device)
         scalars = scalars.to(self._device)
 
-        # First layer of CNN:
+        # CNN
+
+        # First layer of convolution:
         # CNN -> ReLU -> Pooling
-        image = self._conv1(image)
-        image = relu(image)
+        image = relu(self._conv1(image))
         image = self._pool1(image)
 
-        # Second layer of CNN:
+        # Second layer of convolution:
         # CNN -> ReLU -> Pooling
-        image = self._conv2(image)
-        image = relu(image)
+        image = relu(self._conv2(image))
         image = self._pool2(image)
 
-        # Third layer of CNN:
+        # Third layer of convolution:
         # CNN -> ReLU -> Pooling
-        image = self._conv3(image)
-        image = relu(image)
+        image = relu(self._conv3(image))
         image = self._pool3(image)
 
         # Flatten the CNN output
         image = self._flatten(image)
 
-        # Join the two tensor inputs
-        joined = torch.cat((image, scalars), dim=1)
+        # Hidden layer (ReLU)
+        image = relu(self._cnn_hidden(image))
 
-        # Pass the tensor through the hidden layer (ReLU)
-        joined = self._hidden(joined)
-        joined = relu(joined)
+        # Output layer (linear)
+        image = self._cnn_output(image)
 
-        # Pass the output through the dense layer (linear function) and return it
-        return self._output(joined)
+        # MLP
+
+        # First hidden layer (ReLU)
+        scalars = relu(self._mlp_hidden1(scalars))
+
+        # Second hidden layer (ReLU)
+        scalars = relu(self._mlp_hidden2(scalars))
+
+        # Output layer (linear)
+        scalars = self._mlp_output(scalars)
+
+        # HYBRID
+
+        # Join the output of the CNN (3 neurons) and the MLP (3 neurons)
+        hybrid = torch.cat((image, scalars), dim=1)
+
+        # Hidden layer 1 (ReLU)
+        hybrid = relu(self._merged_hidden1(hybrid))
+
+        # Hidden layer 2 (ReLU)
+        hybrid = relu(self._merged_hidden2(hybrid))
+
+        # Final output (linear)
+        return self._merged_output(hybrid)
 
     def predict(self, states, chunk_size):
         """
