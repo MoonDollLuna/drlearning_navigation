@@ -68,6 +68,9 @@ class ReactiveNavigationEnv(NavRLEnv):
     _reward_method: str
     # Approximate distance (in simulator units) at which an obstacle is when exactly at _obstacle_threshold distance
     _obstacle_distance: float
+    # Obstacle mercy steps. The agent will ignore obstacle checks for this amount of steps
+    # This solves the problem of agents spawning right next to obstacles immediately ending episodes
+    _obstacle_mercy_steps: int
     # Positive gain applied to the attractive field (used to increase its weight)
     _attraction_gain: float
     # Positive gain applied to the repulsive field (used to increase its weight)
@@ -115,6 +118,9 @@ class ReactiveNavigationEnv(NavRLEnv):
 
         self._reward_method = _reward_config.reward_method
         self._obstacle_distance = _reward_config.obstacle_distance
+        self._obstacle_mercy_steps = _reward_config.obstacle_mercy_steps
+        # Obstacle mercy steps is also used as a counter
+
         self._attraction_gain = _reward_config.attraction_gain
         self._repulsive_gain = _reward_config.repulsive_gain
         self._repulsive_limit = _reward_config.repulsive_limit
@@ -360,17 +366,29 @@ class ReactiveNavigationEnv(NavRLEnv):
 
         If the agent collides with an obstacle, the episode is immediately finished
 
+        Episodes have a "mercy period": Obstacle collisions are ignored for the obstacle_mercy
+        steps
+
         :param observations: Observations from the environment taken by the agent
         :type observations: Observations
         :return: TRUE if the agent is colliding, false otherwise
         :rtype: bool
         """
 
+        # Check if the mercy steps are still in effect
+        if self._obstacle_mercy_steps > 0:
+            # Mercy active: collisions are not checked
+            return False
+
         # Extract the depth view from the observations
         depth_view = observations["depth"]
 
         # Find the closest non-zero distance in the image
-        closest_distance = np.min(depth_view[np.nonzero(depth_view)])
+        try:
+            closest_distance = np.min(depth_view[np.nonzero(depth_view)])
+        except ValueError:
+            # Sanity check: if all values are 0, assume a collision
+            return True
 
         # Convert the distance from [0, 1] to actual distance
         distance = (closest_distance * self._obstacle_distance) / self._obstacle_threshold
@@ -399,6 +417,21 @@ class ReactiveNavigationEnv(NavRLEnv):
                                                              initial_observations["depth"])
 
         return initial_observations
+
+    def step(self, *args, **kwargs):
+        """
+        Steps through the environment
+
+        Overridden method to decrease the mercy counter after each step
+        """
+
+        # Decrease the mercy counter (and ensure it doesn't go below 0)
+        self._obstacle_mercy_steps -= 1
+        if self._obstacle_mercy_steps < 0:
+            self._obstacle_mercy_steps = 0
+
+        # Perform the normal step process
+        return super().step(*args, **kwargs)
 
     def get_done(self, observations):
         """

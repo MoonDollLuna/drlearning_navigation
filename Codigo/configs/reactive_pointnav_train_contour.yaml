@@ -63,10 +63,10 @@ RL:
     # Maximum size of the Experience Replay (once full, older experiences will be removed)
     er_size: 20000
     # Batch size when sampling the Experience Replay
-    batch_size: 32
+    batch_size: 64
     # Batches of experiences are split into chunks of this size during training
     # Reduces training speed, but improves memory usage
-    training_batch_size: 16
+    training_batch_size: 32
     # Gamma value (learning rate of DQL)
     gamma: 0.99
     # Epsilon value (initial chance to perform a random action due to exploration-exploitation)
@@ -104,8 +104,11 @@ RL:
     #	- column: Column based approach, dividing the image into smaller columns and computing each column as obstacle / no obstacle.
     reward_method: contour
     # Approximate distance (in simulator units) at which obstacles are when they are at the threshold.
-    # Can also be seen as the maximum distance the camera will detect obstacles
+    # Can also be understood as the maximum distance the camera will detect obstacles
     obstacle_distance: 2
+    # Obstacle mercy steps. The agent will ignore obstacle checks for this amount of steps
+    # This solves the problem of agents spawning right next to obstacles, immediately ending episodes
+    obstacle_mercy_steps: 10
     # Positive gain applied to the attractive field, to increase it
     attraction_gain: 10
     # Positive gain applied to the repulsive field, to increase it
