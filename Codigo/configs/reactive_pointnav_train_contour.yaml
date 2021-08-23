@@ -110,7 +110,7 @@ RL:
     # This solves the problem of agents spawning right next to obstacles, immediately ending episodes
     obstacle_mercy_steps: 5
     # Positive gain applied to the attractive field, to increase it
-    attraction_gain: 15
+    attraction_gain: 10
     # Positive gain applied to the repulsive field, to increase it
     repulsive_gain: 2
     # Value used to limit the repulsive field's maximum value

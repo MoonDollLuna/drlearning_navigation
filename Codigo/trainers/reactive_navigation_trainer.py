@@ -279,7 +279,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                           training_length,
                           self._start_time,
                           self._silent,
-                          epoch_parameters=["average_reward"],
+                          episode_parameters=["average_reward"],
                           reward_method=self._rewards_method), device
 
     def _train_network_standard(self):
@@ -515,6 +515,9 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         # Keep track of the starting training time
         starting_time = time.time()
 
+        # Generate a timestamp for the checkpoint
+        timestamp = datetime.datetime.fromtimestamp(self._start_time).strftime('%Y-%m-%d_%H:%M:%S')
+
         # Loop while the training process is not finished yet
         while not self.is_done():
 
@@ -526,6 +529,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             train_time = time.time()
             actions_taken = 0
             average_reward = 0
+            initial_distance = observations["pointgoal_with_gps_compass"][0]
 
             # Act until the episode is finished
             # Note that the agent is trained after each step
@@ -599,23 +603,24 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             # Clamp the current epsilon to the minimum
             if current_epsilon < self._min_epsilon:
                 current_epsilon = self._min_epsilon
+            # DEBUG
+            print("CURRENT EPSILON: {}".format(current_epsilon))
+
             # If it is necessary, store a checkpoint
             if self.should_checkpoint():
-
-                # Generate a timestamp for the checkpoint
-                timestamp = datetime.datetime.fromtimestamp(self._start_time).strftime('%Y-%m-%d_%H:%M:%S')
 
                 # Store the checkpoint and increase the counter
                 self.save_checkpoint("reactive_weight_{}_{}".format(timestamp, self._checkpoint_count + 1))
                 self._checkpoint_count += 1
 
                 # Print a message to notify it
-                print("Checkpoint written")
+                print("Checkpoint {} written".format(self._checkpoint_count))
 
             # Track the necessary info in the log manager
             log_manager.write_episode(self.num_updates_done + 1,
                                       train_time,
                                       actions_taken,
+                                      initial_distance,
                                       observations["pointgoal_with_gps_compass"][0],
                                       observations["pointgoal_with_gps_compass"][0] < self._goal_distance,
                                       extra_parameters=[average_reward/actions_taken])
@@ -625,6 +630,9 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
         # Compute the final training time
         starting_time = time.time() - starting_time
+
+        # Store a final checkpoint
+        self.save_checkpoint("reactive_weight_{}_final".format(timestamp))
 
         # After the training process is over, close the environment and the log manager
         log_manager.close(starting_time)

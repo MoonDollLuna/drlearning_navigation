@@ -9,13 +9,13 @@
 #   * Episode ID
 #   * Time taken to finish the episode
 #   * Actions taken to finish the episode
+#   * Initial distance to the goal
 #   * Final distance to the goal
 #   * Whether the episode was successful or not
 #
 # In addition, Reactive Navigation also tracks the following metrics:
 #   * Average reward per episode
 #
-# These metrics can be tracked for both training and evaluation
 
 
 # IMPORTS #
@@ -26,7 +26,6 @@ from typing import TextIO, Any
 
 
 # CLASS DEFINITION #
-# TODO ADAPTA EL LOG MANAGER PARA EVAL TAMBIEN
 
 class LogManager:
     """
@@ -39,8 +38,12 @@ class LogManager:
         * Episode ID
         * Time taken to finish the episode
         * Actions taken to finish the episode
-        * Distance to the goal
+        * Initial distance to the goal
+        * Final distance to the goal
+        * Distance "shortened" by the agent (how closer the agent is to the goal)
         * Whether the episode was a success or not
+
+    In addition, other parameters may be specified
     """
 
     # ATTRIBUTES #
@@ -60,7 +63,7 @@ class LogManager:
     # CONSTRUCTOR #
 
     def __init__(self, file_path, agent_type, dataset, training_length,
-                 timestamp, silent=False, epoch_parameters=None, **header_parameters):
+                 timestamp, silent=False, episode_parameters=None, **header_parameters):
         """
         A basic instance of the LogManager class.
 
@@ -77,8 +80,8 @@ class LogManager:
         :type timestamp: float
         :param silent: If TRUE, logs will not be output to the screen
         :type silent: bool
-        :param epoch_parameters: (OPTIONAL) List of extra parameters to be included in each episode
-        :type epoch_parameters: list
+        :param episode_parameters: (OPTIONAL) List of extra parameters to be included in each episode
+        :type episode_parameters: list
         :param header_parameters: (OPTIONAL) Extra parameters to be specified on the header of the file
         :type header_parameters: str
         """
@@ -97,11 +100,13 @@ class LogManager:
         self._silent = silent
 
         # Store the additional parameters
-        self._extra_parameters = epoch_parameters
+        self._extra_parameters = episode_parameters
 
         # Write the header of the log file and the column names
         self._write_header(agent_type, dataset, training_length, date, **header_parameters)
-        self._write_column_titles(["episode", "time_taken", "actions_taken", "goal_distance", "successful"],
+        self._write_column_titles(["episode", "time_taken", "actions_taken",
+                                   "initial_goal_distance", "final_goal_distance",
+                                   "distance_travelled", "successful"],
                                   self._extra_parameters)
 
     # PRIVATE METHODS #
@@ -185,13 +190,17 @@ class LogManager:
         self._csv_writer.writerow(columns)
 
     # PUBLIC METHODS #
-    def write_episode(self, episode_id, time_taken, actions_taken, goal_distance, successful, extra_parameters=None):
+    def write_episode(self, episode_id, time_taken, actions_taken,
+                      initial_goal_distance, final_goal_distance,
+                      successful, extra_parameters=None):
         """
         Writes an episode using the following parameters:
             * Episode ID
             * Time taken
             * Actions taken
-            * Goal distance
+            * Initial distance to the goal
+            * Final distance to the goal
+            * Distance traversed by the agent
             * Successful
 
         In addition, will take a list with extra parameters that must be added in the same order they were declared
@@ -203,8 +212,10 @@ class LogManager:
         :type time_taken: float
         :param actions_taken: Actions needed to complete the current episode
         :type actions_taken: int
-        :param goal_distance: Distance to the goal when the episode was finished
-        :type goal_distance: float
+        :param initial_goal_distance: Distance to the goal at the start of the episode
+        :type initial_goal_distance: float
+        :param final_goal_distance: Distance to the goal when the episode was finished
+        :type final_goal_distance: float
         :param successful: Flag to specify whether the episode was successful (True) or not (False)
         :type successful: bool
         :param extra_parameters: (OPTIONAL) List containing the extra parameters specified during construction
@@ -215,19 +226,27 @@ class LogManager:
         assert len(extra_parameters) == len(self._extra_parameters), \
             "Number of additional parameters must be equal to the parameters declared when creating this manager"
 
+        # Compute the distance travelled towards the goal by the agent
+        travelled_distance = initial_goal_distance - final_goal_distance
+
         # Create and write the list of parameters to the file
-        parameter_list = [episode_id, time_taken, actions_taken, goal_distance, successful] + extra_parameters
+        parameter_list = [episode_id, time_taken, actions_taken,
+                          initial_goal_distance, final_goal_distance,
+                          travelled_distance, successful] + extra_parameters
         self._csv_writer.writerow(parameter_list)
 
         # If the log is not silent, print the parameters to the screen
         if not self._silent:
             # Create the message
             message = "Episode: {} / Time taken: {}s / Actions taken: {} / " \
-                      "Distance to the goal: {} / Successful: {}".format(episode_id,
-                                                                         time_taken,
-                                                                         actions_taken,
-                                                                         goal_distance,
-                                                                         successful)
+                      "Initial distance to the goal: {} / Final distance to the goal: {} / " \
+                      "Distance travelled towards the goal: {} / Successful: {}".format(episode_id,
+                                                                                        time_taken,
+                                                                                        actions_taken,
+                                                                                        initial_goal_distance,
+                                                                                        final_goal_distance,
+                                                                                        travelled_distance,
+                                                                                        successful)
             # Append the additional parameters
             for title, value in zip(self._extra_parameters, extra_parameters):
                 message = message + " / {}: {}".format(title, value)
@@ -235,7 +254,7 @@ class LogManager:
             # Print the message
             print(message)
 
-        # Flush the file every 100 episodes, to keep progress
+        # Flush the file every 100 episodes, to keep progress in case of an error
         if episode_id % 100 == 0:
             self._file.flush()
 

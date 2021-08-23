@@ -271,7 +271,7 @@ class ReactiveNavigationTrainerKeras(BaseRLTrainer):
                           training_length,
                           self._start_time,
                           self._silent,
-                          epoch_parameters=["average_reward"],
+                          episode_parameters=["average_reward"],
                           reward_method=self._rewards_method)
 
     def _train_network_standard(self):
