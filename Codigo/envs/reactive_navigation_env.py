@@ -122,7 +122,12 @@ class ReactiveNavigationEnv(NavRLEnv):
 
         self._reward_method = _reward_config.reward_method
         self._obstacle_distance = _reward_config.obstacle_distance
-        self._obstacle_mercy_steps = _reward_config.obstacle_mercy_steps
+
+        # NOTE: Obstacle mercy steps are stored as one extra than indicated
+        # This is since mercy steps are decreased BEFORE the actual step
+        # (so, for example, 6 mercy steps would translate for 5 actual steps of mercy)
+        self._obstacle_mercy_steps = _reward_config.obstacle_mercy_steps + 1
+
         self._attraction_gain = _reward_config.attraction_gain
         self._repulsive_gain = _reward_config.repulsive_gain
         self._repulsive_limit = _reward_config.repulsive_limit
@@ -390,7 +395,6 @@ class ReactiveNavigationEnv(NavRLEnv):
             closest_distance = np.min(depth_view[np.nonzero(depth_view)])
         except ValueError:
             # Sanity check: if all values are 0, assume a collision
-            print("SANITY CHECK")
             return True
 
         # Convert the distance from [0, 1] to actual distance
@@ -428,18 +432,18 @@ class ReactiveNavigationEnv(NavRLEnv):
         """
         Steps through the environment
 
-        Overridden method to decrease the mercy counter AFTER each step
+        Overridden method to decrease the mercy counter BEFORE each step.
+        If the mercy counter was overridden after the step, there could be situations
+        where the agent finishes the episode but doesn't know until later
         """
-
-        # Perform the normal step process
-        step_results = super().step(*args, **kwargs)
 
         # Decrease the mercy counter (and ensure it doesn't go below 0)
         self._mercy_counter -= 1
         if self._mercy_counter < 0:
             self._mercy_counter = 0
 
-        return step_results
+        # Perform the normal step process
+        return super().step(*args, **kwargs)
 
     def get_done(self, observations):
         """

@@ -258,9 +258,9 @@ class ReactiveNavigationModel(Module):
         """
 
         # Since the image matrix is made of float values,
-        # check for values smaller than 0.001 instead (floats can have inaccuracies)
+        # check for values smaller than 0.0001 instead (floats can have inaccuracies)
         processed_image = input_image
-        processed_image[processed_image <= 0.001] = 1.0
+        processed_image[processed_image <= 0.0001] = 1.0
 
         return processed_image
 
