@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.19)  19 AUG 2021 00:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.19)  24 AUG 2021 03:48
 entering extended mode
 **./plantilla_TFM.tex
 (plantilla_TFM.tex
@@ -903,7 +903,7 @@ Package biblatex Info: Reference section=0 on input line 17.
 Package biblatex Info: Reference segment=0 on input line 17.
 \c@lstlisting=\count448
  (secciones/00B_Portada.tex
-<./imagenes/EscUpm.png, id=209, 245.91875pt x 200.75pt>
+<./imagenes/EscUpm.png, id=233, 245.91875pt x 200.75pt>
 File: ./imagenes/EscUpm.png Graphic file (type png)
 <use ./imagenes/EscUpm.png>
 Package pdftex.def Info: ./imagenes/EscUpm.png  used on input line 12.
@@ -935,7 +935,7 @@ LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <14.4> not available
 (Font)              Font shape `T1/pbk/l/n' tried instead on input line 18.
 LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <14.4> not available
 (Font)              Font shape `T1/pbk/db/n' tried instead on input line 19.
-<./imagenes/FacInformatica.png, id=211, 160.6pt x 170.6375pt>
+<./imagenes/FacInformatica.png, id=235, 160.6pt x 170.6375pt>
 File: ./imagenes/FacInformatica.png Graphic file (type png)
 <use ./imagenes/FacInformatica.png>
 Package pdftex.def Info: ./imagenes/FacInformatica.png  used on input line 23.
@@ -1015,21 +1015,23 @@ Cap\'{\i }tulo 3.
 LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <14.4> not available
 (Font)              Font shape `T1/pbk/db/it' tried instead on input line 3.
 LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <12> not available
-(Font)              Font shape `T1/pbk/db/n' tried instead on input line 10.
+(Font)              Font shape `T1/pbk/db/n' tried instead on input line 9.
 ) (secciones/04_Simulador.tex [5] [6
 
 ]
 Cap\'{\i }tulo 4.
 LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <24.88> not available
 (Font)              Font shape `T1/pbk/db/it' tried instead on input line 1.
+LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <12> not available
+(Font)              Font shape `T1/pbk/db/it' tried instead on input line 6.
 
-Overfull \hbox (9.72607pt too wide) in paragraph at lines 15--16
+Overfull \hbox (9.72607pt too wide) in paragraph at lines 13--14
 []\T1/pbk/l/n/10.95 [DE CA-DA CON-CEP-TO, PRO-BA-BLE-MEN-TE EX-PLI-CAR QUE ES, 
 EX-PLI-CAR QUE OFRE-
  []
 
 
-Overfull \hbox (0.52823pt too wide) in paragraph at lines 30--31
+Overfull \hbox (0.52823pt too wide) in paragraph at lines 35--36
 []\T1/pbk/l/n/10.95 [PROBABLEMENTE MEN-CIO-NAR SEC-CIO-NES CLA-VES Y ELE-MEN-TO
 S CLA-VES QUE
  []
@@ -1039,8 +1041,6 @@ LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [8]
 Cap\'{\i }tulo 5.
-LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <12> not available
-(Font)              Font shape `T1/pbk/db/it' tried instead on input line 22.
 ) (secciones/06_Experimentacion.tex [9
 
 ]
@@ -1067,16 +1067,16 @@ LaTeX Info: Redefining \. on input line 32.
 LaTeX Info: Redefining \% on input line 32.
 )
 Package rerunfilecheck Info: File `plantilla_TFM.out' has not changed.
-(rerunfilecheck)             Checksum: 42C10065896995D988404674A8D11989;8430.
+(rerunfilecheck)             Checksum: CBCA51EE6D190832863FBF01053D449D;9463.
 Package logreq Info: Writing requests to 'plantilla_TFM.run.xml'.
 \openout1 = `plantilla_TFM.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21441 strings out of 478868
- 352956 string characters out of 2858669
- 909024 words of memory out of 3000000
- 38924 multiletter control sequences out of 15000+600000
+ 21453 strings out of 478868
+ 353180 string characters out of 2858669
+ 909027 words of memory out of 3000000
+ 38930 multiletter control sequences out of 15000+600000
  434416 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  65i,11n,69p,1882b,2204s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1084,9 +1084,9 @@ Here is how much of TeX's memory you used:
 /fonts/type1/urw/bookman/ubkd8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/bo
 okman/ubkdi8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/bookman/ubkl8a.pfb><
 C:/Program Files/MiKTeX/fonts/type1/urw/bookman/ubkli8a.pfb>
-Output written on plantilla_TFM.pdf (23 pages, 213932 bytes).
+Output written on plantilla_TFM.pdf (23 pages, 216583 bytes).
 PDF statistics:
- 406 PDF objects out of 1000 (max. 8388607)
- 76 named destinations out of 1000 (max. 500000)
- 427 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 437 PDF objects out of 1000 (max. 8388607)
+ 82 named destinations out of 1000 (max. 500000)
+ 475 words of extra memory for PDF output out of 10000 (max. 10000000)
 
