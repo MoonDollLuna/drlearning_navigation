@@ -604,8 +604,6 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
             # Clamp the current epsilon to the minimum
             if current_epsilon < self._min_epsilon:
                 current_epsilon = self._min_epsilon
-            # DEBUG
-            print("CURRENT EPSILON: {}".format(current_epsilon))
 
             # If it is necessary, store a checkpoint
             if self.should_checkpoint():
