@@ -108,11 +108,11 @@ RL:
     obstacle_distance: 2
     # Obstacle mercy steps. The agent will ignore obstacle checks for this amount of steps
     # This solves the problem of agents spawning right next to obstacles, immediately ending episodes
-    obstacle_mercy_steps: 5
+    obstacle_mercy_steps: 3
     # Positive gain applied to the attractive field, to increase its weight
-    attraction_gain: 20
+    attraction_gain: 100
     # Positive gain applied to the repulsive field, to increase its weight
-    repulsive_gain: 2
+    repulsive_gain: 10
     # Value used to limit the repulsive field's maximum value
     repulsive_limit: 0.04
     # Percentage (between 0 and 1). When the goal is closer than repulsive_goal_influence * obstacle_distance, the effect of the repulsive field gets decreased

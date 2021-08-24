@@ -215,7 +215,7 @@ class ReactiveNavigationEnv(NavRLEnv):
         :param processed_image: A pre-processed image from the depth camera
         :type processed_image: ndarray
         :return: An array of the distance to each obstacle in the image
-        :rtype: collections.Iterable
+        :rtype: list
         """
 
         distances = []
@@ -267,7 +267,7 @@ class ReactiveNavigationEnv(NavRLEnv):
         :param processed_image: A pre-processed image from the depth camera
         :type processed_image: ndarray
         :return: An array of the distance to each obstacle column in the image
-        :rtype: array
+        :rtype: list
         """
 
         # Split both images into columns of equal width
