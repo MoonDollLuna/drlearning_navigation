@@ -77,7 +77,7 @@ RL:
     # The value of epsilon will decrease linearly from epsilon to min_epsilon
     min_epsilon_percentage: 0.8
     # Chooses between standard DQL (False) or Prioritized DQL (True)
-    prioritized: False
+    prioritized: True
     # (PRIORITIZED ONLY) Alpha value (priority degree). The higher alpha is, the higher the probability of choosing higher error experiences is
     prioritized_alpha: 0.5
     # (PRIORITIZED ONLY) Beta value (bias degree). The higher the value is, the less weight variations have (to avoid big oscillations)

@@ -280,7 +280,8 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                           self._start_time,
                           self._silent,
                           episode_parameters=["average_reward"],
-                          reward_method=self._rewards_method), device
+                          reward_method=self._rewards_method,
+                          prioritized=str(self._prioritized)), device
 
     def _train_network_standard(self):
         """
