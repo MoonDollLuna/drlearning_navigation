@@ -86,6 +86,9 @@ class ReactiveNavigationEnv(NavRLEnv):
     _repulsive_goal_influence: float
     # Reward given for a successful episode. All positive rewards will be clipped to this value
     _success_reward: float
+    # Slack penalty, added to the reward each non-final episode to ensure that the agent doesn't end in a loop of
+    # doing actions without reward to avoid penalties
+    _slack_penalty: float
     # Penalty given for a failed episode. All negative rewards will be clipped to this value
     _failure_penalty: float
     # Goal distance (goal at which the agent is considered to be at the goal)
@@ -133,6 +136,7 @@ class ReactiveNavigationEnv(NavRLEnv):
         self._repulsive_limit = _reward_config.repulsive_limit
         self._repulsive_goal_influence = _reward_config.repulsive_goal_influence
         self._success_reward = _reward_config.success_reward
+        self._slack_penalty = _reward_config.slack_penalty
         self._failure_penalty = _reward_config.failure_penalty
         self._goal_distance = config.TASK_CONFIG.TASK.SUCCESS_DISTANCE
 
@@ -499,8 +503,11 @@ class ReactiveNavigationEnv(NavRLEnv):
         shaping = self._compute_shaping_value(observations["pointgoal_with_gps_compass"][0],
                                               observations["depth"])
 
-        # Compute and clamp the reward
+        # Compute the reward and add the slack penalty
         reward = shaping - self._previous_shaping
+        reward += self._slack_penalty
+
+        # Clamp the reward
         reward = max(min(reward, self._success_reward), self._failure_penalty)
 
         # Update the shaping value
