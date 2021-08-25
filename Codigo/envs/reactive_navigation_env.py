@@ -69,12 +69,6 @@ class ReactiveNavigationEnv(NavRLEnv):
     # Approximate distance (in simulator units) at which an obstacle is when exactly at _obstacle_threshold distance
     _obstacle_distance: float
 
-    # Obstacle mercy steps. The agent will ignore obstacle checks for this amount of steps
-    # This solves the problem of agents spawning right next to obstacles immediately ending episodes
-    _obstacle_mercy_steps: int
-    # Counter for the mercy steps
-    _mercy_counter: int
-
     # Positive gain applied to the attractive field (used to increase its weight)
     _attraction_gain: float
     # Positive gain applied to the repulsive field (used to increase its weight)
@@ -93,6 +87,14 @@ class ReactiveNavigationEnv(NavRLEnv):
     _failure_penalty: float
     # Goal distance (goal at which the agent is considered to be at the goal)
     _goal_distance: float
+
+    # Flag for collisions. If True, the episode will end as a failure if the agent collides with an object
+    _collisions: bool
+    # Obstacle mercy steps. The agent will ignore obstacle checks for this amount of steps
+    # This solves the problem of agents spawning right next to obstacles immediately ending episodes
+    _obstacle_mercy_steps: int
+    # Counter for the mercy steps
+    _mercy_counter: int
 
     # REWARD ATTRIBUTES (NOT PROVIDED BY THE CONFIG FILE)
     # Value of the previous shaping, used to compute a reward for each step
@@ -126,11 +128,6 @@ class ReactiveNavigationEnv(NavRLEnv):
         self._reward_method = _reward_config.reward_method
         self._obstacle_distance = _reward_config.obstacle_distance
 
-        # NOTE: Obstacle mercy steps are stored as one extra than indicated
-        # This is since mercy steps are decreased BEFORE the actual step
-        # (so, for example, 6 mercy steps would translate for 5 actual steps of mercy)
-        self._obstacle_mercy_steps = _reward_config.obstacle_mercy_steps + 1
-
         self._attraction_gain = _reward_config.attraction_gain
         self._repulsive_gain = _reward_config.repulsive_gain
         self._repulsive_limit = _reward_config.repulsive_limit
@@ -139,6 +136,12 @@ class ReactiveNavigationEnv(NavRLEnv):
         self._slack_penalty = _reward_config.slack_penalty
         self._failure_penalty = _reward_config.failure_penalty
         self._goal_distance = config.TASK_CONFIG.TASK.SUCCESS_DISTANCE
+
+        self._collisions = _reward_config.collisions
+        # NOTE: Obstacle mercy steps are stored as one extra than indicated
+        # This is since mercy steps are decreased BEFORE the actual step
+        # (so, for example, 6 mercy steps would translate for 5 actual steps of mercy)
+        self._obstacle_mercy_steps = _reward_config.obstacle_mercy_steps + 1
 
         # Construct the super parent
         # Parent needs to be constructed AFTER attribute declaration to avoid null references
@@ -385,6 +388,11 @@ class ReactiveNavigationEnv(NavRLEnv):
         :return: TRUE if the agent is colliding, false otherwise
         :rtype: bool
         """
+
+        # Check if collisions are active
+        if not self._collisions:
+            # Collisions are not active: always report a False value
+            return False
 
         # Check if the mercy steps are still in effect
         if self._mercy_counter > 0:

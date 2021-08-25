@@ -77,7 +77,7 @@ RL:
     # The value of epsilon will decrease linearly from epsilon to min_epsilon
     min_epsilon_percentage: 0.8
     # Chooses between standard DQL (False) or Prioritized DQL (True)
-    prioritized: True
+    prioritized: False
     # (PRIORITIZED ONLY) Alpha value (priority degree). The higher alpha is, the higher the probability of choosing higher error experiences is
     prioritized_alpha: 0.5
     # (PRIORITIZED ONLY) Beta value (bias degree). The higher the value is, the less weight variations have (to avoid big oscillations)
@@ -121,7 +121,7 @@ RL:
     # Failure penalty. Note that negative rewards will also be clipped to this value
     failure_penalty: -100
     # If True, the episode will end immediately if a collision is detected
-    collisions: False
+    collisions: True
     # Obstacle mercy steps. The agent will ignore obstacle checks for this amount of steps
     # This solves the problem of agents spawning right next to obstacles, immediately ending episodes
     obstacle_mercy_steps: 3

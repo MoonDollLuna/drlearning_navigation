@@ -106,9 +106,6 @@ RL:
     # Approximate distance (in simulator units) at which obstacles are when they are at the threshold.
     # Can also be understood as the maximum distance the camera will detect obstacles
     obstacle_distance: 2
-    # Obstacle mercy steps. The agent will ignore obstacle checks for this amount of steps
-    # This solves the problem of agents spawning right next to obstacles, immediately ending episodes
-    obstacle_mercy_steps: 3
     # Positive gain applied to the attractive field, to increase its weight
     attraction_gain: 100
     # Positive gain applied to the repulsive field, to increase its weight
@@ -120,7 +117,12 @@ RL:
     # Success reward. Note that positive rewards will also be clipped to this value
     success_reward: 10
     # Slack penalty, added to the reward each non-final episode to ensure that the agent doesn't end in a loop of doing actions without reward to avoid a penalty
-    slack_penalty: -0.1
+    slack_penalty: -0.25
     # Failure penalty. Note that negative rewards will also be clipped to this value
     failure_penalty: -100
+    # If True, the episode will end immediately if a collision is detected
+    collisions: False
+    # Obstacle mercy steps. The agent will ignore obstacle checks for this amount of steps
+    # This solves the problem of agents spawning right next to obstacles, immediately ending episodes
+    obstacle_mercy_steps: 3
     
