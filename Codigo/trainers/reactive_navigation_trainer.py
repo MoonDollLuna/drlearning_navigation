@@ -135,6 +135,8 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
     _start_time: float
     # Rewards method used
     _rewards_method: str
+    # Whether collisions will be used or not
+    _collisions: bool
 
     ###################
     # 3 - CONSTRUCTOR #
@@ -189,6 +191,7 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
         self._evaluation_log_folder = config.EVALUATION_LOG_FOLDER
         self._silent = config.LOG_SILENT
         self._rewards_method = _rl_config.REWARD.reward_method
+        self._collisions = _rl_config.REWARD.collisions
 
         # Create the dictionary
         self._action_to_index = {}
@@ -281,7 +284,8 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                           self._silent,
                           episode_parameters=["average_reward"],
                           reward_method=self._rewards_method,
-                          prioritized=str(self._prioritized)), device
+                          prioritized=str(self._prioritized),
+                          collisions=str(self._collisions)), device
 
     def _train_network_standard(self):
         """
