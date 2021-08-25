@@ -5,114 +5,114 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1.1}Introducción}{1}{section.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.2}Motivación}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.2}Motivación}{2}{section.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.3}Estructura}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.3}Estructura}{2}{section.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}Descripción del problema}{3}{chapter.2}%
+\contentsline {chapter}{\numberline {2}Descripción del problema}{5}{chapter.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.1}Problema}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.1}Problema}{5}{section.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Antecedentes}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.2}Antecedentes}{5}{section.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Objetivos}{3}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Objetivos}{5}{section.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Revisión de técnicas}{5}{chapter.3}%
+\contentsline {chapter}{\numberline {3}Revisión de técnicas}{7}{chapter.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}\textit {Deep Learning}}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.1}\textit {Deep Learning}}{7}{section.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Aprendizaje por refuerzo}{5}{section.3.2}%
+\contentsline {section}{\numberline {3.2}Aprendizaje por refuerzo}{7}{section.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.1}Algoritmos de aprendizaje por refuerzo clásicos}{5}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.1}Algoritmos de aprendizaje por refuerzo clásicos}{7}{subsection.3.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.2}Algoritmos de aprendizaje por refuerzo profundos}{5}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.2}Algoritmos de aprendizaje por refuerzo profundos}{7}{subsection.3.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Algoritmos de navegación automática}{5}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Algoritmos de navegación automática}{7}{section.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Simulador: \textit {Habitat Sim} y \textit {Habitat Lab}}{7}{chapter.4}%
+\contentsline {chapter}{\numberline {4}Simulador: \textit {Habitat Sim} y \textit {Habitat Lab}}{9}{chapter.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}\textit {Habitat Sim} y \textit {Habitat Lab}}{7}{section.4.1}%
+\contentsline {section}{\numberline {4.1}\textit {Habitat Sim} y \textit {Habitat Lab}}{9}{section.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}\textit {Habitat Sim}}{7}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.1}\textit {Habitat Sim}}{9}{subsection.4.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}\textit {Habitat Lab}}{7}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.2}\textit {Habitat Lab}}{9}{subsection.4.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.3}Principales conceptos de Habitat Lab}{7}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.3}Principales conceptos de Habitat Lab}{9}{subsection.4.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.3.1}Entornos}{7}{subsubsection.4.1.3.1}%
+\contentsline {subsubsection}{\numberline {4.1.3.1}Entornos}{9}{subsubsection.4.1.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.3.2}Tareas}{7}{subsubsection.4.1.3.2}%
+\contentsline {subsubsection}{\numberline {4.1.3.2}Tareas}{9}{subsubsection.4.1.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.3.3}Conjuntos de datos}{7}{subsubsection.4.1.3.3}%
+\contentsline {subsubsection}{\numberline {4.1.3.3}Conjuntos de datos}{9}{subsubsection.4.1.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.3.4}Episodios}{8}{subsubsection.4.1.3.4}%
+\contentsline {subsubsection}{\numberline {4.1.3.4}Episodios}{10}{subsubsection.4.1.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.3.5}Sensores}{8}{subsubsection.4.1.3.5}%
+\contentsline {subsubsection}{\numberline {4.1.3.5}Sensores}{10}{subsubsection.4.1.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.3.6}Ficheros de configuración}{8}{subsubsection.4.1.3.6}%
+\contentsline {subsubsection}{\numberline {4.1.3.6}Ficheros de configuración}{10}{subsubsection.4.1.3.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.3.7}Entrenadores}{8}{subsubsection.4.1.3.7}%
+\contentsline {subsubsection}{\numberline {4.1.3.7}Entrenadores}{10}{subsubsection.4.1.3.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.3.8}Agentes}{8}{subsubsection.4.1.3.8}%
+\contentsline {subsubsection}{\numberline {4.1.3.8}Agentes}{10}{subsubsection.4.1.3.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.3.9}\textit {Benchmarks}}{8}{subsubsection.4.1.3.9}%
+\contentsline {subsubsection}{\numberline {4.1.3.9}\textit {Benchmarks}}{10}{subsubsection.4.1.3.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Instalación del simulador}{8}{section.4.2}%
+\contentsline {section}{\numberline {4.2}Instalación del simulador}{10}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Requisitos y versiones}{8}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.1}Requisitos y versiones}{10}{subsection.4.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Proceso de instalación}{8}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.2}Proceso de instalación}{10}{subsection.4.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Diseño del agente}{9}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Diseño del agente}{11}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Caracterización del conocimiento}{9}{section.5.1}%
+\contentsline {section}{\numberline {5.1}Caracterización del conocimiento}{11}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.1}Descripción del problema}{9}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.1}Descripción del problema}{11}{subsection.5.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.2}Estado}{9}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.2}Estado}{11}{subsection.5.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.3}Acciones}{9}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.3}Acciones}{11}{subsection.5.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.4}Recompensas}{9}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.4}Recompensas}{11}{subsection.5.1.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Arquitectura del agente}{9}{section.5.2}%
+\contentsline {section}{\numberline {5.2}Arquitectura del agente}{11}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.1}Propuesta 1: Red convolucional (CNN)}{9}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.1}Propuesta 1: Red convolucional (CNN)}{11}{subsection.5.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.2}Propuesta 2: Red híbrida (CNN + MLP)}{9}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.2}Propuesta 2: Red híbrida (CNN + MLP)}{11}{subsection.5.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Actuación del agente}{9}{section.5.3}%
+\contentsline {section}{\numberline {5.3}Actuación del agente}{11}{section.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Entrenamiento del agente}{9}{section.5.4}%
+\contentsline {section}{\numberline {5.4}Entrenamiento del agente}{11}{section.5.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.1}\textit {Experience Replay}}{9}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.1}\textit {Experience Replay}}{11}{subsection.5.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.2}Memorización de experiencias}{9}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.2}Memorización de experiencias}{11}{subsection.5.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.3}Aprendizaje a partir de las experiencias}{9}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.3}Aprendizaje a partir de las experiencias}{11}{subsection.5.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.5}Otros agentes propuestos}{9}{section.5.5}%
+\contentsline {section}{\numberline {5.5}Otros agentes propuestos}{11}{section.5.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.5.1}Agentes heurísticos}{10}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.1}Agentes heurísticos}{12}{subsection.5.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.5.2}Agente PPO}{10}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.2}Agente PPO}{12}{subsection.5.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Experimentación}{11}{chapter.6}%
+\contentsline {chapter}{\numberline {6}Experimentación}{13}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Experimentos realizados y parametros utilizados}{11}{section.6.1}%
+\contentsline {section}{\numberline {6.1}Experimentos realizados y parametros utilizados}{13}{section.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Resultados durante el entrenamiento}{11}{section.6.2}%
+\contentsline {section}{\numberline {6.2}Resultados durante el entrenamiento}{13}{section.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.3}Resultados durante la evaluación}{11}{section.6.3}%
+\contentsline {section}{\numberline {6.3}Resultados durante la evaluación}{13}{section.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Conclusiones}{13}{chapter.7}%
+\contentsline {chapter}{\numberline {7}Conclusiones}{15}{chapter.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.1}Conclusiones}{13}{section.7.1}%
+\contentsline {section}{\numberline {7.1}Conclusiones}{15}{section.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.2}Trabajo futuro}{13}{section.7.2}%
+\contentsline {section}{\numberline {7.2}Trabajo futuro}{15}{section.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.3}Agradecimientos}{13}{section.7.3}%
+\contentsline {section}{\numberline {7.3}Agradecimientos}{15}{section.7.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Bibliografía}{13}{section.7.3}%
+\contentsline {chapter}{Bibliografía}{15}{section.7.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Anexos}{14}{section.7.3}%
+\contentsline {chapter}{Anexos}{18}{chapter*.4}%
