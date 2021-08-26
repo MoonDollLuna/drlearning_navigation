@@ -1,9 +1,25 @@
 # REACTIVE NAVIGATION - MAIN CODE
 # Developed by: Luna Jimenez Fernandez
 #
-# This file contains the main structure of the reactive navigation system developed
-# TODO: ACABAR ESTO
+# This file contains the main structure of the reactive navigation system developed,
+# where agents can be trained and evaluated
 #
+# This file contains code to do the following actions:
+#   * Train a RL-capable agent during a number of episodes
+#   * Evaluate the performance of a trained agent using a validation set
+#   * Generate a video of the agent's performance
+#
+# The Reactive Navigation Agent implementation itself is divided among several classes:
+#   * Main model (neural network, act logic): ReactiveNavigationModel (models/reactive_navigation)
+#   * Experience replay logic: ExperienceReplay (models/experience_replay)
+#   * Reward computing logic: ReactiveNavigationEnv (envs/reactive_navigation_env)
+#   * DQL training implementation: ReactiveNavigationTrainer (trainers/reactive_navigation_env)
+#
+# In addition, other utils are made available:
+#   * Log creating and handling: LogManager (utils/log_manager.py)
+#   * Agent implementation compatible with benchmarking tools: ReactiveNavigationAgent
+#     (agents/reactive_navigation_agent)
+#   * Script to clean the GPU cache and launch profiling tools: prepare_launch.sh
 #
 # Structure of the file:
 #   1 - Imports
@@ -11,15 +27,12 @@
 #   3 - User-defined variables
 #   4 - Main code
 #       4A - Training
-#       4B - Evaluation
-#       4C - Benchmark
+#       4B - Benchmark
+#       4C - Video
 #   5 - Init code
 #       5A - Argument declaration
 #       5B - Argument parsing
 #       5C - Argument processing and program launch
-
-# TODO: EL TIPO DE COMENTARIO SE LLAMA SPHINX MARKUP
-# (garantiza compatibilidad con el mayor numero de sistemas posibles)
 
 ###############
 # 1 - IMPORTS #
@@ -47,7 +60,7 @@ from habitat.utils.visualizations.utils import observations_to_image
 from habitat_baselines.utils.common import generate_video
 
 # Reactive Navigation imports
-#
+
 # Even if these imports seem unused, it's necessary to pre-import them
 # to ensure that the decorator (function used to register
 # them in the baseline registry) is run
@@ -285,7 +298,7 @@ def video_main(config_path, video_dataset, pretrained_weights=None):
     # Add the dataset
     video_config.defrost()
     video_config.TASK_CONFIG.DATASET.DATA_PATH = dataset_paths[video_dataset]
-    video_config.TASK_CONFIG.DATASET.SPLIT = "val"
+    video_config.TASK_CONFIG.DATASET.SPLIT = "train"
     video_config.TASK_CONFIG.DATASET.NAME = video_dataset
 
     # Add extra metrics to the config file
