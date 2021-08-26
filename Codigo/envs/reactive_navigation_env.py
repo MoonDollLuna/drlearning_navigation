@@ -43,10 +43,10 @@ class ReactiveNavigationEnv(NavRLEnv):
     # ATTRIBUTES #
 
     # IMAGE PROCESSING ATTRIBUTES
-    # Pixels to be trimmed from the bottom of the image (the image provided by the depth camera)
+    # Pixels to be trimmed from the bottom and top of the image (the image provided by the depth camera)
     # This parameter is a heuristic used since our robot is an embodied agent that will always see the floor
     # at a constant height (so it can be trimmed to avoid detecting false obstacles)
-    _bottom_trim: int
+    _trim: int
     # Maximum color threshold for obstacles within the image. Objects with a color below the threshold are considered
     # obstacles, while objects with a color above the threshold are not.
     # Note that the color goes from 0.0 (pure black) to 1.0 (pure white).
@@ -120,7 +120,7 @@ class ReactiveNavigationEnv(NavRLEnv):
         _image_config = _rl_config.IMAGE
         _reward_config = _rl_config.REWARD
 
-        self._bottom_trim = _image_config.bottom_trim
+        self._trim = _image_config.trim
         self._obstacle_threshold = _image_config.obstacle_threshold
         self._min_contour_area = _image_config.min_contour_area
         self._reward_columns = _image_config.reward_columns
@@ -165,13 +165,14 @@ class ReactiveNavigationEnv(NavRLEnv):
         """
 
         original_image = np.copy(depth_image)
+        cv2.imshow("IMAGE", original_image)
 
         # STEP 1 - Normalize the image to the range of [0, 255] to properly work with OpenCV
         original_image = original_image * 255
         original_image = original_image.astype(np.uint8)
 
         # STEP 2 - Trim the bottom of the image (to avoid the floor interfering)
-        trimmed_image = original_image[0:255 - self._bottom_trim, :]
+        trimmed_image = original_image[self._trim:255 - self._trim, :]
 
         # STEP 3 - Fill pure black values (0) with pure white (255) values
         # This is done to avoid visual glitches, since pure black typically correlates with
@@ -198,6 +199,8 @@ class ReactiveNavigationEnv(NavRLEnv):
         # This is done with a dilation morphological transformation
         dilated_image = cv2.dilate(cleaned_image,
                                    cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3)))
+
+        cv2.imshow("PROCESSED", dilated_image)
 
         return dilated_image, trimmed_image
 
@@ -375,8 +378,7 @@ class ReactiveNavigationEnv(NavRLEnv):
         """
         Determine whether the agent is "colliding" (too close) to an obstacle
 
-        An agent is considered to be colliding when its distance to the closest obstacle
-        is less than goal_distance
+        The default collisions sensor is used
 
         If the agent collides with an obstacle, the episode is immediately finished
 
@@ -399,21 +401,9 @@ class ReactiveNavigationEnv(NavRLEnv):
             # Mercy active: collisions are not checked
             return False
 
-        # Extract the depth view from the observations
-        depth_view = observations["depth"]
-
-        # Find the closest non-zero distance in the image
-        try:
-            closest_distance = np.min(depth_view[np.nonzero(depth_view)])
-        except ValueError:
-            # Sanity check: if all values are 0, assume a collision
-            return True
-
-        # Convert the distance from [0, 1] to actual distance
-        distance = (closest_distance * self._obstacle_distance) / self._obstacle_threshold
-
-        # Check if the distance is smaller than goal_distance
-        return distance < self._goal_distance
+        # Get the collision check
+        metrics = self.get_info(observations)
+        return metrics["collisions"]["is_collision"]
 
     # PUBLIC METHODS #
 
@@ -517,6 +507,9 @@ class ReactiveNavigationEnv(NavRLEnv):
 
         # Clamp the reward
         reward = max(min(reward, self._success_reward), self._failure_penalty)
+
+        print(reward)
+        cv2.waitKey()
 
         # Update the shaping value
         self._previous_shaping = shaping

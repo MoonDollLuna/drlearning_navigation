@@ -32,8 +32,6 @@ VIDEO_DIR: "Evaluation/Reactive/Video"
 # Evaluate on all episodes
 TEST_EPISODE_COUNT: -1
 
-SENSORS: ['DEPTH_SENSOR', 'POINTGOAL_WITH_GPS_COMPASS_SENSOR']
-
 CHECKPOINT_FOLDER: "Training/Reactive/Checkpoints"
 TRAINING_LOG_FOLDER: "Training/Reactive/Log"
 # If True, the log will not output messages to the console screen during training
@@ -84,13 +82,14 @@ RL:
   
   # Image pre-processing parameters (used to compute the rewards)
   IMAGE:
-    # Pixels to be trimmed of the bottom of the image (the depth view seen by the camera)
-    # This parameter is relevant since the robot is an embodied agent that will always see the floor at a constant height
+    # Pixels to be trimmed from both bottom and top of the image (the depth view seen by the camera)
+    # This parameter is relevant since the robot is an embodied agent that will always see the floor (and, in the case of houses,
+    # the roof) at a constant height
     # Therefore, it can be trimmed without problem
-    bottom_trim: 65
+    trim: 35
     # Threshold to consider a part of the image an obstacle. Note that the image is a grayscale image from 0.0 to 1.0, where 0 (black) means the closest and 1.0 (white) means the furthest
     # This also doubles as the maximum distance to an obstacle.
-    obstacle_threshold: 0.25
+    obstacle_threshold: 0.15
     # Minimum area (in pixels) for contours / columns. Contours / columns smaller than this size will be ignored
     min_contour_area: 250
     # (COLUMN REWARDS ONLY) Total columns to be used when using the column reward method. Ignored when using the contour reward_method
