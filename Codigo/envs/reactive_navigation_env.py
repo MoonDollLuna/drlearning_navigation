@@ -381,10 +381,17 @@ class ReactiveNavigationEnv(NavRLEnv):
 
         # Get the collision check
         metrics = self.get_info(observations)
-        if metrics["collisions"]["is_collision"]:
-            print("CHOQUE")
 
-        return metrics["collisions"]["is_collision"]
+        # If the metric is None, assume no collisions happened
+        if metrics["collisions"] is None:
+            return False
+
+        # Check for collisions
+        if metrics["collisions"]["is_collision"] or metrics["collisions"]["count"] > 0:
+            print("Collision detected, ending episode")
+            return True
+        else:
+            return False
 
     # PUBLIC METHODS #
 
