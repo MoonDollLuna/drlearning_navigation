@@ -36,7 +36,6 @@ SENSORS: ['DEPTH_SENSOR', 'POINTGOAL_WITH_GPS_COMPASS_SENSOR']
 
 CHECKPOINT_FOLDER: "Training/Reactive/Checkpoints"
 TRAINING_LOG_FOLDER: "Training/Reactive/Log"
-EVALUATION_LOG_FOLDER: "Evaluation/Reactive/Log"
 # If True, the log will not output messages to the console screen during training
 LOG_SILENT: False
 EVAL_CKPT_PATH_DIR: "Training/Reactive/Checkpoints"

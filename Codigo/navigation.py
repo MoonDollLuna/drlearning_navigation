@@ -61,17 +61,14 @@ from habitat_baselines.agents.ppo_agents import PPOAgent
 # Config file paths - Training
 # Each agent has its own specific training config file
 # Note that a config file can be specified via argument, overloading this value
-# TODO - Faltan los configs del PPO
 config_paths_training = {
-    "ppo": None,
+    "ppo": "./configs/ppo_pointnav_train.yaml",
     "reactive": "./configs/reactive_pointnav_train_contour.yaml"
 }
 
 # Benchmark config file
 # All agents share the same config file to be used during the benchmarking process
 config_path_benchmark = "./configs/benchmark_config.yaml"
-# TODO haz el config
-
 
 # Dataset paths
 # If an extra dataset was to be added, the path can be specified as a new value
@@ -180,7 +177,12 @@ def benchmark_main(config_path, training_dataset, pretrained_weights=None):
     and dataset
 
     The following metrics are considered for evaluation:
-    # TODO METRICAS
+        * Final distance to the goal
+        * Whether the episode was a success or not
+        * SPL (Success weighted by path length)
+        * Soft SPL
+        * Top Down map
+        * Collisions map
 
     In addition, videos of the training process are provided
 
@@ -235,8 +237,8 @@ def benchmark_main(config_path, training_dataset, pretrained_weights=None):
 
     # Evaluate the agent and print the metrics
     metrics = benchmark.evaluate(agent, 50)
-
-    # TODO - IMPRIME LAS METRICAS
+    # TODO IMPRIME BIEN LAS METRICAS
+    print(metrics)
 
 
 #################
