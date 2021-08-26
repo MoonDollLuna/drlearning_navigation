@@ -21,6 +21,10 @@
 #     (agents/reactive_navigation_agent)
 #   * Script to clean the GPU cache and launch profiling tools: prepare_launch.sh
 #
+# The proposed agent uses a PyTorch architecture. However, the files for a previous
+# Keras based architecture are provided (with name DEPRECATED_*)
+# These files are not updated and should not be used, but they are kept for documentation sake
+#
 # Structure of the file:
 #   1 - Imports
 #   2 - Program variables
