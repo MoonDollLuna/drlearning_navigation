@@ -33,6 +33,7 @@ import textwrap
 # Habitat imports
 import habitat
 from habitat import Benchmark
+from habitat import get_config as get_task_config
 from habitat_baselines.config.default import get_config
 from habitat_baselines.common.baseline_registry import baseline_registry
 
@@ -68,7 +69,7 @@ config_paths_training = {
 
 # Benchmark config file
 # All agents share the same config file to be used during the benchmarking process
-config_path_benchmark = "./configs/benchmark_config.yaml"
+config_path_benchmark = "./configs/benchmark_matterport.yaml"
 
 # Dataset paths
 # If an extra dataset was to be added, the path can be specified as a new value
@@ -169,7 +170,7 @@ def training_main(config_path, training_dataset):
     trainer.train()
 
 
-def benchmark_main(config_path, training_dataset, pretrained_weights=None):
+def benchmark_main(config_path, pretrained_weights=None):
     """
     Main method for agent evaluation
 
@@ -188,8 +189,6 @@ def benchmark_main(config_path, training_dataset, pretrained_weights=None):
 
     :param config_path: Path to the config file
     :type config_path: str
-    :param training_dataset: Name of the dataset to use
-    :type training_dataset: str
     :param pretrained_weights: (OPTIONAL) Path to the pre-trained weights used by the agents
     :type pretrained_weights: str
     """
@@ -198,19 +197,13 @@ def benchmark_main(config_path, training_dataset, pretrained_weights=None):
     print("Starting program in benchmark mode...")
 
     # Instantiate the Config from the config file
-    benchmark_config = get_config(config_path)
-
-    # Add the dataset info to the config file
-    benchmark_config.defrost()
-    benchmark_config.TASK_CONFIG.DATASET.DATA_PATH = dataset_paths[training_dataset]
-    benchmark_config.TASK_CONFIG.DATASET.SPLIT = "val"
-    benchmark_config.TASK_CONFIG.DATASET.NAME = training_dataset
+    benchmark_config = get_task_config(config_path)
 
     # Add the path to the pre-trained weights (if applicable) to the config file
     if pretrained_weights:
+        benchmark_config.defrost()
         benchmark_config.MODEL_PATH = pretrained_weights
-
-    benchmark_config.freeze()
+        benchmark_config.freeze()
 
     # Instantiate the appropriate agent and the benchmark
     if agent_type == "random":
@@ -233,6 +226,9 @@ def benchmark_main(config_path, training_dataset, pretrained_weights=None):
         agent = ReactiveNavigationAgent(benchmark_config,
                                         pretrained_weights)
 
+    # Note that the CONFIG PATH is passed to the benchmark
+    # (instead of an already instantiated Config object)
+    # Thus, all info must be directly contained within the file
     benchmark = Benchmark(config_path)
 
     # Evaluate the agent and print the metrics
@@ -364,5 +360,4 @@ if __name__ == "__main__":
     elif mode == "benchmark":
         # BENCHMARK MODE
         benchmark_main(config_path_benchmark,
-                       dataset,
                        weights)

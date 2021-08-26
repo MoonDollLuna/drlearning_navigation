@@ -18,7 +18,7 @@ ENVIRONMENT:
 
 SIMULATOR:
   AGENT_0:
-    SENSORS: ['RGB_SENSOR', 'DEPTH_SENSOR', 'POINTGOAL_WITH_GPS_COMPASS_SENSOR']
+    SENSORS: ['RGB_SENSOR', 'DEPTH_SENSOR']
   RGB_SENSOR:
     WIDTH: 256
     HEIGHT: 256
@@ -30,12 +30,12 @@ SIMULATOR:
   HABITAT_SIM_V0:
     ENABLE_PHYSICS: False
     
-# DATASET: Data path, split and name are specified via argument
+# DATASET: Dataset path, name and split to be used must be specified here
 DATASET:
   TYPE: PointNav-v1
-#  SPLIT: 
-#  DATA_PATH:
-#  NAME:
+  SPLIT: "val"
+  DATA_PATH: "./data/datasets/pointnav/mp3d/v1/{split}/{split}.json.gz"
+  NAME: "matterport"
 
 TASK:
   TYPE: Nav-v0
