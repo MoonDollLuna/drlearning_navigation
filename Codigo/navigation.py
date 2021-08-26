@@ -113,6 +113,7 @@ dataset = "matterport"
 # Possible values:
 #   - training - Trains the agent via reinforcement learning with a training set
 #   - benchmark - Evaluates the performance of the agent using the provided Habitat Lab benchmark tool
+#   - video - Generates a video of the agent performance 
 # Note that benchmark agents cannot run in Training mode
 mode = "training"
 
@@ -232,9 +233,16 @@ def benchmark_main(config_path, pretrained_weights=None):
     benchmark = Benchmark(config_path)
 
     # Evaluate the agent and print the metrics
-    metrics = benchmark.evaluate(agent, 50)
-    # TODO IMPRIME BIEN LAS METRICAS
-    print(metrics)
+    episode_count = 100
+    metrics = benchmark.evaluate(agent, episode_count)
+
+    print("= EVALUATION METRICS =\n")
+    print("Mean metrics over {} episodes:".format(episode_count))
+    print("\t* Mean distance to goal: {}".format(metrics["distance_to_goal"]))
+    print("\t* Mean success rate: {}".format(metrics["success"]))
+    print("\t* Mean SPL: {}".format(metrics["spl"]))
+    print("\t* Mean soft SPL: {}".format(metrics["soft_spl"]))
+    print("\t* Mean collision count: {}".format(metrics["collisions/count"]))
 
 
 #################
