@@ -11,7 +11,8 @@
 
 # BENCHMARKING OPTIONS
 VIDEO_OPTION: ["disk"]
-VIDEO_DIR: "Evaluation/Reactive/Video"
+VIDEO_DIR: "Video/Reactive"
+SEED: 0
 
 ENVIRONMENT:
   MAX_EPISODE_STEPS: 500

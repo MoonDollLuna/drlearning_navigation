@@ -27,15 +27,24 @@
 
 # General imports
 import argparse
+import os
+import random
 import sys
 import textwrap
+import numpy as np
+import torch
 
 # Habitat imports
 import habitat
 from habitat import Benchmark
+from habitat.core.env import Env
+
 from habitat import get_config as get_task_config
 from habitat_baselines.config.default import get_config
 from habitat_baselines.common.baseline_registry import baseline_registry
+
+from habitat.utils.visualizations.utils import observations_to_image
+from habitat_baselines.utils.common import generate_video
 
 # Reactive Navigation imports
 #
@@ -113,7 +122,7 @@ dataset = "matterport"
 # Possible values:
 #   - training - Trains the agent via reinforcement learning with a training set
 #   - benchmark - Evaluates the performance of the agent using the provided Habitat Lab benchmark tool
-#   - video - Generates a video of the agent performance 
+#   - video - Generates a video of the trained agent performance in an episode
 # Note that benchmark agents cannot run in Training mode
 mode = "training"
 
@@ -183,10 +192,7 @@ def benchmark_main(config_path, pretrained_weights=None):
         * Whether the episode was a success or not
         * SPL (Success weighted by path length)
         * Soft SPL
-        * Top Down map
-        * Collisions map
-
-    In addition, videos of the training process are provided
+        * Collision count
 
     :param config_path: Path to the config file
     :type config_path: str
@@ -205,6 +211,12 @@ def benchmark_main(config_path, pretrained_weights=None):
         benchmark_config.defrost()
         benchmark_config.MODEL_PATH = pretrained_weights
         benchmark_config.freeze()
+
+    # If the seed is specified, instantiate it
+    if benchmark_config.SEED:
+        random.seed(benchmark_config.SEED)
+        np.random.seed(benchmark_config.SEED)
+        torch.manual_seed(benchmark_config.SEED)
 
     # Instantiate the appropriate agent and the benchmark
     if agent_type == "random":
@@ -241,9 +253,97 @@ def benchmark_main(config_path, pretrained_weights=None):
     print("\t* Mean distance to goal: {}".format(metrics["distance_to_goal"]))
     print("\t* Mean success rate: {}".format(metrics["success"]))
     print("\t* Mean SPL: {}".format(metrics["spl"]))
-    print("\t* Mean soft SPL: {}".format(metrics["soft_spl"]))
+    print("\t* Mean soft SPL: {}".format(metrics["softspl"]))
     print("\t* Mean collision count: {}".format(metrics["collisions/count"]))
 
+
+def video_main(config_path, pretrained_weights=None):
+    """
+    Method used for video generation
+
+    Using the tools provided by Habitat, simulates an episode using the first
+    episode of the dataset and generates a video of the agent performance from it
+
+    :param config_path: Path to the config file
+    :type config_path: str
+    :param pretrained_weights: (OPTIONAL) Path to the pre-trained weights used by the agents
+    :type pretrained_weights: str
+    """
+
+    # Initial message
+    print("Starting program in video mode...")
+
+    # Instantiate the Config from the config file
+    benchmark_config = get_task_config(config_path)
+
+    # Add extra metrics to the config file
+    # (top down map)
+    benchmark_config.defrost()
+    benchmark_config.TASK.MEASUREMENTS.append("TOP_DOWN_MAP")
+
+    # Add the path to the pre-trained weights (if applicable) to the config file
+    if pretrained_weights:
+        benchmark_config.MODEL_PATH = pretrained_weights
+
+    benchmark_config.freeze()
+
+    # If the seed is specified, instantiate it
+    if benchmark_config.SEED:
+        random.seed(benchmark_config.SEED)
+        np.random.seed(benchmark_config.SEED)
+        torch.manual_seed(benchmark_config.SEED)
+
+    # Instantiate the appropriate agent and the benchmark
+    if agent_type == "random":
+        # Random agent
+        agent = RandomAgent(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
+                            benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+    elif agent_type == "random_forward":
+        # Random forward agent
+        agent = RandomForwardAgent(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
+                                   benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+    elif agent_type == "goal_follower":
+        # Goal follower
+        agent = GoalFollower(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
+                             benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+    elif agent_type == "ppo":
+        # PPO agent
+        agent = PPOAgent(benchmark_config)
+    else:
+        # Reactive agent (default)
+        agent = ReactiveNavigationAgent(benchmark_config,
+                                        pretrained_weights)
+
+    # Create the folder to store the video
+    os.makedirs(benchmark_config.VIDEO_DIR, exist_ok=True)
+
+    # Instantiate the environment using the config file
+    env = Env(benchmark_config)
+
+    # Store all the images to convert into video into a list
+    processed_images = []
+
+    # Perform the episode while generating the appropriate images
+    observations = env.reset()
+    agent.reset()
+
+    while not env.episode_over:
+        action = agent.act(observations)
+        observations, _, _, info = env.step(action)
+        processed_images.append(observations_to_image(observations, info))
+
+    # With all images generated, create the appropriate video
+    generate_video(video_option=benchmark_config.VIDEO_OPTION,
+                   video_dir=benchmark_config.VIDEO_DIR,
+                   images=processed_images,
+                   episode_id=1,
+                   checkpoint_idx=1,
+                   metrics=env.get_metrics(),
+                   tb_writer=None)
+
+    # Close the environment
+    env.close()
+    print("Video generated successfully")
 
 #################
 # 5 - MAIN CODE #
@@ -297,12 +397,13 @@ if __name__ == "__main__":
     # mode
     parser.add_argument("-m",
                         "--mode",
-                        choices=["training", "benchmark"],
+                        choices=["training", "benchmark", "video"],
                         help=textwrap.dedent("""\
                         Execution mode of the program. The program can run in the following modes:
                             * training: Trains the agent via reinforcement learning with a training set.
                             * benchmark: Evaluates the performance of the agent in a validation set, using the
                                          benchmarking tool provided by Habitat Lab
+                            * video: Generates a video of the agents performance in an specific episode
                         Note that only the RL-capable agents (ppo and reactive) are able to be used in training mode
                         DEFAULT: {}""".format(mode)))
 
@@ -369,3 +470,7 @@ if __name__ == "__main__":
         # BENCHMARK MODE
         benchmark_main(config_path_benchmark,
                        weights)
+    elif mode == "video":
+        # VIDEO MODE
+        video_main(config_path_benchmark,
+                   weights)
