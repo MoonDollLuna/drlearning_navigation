@@ -16,5 +16,331 @@
   {}
 \endgroup
 
-\datalist[entry]{none/global//global/global}\enddatalist
+\datalist[entry]{none/global//global/global}
+  \entry{Sampedro2018}{article}{}
+    \name{author}{5}{}{%
+      {{hash=SC}{%
+         family={Sampedro},
+         familyi={S\bibinitperiod},
+         given={Carlos},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=BH}{%
+         family={Bavle},
+         familyi={B\bibinitperiod},
+         given={Hriday},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=RRA}{%
+         family={Rodriguez-Ramos},
+         familyi={R\bibinithyphendelim R\bibinitperiod},
+         given={Alejandro},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=DP}{%
+         family={{De La Puente}},
+         familyi={D\bibinitperiod},
+         given={Paloma},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=CP}{%
+         family={Campoy},
+         familyi={C\bibinitperiod},
+         given={Pascual},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \keyw{Aerial Systems: Perception and Autonomy,Model Learning for
+  Control,Reactive and Sensor-Based Planning}
+    \strng{namehash}{SCBHRRA+1}
+    \strng{fullhash}{SCBHRRADPCP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    Navigation in unknown indoor environments with fast collision avoidance
+  capabilities is an ongoing research topic. Traditional motion planning
+  algorithms rely on precise maps of the environment, where re-adapting a
+  generated path can be highly demanding in terms of computational cost. In
+  this paper, we present a fast reactive navigation algorithm using Deep
+  Reinforcement Learning applied to multi rotor aerial robots. Taking as input
+  the 2D-laser range measurements and the relative position of the aerial robot
+  with respect to the desired goal, the proposed algorithm is successfully
+  trained in a Gazebo-based simulation scenario by adopting an artificial
+  potential field formulation. A thorough evaluation of the trained agent has
+  been carried out both in simulated and real indoor scenarios, showing the
+  appropriate reactive navigation behavior of the agent in the presence of
+  static and dynamic obstacles.%
+    }
+    \verb{doi}
+    \verb 10.1109/IROS.2018.8593706
+    \endverb
+    \field{isbn}{9781538680940}
+    \field{issn}{21530866}
+    \field{pages}{1024\bibrangedash 1031}
+    \field{title}{{Laser-Based Reactive Navigation for Multirotor Aerial Robots
+  using Deep Reinforcement Learning}}
+    \verb{file}
+    \verb :C\:/Users/Luna/AppData/Local/Mendeley Ltd./Mendeley Desktop/Download
+    \verb ed/Sampedro et al. - 2018 - Laser-Based Reactive Navigation for Multi
+    \verb rotor Aerial Robots using Deep Reinforcement Learning.pdf:pdf
+    \endverb
+    \field{journaltitle}{IEEE International Conference on Intelligent Robots
+  and Systems}
+    \field{year}{2018}
+  \endentry
+
+  \entry{habitat19iccv}{inproceedings}{}
+    \name{author}{12}{}{%
+      {{hash=SM}{%
+         family={Savva},
+         familyi={S\bibinitperiod},
+         given={Manolis},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=KA}{%
+         family={Kadian},
+         familyi={K\bibinitperiod},
+         given={Abhishek},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MO}{%
+         family={Maksymets},
+         familyi={M\bibinitperiod},
+         given={Oleksandr},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=ZY}{%
+         family={Zhao},
+         familyi={Z\bibinitperiod},
+         given={Yili},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=WE}{%
+         family={Wijmans},
+         familyi={W\bibinitperiod},
+         given={Erik},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=JB}{%
+         family={Jain},
+         familyi={J\bibinitperiod},
+         given={Bhavana},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Straub},
+         familyi={S\bibinitperiod},
+         given={Julian},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=LJ}{%
+         family={Liu},
+         familyi={L\bibinitperiod},
+         given={Jia},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=KV}{%
+         family={Koltun},
+         familyi={K\bibinitperiod},
+         given={Vladlen},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Malik},
+         familyi={M\bibinitperiod},
+         given={Jitendra},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=PD}{%
+         family={Parikh},
+         familyi={P\bibinitperiod},
+         given={Devi},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=BD}{%
+         family={Batra},
+         familyi={B\bibinitperiod},
+         given={Dhruv},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SMKAMO+1}
+    \strng{fullhash}{SMKAMOZYWEJBSJLJKVMJPDBD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the IEEE/CVF International Conference on
+  Computer Vision (ICCV)}
+    \field{title}{Habitat: {A} {P}latform for {E}mbodied {AI} {R}esearch}
+    \field{year}{2019}
+  \endentry
+
+  \entry{szot2021habitat}{article}{}
+    \name{author}{21}{}{%
+      {{hash=SA}{%
+         family={Szot},
+         familyi={S\bibinitperiod},
+         given={Andrew},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Clegg},
+         familyi={C\bibinitperiod},
+         given={Alex},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=UE}{%
+         family={Undersander},
+         familyi={U\bibinitperiod},
+         given={Eric},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=WE}{%
+         family={Wijmans},
+         familyi={W\bibinitperiod},
+         given={Erik},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=ZY}{%
+         family={Zhao},
+         familyi={Z\bibinitperiod},
+         given={Yili},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=TJ}{%
+         family={Turner},
+         familyi={T\bibinitperiod},
+         given={John},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=MN}{%
+         family={Maestre},
+         familyi={M\bibinitperiod},
+         given={Noah},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Mukadam},
+         familyi={M\bibinitperiod},
+         given={Mustafa},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=CD}{%
+         family={Chaplot},
+         familyi={C\bibinitperiod},
+         given={Devendra},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=MO}{%
+         family={Maksymets},
+         familyi={M\bibinitperiod},
+         given={Oleksandr},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=GA}{%
+         family={Gokaslan},
+         familyi={G\bibinitperiod},
+         given={Aaron},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=VV}{%
+         family={Vondrus},
+         familyi={V\bibinitperiod},
+         given={Vladimir},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=DS}{%
+         family={Dharur},
+         familyi={D\bibinitperiod},
+         given={Sameer},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=MF}{%
+         family={Meier},
+         familyi={M\bibinitperiod},
+         given={Franziska},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=GW}{%
+         family={Galuba},
+         familyi={G\bibinitperiod},
+         given={Wojciech},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Chang},
+         familyi={C\bibinitperiod},
+         given={Angel},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KZ}{%
+         family={Kira},
+         familyi={K\bibinitperiod},
+         given={Zsolt},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=KV}{%
+         family={Koltun},
+         familyi={K\bibinitperiod},
+         given={Vladlen},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Malik},
+         familyi={M\bibinitperiod},
+         given={Jitendra},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Savva},
+         familyi={S\bibinitperiod},
+         given={Manolis},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=BD}{%
+         family={Batra},
+         familyi={B\bibinitperiod},
+         given={Dhruv},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SACAUE+1}
+    \strng{fullhash}{SACAUEWEZYTJMNMMCDMOGAVVDSMFGWCAKZKVMJSMBD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Habitat 2.0: Training Home Assistants to Rearrange their
+  Habitat}
+    \field{journaltitle}{arXiv preprint arXiv:2106.14405}
+    \field{year}{2021}
+  \endentry
+
+  \entry{Jimenez2020}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=JL}{%
+         family={Jimenez},
+         familyi={J\bibinitperiod},
+         given={Luna},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{JL1}
+    \strng{fullhash}{JL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{109}
+    \field{title}{{Aplicaci{\'{o}}n de Deep Reinforcement Learning a un juego
+  real - Tetris}}
+    \list{location}{1}{%
+      {Albacete}%
+    }
+    \list{institution}{1}{%
+      {Universidad de Castilla-La Mancha}%
+    }
+    \verb{file}
+    \verb :C\:/Users/Luna/AppData/Local/Mendeley Ltd./Mendeley Desktop/Download
+    \verb ed/Jimenez Fernandez - 2020 - Aplicaci{\'{o}}n de Deep Reinforcement
+    \verb Learning a un juego real - Tetris.pdf:pdf
+    \endverb
+    \field{year}{2020}
+  \endentry
+\enddatalist
 \endinput

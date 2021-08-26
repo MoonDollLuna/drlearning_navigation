@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.19)  24 AUG 2021 03:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.19)  25 AUG 2021 19:04
 entering extended mode
 **./plantilla_TFM.tex
 (plantilla_TFM.tex
@@ -903,7 +903,7 @@ Package biblatex Info: Reference section=0 on input line 17.
 Package biblatex Info: Reference segment=0 on input line 17.
 \c@lstlisting=\count448
  (secciones/00B_Portada.tex
-<./imagenes/EscUpm.png, id=233, 245.91875pt x 200.75pt>
+<./imagenes/EscUpm.png, id=234, 245.91875pt x 200.75pt>
 File: ./imagenes/EscUpm.png Graphic file (type png)
 <use ./imagenes/EscUpm.png>
 Package pdftex.def Info: ./imagenes/EscUpm.png  used on input line 12.
@@ -935,7 +935,7 @@ LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <14.4> not available
 (Font)              Font shape `T1/pbk/l/n' tried instead on input line 18.
 LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <14.4> not available
 (Font)              Font shape `T1/pbk/db/n' tried instead on input line 19.
-<./imagenes/FacInformatica.png, id=235, 160.6pt x 170.6375pt>
+<./imagenes/FacInformatica.png, id=236, 160.6pt x 170.6375pt>
 File: ./imagenes/FacInformatica.png Graphic file (type png)
 <use ./imagenes/FacInformatica.png>
 Package pdftex.def Info: ./imagenes/FacInformatica.png  used on input line 23.
@@ -991,24 +991,27 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.21 	\item \textbf
-                   {Capítulo 5:} En este capítulo se detalla el diseño de...
-[1
+l.14 
+      [1
 
 
-]) (secciones/02_Descripcion_del_problema.tex
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
+]
+LaTeX Info: Redefining \. on input line 34.
+LaTeX Info: Redefining \% on input line 34.
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1 \chapter
-            {Descripción del problema} [2]
-Cap\'{\i }tulo 2.
-) (secciones/03_Revision_Tecnicas.tex [3
+l.34 	\item \textbf
+                   {Capítulo 6:} En este capítulo se detalla la experiment...
+[2]) (secciones/02_Descripcion_del_problema.tex
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [3] [4
 
-] [4
+]
+Cap\'{\i }tulo 2.
+) (secciones/03_Revision_Tecnicas.tex [5] [6
 
 ]
 Cap\'{\i }tulo 3.
@@ -1016,7 +1019,7 @@ LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <14.4> not available
 (Font)              Font shape `T1/pbk/db/it' tried instead on input line 3.
 LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <12> not available
 (Font)              Font shape `T1/pbk/db/n' tried instead on input line 9.
-) (secciones/04_Simulador.tex [5] [6
+) (secciones/04_Simulador.tex [7] [8
 
 ]
 Cap\'{\i }tulo 4.
@@ -1036,57 +1039,64 @@ Overfull \hbox (0.52823pt too wide) in paragraph at lines 35--36
 S CLA-VES QUE
  []
 
-[7]) (secciones/05_Diseno_Agentes.tex
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [8]
-Cap\'{\i }tulo 5.
-) (secciones/06_Experimentacion.tex [9
-
-]
+[9]) (secciones/05_Diseno_Agentes.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [10]
-Cap\'{\i }tulo 6.
-) (secciones/07_Conclusiones.tex [11
+Cap\'{\i }tulo 5.
+) (secciones/06_Experimentacion.tex [11
 
-] [12
+]
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [12]
+Cap\'{\i }tulo 6.
+) (secciones/07_Conclusiones.tex [13
+
+] [14
 
 ]
 Cap\'{\i }tulo 7.
+) [15] [16
+
+]
+LaTeX Font Info:    Font shape `T1/pbk/m/sc' in size <10.95> not available
+(Font)              Font shape `T1/pbk/l/sc' tried instead on input line 49.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 49
+.
+ (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/psnfss\t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-
-LaTeX Warning: Empty bibliography on input line 49.
-
-[13] (secciones/09_Anexos.tex [14
+[17] (secciones/09_Anexos.tex [18
 
 
-]) [15] (plantilla_TFM.aux
+]) [19] (plantilla_TFM.aux
 LaTeX Info: Redefining \sptext on input line 32.
 LaTeX Info: Redefining \. on input line 32.
 LaTeX Info: Redefining \% on input line 32.
 )
 Package rerunfilecheck Info: File `plantilla_TFM.out' has not changed.
-(rerunfilecheck)             Checksum: CBCA51EE6D190832863FBF01053D449D;9463.
+(rerunfilecheck)             Checksum: E4FDE1B6F3A55E94C7773324BFBE7520;9462.
 Package logreq Info: Writing requests to 'plantilla_TFM.run.xml'.
 \openout1 = `plantilla_TFM.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21453 strings out of 478868
- 353180 string characters out of 2858669
- 909027 words of memory out of 3000000
- 38930 multiletter control sequences out of 15000+600000
- 434416 words of font info for 83 fonts, out of 8000000 for 9000
+ 21715 strings out of 478868
+ 358436 string characters out of 2858669
+ 909261 words of memory out of 3000000
+ 39176 multiletter control sequences out of 15000+600000
+ 437055 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  65i,11n,69p,1882b,2204s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX
 /fonts/type1/urw/bookman/ubkd8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/bo
 okman/ubkdi8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/bookman/ubkl8a.pfb><
-C:/Program Files/MiKTeX/fonts/type1/urw/bookman/ubkli8a.pfb>
-Output written on plantilla_TFM.pdf (23 pages, 216583 bytes).
+C:/Program Files/MiKTeX/fonts/type1/urw/bookman/ubkli8a.pfb><C:/Program Files/M
+iKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on plantilla_TFM.pdf (27 pages, 238138 bytes).
 PDF statistics:
- 437 PDF objects out of 1000 (max. 8388607)
- 82 named destinations out of 1000 (max. 500000)
+ 472 PDF objects out of 1000 (max. 8388607)
+ 91 named destinations out of 1000 (max. 500000)
  475 words of extra memory for PDF output out of 10000 (max. 10000000)
 
