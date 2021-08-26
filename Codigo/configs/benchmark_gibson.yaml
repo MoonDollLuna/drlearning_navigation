@@ -5,8 +5,7 @@
 # This file contains all general parameters to be used while benchmarking
 # the agents
 #
-# In essence, this is a variation of the base file
-# including some extra options (like Video output) to be used
+# In essence, this is a variation of the base file to be used
 # when evaluating the agents
 
 # BENCHMARKING OPTIONS
@@ -50,4 +49,8 @@ TASK:
   MEASUREMENTS: ['DISTANCE_TO_GOAL', 'SUCCESS', 'SPL', 'SOFT_SPL', "COLLISIONS"]
   SUCCESS:
     SUCCESS_DISTANCE: 0.3
+
+# Dummy RL config, to allow usage with video
+RL:
+  dummy: True
 

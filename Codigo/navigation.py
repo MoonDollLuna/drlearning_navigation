@@ -37,7 +37,7 @@ import torch
 # Habitat imports
 import habitat
 from habitat import Benchmark
-from habitat.core.env import Env
+from habitat_baselines.common.environments import NavRLEnv
 
 from habitat import get_config as get_task_config
 from habitat_baselines.config.default import get_config
@@ -79,6 +79,10 @@ config_paths_training = {
 # Benchmark config file
 # All agents share the same config file to be used during the benchmarking process
 config_path_benchmark = "./configs/benchmark_matterport.yaml"
+
+# Video config file
+# All agents share the same config file to be used during video generation
+config_path_video = "./configs/video_config.yaml"
 
 # Dataset paths
 # If an extra dataset was to be added, the path can be specified as a new value
@@ -257,7 +261,7 @@ def benchmark_main(config_path, pretrained_weights=None):
     print("\t* Mean collision count: {}".format(metrics["collisions/count"]))
 
 
-def video_main(config_path, pretrained_weights=None):
+def video_main(config_path, video_dataset, pretrained_weights=None):
     """
     Method used for video generation
 
@@ -266,6 +270,8 @@ def video_main(config_path, pretrained_weights=None):
 
     :param config_path: Path to the config file
     :type config_path: str
+    :param video_dataset: Name of the dataset to use
+    :type video_dataset: str
     :param pretrained_weights: (OPTIONAL) Path to the pre-trained weights used by the agents
     :type pretrained_weights: str
     """
@@ -274,51 +280,58 @@ def video_main(config_path, pretrained_weights=None):
     print("Starting program in video mode...")
 
     # Instantiate the Config from the config file
-    benchmark_config = get_task_config(config_path)
+    video_config = get_config(config_path)
+
+    # Add the dataset
+    video_config.defrost()
+    video_config.TASK_CONFIG.DATASET.DATA_PATH = dataset_paths[video_dataset]
+    video_config.TASK_CONFIG.DATASET.SPLIT = "val"
+    video_config.TASK_CONFIG.DATASET.NAME = video_dataset
 
     # Add extra metrics to the config file
-    # (top down map)
-    benchmark_config.defrost()
-    benchmark_config.TASK.MEASUREMENTS.append("TOP_DOWN_MAP")
+    # (top down map and collisions)
+    video_config.TASK_CONFIG.TASK.MEASUREMENTS.append("TOP_DOWN_MAP")
+    video_config.TASK_CONFIG.TASK.MEASUREMENTS.append("COLLISIONS")
 
     # Add the path to the pre-trained weights (if applicable) to the config file
     if pretrained_weights:
-        benchmark_config.MODEL_PATH = pretrained_weights
+        video_config.MODEL_PATH = pretrained_weights
 
-    benchmark_config.freeze()
-
-    # If the seed is specified, instantiate it
-    if benchmark_config.SEED:
-        random.seed(benchmark_config.SEED)
-        np.random.seed(benchmark_config.SEED)
-        torch.manual_seed(benchmark_config.SEED)
+    video_config.freeze()
 
     # Instantiate the appropriate agent and the benchmark
     if agent_type == "random":
         # Random agent
-        agent = RandomAgent(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
-                            benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+        agent = RandomAgent(video_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
+                            video_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
     elif agent_type == "random_forward":
         # Random forward agent
-        agent = RandomForwardAgent(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
-                                   benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+        agent = RandomForwardAgent(video_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
+                                   video_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
     elif agent_type == "goal_follower":
         # Goal follower
-        agent = GoalFollower(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
-                             benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+        agent = GoalFollower(video_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
+                             video_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
     elif agent_type == "ppo":
         # PPO agent
-        agent = PPOAgent(benchmark_config)
+        agent = PPOAgent(video_config)
     else:
         # Reactive agent (default)
-        agent = ReactiveNavigationAgent(benchmark_config,
+        agent = ReactiveNavigationAgent(video_config,
                                         pretrained_weights)
 
     # Create the folder to store the video
-    os.makedirs(benchmark_config.VIDEO_DIR, exist_ok=True)
+    os.makedirs(video_config.VIDEO_DIR, exist_ok=True)
 
     # Instantiate the environment using the config file
-    env = Env(benchmark_config)
+    env = NavRLEnv(video_config)
+
+    # If the seed is specified, instantiate it
+    if video_config.SEED:
+        random.seed(video_config.SEED)
+        np.random.seed(video_config.SEED)
+        torch.manual_seed(video_config.SEED)
+        env.seed(video_config.SEED)
 
     # Store all the images to convert into video into a list
     processed_images = []
@@ -326,24 +339,38 @@ def video_main(config_path, pretrained_weights=None):
     # Perform the episode while generating the appropriate images
     observations = env.reset()
     agent.reset()
+    print("Starting episode...")
 
-    while not env.episode_over:
+    while not env.get_done(observations):
         action = agent.act(observations)
-        observations, _, _, info = env.step(action)
+        observations, _, _, info = env.step(action=action)
         processed_images.append(observations_to_image(observations, info))
 
+    print("Episode finished, generating video...")
+
+    # Process the metrics to remove offending metrics
+    # (top down map)
+    metrics = env.get_info(observations)
+    metrics.pop('top_down_map', None)
+    collisions = metrics.pop('collisions', None)
+    metrics["collisions"] = collisions["count"]
+
     # With all images generated, create the appropriate video
-    generate_video(video_option=benchmark_config.VIDEO_OPTION,
-                   video_dir=benchmark_config.VIDEO_DIR,
+    # (no Tensorboard writer is used)
+    # Note that having FFMPEG and libx264-dev installed is required
+    # (install using conda-forge to ensure the driver is correctly installed)
+    generate_video(video_option=video_config.VIDEO_OPTION,
+                   video_dir=video_config.VIDEO_DIR,
                    images=processed_images,
                    episode_id=1,
                    checkpoint_idx=1,
-                   metrics=env.get_metrics(),
+                   metrics=metrics,
                    tb_writer=None)
 
     # Close the environment
     env.close()
     print("Video generated successfully")
+
 
 #################
 # 5 - MAIN CODE #
@@ -457,9 +484,12 @@ if __name__ == "__main__":
         if mode == "training":
             # Choose the appropriate config file for the agent
             config_file = config_paths_training[agent_type]
-        else:
+        elif mode == "benchmark":
             # Choose the generic benchmarking config file
             config_file = config_path_benchmark
+        else:
+            # Choose the generic video config file
+            config_file = config_path_video
 
     # Depending on the execution mode, run the appropriate main code
     if mode == "training":
@@ -468,9 +498,10 @@ if __name__ == "__main__":
                       dataset)
     elif mode == "benchmark":
         # BENCHMARK MODE
-        benchmark_main(config_path_benchmark,
+        benchmark_main(config_file,
                        weights)
     elif mode == "video":
         # VIDEO MODE
-        video_main(config_path_benchmark,
+        video_main(config_file,
+                   dataset,
                    weights)
