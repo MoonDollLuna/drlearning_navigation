@@ -90,12 +90,12 @@ from habitat_baselines.agents.ppo_agents import PPOAgent
 # Note that a config file can be specified via argument, overloading this value
 config_paths_training = {
     "ppo": "./configs/ppo_pointnav_train.yaml",
-    "reactive": "./configs/reactive_pointnav_train_contour.yaml"
+    "reactive": "./configs/no_collisions/reactive_pointnav_train_contour.yaml"
 }
 
 # Benchmark config file
 # All agents share the same config file to be used during the benchmarking process
-config_path_benchmark = "./configs/benchmark_matterport.yaml"
+config_path_benchmark = "./configs/benchmarks/benchmark_matterport.yaml"
 
 # Video config file
 # All agents share the same config file to be used during video generation

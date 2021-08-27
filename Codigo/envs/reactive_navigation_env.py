@@ -388,7 +388,6 @@ class ReactiveNavigationEnv(NavRLEnv):
 
         # Check for collisions
         if metrics["collisions"]["is_collision"] or metrics["collisions"]["count"] > 0:
-            print("Collision detected, ending episode")
             return True
         else:
             return False

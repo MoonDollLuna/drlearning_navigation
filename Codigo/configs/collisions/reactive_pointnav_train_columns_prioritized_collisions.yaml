@@ -32,6 +32,8 @@ VIDEO_DIR: "Evaluation/Reactive/Video"
 # Evaluate on all episodes
 TEST_EPISODE_COUNT: -1
 
+SENSORS: ['DEPTH_SENSOR', 'POINTGOAL_WITH_GPS_COMPASS_SENSOR']
+
 CHECKPOINT_FOLDER: "Training/Reactive/Checkpoints"
 TRAINING_LOG_FOLDER: "Training/Reactive/Log"
 # If True, the log will not output messages to the console screen during training
@@ -74,7 +76,7 @@ RL:
     # The value of epsilon will decrease linearly from epsilon to min_epsilon
     min_epsilon_percentage: 0.8
     # Chooses between standard DQL (False) or Prioritized DQL (True)
-    prioritized: False
+    prioritized: True
     # (PRIORITIZED ONLY) Alpha value (priority degree). The higher alpha is, the higher the probability of choosing higher error experiences is
     prioritized_alpha: 0.5
     # (PRIORITIZED ONLY) Beta value (bias degree). The higher the value is, the less weight variations have (to avoid big oscillations)
@@ -100,7 +102,7 @@ RL:
     # Reward method to be used. There are two possibilities:
     #	- contour: Contour based approach, imitating the original laser-based proposal
     #	- column: Column based approach, dividing the image into smaller columns and computing each column as obstacle / no obstacle.
-    reward_method: contour
+    reward_method: column
     # Approximate distance (in simulator units) at which obstacles are when they are at the threshold.
     # Can also be understood as the maximum distance the camera will detect obstacles
     obstacle_distance: 2
