@@ -1,0 +1,124 @@
+# REACTIVE NAVIGATION
+# Reactive Navigation Agent training configuration
+# Developed by Luna Jimenez Fernandez
+#
+# This file contains all the specific parameters used by the agent training, including
+# both the Deep Q Learning and the Reward computation parameters
+#
+# Note that this config is added on top of "base_config.yaml", so both files need to be configured
+# The following arguments can be found in "base_config.yaml":
+#	- Steps per episode (ENVIRONMENT->MAX_EPISODE_STEPS)
+#	- Goal radius (TASK->SUCCESS_DISTANCE)
+#
+# NOTE: Not all parameters are configured via config, the following parameters can be specified
+# as arguments when launching the script:
+#	- Agent type
+#	- Dataset and splits to be used
+#	- Path to pre-trained weights
+#
+
+VERBOSE: False
+
+BASE_TASK_CONFIG_PATH: "configs/base_config.yaml"
+TRAINER_NAME: "reactive"
+ENV_NAME: "ReactiveNavEnv"
+SIMULATOR_GPU_ID: 0
+TORCH_GPU_ID: 0
+VIDEO_OPTION: []
+# Can be uncommented to generate videos during training.
+# VIDEO_OPTION: ["disk", "tensorboard"]
+TENSORBOARD_DIR: "Evaluation/Reactive/Tensorboard"
+VIDEO_DIR: "Evaluation/Reactive/Video"
+# Evaluate on all episodes
+TEST_EPISODE_COUNT: -1
+
+SENSORS: ['DEPTH_SENSOR', 'POINTGOAL_WITH_GPS_COMPASS_SENSOR']
+
+CHECKPOINT_FOLDER: "Training/Reactive/Checkpoints"
+TRAINING_LOG_FOLDER: "Training/Reactive/Log"
+# If True, the log will not output messages to the console screen during training
+LOG_SILENT: False
+EVAL_CKPT_PATH_DIR: "Training/Reactive/Checkpoints"
+
+# One of these two parameters must be present:
+#	TOTAL_NUM_STEPS: Maximum number of steps the agent will take across all epochs
+#	NUM_UPDATES: Number of updates (completed episodes) that have been performed
+# Training stops when either of these values are reached
+
+# TOTAL_NUM_STEPS: 2000.0
+NUM_UPDATES: 15000
+LOG_INTERVAL: 25
+NUM_CHECKPOINTS: 100
+
+# Reinforcement Learning specific configs
+RL:
+  # Seed used for all experiments. Can be commented to use a random seed
+  seed: 0
+
+  # Deep Q-Learning parameters
+  DQL:
+    # Learning rate of the neural network
+    learning_rate: 0.001
+    # Maximum size of the Experience Replay (once full, older experiences will be removed)
+    er_size: 20000
+    # Batch size when sampling the Experience Replay
+    batch_size: 64
+    # Batches of experiences are split into chunks of this size during training
+    # Reduces training speed, but improves memory usage
+    training_batch_size: 32
+    # Gamma value (learning rate of DQL)
+    gamma: 0.99
+    # Epsilon value (initial chance to perform a random action due to exploration-exploitation)
+    epsilon: 1.00
+    # Minimum epsilon value, achieved after a percentage of epochs (min_epsilon_percentage)
+    min_epsilon: 0.05
+    # Percentage of epochs (between 0 and 1) after which epsilon will reach min_epsilon.
+    # The value of epsilon will decrease linearly from epsilon to min_epsilon
+    min_epsilon_percentage: 0.8
+    # Chooses between standard DQL (False) or Prioritized DQL (True)
+    prioritized: False
+    # (PRIORITIZED ONLY) Alpha value (priority degree). The higher alpha is, the higher the probability of choosing higher error experiences is
+    prioritized_alpha: 0.5
+    # (PRIORITIZED ONLY) Beta value (bias degree). The higher the value is, the less weight variations have (to avoid big oscillations)
+    prioritized_beta: 0.5
+  
+  # Image pre-processing parameters (used to compute the rewards)
+  IMAGE:
+    # Pixels to be trimmed from both bottom and top of the image (the depth view seen by the camera)
+    # This parameter is relevant since the robot is an embodied agent that will always see the floor (and, in the case of houses,
+    # the roof) at a constant height
+    # Therefore, it can be trimmed without problem
+    trim: 35
+    # Threshold to consider a part of the image an obstacle. Note that the image is a grayscale image from 0.0 to 1.0, where 0 (black) means the closest and 1.0 (white) means the furthest
+    # This also doubles as the maximum distance to an obstacle.
+    obstacle_threshold: 0.15
+    # Minimum area (in pixels) for contours / columns. Contours / columns smaller than this size will be ignored
+    min_contour_area: 250
+    # (COLUMN REWARDS ONLY) Total columns to be used when using the column reward method. Ignored when using the contour reward_method
+    reward_columns: 8
+    
+  # Reward parameters
+  REWARD:
+    # Reward method to be used. There are two possibilities:
+    #	- contour: Contour based approach, imitating the original laser-based proposal
+    #	- column: Column based approach, dividing the image into smaller columns and computing each column as obstacle / no obstacle.
+    reward_method: column
+    # Approximate distance (in simulator units) at which obstacles are when they are at the threshold.
+    # Can also be understood as the maximum distance the camera will detect obstacles
+    obstacle_distance: 2
+    # Positive gain applied to the attractive field, to increase its weight
+    attraction_gain: 100
+    # Positive gain applied to the repulsive field, to increase its weight
+    repulsive_gain: 15
+    # Value used to limit the repulsive field's maximum value
+    repulsive_limit: 0.04
+    # Percentage (between 0 and 1). When the goal is closer than repulsive_goal_influence * obstacle_distance, the effect of the repulsive field gets decreased
+    repulsive_goal_influence: 0.75
+    # Success reward. Note that positive rewards will also be clipped to this value
+    success_reward: 10
+    # Slack penalty, added to the reward each non-final episode to ensure that the agent doesn't end in a loop of doing actions without reward to avoid a penalty
+    slack_penalty: -0.25
+    # Failure penalty. Note that negative rewards will also be clipped to this value
+    failure_penalty: -100
+    # If True, the episode will end immediately if a collision is detected
+    collisions: False

@@ -52,8 +52,13 @@ class ReactiveNavigationAgent(Agent):
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         # Extract the necessary parameters from the config
-        image_size = config.TASK_CONFIG.SIMULATOR.DEPTH_SENSOR.WIDTH
-        action_list = config.TASK_CONFIG.TASK.POSSIBLE_ACTIONS
+        # (and prepare the agent to receive both types of config files)
+        if config.TASK_CONFIG:
+            image_size = config.TASK_CONFIG.SIMULATOR.DEPTH_SENSOR.WIDTH
+            action_list = config.TASK_CONFIG.TASK.POSSIBLE_ACTIONS
+        else:
+            image_size = config.SIMULATOR.DEPTH_SENSOR.WIDTH
+            action_list = config.TASK.POSSIBLE_ACTIONS
 
         # Instantiate the model
         self._model = ReactiveNavigationModel(image_size,

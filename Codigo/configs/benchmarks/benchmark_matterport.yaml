@@ -1,0 +1,57 @@
+# REACTIVE NAVIGATION
+# Benchmark configuration
+# Developed by Luna Jimenez Fernandez
+#
+# This file contains all general parameters to be used while benchmarking
+# the agents
+#
+# In essence, this is a variation of the base file
+# including some extra options (like Video output) to be used
+# when evaluating the agents
+
+# BENCHMARKING OPTIONS
+VIDEO_OPTION: ["disk"]
+VIDEO_DIR: "Video/Reactive"
+SEED: 0
+
+ENVIRONMENT:
+  MAX_EPISODE_STEPS: 500
+
+SIMULATOR:
+  AGENT_0:
+    SENSORS: ['RGB_SENSOR', 'DEPTH_SENSOR']
+  RGB_SENSOR:
+    WIDTH: 256
+    HEIGHT: 256
+  DEPTH_SENSOR:
+    WIDTH: 256
+    HEIGHT: 256
+    
+  # Physics are explicitely disabled, to avoid segmentation faults
+  HABITAT_SIM_V0:
+    ENABLE_PHYSICS: False
+    
+# DATASET: Dataset path, name and split to be used must be specified here
+DATASET:
+  TYPE: PointNav-v1
+  SPLIT: "val"
+  DATA_PATH: "./data/datasets/pointnav/mp3d/v1/{split}/{split}.json.gz"
+  NAME: "matterport"
+
+TASK:
+  TYPE: Nav-v0
+  SUCCESS_DISTANCE: 0.3
+  SENSORS: ['POINTGOAL_WITH_GPS_COMPASS_SENSOR']
+  POSSIBLE_ACTIONS: ['STOP', 'MOVE_FORWARD', 'TURN_LEFT', 'TURN_RIGHT']
+  POINTGOAL_WITH_GPS_COMPASS_SENSOR:
+    GOAL_FORMAT: "POLAR"
+    DIMENSIONALITY: 2
+  GOAL_SENSOR_UUID: pointgoal_with_gps_compass
+  MEASUREMENTS: ['DISTANCE_TO_GOAL', 'SUCCESS', 'SPL', 'SOFT_SPL', "COLLISIONS"]
+  SUCCESS:
+    SUCCESS_DISTANCE: 0.3
+    
+# Dummy RL config, to allow usage with video
+RL:
+  dummy: True
+

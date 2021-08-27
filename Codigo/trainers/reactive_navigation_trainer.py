@@ -127,8 +127,6 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
     _checkpoint_count: int
     # Location of the log folder during training
     _training_log_folder: str
-    # Location of the log folder during evaluation
-    _evaluation_log_folder: str
     # Flag to indicate whether the log is silent (doesn't output messages to the screen, TRUE) or not (FALSE)
     _silent: bool
     # Initial time when the agent started training
@@ -188,7 +186,6 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
         self._checkpoint_folder = config.CHECKPOINT_FOLDER
         self._training_log_folder = config.TRAINING_LOG_FOLDER
-        self._evaluation_log_folder = config.EVALUATION_LOG_FOLDER
         self._silent = config.LOG_SILENT
         self._rewards_method = _rl_config.REWARD.reward_method
         self._collisions = _rl_config.REWARD.collisions

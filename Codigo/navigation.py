@@ -1,9 +1,29 @@
 # REACTIVE NAVIGATION - MAIN CODE
 # Developed by: Luna Jimenez Fernandez
 #
-# This file contains the main structure of the reactive navigation system developed
-# TODO: ACABAR ESTO
+# This file contains the main structure of the reactive navigation system developed,
+# where agents can be trained and evaluated
 #
+# This file contains code to do the following actions:
+#   * Train a RL-capable agent during a number of episodes
+#   * Evaluate the performance of a trained agent using a validation set
+#   * Generate a video of the agent's performance
+#
+# The Reactive Navigation Agent implementation itself is divided among several classes:
+#   * Main model (neural network, act logic): ReactiveNavigationModel (models/reactive_navigation)
+#   * Experience replay logic: ExperienceReplay (models/experience_replay)
+#   * Reward computing logic: ReactiveNavigationEnv (envs/reactive_navigation_env)
+#   * DQL training implementation: ReactiveNavigationTrainer (trainers/reactive_navigation_env)
+#
+# In addition, other utils are made available:
+#   * Log creating and handling: LogManager (utils/log_manager.py)
+#   * Agent implementation compatible with benchmarking tools: ReactiveNavigationAgent
+#     (agents/reactive_navigation_agent)
+#   * Script to clean the GPU cache and launch profiling tools: prepare_launch.sh
+#
+# The proposed agent uses a PyTorch architecture. However, the files for a previous
+# Keras based architecture are provided (with name DEPRECATED_*)
+# These files are not updated and should not be used, but they are kept for documentation sake
 #
 # Structure of the file:
 #   1 - Imports
@@ -11,15 +31,12 @@
 #   3 - User-defined variables
 #   4 - Main code
 #       4A - Training
-#       4B - Evaluation
-#       4C - Benchmark
+#       4B - Benchmark
+#       4C - Video
 #   5 - Init code
 #       5A - Argument declaration
 #       5B - Argument parsing
 #       5C - Argument processing and program launch
-
-# TODO: EL TIPO DE COMENTARIO SE LLAMA SPHINX MARKUP
-# (garantiza compatibilidad con el mayor numero de sistemas posibles)
 
 ###############
 # 1 - IMPORTS #
@@ -27,17 +44,27 @@
 
 # General imports
 import argparse
+import os
+import random
 import sys
 import textwrap
+import numpy as np
+import torch
 
 # Habitat imports
 import habitat
 from habitat import Benchmark
+from habitat_baselines.common.environments import NavRLEnv
+
+from habitat import get_config as get_task_config
 from habitat_baselines.config.default import get_config
 from habitat_baselines.common.baseline_registry import baseline_registry
 
+from habitat.utils.visualizations.utils import observations_to_image
+from habitat_baselines.utils.common import generate_video
+
 # Reactive Navigation imports
-#
+
 # Even if these imports seem unused, it's necessary to pre-import them
 # to ensure that the decorator (function used to register
 # them in the baseline registry) is run
@@ -61,17 +88,18 @@ from habitat_baselines.agents.ppo_agents import PPOAgent
 # Config file paths - Training
 # Each agent has its own specific training config file
 # Note that a config file can be specified via argument, overloading this value
-# TODO - Faltan los configs del PPO
 config_paths_training = {
-    "ppo": None,
-    "reactive": "./configs/reactive_pointnav_train_contour.yaml"
+    "ppo": "./configs/ppo_pointnav_train.yaml",
+    "reactive": "./configs/no_collisions/reactive_pointnav_train_contour.yaml"
 }
 
 # Benchmark config file
 # All agents share the same config file to be used during the benchmarking process
-config_path_benchmark = "./configs/benchmark_config.yaml"
-# TODO haz el config
+config_path_benchmark = "./configs/benchmarks/benchmark_matterport.yaml"
 
+# Video config file
+# All agents share the same config file to be used during video generation
+config_path_video = "./configs/video_config.yaml"
 
 # Dataset paths
 # If an extra dataset was to be added, the path can be specified as a new value
@@ -115,6 +143,7 @@ dataset = "matterport"
 # Possible values:
 #   - training - Trains the agent via reinforcement learning with a training set
 #   - benchmark - Evaluates the performance of the agent using the provided Habitat Lab benchmark tool
+#   - video - Generates a video of the trained agent performance in an episode
 # Note that benchmark agents cannot run in Training mode
 mode = "training"
 
@@ -172,7 +201,7 @@ def training_main(config_path, training_dataset):
     trainer.train()
 
 
-def benchmark_main(config_path, training_dataset, pretrained_weights=None):
+def benchmark_main(config_path, pretrained_weights=None):
     """
     Main method for agent evaluation
 
@@ -180,14 +209,14 @@ def benchmark_main(config_path, training_dataset, pretrained_weights=None):
     and dataset
 
     The following metrics are considered for evaluation:
-    # TODO METRICAS
-
-    In addition, videos of the training process are provided
+        * Final distance to the goal
+        * Whether the episode was a success or not
+        * SPL (Success weighted by path length)
+        * Soft SPL
+        * Collision count
 
     :param config_path: Path to the config file
     :type config_path: str
-    :param training_dataset: Name of the dataset to use
-    :type training_dataset: str
     :param pretrained_weights: (OPTIONAL) Path to the pre-trained weights used by the agents
     :type pretrained_weights: str
     """
@@ -196,19 +225,19 @@ def benchmark_main(config_path, training_dataset, pretrained_weights=None):
     print("Starting program in benchmark mode...")
 
     # Instantiate the Config from the config file
-    benchmark_config = get_config(config_path)
-
-    # Add the dataset info to the config file
-    benchmark_config.defrost()
-    benchmark_config.TASK_CONFIG.DATASET.DATA_PATH = dataset_paths[training_dataset]
-    benchmark_config.TASK_CONFIG.DATASET.SPLIT = "val"
-    benchmark_config.TASK_CONFIG.DATASET.NAME = training_dataset
+    benchmark_config = get_task_config(config_path)
 
     # Add the path to the pre-trained weights (if applicable) to the config file
     if pretrained_weights:
+        benchmark_config.defrost()
         benchmark_config.MODEL_PATH = pretrained_weights
+        benchmark_config.freeze()
 
-    benchmark_config.freeze()
+    # If the seed is specified, instantiate it
+    if benchmark_config.SEED:
+        random.seed(benchmark_config.SEED)
+        np.random.seed(benchmark_config.SEED)
+        torch.manual_seed(benchmark_config.SEED)
 
     # Instantiate the appropriate agent and the benchmark
     if agent_type == "random":
@@ -231,12 +260,133 @@ def benchmark_main(config_path, training_dataset, pretrained_weights=None):
         agent = ReactiveNavigationAgent(benchmark_config,
                                         pretrained_weights)
 
+    # Note that the CONFIG PATH is passed to the benchmark
+    # (instead of an already instantiated Config object)
+    # Thus, all info must be directly contained within the file
     benchmark = Benchmark(config_path)
 
     # Evaluate the agent and print the metrics
-    metrics = benchmark.evaluate(agent, 50)
+    episode_count = 100
+    metrics = benchmark.evaluate(agent, episode_count)
 
-    # TODO - IMPRIME LAS METRICAS
+    print("= EVALUATION METRICS =\n")
+    print("Mean metrics over {} episodes:".format(episode_count))
+    print("\t* Mean distance to goal: {}".format(metrics["distance_to_goal"]))
+    print("\t* Mean success rate: {}".format(metrics["success"]))
+    print("\t* Mean SPL: {}".format(metrics["spl"]))
+    print("\t* Mean soft SPL: {}".format(metrics["softspl"]))
+    print("\t* Mean collision count: {}".format(metrics["collisions/count"]))
+
+
+def video_main(config_path, video_dataset, pretrained_weights=None):
+    """
+    Method used for video generation
+
+    Using the tools provided by Habitat, simulates an episode using the first
+    episode of the dataset and generates a video of the agent performance from it
+
+    :param config_path: Path to the config file
+    :type config_path: str
+    :param video_dataset: Name of the dataset to use
+    :type video_dataset: str
+    :param pretrained_weights: (OPTIONAL) Path to the pre-trained weights used by the agents
+    :type pretrained_weights: str
+    """
+
+    # Initial message
+    print("Starting program in video mode...")
+
+    # Instantiate the Config from the config file
+    video_config = get_config(config_path)
+
+    # Add the dataset
+    video_config.defrost()
+    video_config.TASK_CONFIG.DATASET.DATA_PATH = dataset_paths[video_dataset]
+    video_config.TASK_CONFIG.DATASET.SPLIT = "train"
+    video_config.TASK_CONFIG.DATASET.NAME = video_dataset
+
+    # Add extra metrics to the config file
+    # (top down map and collisions)
+    video_config.TASK_CONFIG.TASK.MEASUREMENTS.append("TOP_DOWN_MAP")
+    video_config.TASK_CONFIG.TASK.MEASUREMENTS.append("COLLISIONS")
+
+    # Add the path to the pre-trained weights (if applicable) to the config file
+    if pretrained_weights:
+        video_config.MODEL_PATH = pretrained_weights
+
+    video_config.freeze()
+
+    # Instantiate the appropriate agent and the benchmark
+    if agent_type == "random":
+        # Random agent
+        agent = RandomAgent(video_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
+                            video_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+    elif agent_type == "random_forward":
+        # Random forward agent
+        agent = RandomForwardAgent(video_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
+                                   video_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+    elif agent_type == "goal_follower":
+        # Goal follower
+        agent = GoalFollower(video_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
+                             video_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+    elif agent_type == "ppo":
+        # PPO agent
+        agent = PPOAgent(video_config)
+    else:
+        # Reactive agent (default)
+        agent = ReactiveNavigationAgent(video_config,
+                                        pretrained_weights)
+
+    # Create the folder to store the video
+    os.makedirs(video_config.VIDEO_DIR, exist_ok=True)
+
+    # Instantiate the environment using the config file
+    env = NavRLEnv(video_config)
+
+    # If the seed is specified, instantiate it
+    if video_config.SEED:
+        random.seed(video_config.SEED)
+        np.random.seed(video_config.SEED)
+        torch.manual_seed(video_config.SEED)
+        env.seed(video_config.SEED)
+
+    # Store all the images to convert into video into a list
+    processed_images = []
+
+    # Perform the episode while generating the appropriate images
+    observations = env.reset()
+    agent.reset()
+    print("Starting episode...")
+
+    while not env.get_done(observations):
+        action = agent.act(observations)
+        observations, _, _, info = env.step(action=action)
+        processed_images.append(observations_to_image(observations, info))
+
+    print("Episode finished, generating video...")
+
+    # Process the metrics to remove offending metrics
+    # (top down map)
+    metrics = env.get_info(observations)
+    metrics.pop('top_down_map', None)
+    collisions = metrics.pop('collisions', None)
+    metrics["collisions"] = collisions["count"]
+
+    # With all images generated, create the appropriate video
+    # (no Tensorboard writer is used)
+    # Note that having FFMPEG and libx264-dev installed is required
+    # (install using conda-forge to ensure the driver is correctly installed)
+    generate_video(video_option=video_config.VIDEO_OPTION,
+                   video_dir=video_config.VIDEO_DIR,
+                   images=processed_images,
+                   episode_id=1,
+                   checkpoint_idx=1,
+                   metrics=metrics,
+                   tb_writer=None)
+
+    # Close the environment
+    env.close()
+    print("Video generated successfully")
 
 
 #################
@@ -291,12 +441,13 @@ if __name__ == "__main__":
     # mode
     parser.add_argument("-m",
                         "--mode",
-                        choices=["training", "benchmark"],
+                        choices=["training", "benchmark", "video"],
                         help=textwrap.dedent("""\
                         Execution mode of the program. The program can run in the following modes:
                             * training: Trains the agent via reinforcement learning with a training set.
                             * benchmark: Evaluates the performance of the agent in a validation set, using the
                                          benchmarking tool provided by Habitat Lab
+                            * video: Generates a video of the agents performance in an specific episode
                         Note that only the RL-capable agents (ppo and reactive) are able to be used in training mode
                         DEFAULT: {}""".format(mode)))
 
@@ -350,9 +501,12 @@ if __name__ == "__main__":
         if mode == "training":
             # Choose the appropriate config file for the agent
             config_file = config_paths_training[agent_type]
-        else:
+        elif mode == "benchmark":
             # Choose the generic benchmarking config file
             config_file = config_path_benchmark
+        else:
+            # Choose the generic video config file
+            config_file = config_path_video
 
     # Depending on the execution mode, run the appropriate main code
     if mode == "training":
@@ -361,6 +515,10 @@ if __name__ == "__main__":
                       dataset)
     elif mode == "benchmark":
         # BENCHMARK MODE
-        benchmark_main(config_path_benchmark,
-                       dataset,
+        benchmark_main(config_file,
                        weights)
+    elif mode == "video":
+        # VIDEO MODE
+        video_main(config_file,
+                   dataset,
+                   weights)

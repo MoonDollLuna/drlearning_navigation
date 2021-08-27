@@ -1,0 +1,19 @@
+# REACTIVE NAVIGATION
+# Video
+# Developed by Luna Jimenez Fernandez
+#
+# This file contains all general parameters to be used 
+# in order to generate video of the agents
+#
+
+BASE_TASK_CONFIG_PATH: "configs/base_config.yaml"
+VIDEO_OPTION: ["disk"]
+VIDEO_DIR: "Video"
+SEED: 0
+
+# Dataset is still specified via console
+
+# Add a dummy RL section, to avoid errors
+# (Habitat Lab expects video to only be created for RL agents)
+RL:
+ dummy: True

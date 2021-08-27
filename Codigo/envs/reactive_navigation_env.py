@@ -43,10 +43,10 @@ class ReactiveNavigationEnv(NavRLEnv):
     # ATTRIBUTES #
 
     # IMAGE PROCESSING ATTRIBUTES
-    # Pixels to be trimmed from the bottom of the image (the image provided by the depth camera)
+    # Pixels to be trimmed from the bottom and top of the image (the image provided by the depth camera)
     # This parameter is a heuristic used since our robot is an embodied agent that will always see the floor
     # at a constant height (so it can be trimmed to avoid detecting false obstacles)
-    _bottom_trim: int
+    _trim: int
     # Maximum color threshold for obstacles within the image. Objects with a color below the threshold are considered
     # obstacles, while objects with a color above the threshold are not.
     # Note that the color goes from 0.0 (pure black) to 1.0 (pure white).
@@ -87,14 +87,8 @@ class ReactiveNavigationEnv(NavRLEnv):
     _failure_penalty: float
     # Goal distance (goal at which the agent is considered to be at the goal)
     _goal_distance: float
-
     # Flag for collisions. If True, the episode will end as a failure if the agent collides with an object
     _collisions: bool
-    # Obstacle mercy steps. The agent will ignore obstacle checks for this amount of steps
-    # This solves the problem of agents spawning right next to obstacles immediately ending episodes
-    _obstacle_mercy_steps: int
-    # Counter for the mercy steps
-    _mercy_counter: int
 
     # REWARD ATTRIBUTES (NOT PROVIDED BY THE CONFIG FILE)
     # Value of the previous shaping, used to compute a reward for each step
@@ -120,7 +114,7 @@ class ReactiveNavigationEnv(NavRLEnv):
         _image_config = _rl_config.IMAGE
         _reward_config = _rl_config.REWARD
 
-        self._bottom_trim = _image_config.bottom_trim
+        self._trim = _image_config.trim
         self._obstacle_threshold = _image_config.obstacle_threshold
         self._min_contour_area = _image_config.min_contour_area
         self._reward_columns = _image_config.reward_columns
@@ -136,12 +130,7 @@ class ReactiveNavigationEnv(NavRLEnv):
         self._slack_penalty = _reward_config.slack_penalty
         self._failure_penalty = _reward_config.failure_penalty
         self._goal_distance = config.TASK_CONFIG.TASK.SUCCESS_DISTANCE
-
         self._collisions = _reward_config.collisions
-        # NOTE: Obstacle mercy steps are stored as one extra than indicated
-        # This is since mercy steps are decreased BEFORE the actual step
-        # (so, for example, 6 mercy steps would translate for 5 actual steps of mercy)
-        self._obstacle_mercy_steps = _reward_config.obstacle_mercy_steps + 1
 
         # Construct the super parent
         # Parent needs to be constructed AFTER attribute declaration to avoid null references
@@ -171,7 +160,7 @@ class ReactiveNavigationEnv(NavRLEnv):
         original_image = original_image.astype(np.uint8)
 
         # STEP 2 - Trim the bottom of the image (to avoid the floor interfering)
-        trimmed_image = original_image[0:255 - self._bottom_trim, :]
+        trimmed_image = original_image[self._trim:255 - self._trim, :]
 
         # STEP 3 - Fill pure black values (0) with pure white (255) values
         # This is done to avoid visual glitches, since pure black typically correlates with
@@ -375,13 +364,9 @@ class ReactiveNavigationEnv(NavRLEnv):
         """
         Determine whether the agent is "colliding" (too close) to an obstacle
 
-        An agent is considered to be colliding when its distance to the closest obstacle
-        is less than goal_distance
+        The default collisions sensor is used
 
         If the agent collides with an obstacle, the episode is immediately finished
-
-        Episodes have a "mercy period": Obstacle collisions are ignored for the obstacle_mercy
-        steps
 
         :param observations: Observations from the environment taken by the agent
         :type observations: Observations
@@ -394,26 +379,18 @@ class ReactiveNavigationEnv(NavRLEnv):
             # Collisions are not active: always report a False value
             return False
 
-        # Check if the mercy steps are still in effect
-        if self._mercy_counter > 0:
-            # Mercy active: collisions are not checked
+        # Get the collision check
+        metrics = self.get_info(observations)
+
+        # If the metric is None, assume no collisions happened
+        if metrics["collisions"] is None:
             return False
 
-        # Extract the depth view from the observations
-        depth_view = observations["depth"]
-
-        # Find the closest non-zero distance in the image
-        try:
-            closest_distance = np.min(depth_view[np.nonzero(depth_view)])
-        except ValueError:
-            # Sanity check: if all values are 0, assume a collision
+        # Check for collisions
+        if metrics["collisions"]["is_collision"] or metrics["collisions"]["count"] > 0:
             return True
-
-        # Convert the distance from [0, 1] to actual distance
-        distance = (closest_distance * self._obstacle_distance) / self._obstacle_threshold
-
-        # Check if the distance is smaller than goal_distance
-        return distance < self._goal_distance
+        else:
+            return False
 
     # PUBLIC METHODS #
 
@@ -427,9 +404,6 @@ class ReactiveNavigationEnv(NavRLEnv):
         :rtype: Observations
         """
 
-        # Reset the mercy counter
-        self._mercy_counter = self._obstacle_mercy_steps
-
         # Set up everything (provided by the superclass NavRLEnv)
         # In addition, get the initial observations
         initial_observations = super().reset()
@@ -439,23 +413,6 @@ class ReactiveNavigationEnv(NavRLEnv):
                                                              initial_observations["depth"])
 
         return initial_observations
-
-    def step(self, *args, **kwargs):
-        """
-        Steps through the environment
-
-        Overridden method to decrease the mercy counter BEFORE each step.
-        If the mercy counter was overridden after the step, there could be situations
-        where the agent finishes the episode but doesn't know until later
-        """
-
-        # Decrease the mercy counter (and ensure it doesn't go below 0)
-        self._mercy_counter -= 1
-        if self._mercy_counter < 0:
-            self._mercy_counter = 0
-
-        # Perform the normal step process
-        return super().step(*args, **kwargs)
 
     def get_done(self, observations):
         """
