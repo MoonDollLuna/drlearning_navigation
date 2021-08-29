@@ -302,7 +302,7 @@ def video_main(config_path, video_dataset, pretrained_weights=None):
     # Add the dataset
     video_config.defrost()
     video_config.TASK_CONFIG.DATASET.DATA_PATH = dataset_paths[video_dataset]
-    video_config.TASK_CONFIG.DATASET.SPLIT = "train"
+    video_config.TASK_CONFIG.DATASET.SPLIT = "val"
     video_config.TASK_CONFIG.DATASET.NAME = video_dataset
 
     # Add extra metrics to the config file

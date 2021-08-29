@@ -52,8 +52,10 @@ class ReactiveNavigationAgent(Agent):
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         # Extract the necessary parameters from the config
-        # (and prepare the agent to receive both types of config files)
-        if config.TASK_CONFIG:
+        # The agent must be able to accept any kind of config file
+        # (either a basic one for benchmarks or a RL one for video generation)
+        # Use EAFP (Easier to Ask Forgiveness than Permission) to check it
+        if hasattr(config, "TASK_CONFIG"):
             image_size = config.TASK_CONFIG.SIMULATOR.DEPTH_SENSOR.WIDTH
             action_list = config.TASK_CONFIG.TASK.POSSIBLE_ACTIONS
         else:
