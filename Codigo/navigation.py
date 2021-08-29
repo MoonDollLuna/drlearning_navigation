@@ -137,7 +137,7 @@ agent_type = "reactive"
 # Possible values:
 #   - matterport
 #   - gibson
-dataset = "matterport"
+dataset = "gibson"
 
 # mode - Specifies the mode in which the simulator will be launched
 # Possible values:
