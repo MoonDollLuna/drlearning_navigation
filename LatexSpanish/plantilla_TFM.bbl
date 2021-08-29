@@ -313,7 +313,7 @@
     \field{year}{2021}
   \endentry
 
-  \entry{Jimenez2020}{misc}{}
+  \entry{Jimenez2020}{article}{}
     \name{author}{1}{}{%
       {{hash=JL}{%
          family={Jimenez},
@@ -329,6 +329,9 @@
     \field{pages}{109}
     \field{title}{{Aplicaci{\'{o}}n de Deep Reinforcement Learning a un juego
   real - Tetris}}
+    \verb{url}
+    \verb https://github.com/MoonDollLuna/dqlearning-tetris
+    \endverb
     \list{location}{1}{%
       {Albacete}%
     }
@@ -340,7 +343,394 @@
     \verb ed/Jimenez Fernandez - 2020 - Aplicaci{\'{o}}n de Deep Reinforcement
     \verb Learning a un juego real - Tetris.pdf:pdf
     \endverb
+    \field{journaltitle}{Universidad de Castilla-La Mancha}
     \field{year}{2020}
+  \endentry
+
+  \entry{DBLP:journals/corr/abs-1807-06757}{article}{}
+    \name{author}{11}{}{%
+      {{hash=AP}{%
+         family={Anderson},
+         familyi={A\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=CAX}{%
+         family={Chang},
+         familyi={C\bibinitperiod},
+         given={Angel\bibnamedelima X.},
+         giveni={A\bibinitperiod\bibinitdelim X\bibinitperiod},
+      }}%
+      {{hash=CDS}{%
+         family={Chaplot},
+         familyi={C\bibinitperiod},
+         given={Devendra\bibnamedelima Singh},
+         giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=DA}{%
+         family={Dosovitskiy},
+         familyi={D\bibinitperiod},
+         given={Alexey},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=GS}{%
+         family={Gupta},
+         familyi={G\bibinitperiod},
+         given={Saurabh},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=KV}{%
+         family={Koltun},
+         familyi={K\bibinitperiod},
+         given={Vladlen},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=KJ}{%
+         family={Kosecka},
+         familyi={K\bibinitperiod},
+         given={Jana},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Malik},
+         familyi={M\bibinitperiod},
+         given={Jitendra},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=MR}{%
+         family={Mottaghi},
+         familyi={M\bibinitperiod},
+         given={Roozbeh},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Savva},
+         familyi={S\bibinitperiod},
+         given={Manolis},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=ZAR}{%
+         family={Zamir},
+         familyi={Z\bibinitperiod},
+         given={Amir\bibnamedelima Roshan},
+         giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{APCAXCDS+1}
+    \strng{fullhash}{APCAXCDSDAGSKVKJMJMRSMZAR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 1807.06757
+    \endverb
+    \field{title}{On Evaluation of Embodied Navigation Agents}
+    \verb{url}
+    \verb http://arxiv.org/abs/1807.06757
+    \endverb
+    \field{volume}{abs/1807.06757}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2018}
+  \endentry
+
+  \entry{habitat2020sim2real}{inproceedings}{}
+    \name{author}{9}{}{%
+      {{hash=A}{%
+         family={{Abhishek Kadian*}},
+         familyi={A\bibinitperiod},
+      }}%
+      {{hash=J}{%
+         family={{Joanne Truong*}},
+         familyi={J\bibinitperiod},
+      }}%
+      {{hash=GA}{%
+         family={Gokaslan},
+         familyi={G\bibinitperiod},
+         given={Aaron},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Clegg},
+         familyi={C\bibinitperiod},
+         given={Alexander},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=WE}{%
+         family={Wijmans},
+         familyi={W\bibinitperiod},
+         given={Erik},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=LS}{%
+         family={Lee},
+         familyi={L\bibinitperiod},
+         given={Stefan},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Savva},
+         familyi={S\bibinitperiod},
+         given={Manolis},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=CS}{%
+         family={Chernova},
+         familyi={C\bibinitperiod},
+         given={Sonia},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=BD}{%
+         family={Batra},
+         familyi={B\bibinitperiod},
+         given={Dhruv},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AJGA+1}
+    \strng{fullhash}{AJGACAWELSSMCSBD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{4}
+    \field{pages}{6670\bibrangedash 6677}
+    \field{title}{Sim2{R}eal {P}redictivity: {D}oes {E}valuation in
+  {S}imulation {P}redict {R}eal-{W}orld {P}erformance?}
+    \field{volume}{5}
+    \field{journaltitle}{IEEE Robotics and Automation Letters}
+    \field{year}{2020}
+  \endentry
+
+  \entry{batra2020objectnav}{inproceedings}{}
+    \name{author}{8}{}{%
+      {{hash=BD}{%
+         family={Batra},
+         familyi={B\bibinitperiod},
+         given={Dhruv},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=GA}{%
+         family={Gokaslan},
+         familyi={G\bibinitperiod},
+         given={Aaron},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KA}{%
+         family={Kembhavi},
+         familyi={K\bibinitperiod},
+         given={Aniruddha},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MO}{%
+         family={Maksymets},
+         familyi={M\bibinitperiod},
+         given={Oleksandr},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=MR}{%
+         family={Mottaghi},
+         familyi={M\bibinitperiod},
+         given={Roozbeh},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Savva},
+         familyi={S\bibinitperiod},
+         given={Manolis},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=TA}{%
+         family={Toshev},
+         familyi={T\bibinitperiod},
+         given={Alexander},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=WE}{%
+         family={Wijmans},
+         familyi={W\bibinitperiod},
+         given={Erik},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BDGAKA+1}
+    \strng{fullhash}{BDGAKAMOMRSMTAWE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{arXiv:2006.13171}
+    \field{title}{Object{N}av {R}evisited: {O}n {E}valuation of {E}mbodied
+  {A}gents {N}avigating to {O}bjects}
+    \field{year}{2020}
+  \endentry
+
+  \entry{DBLP:journals/corr/abs-2004-05155}{article}{}
+    \name{author}{5}{}{%
+      {{hash=CDS}{%
+         family={Chaplot},
+         familyi={C\bibinitperiod},
+         given={Devendra\bibnamedelima Singh},
+         giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=GD}{%
+         family={Gandhi},
+         familyi={G\bibinitperiod},
+         given={Dhiraj},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=GS}{%
+         family={Gupta},
+         familyi={G\bibinitperiod},
+         given={Saurabh},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=GA}{%
+         family={Gupta},
+         familyi={G\bibinitperiod},
+         given={Abhinav},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=SR}{%
+         family={Salakhutdinov},
+         familyi={S\bibinitperiod},
+         given={Ruslan},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CDSGDGS+1}
+    \strng{fullhash}{CDSGDGSGASR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 2004.05155
+    \endverb
+    \field{title}{Learning to Explore using Active Neural {SLAM}}
+    \verb{url}
+    \verb https://arxiv.org/abs/2004.05155
+    \endverb
+    \field{volume}{abs/2004.05155}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2020}
+  \endentry
+
+  \entry{DBLP:journals/corr/abs-2008-09285}{article}{}
+    \name{author}{3}{}{%
+      {{hash=RSK}{%
+         family={Ramakrishnan},
+         familyi={R\bibinitperiod},
+         given={Santhosh\bibnamedelima K.},
+         giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod},
+      }}%
+      {{hash=AZ}{%
+         family={Al{-}Halah},
+         familyi={A\bibinitperiod},
+         given={Ziad},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=GK}{%
+         family={Grauman},
+         familyi={G\bibinitperiod},
+         given={Kristen},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RSKAZGK1}
+    \strng{fullhash}{RSKAZGK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 2008.09285
+    \endverb
+    \field{title}{Occupancy Anticipation for Efficient Exploration and
+  Navigation}
+    \verb{url}
+    \verb https://arxiv.org/abs/2008.09285
+    \endverb
+    \field{volume}{abs/2008.09285}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2020}
+  \endentry
+
+  \entry{DBLP:journals/corr/abs-2009-03231}{article}{}
+    \name{author}{6}{}{%
+      {{hash=DS}{%
+         family={Datta},
+         familyi={D\bibinitperiod},
+         given={Samyak},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=MO}{%
+         family={Maksymets},
+         familyi={M\bibinitperiod},
+         given={Oleksandr},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=HJ}{%
+         family={Hoffman},
+         familyi={H\bibinitperiod},
+         given={Judy},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=LS}{%
+         family={Lee},
+         familyi={L\bibinitperiod},
+         given={Stefan},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=BD}{%
+         family={Batra},
+         familyi={B\bibinitperiod},
+         given={Dhruv},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=PD}{%
+         family={Parikh},
+         familyi={P\bibinitperiod},
+         given={Devi},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DSMOHJ+1}
+    \strng{fullhash}{DSMOHJLSBDPD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 2009.03231
+    \endverb
+    \field{title}{Integrating Egocentric Localization for More Realistic
+  Point-Goal Navigation Agents}
+    \verb{url}
+    \verb https://arxiv.org/abs/2009.03231
+    \endverb
+    \field{volume}{abs/2009.03231}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2020}
+  \endentry
+
+  \entry{Partsey2021}{article}{}
+    \name{author}{1}{}{%
+      {{hash=PR}{%
+         family={Partsey},
+         familyi={P\bibinitperiod},
+         given={Ruslan},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PR1}
+    \strng{fullhash}{PR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{87}
+    \field{title}{{Robust Visual Odometry for Realistic PointGoal Navigation}}
+    \verb{url}
+    \verb https://er.ucu.edu.ua/handle/1/2703
+    \endverb
+    \verb{file}
+    \verb :C\:/Users/Luna/AppData/Local/Mendeley Ltd./Mendeley Desktop/Download
+    \verb ed/Partsey - Unknown - Robust Visual Odometry for Realistic PointGoal
+    \verb  Navigation.pdf:pdf
+    \endverb
+    \field{journaltitle}{Ukranian Catholic University}
+    \field{year}{2021}
   \endentry
 \enddatalist
 \endinput
