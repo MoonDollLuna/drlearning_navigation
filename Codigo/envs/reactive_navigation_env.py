@@ -159,7 +159,7 @@ class ReactiveNavigationEnv(NavRLEnv):
         original_image = original_image * 255
         original_image = original_image.astype(np.uint8)
 
-        # STEP 2 - Trim the bottom of the image (to avoid the floor interfering)
+        # STEP 2 - Trim the bottom and top of the image (to avoid the floor / ceiling interfering)
         trimmed_image = original_image[self._trim:255 - self._trim, :]
 
         # STEP 3 - Fill pure black values (0) with pure white (255) values
@@ -477,5 +477,4 @@ class ReactiveNavigationEnv(NavRLEnv):
 
         # Update the shaping value
         self._previous_shaping = shaping
-
         return reward

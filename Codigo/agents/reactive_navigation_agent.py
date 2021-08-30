@@ -1,5 +1,5 @@
 # REACTIVE NAVIGATION - AGENT
-# Developed by: Luna Jmenez Fernandez
+# Developed by: Luna Jimenez Fernandez
 #
 # This file contains the definition of a Reactive Navigation Agent, to be used
 # along the benchmarking tools provided by Habitat-Lab in order to
