@@ -348,7 +348,8 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
 
         # Sample the ER to obtain the experiences AND the experiences IDs
         # (to be used later, to update errors)
-        (sampled_experiences, sampled_errors), sampled_ids = self._experience_replay.sample_memory(self._batch_size)
+        sampled_values, sampled_ids = self._experience_replay.sample_memory(self._batch_size)
+        sampled_experiences = [sample[0] for sample in sampled_values]
 
         # Unwrap the experiences
         (sampled_initial_states,
@@ -394,20 +395,21 @@ class ReactiveNavigationTrainer(BaseRLTrainer):
                 # Final experience: the Q Value of the state is simply the reward / penalty
                 # q_value(t) = reward * weight
                 new_q = sampled_rewards[index] * weights[sampled_ids[index]]
-                current_state_values[index][action_index] = new_q
             else:
                 # Not a final experience: the Q value is based on the obtained reward
                 # and the max Q value for the next state
                 # q_value(t) = (reward + gamma * next_state_best_q) * weight
                 new_q = (sampled_rewards[index] + self._gamma * np.amax(next_state_predictions[index])) * \
                         weights[sampled_ids[index]]
-                current_state_values[index][action_index] = new_q
 
             # Compute and append the error of the experience
             # The error is the quadratic error between the new Q value and the actually obtained one
             # error = (predicted_q - updated_q) ^ 2
             error = (current_state_values[index][self._action_to_index[sampled_actions[index]]] - new_q) ** 2
             error_list.append(error)
+
+            # Update the Q value
+            current_state_values[index][action_index] = new_q
 
         # With the updated predictions, fit the Q network and update the errors in the experience replay
         self._q_network.fit_model(sampled_initial_states,
