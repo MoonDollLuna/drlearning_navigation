@@ -1,0 +1,46 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {spanish}{}\relax 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Arquitectura propuesta para el sistema de navegación reactivo original \cite {Sampedro2018}.}}{7}{figure.2.1}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Arquitectura de \textit {Habitat Lab} \cite {habitat19iccv}.}}{14}{figure.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Modelos 3D de \textit {Matterport3D}, y panorámicas asociadas \cite {Matterport3D}.}}{18}{figure.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Imagen de color (izquierda), profundidad (centro) y normales (derecha) de un escenario de \textit {Gibson} \cite {xiazamirhe2018gibsonenv}.}}{19}{figure.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Escenario original de \textit {Replica} (izquierda) y escenario reconstruido de \textit {ReplicaCAD} (derecha) \cite {szot2021habitat}.}}{19}{figure.4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Imagen de color (izquierda), profundidad (centro) y mapa (derecha) de una escena de \textit {HM3D} \cite {habitatmp3d}.}}{20}{figure.4.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Ejemplo de árbol de directorios de la carpeta \textit {data}.}}{21}{figure.4.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Imagen de color (izquierda), profundidad (centro) y semántica (derecha) de una escena de \textit {Gibson} \cite {xiazamirhe2018gibsonenv}.}}{23}{figure.4.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Mapa de un escenario de \textit {HM3D} \cite {habitatmp3d}.}}{24}{figure.4.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Pseudocódigo del bucle principal de entrenamiento.}}{26}{figure.4.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Fichero de configuración por defecto para tareas de navegación usando \textit {Gibson}.}}{29}{figure.4.10}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }

@@ -18,10 +18,12 @@
 \usepackage{colortbl,longtable}
 \usepackage[pdfborder={0 0 0}]{hyperref} 
 \usepackage{pdfpages}
-\usepackage{url}
+\usepackage{url}[hyphens]
+\usepackage[hyphenbreaks]{breakurl}
 \usepackage[stable]{footmisc}
 \usepackage{parskip} % para separar párrafos con espacio.
 \usepackage{hyperref}
+\usepackage{forest}
 
 \usepackage[
 backend=bibtex,
@@ -82,7 +84,7 @@ style=ieee]{biblatex}       %use the biblatex package
 \definecolor{gray45}{gray}{.45}
 
 \usepackage{listings}
-\lstset{ frame=Ltb,
+\lstset{ %frame=Ltb,
      framerule=0pt,
      aboveskip=0.5cm,
      framextopmargin=3pt,
@@ -90,7 +92,7 @@ style=ieee]{biblatex}       %use the biblatex package
      framexleftmargin=0.4cm,
      framesep=0pt,
      rulesep=.4pt,
-     backgroundcolor=\color{gray97},
+     %backgroundcolor=\color{gray97},
      rulesepcolor=\color{black},
      %
      stringstyle=\ttfamily,
@@ -105,8 +107,8 @@ style=ieee]{biblatex}       %use the biblatex package
      numberfirstline = false,
      breaklines=true,
    }
-\lstnewenvironment{listing}[1][]
-   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+%\lstnewenvironment{listing}[1][]
+%   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
 
 \lstdefinestyle{consola}
    {basicstyle=\scriptsize\bf\ttfamily,
@@ -132,3 +134,44 @@ style=ieee]{biblatex}       %use the biblatex package
    {language=Python,    
    }
 \makeatother   
+
+
+\newcommand\YAMLcolonstyle{\color{red}\mdseries}
+\newcommand\YAMLkeystyle{\color{black}\bfseries}
+\newcommand\YAMLvaluestyle{\color{blue}\mdseries}
+
+\makeatletter
+
+% here is a macro expanding to the name of the language
+% (handy if you decide to change it further down the road)
+\newcommand\language@yaml{yaml}
+
+\expandafter\expandafter\expandafter\lstdefinelanguage
+\expandafter{\language@yaml}
+{
+  keywords={true,false,null,y,n},
+  keywordstyle=\color{darkgray}\bfseries,
+  basicstyle=\YAMLkeystyle,                                 % assuming a key comes first
+  sensitive=false,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\YAMLvaluestyle\ttfamily,
+  moredelim=[l][\color{orange}]{\&},
+  moredelim=[l][\color{magenta}]{*},
+  moredelim=**[il][\YAMLcolonstyle{:}\YAMLvaluestyle]{:},   % switch to value style at :
+  morestring=[b]',
+  morestring=[b]",
+  literate =    {---}{{\ProcessThreeDashes}}3
+                {>}{{\textcolor{red}\textgreater}}1     
+                {|}{{\textcolor{red}\textbar}}1 
+                {\ -\ }{{\mdseries\ -\ }}3,
+}
+
+% switch to key style at EOL
+\lst@AddToHook{EveryLine}{\ifx\lst@language\language@yaml\YAMLkeystyle\fi}
+\makeatother
+
+\newcommand\ProcessThreeDashes{\llap{\color{cyan}\mdseries-{-}-}}
+
+\usepackage[ruled,vlined]{algorithm2e}
