@@ -5,33 +5,41 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Arquitectura propuesta para el sistema de navegación reactivo original \cite {Sampedro2018}.}}{7}{figure.2.1}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Arquitectura propuesta para el sistema de navegación reactivo original \cite {Sampedro2018}.\relax }}{7}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Arquitectura de \textit {Habitat Lab} \cite {habitat19iccv}.}}{14}{figure.4.1}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Arquitectura de \textit {Habitat Lab} \cite {habitat19iccv}.\relax }}{14}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Modelos 3D de \textit {Matterport3D}, y panorámicas asociadas \cite {Matterport3D}.}}{18}{figure.4.2}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Modelos 3D de \textit {Matterport3D}, y panorámicas asociadas \cite {Matterport3D}.\relax }}{18}{figure.caption.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Imagen de color (izquierda), profundidad (centro) y normales (derecha) de un escenario de \textit {Gibson} \cite {xiazamirhe2018gibsonenv}.}}{19}{figure.4.3}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Imagen de color (izquierda), profundidad (centro) y normales (derecha) de un escenario de \textit {Gibson} \cite {xiazamirhe2018gibsonenv}.\relax }}{19}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Escenario original de \textit {Replica} (izquierda) y escenario reconstruido de \textit {ReplicaCAD} (derecha) \cite {szot2021habitat}.}}{19}{figure.4.4}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Escenario original de \textit {Replica} (izquierda) y escenario reconstruido de \textit {ReplicaCAD} (derecha) \cite {szot2021habitat}.\relax }}{19}{figure.caption.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Imagen de color (izquierda), profundidad (centro) y mapa (derecha) de una escena de \textit {HM3D} \cite {habitatmp3d}.}}{20}{figure.4.5}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Imagen de color (izquierda), profundidad (centro) y mapa (derecha) de una escena de \textit {HM3D} \cite {habitatmp3d}.\relax }}{20}{figure.caption.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Ejemplo de árbol de directorios de la carpeta \textit {data}.}}{21}{figure.4.6}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Ejemplo de árbol de directorios de la carpeta \textit {data}.\relax }}{21}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Imagen de color (izquierda), profundidad (centro) y semántica (derecha) de una escena de \textit {Gibson} \cite {xiazamirhe2018gibsonenv}.}}{23}{figure.4.7}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Imagen de color (izquierda), profundidad (centro) y semántica (derecha) de una escena de \textit {Gibson} \cite {xiazamirhe2018gibsonenv}.\relax }}{23}{figure.caption.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Mapa de un escenario de \textit {HM3D} \cite {habitatmp3d}.}}{24}{figure.4.8}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Mapa de un escenario de \textit {HM3D} \cite {habitatmp3d}.\relax }}{24}{figure.caption.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Pseudocódigo del bucle principal de entrenamiento.}}{26}{figure.4.9}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Pseudocódigo del bucle principal de entrenamiento.\relax }}{25}{figure.caption.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Fichero de configuración por defecto para tareas de navegación usando \textit {Gibson}.}}{29}{figure.4.10}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Fichero de configuración por defecto para tareas de navegación usando \textit {Gibson}.\relax }}{29}{figure.caption.15}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Ejemplo de imagen de profundidad usada como parte del estado.\relax }}{34}{figure.caption.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Procesamiento realizado sobre la imagen de profundidad.\relax }}{37}{figure.caption.17}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Pseudocódigo del método de contornos para identificar distancias a obstáculos.\relax }}{38}{figure.caption.18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Pseudocódigo del método de columnas para identificar distancias a obstáculos.\relax }}{39}{figure.caption.19}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

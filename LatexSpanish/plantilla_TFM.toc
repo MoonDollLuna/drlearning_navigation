@@ -83,66 +83,80 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.1.1}Estado}{33}{subsection.5.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.2}Acciones}{33}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.2}Acciones}{34}{subsection.5.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.3}Recompensas}{33}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.3}Recompensas}{35}{subsection.5.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Arquitectura del agente}{33}{section.5.2}%
+\contentsline {subsubsection}{\numberline {5.1.3.1}Preprocesamiento de la imagen de profundidad}{35}{subsubsection.5.1.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.1}Propuesta 1: Red convolucional (CNN)}{33}{subsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.1.3.2}Identificación de los obstáculos y la distancia en la imagen}{36}{subsubsection.5.1.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.2}Propuesta 2: Red híbrida (CNN + MLP)}{33}{subsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.1.3.3}Cálculo del potencial atractivo y repulsivo}{39}{subsubsection.5.1.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Actuación del agente}{33}{section.5.3}%
+\contentsline {subsubsection}{\numberline {5.1.3.4}Cálculo de la recompensa final}{40}{subsubsection.5.1.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Entrenamiento del agente}{33}{section.5.4}%
+\contentsline {section}{\numberline {5.2}Características físicas del agente}{41}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.1}\textit {Experience Replay}}{33}{subsection.5.4.1}%
+\contentsline {section}{\numberline {5.3}Arquitectura del agente}{41}{section.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.2}Memorización de experiencias}{33}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.3.1}Propuesta 1: Red convolucional (CNN)}{41}{subsection.5.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.3}Aprendizaje a partir de las experiencias}{33}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.3.2}Propuesta 2: Red híbrida (CNN + MLP)}{41}{subsection.5.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.4}Documentación del entrenamiento}{33}{subsection.5.4.4}%
+\contentsline {section}{\numberline {5.4}Actuación del agente}{41}{section.5.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Experimentación}{35}{chapter.6}%
+\contentsline {section}{\numberline {5.5}Entrenamiento del agente}{41}{section.5.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Experimentos realizados y parametros utilizados}{35}{section.6.1}%
+\contentsline {subsection}{\numberline {5.5.1}\textit {Experience Replay}}{41}{subsection.5.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1.1}Parametros utilizados}{35}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {5.5.2}Memorización de experiencias}{41}{subsection.5.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1.2}Experimentación realizada}{35}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {5.5.3}Aprendizaje a partir de las experiencias}{41}{subsection.5.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1.3}Elección del conjunto de datos}{35}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {5.5.4}Documentación del entrenamiento}{41}{subsection.5.5.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Resultados durante el entrenamiento}{35}{section.6.2}%
+\contentsline {chapter}{\numberline {6}Experimentación}{43}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.3}Resultados durante la evaluación}{35}{section.6.3}%
+\contentsline {section}{\numberline {6.1}Experimentos realizados y parametros utilizados}{43}{section.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Conclusiones}{37}{chapter.7}%
+\contentsline {subsection}{\numberline {6.1.1}Parametros utilizados}{43}{subsection.6.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.1}Conclusiones}{37}{section.7.1}%
+\contentsline {subsection}{\numberline {6.1.2}Experimentos realizados}{43}{subsection.6.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.2}Trabajo futuro}{37}{section.7.2}%
+\contentsline {subsection}{\numberline {6.1.3}Elección del conjunto de datos}{43}{subsection.6.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.3}Agradecimientos}{37}{section.7.3}%
+\contentsline {section}{\numberline {6.2}Resultados obtenidos}{43}{section.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Bibliografía}{37}{section.7.3}%
+\contentsline {section}{\numberline {6.3}Comparativa y análisis de resultados}{43}{section.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Anexos}{41}{chapter*.5}%
+\contentsline {subsection}{\numberline {6.3.1}Comparativa durante el entrenamiento}{43}{subsection.6.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}Manual de usuario}{41}{appendix.Alph1}%
+\contentsline {subsection}{\numberline {6.3.2}Comparativa de los agentes entrenados}{43}{subsection.6.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {B}Ficheros de configuración}{43}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {7}Conclusiones}{45}{chapter.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.1}Fichero base}{43}{section.Alph2.1}%
+\contentsline {section}{\numberline {7.1}Conclusiones}{45}{section.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.2}Ficheros de entrenamiento}{45}{section.Alph2.2}%
+\contentsline {section}{\numberline {7.2}Trabajo futuro}{45}{section.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.3}Ficheros de \textit {benchmark}}{48}{section.Alph2.3}%
+\contentsline {section}{\numberline {7.3}Agradecimientos}{45}{section.7.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.4}Fichero de generación de video}{49}{section.Alph2.4}%
+\contentsline {chapter}{Bibliografía}{45}{section.7.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {C}Generación de gráficas}{51}{appendix.Alph3}%
+\contentsline {chapter}{Anexos}{49}{chapter*.20}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {D}Contenidos del entregable}{53}{appendix.Alph4}%
+\contentsline {chapter}{\numberline {A}Manual de usuario}{49}{appendix.Alph1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {B}Ficheros de configuración}{51}{appendix.Alph2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.1}Fichero base}{51}{section.Alph2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.2}Ficheros de entrenamiento}{53}{section.Alph2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.3}Ficheros de \textit {benchmark}}{56}{section.Alph2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.4}Fichero de generación de video}{57}{section.Alph2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {C}Generación de gráficas}{59}{appendix.Alph3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {D}Contenidos del entregable}{61}{appendix.Alph4}%

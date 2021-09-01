@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.27)  31 AUG 2021 04:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.27)  1 SEP 2021 04:50
 entering extended mode
 **./plantilla_TFM.tex
 (plantilla_TFM.tex
@@ -409,34 +409,11 @@ File: pppdftex.def 2021/03/06 v0.5t Pdfpages driver for pdfTeX (AM)
 \c@AM@survey=\count295
 \AM@templatesizebox=\box62
 )
-(C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/breakurl\breakurl.sty
-Package: breakurl 2013/04/10 v1.40 Breakable hyperref URLs
-
-(C:\Program Files\MiKTeX\tex/latex/xkeyval\xkeyval.sty
-Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
-
-(C:\Program Files\MiKTeX\tex/generic/xkeyval\xkeyval.tex
-(C:\Program Files\MiKTeX\tex/generic/xkeyval\xkvutils.tex
-\XKV@toks=\toks33
-\XKV@tempa@toks=\toks34
-)
-\XKV@depth=\count296
-File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-))
-(C:\Program Files\MiKTeX\tex/generic/iftex\ifpdf.sty
-Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
-)
-
-Package breakurl Warning: You are using breakurl while processing via pdflatex.
-
-(breakurl)                \burl will be just a synonym of \url.
-(breakurl)                 on input line 48.
-
-) (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/footmisc\footmisc.sty
+(C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/footmisc\footmisc.sty
 Package: footmisc 2011/06/06 v5.5b a miscellany of footnote facilities
-\FN@temptoken=\toks35
+\FN@temptoken=\toks33
 \footnotemargin=\dimen173
-\c@pp@next@reset=\count297
+\c@pp@next@reset=\count296
 Package footmisc Info: Declaring symbol style bringhurst on input line 855.
 Package footmisc Info: Declaring symbol style chicago on input line 863.
 Package footmisc Info: Declaring symbol style wiley on input line 872.
@@ -451,7 +428,7 @@ Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
 
 (C:\Program Files\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count298
+\etb@tempcnta=\count297
 ))
 (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/forest\forest.sty
 Package: forest 2017/07/14 v2.1.5 Drawing (linguistic) trees
@@ -460,7 +437,7 @@ Package: forest 2017/07/14 v2.1.5 Drawing (linguistic) trees
 (C:\Program Files\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
 (C:\Program Files\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty
 (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
-\pgfutil@everybye=\toks36
+\pgfutil@everybye=\toks34
 \pgfutil@tempdima=\dimen174
 \pgfutil@tempdimb=\dimen175
 
@@ -480,11 +457,11 @@ Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
 Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
 
 (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks37
-\pgfkeys@temptoks=\toks38
+\pgfkeys@pathtoks=\toks35
+\pgfkeys@temptoks=\toks36
 
 (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks39
+\pgfkeys@tmptoks=\toks37
 ))
 \pgf@x=\dimen176
 \pgf@y=\dimen177
@@ -498,14 +475,14 @@ Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@yd=\dimen185
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count299
-\c@pgf@countb=\count300
-\c@pgf@countc=\count301
-\c@pgf@countd=\count302
-\t@pgf@toka=\toks40
-\t@pgf@tokb=\toks41
-\t@pgf@tokc=\toks42
-\pgf@sys@id@count=\count303
+\c@pgf@counta=\count298
+\c@pgf@countb=\count299
+\c@pgf@countc=\count300
+\c@pgf@countd=\count301
+\t@pgf@toka=\toks38
+\t@pgf@tokb=\toks39
+\t@pgf@tokc=\toks40
+\pgf@sys@id@count=\count302
 
 (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
 File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
@@ -520,8 +497,8 @@ File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
 )))
 (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfsyssoftpath@smallbuffer@items=\count304
-\pgfsyssoftpath@bigbuffer@items=\count305
+\pgfsyssoftpath@smallbuffer@items=\count303
+\pgfsyssoftpath@bigbuffer@items=\count304
 )
 (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -552,11 +529,11 @@ Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex)
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
 \pgfmath@dimen=\dimen186
-\pgfmath@count=\count306
+\pgfmath@count=\count305
 \pgfmath@box=\box64
-\pgfmath@toks=\toks43
-\pgfmath@stack@operand=\toks44
-\pgfmath@stack@operation=\toks45
+\pgfmath@toks=\toks41
+\pgfmath@stack@operand=\toks42
+\pgfmath@stack@operation=\toks43
 )
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex)
@@ -572,7 +549,7 @@ tex)
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmeti
 cs.code.tex)))
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count307
+\c@pgfmathroundto@lastzeros=\count306
 ))
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfint.code.tex)
 (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
@@ -608,7 +585,7 @@ File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfpic=\box65
 \pgf@hbox=\box66
 \pgf@layerbox@main=\box67
-\pgf@picture@serial@count=\count308
+\pgf@picture@serial@count=\count307
 )
 (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.te
 x
@@ -635,8 +612,8 @@ File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@max=\dimen266
-\pgf@sys@shading@range@num=\count309
-\pgf@shadingcount=\count310
+\pgf@sys@shading@range@num=\count308
+\pgf@shadingcount=\count309
 )
 (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -681,8 +658,8 @@ Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)
 \pgffor@iter=\dimen269
 \pgffor@skip=\dimen270
-\pgffor@stack=\toks46
-\pgffor@toks=\toks47
+\pgffor@stack=\toks44
+\pgffor@toks=\toks45
 ))
 (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
 Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
@@ -690,7 +667,7 @@ Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
 (C:\Program Files\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.
 tex
 File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@plot@mark@count=\count311
+\pgf@plot@mark@count=\count310
 \pgfplotmarksize=\dimen271
 )
 \tikz@lastx=\dimen272
@@ -705,17 +682,17 @@ File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \tikz@figbox@bg=\box71
 \tikz@tempbox=\box72
 \tikz@tempbox@bg=\box73
-\tikztreelevel=\count312
-\tikznumberofchildren=\count313
-\tikznumberofcurrentchild=\count314
-\tikz@fig@count=\count315
+\tikztreelevel=\count311
+\tikznumberofchildren=\count312
+\tikznumberofcurrentchild=\count313
+\tikz@fig@count=\count314
  (C:\Program Files\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfmatrixcurrentrow=\count316
-\pgfmatrixcurrentcolumn=\count317
-\pgf@matrix@numberofcolumns=\count318
+\pgfmatrixcurrentrow=\count315
+\pgfmatrixcurrentcolumn=\count316
+\pgf@matrix@numberofcolumns=\count317
 )
-\tikz@expandcount=\count319
+\tikz@expandcount=\count318
 
 (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibra
 rytopaths.code.tex
@@ -799,11 +776,11 @@ File: tikzlibrarycalc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )
 (C:\Program Files\MiKTeX\tex/generic/pgf/libraries\pgflibraryintersections.code
 .tex (C:\Program Files\MiKTeX\tex/generic/pgf/libraries\pgflibraryfpu.code.tex)
-\pgf@intersect@solutions=\count320
+\pgf@intersect@solutions=\count319
 ) (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/pgfopts\pgfopts.sty
 Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
-\pgfopts@list@add@a@toks=\toks48
-\pgfopts@list@add@b@toks=\toks49
+\pgfopts@list@add@a@toks=\toks46
+\pgfopts@list@add@b@toks=\toks47
 )
 (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/elocalloc\elocalloc.sty
 Package: elocalloc 2016/12/15 v0.03 local allocation for LaTeX 2015+ (DPC)
@@ -820,115 +797,115 @@ Package: expl3 2021-07-12 L3 programming layer (loader)
 
 (C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-08-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count321
+\l__color_backend_stack_int=\count320
 \l__pdf_internal_box=\box94
 ))
 Package: xparse 2021-08-04 L3 Experimental document command parser
 )
 (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/inlinedef\inlinedef.sty
 Package: inlinedef 2008/07/10 v1.0 Inlined expansions within definitions
-\ID@toks=\toks50
-\ID@count=\count322
+\ID@toks=\toks48
+\ID@count=\count321
 )
-\ID@usercommands=\toks51
-\safeloop@depth=\count323
-\safeRKloop@depth=\count324
+\ID@usercommands=\toks49
+\safeloop@depth=\count322
+\safeRKloop@depth=\count323
 \forest@temp@dimen=\dimen280
-\forest@temp@count=\count325
-\forest@n=\count326
-\forest@temp@global@count=\count327
-\forest@temp@toks=\toks52
-\forest@temparray@M=\count328
-\forest@temparray@N=\count329
-\forest@global@temparray@M=\count330
-\forest@global@temparray@N=\count331
-\forest@isnum@count=\count332
-\forest@isdim@nonintpart=\count333
+\forest@temp@count=\count324
+\forest@n=\count325
+\forest@temp@global@count=\count326
+\forest@temp@toks=\toks50
+\forest@temparray@M=\count327
+\forest@temparray@N=\count328
+\forest@global@temparray@M=\count329
+\forest@global@temparray@N=\count330
+\forest@isnum@count=\count331
+\forest@isdim@nonintpart=\count332
 \forest@isdim@dimen=\dimen281
-\forest@sort@m=\count334
-\forest@sort@k=\count335
-\forest@sort@p=\count336
-\bracket@content=\toks53
-\bracket@afterthought=\toks54
-\forest@node@maxid=\count337
-\forest@process@left@M=\count338
-\forest@process@left@N=\count339
-\forest@process@right@M=\count340
-\forest@process@right@N=\count341
-\forest@process@saved@M=\count342
-\forest@process@saved@N=\count343
-\forest@process@result@M=\count344
-\forest@process@result@N=\count345
-\forest@process@n=\count346
-\forest@nodewalk@branch@toks=\toks55
-\forest@nodewalk@shortsteps@resolution=\toks56
-\forest@do@dynamics=\toks57
+\forest@sort@m=\count333
+\forest@sort@k=\count334
+\forest@sort@p=\count335
+\bracket@content=\toks51
+\bracket@afterthought=\toks52
+\forest@node@maxid=\count336
+\forest@process@left@M=\count337
+\forest@process@left@N=\count338
+\forest@process@right@M=\count339
+\forest@process@right@N=\count340
+\forest@process@saved@M=\count341
+\forest@process@saved@N=\count342
+\forest@process@result@M=\count343
+\forest@process@result@N=\count344
+\forest@process@n=\count345
+\forest@nodewalk@branch@toks=\toks53
+\forest@nodewalk@shortsteps@resolution=\toks54
+\forest@do@dynamics=\toks55
 \forest@box=\box95
 \forest@xg=\dimen282
 \forest@yg=\dimen283
 \forest@xs=\dimen284
 \forest@ys=\dimen285
-\forest@pi@toks=\toks58
-\forest@segment@toks=\toks59
-\forest@PIi@toks=\toks60
-\forest@PIii@toks=\toks61
+\forest@pi@toks=\toks56
+\forest@segment@toks=\toks57
+\forest@PIi@toks=\toks58
+\forest@PIii@toks=\toks59
 \forest@copy@in=\read4
 \forest@copy@out=\write4
-\forest@externalize@max@outer@n=\count347
-\forest@externalize@inner@n=\count348
+\forest@externalize@max@outer@n=\count346
+\forest@externalize@inner@n=\count347
 )
 (C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.sty
 Package: biblatex 2020/12/31 v3.16 programmable bibliographies (PK/MW)
 
 (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/logreq\logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count349
+\lrq@indent=\count348
 
 (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/logreq\logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 ))
-\c@tabx@nest=\count350
-\c@listtotal=\count351
-\c@listcount=\count352
-\c@liststart=\count353
-\c@liststop=\count354
-\c@citecount=\count355
-\c@citetotal=\count356
-\c@multicitecount=\count357
-\c@multicitetotal=\count358
-\c@instcount=\count359
-\c@maxnames=\count360
-\c@minnames=\count361
-\c@maxitems=\count362
-\c@minitems=\count363
-\c@citecounter=\count364
-\c@maxcitecounter=\count365
-\c@savedcitecounter=\count366
-\c@uniquelist=\count367
-\c@uniquename=\count368
-\c@refsection=\count369
-\c@refsegment=\count370
-\c@maxextratitle=\count371
-\c@maxextratitleyear=\count372
-\c@maxextraname=\count373
-\c@maxextradate=\count374
-\c@maxextraalpha=\count375
-\c@abbrvpenalty=\count376
-\c@highnamepenalty=\count377
-\c@lownamepenalty=\count378
-\c@maxparens=\count379
-\c@parenlevel=\count380
-\blx@tempcnta=\count381
-\blx@tempcntb=\count382
-\blx@tempcntc=\count383
-\blx@maxsection=\count384
-\blx@maxsegment@0=\count385
-\blx@notetype=\count386
-\blx@parenlevel@text=\count387
-\blx@parenlevel@foot=\count388
-\blx@sectionciteorder@0=\count389
-\blx@entrysetcounter=\count390
-\blx@biblioinstance=\count391
+\c@tabx@nest=\count349
+\c@listtotal=\count350
+\c@listcount=\count351
+\c@liststart=\count352
+\c@liststop=\count353
+\c@citecount=\count354
+\c@citetotal=\count355
+\c@multicitecount=\count356
+\c@multicitetotal=\count357
+\c@instcount=\count358
+\c@maxnames=\count359
+\c@minnames=\count360
+\c@maxitems=\count361
+\c@minitems=\count362
+\c@citecounter=\count363
+\c@maxcitecounter=\count364
+\c@savedcitecounter=\count365
+\c@uniquelist=\count366
+\c@uniquename=\count367
+\c@refsection=\count368
+\c@refsegment=\count369
+\c@maxextratitle=\count370
+\c@maxextratitleyear=\count371
+\c@maxextraname=\count372
+\c@maxextradate=\count373
+\c@maxextraalpha=\count374
+\c@abbrvpenalty=\count375
+\c@highnamepenalty=\count376
+\c@lownamepenalty=\count377
+\c@maxparens=\count378
+\c@parenlevel=\count379
+\blx@tempcnta=\count380
+\blx@tempcntb=\count381
+\blx@tempcntc=\count382
+\blx@maxsection=\count383
+\blx@maxsegment@0=\count384
+\blx@notetype=\count385
+\blx@parenlevel@text=\count386
+\blx@parenlevel@foot=\count387
+\blx@sectionciteorder@0=\count388
+\blx@entrysetcounter=\count389
+\blx@biblioinstance=\count390
 \labelnumberwidth=\skip63
 \labelalphawidth=\skip64
 \biblabelsep=\skip65
@@ -940,9 +917,9 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \blx@bcfin=\read5
 \blx@bcfout=\write5
 \blx@langwohyphens=\language80
-\c@mincomprange=\count392
-\c@maxcomprange=\count393
-\c@mincompwidth=\count394
+\c@mincomprange=\count391
+\c@maxcomprange=\count392
+\c@mincompwidth=\count393
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
@@ -953,74 +930,74 @@ Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'ieee.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count395
-\c@savedafterword=\count396
-\c@annotator=\count397
-\c@savedannotator=\count398
-\c@author=\count399
-\c@savedauthor=\count400
-\c@bookauthor=\count401
-\c@savedbookauthor=\count402
-\c@commentator=\count403
-\c@savedcommentator=\count404
-\c@editor=\count405
-\c@savededitor=\count406
-\c@editora=\count407
-\c@savededitora=\count408
-\c@editorb=\count409
-\c@savededitorb=\count410
-\c@editorc=\count411
-\c@savededitorc=\count412
-\c@foreword=\count413
-\c@savedforeword=\count414
-\c@holder=\count415
-\c@savedholder=\count416
-\c@introduction=\count417
-\c@savedintroduction=\count418
-\c@namea=\count419
-\c@savednamea=\count420
-\c@nameb=\count421
-\c@savednameb=\count422
-\c@namec=\count423
-\c@savednamec=\count424
-\c@translator=\count425
-\c@savedtranslator=\count426
-\c@shortauthor=\count427
-\c@savedshortauthor=\count428
-\c@shorteditor=\count429
-\c@savedshorteditor=\count430
-\c@labelname=\count431
-\c@savedlabelname=\count432
-\c@institution=\count433
-\c@savedinstitution=\count434
-\c@lista=\count435
-\c@savedlista=\count436
-\c@listb=\count437
-\c@savedlistb=\count438
-\c@listc=\count439
-\c@savedlistc=\count440
-\c@listd=\count441
-\c@savedlistd=\count442
-\c@liste=\count443
-\c@savedliste=\count444
-\c@listf=\count445
-\c@savedlistf=\count446
-\c@location=\count447
-\c@savedlocation=\count448
-\c@organization=\count449
-\c@savedorganization=\count450
-\c@origlocation=\count451
-\c@savedoriglocation=\count452
-\c@origpublisher=\count453
-\c@savedorigpublisher=\count454
-\c@publisher=\count455
-\c@savedpublisher=\count456
-\c@language=\count457
-\c@savedlanguage=\count458
-\c@origlanguage=\count459
-\c@savedoriglanguage=\count460
-\c@pageref=\count461
-\c@savedpageref=\count462
+\c@afterword=\count394
+\c@savedafterword=\count395
+\c@annotator=\count396
+\c@savedannotator=\count397
+\c@author=\count398
+\c@savedauthor=\count399
+\c@bookauthor=\count400
+\c@savedbookauthor=\count401
+\c@commentator=\count402
+\c@savedcommentator=\count403
+\c@editor=\count404
+\c@savededitor=\count405
+\c@editora=\count406
+\c@savededitora=\count407
+\c@editorb=\count408
+\c@savededitorb=\count409
+\c@editorc=\count410
+\c@savededitorc=\count411
+\c@foreword=\count412
+\c@savedforeword=\count413
+\c@holder=\count414
+\c@savedholder=\count415
+\c@introduction=\count416
+\c@savedintroduction=\count417
+\c@namea=\count418
+\c@savednamea=\count419
+\c@nameb=\count420
+\c@savednameb=\count421
+\c@namec=\count422
+\c@savednamec=\count423
+\c@translator=\count424
+\c@savedtranslator=\count425
+\c@shortauthor=\count426
+\c@savedshortauthor=\count427
+\c@shorteditor=\count428
+\c@savedshorteditor=\count429
+\c@labelname=\count430
+\c@savedlabelname=\count431
+\c@institution=\count432
+\c@savedinstitution=\count433
+\c@lista=\count434
+\c@savedlista=\count435
+\c@listb=\count436
+\c@savedlistb=\count437
+\c@listc=\count438
+\c@savedlistc=\count439
+\c@listd=\count440
+\c@savedlistd=\count441
+\c@liste=\count442
+\c@savedliste=\count443
+\c@listf=\count444
+\c@savedlistf=\count445
+\c@location=\count446
+\c@savedlocation=\count447
+\c@organization=\count448
+\c@savedorganization=\count449
+\c@origlocation=\count450
+\c@savedoriglocation=\count451
+\c@origpublisher=\count452
+\c@savedorigpublisher=\count453
+\c@publisher=\count454
+\c@savedpublisher=\count455
+\c@language=\count456
+\c@savedlanguage=\count457
+\c@origlanguage=\count458
+\c@savedoriglanguage=\count459
+\c@pageref=\count460
+\c@savedpageref=\count461
 \shorthandwidth=\skip71
 \shortjournalwidth=\skip72
 \shortserieswidth=\skip73
@@ -1056,19 +1033,19 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
  (C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.def
 File: biblatex.def 2020/12/31 v3.16 biblatex compatibility (PK/MW)
-\c@textcitecount=\count463
-\c@textcitetotal=\count464
-\c@textcitemaxnames=\count465
-\c@biburlbigbreakpenalty=\count466
-\c@biburlbreakpenalty=\count467
-\c@biburlnumpenalty=\count468
-\c@biburlucpenalty=\count469
-\c@biburllcpenalty=\count470
+\c@textcitecount=\count462
+\c@textcitetotal=\count463
+\c@textcitemaxnames=\count464
+\c@biburlbigbreakpenalty=\count465
+\c@biburlbreakpenalty=\count466
+\c@biburlnumpenalty=\count467
+\c@biburlucpenalty=\count468
+\c@biburllcpenalty=\count469
 \biburlbigskip=\muskip18
 \biburlnumskip=\muskip19
 \biburlucskip=\muskip20
 \biburllcskip=\muskip21
-\c@smartand=\count471
+\c@smartand=\count470
 )
 Package biblatex Info: Trying to load bibliography style 'ieee'...
 Package biblatex Info: ... file 'ieee.bbx' found.
@@ -1090,8 +1067,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 
 (C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
 File: standard.bbx 2020/12/31 v3.16 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count472
-\c@bbx:relatedtotal=\count473
+\c@bbx:relatedcount=\count471
+\c@bbx:relatedtotal=\count472
 ))))
 Package biblatex Info: Trying to load citation style 'ieee'...
 Package biblatex Info: ... file 'ieee.cbx' found.
@@ -1103,10 +1080,10 @@ Package biblatex Info: ... file 'numeric-comp.cbx' found.
 
 (C:\Program Files\MiKTeX\tex/latex/biblatex/cbx\numeric-comp.cbx
 File: numeric-comp.cbx 2020/12/31 v3.16 biblatex citation style (PK/MW)
-\c@cbx@tempcnta=\count474
-\c@cbx@tempcntb=\count475
-\c@cbx@tempcntc=\count476
-\c@cbx@tempcntd=\count477
+\c@cbx@tempcnta=\count473
+\c@cbx@tempcntb=\count474
+\c@cbx@tempcntc=\count475
+\c@cbx@tempcntd=\count476
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
 Package biblatex Info: Redefining '\footcite'.
@@ -1143,46 +1120,46 @@ rs
 )
 (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/appendix\appendix.sty
 Package: appendix 2020/02/08 v1.2c extra appendix facilities
-\c@@pps=\count478
-\c@@ppsavesec=\count479
-\c@@ppsaveapp=\count480
+\c@@pps=\count477
+\c@@ppsavesec=\count478
+\c@@ppsaveapp=\count479
 )
 (C:\Program Files\MiKTeX\tex/latex/tools\dcolumn.sty
 Package: dcolumn 2014/10/28 v1.06 decimal alignment package (DPC)
 )
 (C:\Program Files\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count481
+\lst@mode=\count480
 \lst@gtempboxa=\box96
-\lst@token=\toks62
-\lst@length=\count482
+\lst@token=\toks60
+\lst@length=\count481
 \lst@currlwidth=\dimen286
-\lst@column=\count483
-\lst@pos=\count484
+\lst@column=\count482
+\lst@pos=\count483
 \lst@lostspace=\dimen287
 \lst@width=\dimen288
-\lst@newlines=\count485
-\lst@lineno=\count486
+\lst@newlines=\count484
+\lst@lineno=\count485
 \lst@maxwidth=\dimen289
 
 (C:\Program Files\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count487
-\lst@skipnumbers=\count488
+\c@lstnumber=\count486
+\lst@skipnumbers=\count487
 \lst@framebox=\box97
 )
 (C:\Program Files\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
-)
+
 (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/algorithm2e\algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count489
+\c@AlgoLine=\count488
 \algocf@hangindent=\skip94
 
 (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/ifoddpage\ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count490
+\c@checkoddpage=\count489
 )
 (C:\Program Files\MiKTeX\tex/latex/tools\xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
@@ -1220,19 +1197,48 @@ Package: relsize 2013/03/29 ver 4.1
 \algoheightrule=\skip110
 \algotitleheightruledefault=\skip111
 \algotitleheightrule=\skip112
-\c@algocfline=\count491
-\c@algocfproc=\count492
-\c@algocf=\count493
+\c@algocfline=\count490
+\c@algocfproc=\count491
+\c@algocf=\count492
 \algocf@algoframe=\box104
 \algocf@algobox=\box105
+))
+(C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/caption\subcaption.sty
+Package: subcaption 2020/10/07 v1.3j Sub-captions (AR)
+
+(C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
+
+(C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+\captionmargin=\dimen296
+\captionmargin@=\dimen297
+\captionwidth=\dimen298
+\caption@tempdima=\dimen299
+\caption@indent=\dimen300
+\caption@parindent=\dimen301
+\caption@hangindent=\dimen302
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count493
+\c@continuedfloat=\count494
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+
+(C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/caption\ltcaption.sty
+Package: ltcaption 2020/05/30 v1.4b longtable captions (AR)
+))
+\c@subfigure=\count495
+\c@subtable=\count496
 )
 (secciones/_DatosTFM.tex)
 
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count494
-\@quotereset=\count495
+\@quotelevel=\count497
+\@quotereset=\count498
 LaTeX Font Info:    Trying to load font information for T1+pbk on input line 17
 .
 (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/psnfss\t1pbk.fd
@@ -1270,17 +1276,17 @@ LaTeX Info: Redefining \% on input line 17.
 
 (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count496
-\scratchdimen=\dimen296
+\scratchcounter=\count499
+\scratchdimen=\dimen303
 \scratchbox=\box106
-\nofMPsegments=\count497
-\nofMParguments=\count498
-\everyMPshowfont=\toks63
-\MPscratchCnt=\count499
-\MPscratchDim=\dimen297
-\MPnumerator=\count500
-\makeMPintoPDFobject=\count501
-\everyMPtoPDFconversion=\toks64
+\nofMPsegments=\count500
+\nofMParguments=\count501
+\everyMPshowfont=\toks61
+\MPscratchCnt=\count502
+\MPscratchDim=\dimen304
+\MPnumerator=\count503
+\makeMPintoPDFobject=\count504
+\everyMPtoPDFconversion=\toks62
 ) (C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1334,7 +1340,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 .sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count502
+\c@section@level=\count505
 )
 LaTeX Info: Redefining \ref on input line 17.
 LaTeX Info: Redefining \pageref on input line 17.
@@ -1387,9 +1393,11 @@ Package biblatex Info: ... file 'plantilla_TFM.bbl' found.
 (plantilla_TFM.bbl)
 Package biblatex Info: Reference section=0 on input line 17.
 Package biblatex Info: Reference segment=0 on input line 17.
-\c@lstlisting=\count503
+\c@lstlisting=\count506
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
  (secciones/00B_Portada.tex
-<./imagenes/EscUpm.png, id=297, 245.91875pt x 200.75pt>
+<./imagenes/EscUpm.png, id=325, 245.91875pt x 200.75pt>
 File: ./imagenes/EscUpm.png Graphic file (type png)
 <use ./imagenes/EscUpm.png>
 Package pdftex.def Info: ./imagenes/EscUpm.png  used on input line 12.
@@ -1421,7 +1429,7 @@ LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <14.4> not available
 (Font)              Font shape `T1/pbk/l/n' tried instead on input line 18.
 LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <14.4> not available
 (Font)              Font shape `T1/pbk/db/n' tried instead on input line 19.
-<./imagenes/FacInformatica.png, id=299, 160.6pt x 170.6375pt>
+<./imagenes/FacInformatica.png, id=327, 160.6pt x 170.6375pt>
 File: ./imagenes/FacInformatica.png Graphic file (type png)
 <use ./imagenes/FacInformatica.png>
 Package pdftex.def Info: ./imagenes/FacInformatica.png  used on input line 23.
@@ -1480,13 +1488,19 @@ Overfull \hbox (2.62762pt too wide) detected at line 72
 \T1/pbk/l/n/10.95 4.2.12. 
  []
 
-[5])
+[5]
+LaTeX Info: Redefining \sptext on input line 160.
+LaTeX Info: Redefining \. on input line 160.
+LaTeX Info: Redefining \% on input line 160.
+ [6])
 \tf@toc=\write7
 \openout7 = `plantilla_TFM.toc'.
 
 LaTeX Info: Redefining \. on input line 27.
 LaTeX Info: Redefining \% on input line 27.
- [6] (plantilla_TFM.lof
+ [7] [8
+
+] (plantilla_TFM.lof
 LaTeX Info: Redefining \sptext on input line 2.
 LaTeX Info: Redefining \. on input line 2.
 LaTeX Info: Redefining \% on input line 2.
@@ -1499,9 +1513,7 @@ Overfull \hbox (2.18968pt too wide) detected at line 32
 \tf@lof=\write8
 \openout8 = `plantilla_TFM.lof'.
 
- [7
-
-] [8
+ [9] [10
 
 ] (secciones/01_Introduccion.tex
 Cap\'{\i }tulo 1.
@@ -1529,7 +1541,7 @@ LaTeX Info: Redefining \% on input line 1.
 ]
 Cap\'{\i }tulo 2.
 [5]
-<imagenes/cap2/drone-architecture.png, id=501, 905.63344pt x 380.17032pt>
+<imagenes/cap2/drone-architecture.png, id=554, 905.63344pt x 380.17032pt>
 File: imagenes/cap2/drone-architecture.png Graphic file (type png)
 <use imagenes/cap2/drone-architecture.png>
 Package pdftex.def Info: imagenes/cap2/drone-architecture.png  used on input li
@@ -1542,8 +1554,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Info: Redefining \. on input line 45.
 LaTeX Info: Redefining \% on input line 45.
 [6]
-LaTeX Info: Redefining \. on input line 59.
-LaTeX Info: Redefining \% on input line 59.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
  [7 <./imagenes/cap2/drone-architecture.png>])
 (secciones/03_Revision_Tecnicas.tex
 LaTeX Info: Redefining \. on input line 1.
@@ -1568,7 +1580,7 @@ LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <12> not available
 LaTeX Info: Redefining \. on input line 46.
 LaTeX Info: Redefining \% on input line 46.
  [12]
-<imagenes/cap4/habitat_lab_structure.png, id=555, 674.69585pt x 405.13402pt>
+<imagenes/cap4/habitat_lab_structure.png, id=608, 674.69585pt x 405.13402pt>
 File: imagenes/cap4/habitat_lab_structure.png Graphic file (type png)
 <use imagenes/cap4/habitat_lab_structure.png>
 Package pdftex.def Info: imagenes/cap4/habitat_lab_structure.png  used on input
@@ -1581,7 +1593,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Info: Redefining \. on input line 86.
 LaTeX Info: Redefining \% on input line 86.
 [13]
-Underfull \vbox (badness 4001) has occurred while \output is active []
+Underfull \vbox (badness 4765) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 99.
 LaTeX Info: Redefining \% on input line 99.
@@ -1621,7 +1633,7 @@ File: ts1pbk.fd 2001/06/04 font definitions for TS1/pbk.
 )
 LaTeX Font Info:    Font shape `TS1/pbk/m/n' in size <10.95> not available
 (Font)              Font shape `TS1/pbk/l/n' tried instead on input line 211.
-<imagenes/cap4/matterport.png, id=588, 1797.71625pt x 530.98375pt>
+<imagenes/cap4/matterport.png, id=642, 1797.71625pt x 530.98375pt>
 File: imagenes/cap4/matterport.png Graphic file (type png)
 <use imagenes/cap4/matterport.png>
 Package pdftex.def Info: imagenes/cap4/matterport.png  used on input line 222.
@@ -1629,12 +1641,12 @@ Package pdftex.def Info: imagenes/cap4/matterport.png  used on input line 222.
 LaTeX Info: Redefining \. on input line 235.
 LaTeX Info: Redefining \% on input line 235.
  [18 <./imagenes/cap4/matterport.png>]
-<imagenes/cap4/gibson.jpg, id=597, 1541.76pt x 513.92pt>
+<imagenes/cap4/gibson.jpg, id=652, 1541.76pt x 513.92pt>
 File: imagenes/cap4/gibson.jpg Graphic file (type jpg)
 <use imagenes/cap4/gibson.jpg>
 Package pdftex.def Info: imagenes/cap4/gibson.jpg  used on input line 239.
 (pdftex.def)             Requested size: 452.96826pt x 150.98558pt.
-<imagenes/cap4/replicaCAD.png, id=604, 954.56625pt x 270.25969pt>
+<imagenes/cap4/replicaCAD.png, id=659, 954.56625pt x 270.25969pt>
 File: imagenes/cap4/replicaCAD.png Graphic file (type png)
 <use imagenes/cap4/replicaCAD.png>
 Package pdftex.def Info: imagenes/cap4/replicaCAD.png  used on input line 258.
@@ -1648,7 +1660,7 @@ Overfull \hbox (2.45145pt too wide) in paragraph at lines 263--264
 LaTeX Info: Redefining \. on input line 264.
 LaTeX Info: Redefining \% on input line 264.
 [19 <./imagenes/cap4/gibson.jpg> <./imagenes/cap4/replicaCAD.png>]
-<imagenes/cap4/hm3d.png, id=614, 3292.3pt x 1027.84pt>
+<imagenes/cap4/hm3d.png, id=670, 3292.3pt x 1027.84pt>
 File: imagenes/cap4/hm3d.png Graphic file (type png)
 <use imagenes/cap4/hm3d.png>
 Package pdftex.def Info: imagenes/cap4/hm3d.png  used on input line 280.
@@ -1668,7 +1680,7 @@ LaTeX Info: Redefining \% on input line 342.
 LaTeX Info: Redefining \. on input line 361.
 LaTeX Info: Redefining \% on input line 361.
  [21]
-<imagenes/cap4/cameras.png, id=630, 650.43pt x 214.55156pt>
+<imagenes/cap4/cameras.png, id=685, 650.43pt x 214.55156pt>
 File: imagenes/cap4/cameras.png Graphic file (type png)
 <use imagenes/cap4/cameras.png>
 Package pdftex.def Info: imagenes/cap4/cameras.png  used on input line 384.
@@ -1680,26 +1692,24 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Info: Redefining \. on input line 396.
 LaTeX Info: Redefining \% on input line 396.
 [22]
-LaTeX Info: Redefining \. on input line 415.
-LaTeX Info: Redefining \% on input line 415.
+LaTeX Info: Redefining \. on input line 416.
+LaTeX Info: Redefining \% on input line 416.
  [23 <./imagenes/cap4/cameras.png>]
 LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <8> not available
 (Font)              Font shape `T1/pbk/l/n' tried instead on input line 416.
 LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <6> not available
 (Font)              Font shape `T1/pbk/l/n' tried instead on input line 416.
-<imagenes/cap4/topdownmap.png, id=647, 493.0922pt x 290.58563pt>
+<imagenes/cap4/topdownmap.png, id=702, 493.0922pt x 290.58563pt>
 File: imagenes/cap4/topdownmap.png Graphic file (type png)
 <use imagenes/cap4/topdownmap.png>
 Package pdftex.def Info: imagenes/cap4/topdownmap.png  used on input line 422.
 (pdftex.def)             Requested size: 271.7837pt x 160.17287pt.
-LaTeX Info: Redefining \. on input line 441.
-LaTeX Info: Redefining \% on input line 441.
+LaTeX Info: Redefining \. on input line 443.
+LaTeX Info: Redefining \% on input line 443.
  [24 <./imagenes/cap4/topdownmap.png>]
+LaTeX Info: Redefining \. on input line 483.
+LaTeX Info: Redefining \% on input line 483.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Info: Redefining \. on input line 497.
-LaTeX Info: Redefining \% on input line 497.
 [25]
 Overfull \hbox (3.17691pt too wide) in paragraph at lines 506--507
 []\T1/pbk/l/it/10.95 Habitat Ba-se-li-nes \T1/pbk/l/n/10.95 ofre-ce al-gu-nos a
@@ -1742,87 +1752,156 @@ LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [32]
 Cap\'{\i }tulo 5.
-) (secciones/06_Experimentacion.tex [33
+<imagenes/cap5/normalized.png, id=819, 192.72pt x 192.72pt>
+File: imagenes/cap5/normalized.png Graphic file (type png)
+<use imagenes/cap5/normalized.png>
+Package pdftex.def Info: imagenes/cap5/normalized.png  used on input line 22.
+(pdftex.def)             Requested size: 192.71951pt x 192.71951pt.
 
-] [34
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[33
+
+]
+LaTeX Info: Redefining \. on input line 51.
+LaTeX Info: Redefining \% on input line 51.
+ [34 <./imagenes/cap5/normalized.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 79.
+LaTeX Info: Redefining \% on input line 79.
+ [35]
+File: imagenes/cap5/normalized.png Graphic file (type png)
+<use imagenes/cap5/normalized.png>
+Package pdftex.def Info: imagenes/cap5/normalized.png  used on input line 104.
+(pdftex.def)             Requested size: 215.16267pt x 215.16267pt.
+LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <10> not available
+(Font)              Font shape `T1/pbk/l/n' tried instead on input line 105.
+<imagenes/cap5/trimmed.png, id=842, 192.72pt x 139.27031pt>
+File: imagenes/cap5/trimmed.png Graphic file (type png)
+<use imagenes/cap5/trimmed.png>
+Package pdftex.def Info: imagenes/cap5/trimmed.png  used on input line 109.
+(pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
+<imagenes/cap5/filled.png, id=843, 192.72pt x 139.27031pt>
+File: imagenes/cap5/filled.png Graphic file (type png)
+<use imagenes/cap5/filled.png>
+Package pdftex.def Info: imagenes/cap5/filled.png  used on input line 115.
+(pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
+<imagenes/cap5/thresholded.png, id=844, 192.72pt x 139.27031pt>
+File: imagenes/cap5/thresholded.png Graphic file (type png)
+<use imagenes/cap5/thresholded.png>
+Package pdftex.def Info: imagenes/cap5/thresholded.png  used on input line 120.
+
+(pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
+<imagenes/cap5/cleaned.png, id=845, 192.72pt x 139.27031pt>
+File: imagenes/cap5/cleaned.png Graphic file (type png)
+<use imagenes/cap5/cleaned.png>
+Package pdftex.def Info: imagenes/cap5/cleaned.png  used on input line 126.
+(pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
+<imagenes/cap5/dilated.png, id=846, 192.72pt x 139.27031pt>
+File: imagenes/cap5/dilated.png Graphic file (type png)
+<use imagenes/cap5/dilated.png>
+Package pdftex.def Info: imagenes/cap5/dilated.png  used on input line 131.
+(pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
+LaTeX Info: Redefining \. on input line 149.
+LaTeX Info: Redefining \% on input line 149.
+ [36]
+LaTeX Info: Redefining \. on input line 149.
+LaTeX Info: Redefining \% on input line 149.
+ [37 <./imagenes/cap5/trimmed.png (PNG copy)> <./imagenes/cap5/filled.png (PNG 
+copy)> <./imagenes/cap5/thresholded.png (PNG copy)> <./imagenes/cap5/cleaned.pn
+g (PNG copy)> <./imagenes/cap5/dilated.png (PNG copy)>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Info: Redefining \. on input line 198.
+LaTeX Info: Redefining \% on input line 198.
+[38]
+LaTeX Info: Redefining \. on input line 219.
+LaTeX Info: Redefining \% on input line 219.
+ [39]
+LaTeX Info: Redefining \. on input line 260.
+LaTeX Info: Redefining \% on input line 260.
+ [40]) (secciones/06_Experimentacion.tex
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [41] [42
 
 ]
 Cap\'{\i }tulo 6.
-) (secciones/07_Conclusiones.tex [35] [36
+) (secciones/07_Conclusiones.tex [43] [44
 
 ]
 Cap\'{\i }tulo 7.
-) [37] [38
+) [45] [46
 
 ]
 LaTeX Font Info:    Font shape `T1/pbk/m/sc' in size <10.95> not available
 (Font)              Font shape `T1/pbk/l/sc' tried instead on input line 51.
- [39]
+ [47]
 LaTeX Info: Redefining \. on input line 56.
 LaTeX Info: Redefining \% on input line 56.
- [40] (secciones/09A_Manual_usuario.tex
+ [48] (secciones/09A_Manual_usuario.tex
 Ap\'{e}ndice A.
-) (secciones/09B_Ficheros_config.tex [41
+) (secciones/09B_Ficheros_config.tex [49
 
 
-] [42
+] [50
 
 ]
 Ap\'{e}ndice B.
-[43]
+[51]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 71.
 LaTeX Info: Redefining \% on input line 71.
- [44]
+ [52]
 LaTeX Info: Redefining \. on input line 117.
 LaTeX Info: Redefining \% on input line 117.
 
-[45]
+[53]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 157.
 LaTeX Info: Redefining \% on input line 157.
- [46]
+ [54]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 188.
 LaTeX Info: Redefining \% on input line 188.
- [47]
+ [55]
 LaTeX Info: Redefining \. on input line 229.
 LaTeX Info: Redefining \% on input line 229.
 
-[48]
+[56]
 LaTeX Info: Redefining \. on input line 275.
 LaTeX Info: Redefining \% on input line 275.
- [49]) (secciones/09C_Graficas.tex
+ [57]) (secciones/09C_Graficas.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [50]
+ [58]
 Ap\'{e}ndice C.
-) (secciones/09D_CD.tex [51
+) (secciones/09D_CD.tex [59
 
-] [52
+] [60
 
 ]
 Ap\'{e}ndice D.
-) [53] (plantilla_TFM.aux
+) [61] (plantilla_TFM.aux
 LaTeX Info: Redefining \sptext on input line 33.
 LaTeX Info: Redefining \. on input line 33.
 LaTeX Info: Redefining \% on input line 33.
 )
 Package rerunfilecheck Info: File `plantilla_TFM.out' has not changed.
-(rerunfilecheck)             Checksum: A5C2DD3A6BD813A5DDE2AF88FAB0526E;11955.
+(rerunfilecheck)             Checksum: B15060D0EC3D3E576C4FC9C88E41208D;13889.
 Package logreq Info: Writing requests to 'plantilla_TFM.run.xml'.
 \openout1 = `plantilla_TFM.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46029 strings out of 478868
- 937352 string characters out of 2858669
- 1936844 words of memory out of 3000000
- 62726 multiletter control sequences out of 15000+600000
- 445846 words of font info for 110 fonts, out of 8000000 for 9000
+ 47182 strings out of 478868
+ 960942 string characters out of 2858669
+ 1946862 words of memory out of 3000000
+ 63840 multiletter control sequences out of 15000+600000
+ 447322 words of font info for 112 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  160i,12n,149p,1882b,2752s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exi
@@ -1837,17 +1916,18 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 {C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.p
-fb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program
- Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTe
-X/fonts/type1/urw/bookman/ubkd8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/b
-ookman/ubkdi8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/bookman/ubkl8a.pfb>
-<C:/Program Files/MiKTeX/fonts/type1/urw/bookman/ubkli8a.pfb><C:/Program Files/
-MiKTeX/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/
-urw/courier/ucrr8a.pfb>
-Output written on plantilla_TFM.pdf (63 pages, 3648960 bytes).
+ts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.p
+fb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Progra
+m Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/bookman/
+ubkd8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/bookman/ubkdi8a.pfb><C:/Pro
+gram Files/MiKTeX/fonts/type1/urw/bookman/ubkl8a.pfb><C:/Program Files/MiKTeX/f
+onts/type1/urw/bookman/ubkli8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/cou
+rier/ucrb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on plantilla_TFM.pdf (73 pages, 3752148 bytes).
 PDF statistics:
- 1285 PDF objects out of 1440 (max. 8388607)
- 490 named destinations out of 1000 (max. 500000)
- 647 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1421 PDF objects out of 1440 (max. 8388607)
+ 525 named destinations out of 1000 (max. 500000)
+ 733 words of extra memory for PDF output out of 10000 (max. 10000000)
 

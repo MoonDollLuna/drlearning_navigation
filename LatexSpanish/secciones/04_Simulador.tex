@@ -197,7 +197,7 @@ De forma similar a las tareas y los episodios, existe una clase base \textit{Dat
 \item \textbf{\textit{RearrangeDatasetV0}} para tareas de reorganización (\textit{RearrangePickTask} y \textit{RearrangeReachTask}) y \textit{RearrangeEpisode}.
 \end{itemize}
 
-\textit{Habitat} ofrece por defecto soporte a cuatro conjuntos de datos. Además, espera que éstos (y cualquier otro conjunto de datos personalizado que se use) siga una estructura específica. Ambos detalles serán detallados a continuación.
+\textit{Habitat} ofrece por defecto soporte a cuatro conjuntos de datos. Además, espera que éstos (y cualquier otro conjunto de datos personalizado que se use) siga una estructura específica. Ambos puntos serán detallados a continuación.
 
 \subsubsection{Conjuntos de datos disponibles}
 
@@ -243,7 +243,7 @@ La primera versión de \textit{Habitat Lab} ofrece por defecto soporte a \textbf
 
 \end{itemize}
 
-En general, tanto \textit{Matterport3D} como \textit{Gibson} son conjuntos de datos grandes con información similar, pudiendo cumplir las mismas funciones. Ahora bien, \textit{Gibson} se considera un conjunto más \textit{"facil"} para el entrenamiento de agentes físicos \cite{habitat19iccv}, al estar formado por escenarios más pequeños.
+En general, tanto \textit{Matterport3D} como \textit{Gibson} son conjuntos de datos extensos con información similar, pudiendo cumplir las mismas funciones. Ahora bien, \textit{Gibson} se considera un conjunto más \textit{"facil"} para el entrenamiento de agentes físicos \cite{habitat19iccv}, al estar formado por escenarios más pequeños.
 
 \textit{Habitat 2.0} añadió soporte a \textbf{dos} conjuntos de datos adicionales por defecto:
 \begin{itemize}
@@ -370,7 +370,7 @@ Un \textbf{sensor} proporciona información del entorno al agente. Esta informac
 La clase \textit{Sensor} implementa la funcionalidad básica, existiendo gran cantidad de sensores para diversas tareas. A continuación se describen algunos de los sensores más importantes para navegación:
 
 \begin{itemize}
-	\item \textbf{Cámaras:} Las cámaras ofrecen información visual (imágenes) del entorno, devuelta en forma de matriz de valores numéricos. Por defecto, las cámaras apuntan hacia el frente del agente. Existen tres tipos básicos de cámaras disponibles:
+	\item \textbf{Cámaras:} Las cámaras ofrecen información visual (imágenes) del entorno, devuelta en forma de matriz de valores numéricos. Por defecto, las cámaras apuntan hacia el frente del agente con un ángulo de visión de 90 grados. Existen tres tipos básicos de cámaras disponibles:
 	\begin{itemize}
 		\item \textbf{Cámara de color (\textit{RGB{\_}SENSOR}):} Devuelve una imagen en color (siguiendo el formato RGB).
 		\item \textbf{Cámara de profundidad (\textit{DEPTH{\_}SENSOR}):} Devuelve una imagen en escala de grises representando la profundidad percibida por la cámara. Los valores de esta imagen se encuentran en el rango $[0, 1]$ siendo $0.0$ lo más cercano a la cámara y $1.0$ lo más lejano.
@@ -458,7 +458,7 @@ Los entrenadores de aprendizaje por refuerzo deben heredar de la clase \textit{B
 	
 	\begin{figure}[h]
 \begin{algorithm}[H]
-\SetAlgorithmName{Algoritmo}{algoritmo}{Bucle principal de entrenamiento}
+\SetAlgorithmName{Algoritmo}{algoritmo}{Lista de algoritmos}
 \caption{Bucle principal de entrenamiento}
 \textbf{1.} Inicializa las estructuras de datos necesarias para el entrenamiento, los contadores globales de pasos $num\_steps\_done$ y actualizaciones $num\_updates\_done$, y los modelos a entrenar.\\
 \textbf{2.} Mientras no se cumpla la condición de parada (número máximo de pasos o número de actualizaciones):\\
@@ -503,7 +503,7 @@ Los agentes deben heredar de la clase \textit{Agent}, e implementar los dos sigu
 
 Estos métodos son llamados automáticamente por el entorno contenido en el \textit{benchmark}.
 
-\textit{Habitat Baselines} ofrece algunos agentes preconstruidos (principalmente agentes heurísticos para funcionar como \textit{benchmark} y un agente aplicando \textit{PPO}). En este trabajo se ha diseñado un agente propio (\textit{ReactiveNavigationAgent}) para evaluar el rendimiento de la propuesta.
+\textit{Habitat Baselines} ofrece algunos agentes preconstruidos (principalmente agentes heurísticos para funcionar como \textit{benchmark} y un agente de aprendizaje aplicando \textit{PPO}). En este trabajo se ha diseñado un agente propio (\textit{ReactiveNavigationAgent}) para evaluar el rendimiento de la propuesta.
 
 En contra de lo que pueda dar a entender el nombre del concepto, los agentes no tienen ninguna relación con los agentes físicos simulados, y su uso se limita exclusivamente a \textit{benchmarks}.
 
@@ -671,7 +671,7 @@ Además, la instalación de \textit{Habitat Lab} y \textit{Habitat Baselines} in
 
 \subsection{Proceso de instalación}
 
-Si bien es posible utilizar \textit{dockers} para instalar el entorno del simulador, es recomendable realizar la instalación directamente para garantizar acceso a las actualizaciones. El proceso de instalación se puede dividir en tres pasos principales:
+Si bien es posible utilizar \textit{dockers} para instalar el entorno del simulador, es recomendable realizar la instalación directamente para garantizar acceso a las actualizaciones. El proceso de instalación en distribuciones de \textit{Linux} se puede dividir en tres pasos principales:
 
 \begin{enumerate}
 	\item \textbf{Instalación de CUDA:} Para el uso de \textit{Habitat} y para el entrenamiento adecuado de redes neuronales, es necesaria una instalación correcta y completa de CUDA. Para esto, es necesario:
