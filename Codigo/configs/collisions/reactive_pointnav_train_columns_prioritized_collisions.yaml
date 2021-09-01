@@ -46,7 +46,7 @@ EVAL_CKPT_PATH_DIR: "Training/Reactive/Checkpoints"
 # Training stops when either of these values are reached
 
 # TOTAL_NUM_STEPS: 2000.0
-NUM_UPDATES: 5000
+NUM_UPDATES: 2500
 LOG_INTERVAL: 25
 NUM_CHECKPOINTS: 100
 
