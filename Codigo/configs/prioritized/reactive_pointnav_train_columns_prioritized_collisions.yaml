@@ -46,7 +46,7 @@ EVAL_CKPT_PATH_DIR: "Training/Reactive/Checkpoints"
 # Training stops when either of these values are reached
 
 # TOTAL_NUM_STEPS: 2000.0
-NUM_UPDATES: 2500
+NUM_UPDATES: 1500
 LOG_INTERVAL: 25
 NUM_CHECKPOINTS: 100
 
@@ -60,9 +60,9 @@ RL:
     # Learning rate of the neural network
     learning_rate: 0.001
     # Maximum size of the Experience Replay (once full, older experiences will be removed)
-    er_size: 20000
+    er_size: 5000
     # Batch size when sampling the Experience Replay
-    batch_size: 64
+    batch_size: 32
     # Batches of experiences are split into chunks of this size during training
     # Reduces training speed, but improves memory usage
     training_batch_size: 32
