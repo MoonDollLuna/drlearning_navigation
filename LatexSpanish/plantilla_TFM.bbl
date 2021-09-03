@@ -1342,5 +1342,318 @@
     \endverb
     \field{year}{2001}
   \endentry
+
+  \entry{Krizhevsky2012ImageNetCW}{article}{}
+    \name{author}{3}{}{%
+      {{hash=KA}{%
+         family={Krizhevsky},
+         familyi={K\bibinitperiod},
+         given={A},
+         giveni={A},
+      }}%
+      {{hash=SI}{%
+         family={Sutskever},
+         familyi={S\bibinitperiod},
+         given={Ilya},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=HGE}{%
+         family={Hinton},
+         familyi={H\bibinitperiod},
+         given={Geoffrey\bibnamedelima E},
+         giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KASIHGE1}
+    \strng{fullhash}{KASIHGE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{84\bibrangedash 90}
+    \field{title}{{ImageNet classification with deep convolutional neural
+  networks}}
+    \field{volume}{60}
+    \field{journaltitle}{Communications of the ACM}
+    \field{year}{2012}
+  \endentry
+
+  \entry{Salimans2016}{article}{}
+    \name{author}{2}{}{%
+      {{hash=ST}{%
+         family={Salimans},
+         familyi={S\bibinitperiod},
+         given={Tim},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=KDP}{%
+         family={Kingma},
+         familyi={K\bibinitperiod},
+         given={Diederik\bibnamedelima P.},
+         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Neural information processing systems foundation}%
+    }
+    \strng{namehash}{STKDP1}
+    \strng{fullhash}{STKDP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    We present weight normalization: a reparameterization of the weight vectors
+  in a neural network that decouples the length of those weight vectors from
+  their direction. By reparameterizing the weights in this way we improve the
+  conditioning of the optimization problem and we speed up convergence of
+  stochastic gradient descent. Our reparameterization is inspired by batch
+  normalization but does not introduce any dependencies between the examples in
+  a minibatch. This means that our method can also be applied successfully to
+  recurrent models such as LSTMs and to noise-sensitive applications such as
+  deep reinforcement learning or generative models, for which batch
+  normalization is less well suited. Although our method is much simpler, it
+  still provides much of the speed-up of full batch normalization. In addition,
+  the computational overhead of our method is lower, permitting more
+  optimization steps to be taken in the same amount of time. We demonstrate the
+  usefulness of our method on applications in supervised image recognition,
+  generative modelling, and deep reinforcement learning.%
+    }
+    \verb{eprint}
+    \verb 1602.07868
+    \endverb
+    \field{pages}{901\bibrangedash 909}
+    \field{title}{{Weight Normalization: A Simple Reparameterization to
+  Accelerate Training of Deep Neural Networks}}
+    \verb{url}
+    \verb https://arxiv.org/abs/1602.07868v3
+    \endverb
+    \verb{file}
+    \verb :C\:/Users/Luna/AppData/Local/Mendeley Ltd./Mendeley Desktop/Download
+    \verb ed/Salimans, Kingma - 2016 - Weight Normalization A Simple Reparamete
+    \verb rization to Accelerate Training of Deep Neural Networks.pdf:pdf
+    \endverb
+    \field{journaltitle}{Advances in Neural Information Processing Systems}
+    \field{eprinttype}{arXiv}
+    \field{year}{2016}
+  \endentry
+
+  \entry{Glorot2010UnderstandingTD}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=GX}{%
+         family={Glorot},
+         familyi={G\bibinitperiod},
+         given={Xavier},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=BY}{%
+         family={Bengio},
+         familyi={B\bibinitperiod},
+         given={Yoshua},
+         giveni={Y\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GXBY1}
+    \strng{fullhash}{GXBY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{AISTATS}
+    \field{title}{Understanding the difficulty of training deep feedforward
+  neural networks}
+    \field{year}{2010}
+  \endentry
+
+  \entry{adam2014}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KD}{%
+         family={Kingma},
+         familyi={K\bibinitperiod},
+         given={Diederik},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=BJ}{%
+         family={Ba},
+         familyi={B\bibinitperiod},
+         given={Jimmy},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KDBJ1}
+    \strng{fullhash}{KDBJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Adam: A Method for Stochastic Optimization}
+    \field{journaltitle}{International Conference on Learning Representations}
+    \field{month}{12}
+    \field{year}{2014}
+  \endentry
+
+  \entry{sym12091526}{article}{}
+    \name{author}{4}{}{%
+      {{hash=AMM}{%
+         family={Ahsan},
+         familyi={A\bibinitperiod},
+         given={Md\bibnamedelima Manjurul},
+         giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=EAT}{%
+         family={E.\bibnamedelima Alam},
+         familyi={E\bibinitperiod\bibinitdelim A\bibinitperiod},
+         given={Tasfiq},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=TT}{%
+         family={Trafalis},
+         familyi={T\bibinitperiod},
+         given={Theodore},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=HP}{%
+         family={Huebner},
+         familyi={H\bibinitperiod},
+         given={Pedro},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AMMEATTT+1}
+    \strng{fullhash}{AMMEATTTHP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    The limitations and high false-negative rates (30%) of COVID-19 test kits
+  have been a prominent challenge during the 2020 coronavirus pandemic.
+  Manufacturing those kits and performing the tests require extensive resources
+  and time. Recent studies show that radiological images like chest X-rays can
+  offer a more efficient solution and faster initial screening of COVID-19
+  patients. In this study, we develop a COVID-19 diagnosis model using
+  Multilayer Perceptron and Convolutional Neural Network (MLP-CNN) for
+  mixed-data (numerical/categorical and image data). The model predicts and
+  differentiates between COVID-19 and non-COVID-19 patients, such that early
+  diagnosis of the virus can be initiated, leading to timely isolation and
+  treatments to stop further spread of the disease. We also explore the
+  benefits of using numerical/categorical data in association with chest X-ray
+  images for screening COVID-19 patients considering both balanced and
+  imbalanced datasets. Three different optimization algorithms are used and
+  tested:adaptive learning rate optimization algorithm (Adam), stochastic
+  gradient descent (Sgd), and root mean square propagation (Rmsprop).
+  Preliminary computational results show that, on a balanced dataset, a model
+  trained with Adam can distinguish between COVID-19 and non-COVID-19 patients
+  with a higher accuracy of 96.3%. On the imbalanced dataset, the model trained
+  with Rmsprop outperformed all other models by achieving an accuracy of
+  95.38%. Additionally, our proposed model outperformed selected existing deep
+  learning models (considering only chest X-ray or CT scan images) by producing
+  an overall average accuracy of 94.6% ± 3.42%.%
+    }
+    \verb{doi}
+    \verb 10.3390/sym12091526
+    \endverb
+    \field{issn}{2073-8994}
+    \field{number}{9}
+    \field{title}{Deep MLP-CNN Model Using Mixed-Data to Distinguish between
+  COVID-19 and Non-COVID-19 Patients}
+    \verb{url}
+    \verb https://www.mdpi.com/2073-8994/12/9/1526
+    \endverb
+    \field{volume}{12}
+    \field{journaltitle}{Symmetry}
+    \field{year}{2020}
+  \endentry
+
+  \entry{DBLP:journals/corr/abs-2010-00717}{article}{}
+    \name{author}{1}{}{%
+      {{hash=ZY}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Yanyu},
+         giveni={Y\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ZY1}
+    \strng{fullhash}{ZY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 2010.00717
+    \endverb
+    \field{title}{Deep Reinforcement Learning with Mixed Convolutional Network}
+    \verb{url}
+    \verb https://arxiv.org/abs/2010.00717
+    \endverb
+    \field{volume}{abs/2010.00717}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2020}
+  \endentry
+
+  \entry{DBLP:journals/corr/HeZR015}{article}{}
+    \name{author}{4}{}{%
+      {{hash=HK}{%
+         family={He},
+         familyi={H\bibinitperiod},
+         given={Kaiming},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=ZX}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Xiangyu},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=RS}{%
+         family={Ren},
+         familyi={R\bibinitperiod},
+         given={Shaoqing},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Sun},
+         familyi={S\bibinitperiod},
+         given={Jian},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HKZXRS+1}
+    \strng{fullhash}{HKZXRSSJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 1502.01852
+    \endverb
+    \field{title}{Delving Deep into Rectifiers: Surpassing Human-Level
+  Performance on ImageNet Classification}
+    \verb{url}
+    \verb http://arxiv.org/abs/1502.01852
+    \endverb
+    \field{volume}{abs/1502.01852}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2015}
+  \endentry
+
+  \entry{10.1214/aoms/1177703732}{article}{}
+    \name{author}{1}{}{%
+      {{hash=HPJ}{%
+         family={Huber},
+         familyi={H\bibinitperiod},
+         given={Peter\bibnamedelima J.},
+         giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Institute of Mathematical Statistics}%
+    }
+    \strng{namehash}{HPJ1}
+    \strng{fullhash}{HPJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1214/aoms/1177703732
+    \endverb
+    \field{number}{1}
+    \field{pages}{73 \bibrangedash  101}
+    \field{title}{{Robust Estimation of a Location Parameter}}
+    \verb{url}
+    \verb https://doi.org/10.1214/aoms/1177703732
+    \endverb
+    \field{volume}{35}
+    \field{journaltitle}{The Annals of Mathematical Statistics}
+    \field{year}{1964}
+  \endentry
 \enddatalist
 \endinput

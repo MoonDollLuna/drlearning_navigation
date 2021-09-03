@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.27)  1 SEP 2021 04:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.27)  3 SEP 2021 03:57
 entering extended mode
 **./plantilla_TFM.tex
 (plantilla_TFM.tex
@@ -1397,7 +1397,7 @@ Package biblatex Info: Reference segment=0 on input line 17.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (secciones/00B_Portada.tex
-<./imagenes/EscUpm.png, id=325, 245.91875pt x 200.75pt>
+<./imagenes/EscUpm.png, id=329, 245.91875pt x 200.75pt>
 File: ./imagenes/EscUpm.png Graphic file (type png)
 <use ./imagenes/EscUpm.png>
 Package pdftex.def Info: ./imagenes/EscUpm.png  used on input line 12.
@@ -1429,7 +1429,7 @@ LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <14.4> not available
 (Font)              Font shape `T1/pbk/l/n' tried instead on input line 18.
 LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <14.4> not available
 (Font)              Font shape `T1/pbk/db/n' tried instead on input line 19.
-<./imagenes/FacInformatica.png, id=327, 160.6pt x 170.6375pt>
+<./imagenes/FacInformatica.png, id=331, 160.6pt x 170.6375pt>
 File: ./imagenes/FacInformatica.png Graphic file (type png)
 <use ./imagenes/FacInformatica.png>
 Package pdftex.def Info: ./imagenes/FacInformatica.png  used on input line 23.
@@ -1472,27 +1472,26 @@ LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <10.95> not available
 LaTeX Font Info:    Font shape `T1/pbk/m/it' in size <10.95> not available
 (Font)              Font shape `T1/pbk/l/it' tried instead on input line 22.
 LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <10.95> not available
-(Font)              Font shape `T1/pbk/db/it' tried instead on input line 32.
+(Font)              Font shape `T1/pbk/db/it' tried instead on input line 36.
 
-Overfull \hbox (2.62762pt too wide) detected at line 68
+Overfull \hbox (2.62762pt too wide) detected at line 72
 \T1/pbk/l/n/10.95 4.2.10. 
  []
 
 
-Overfull \hbox (2.62762pt too wide) detected at line 70
+Overfull \hbox (2.62762pt too wide) detected at line 74
 \T1/pbk/l/n/10.95 4.2.11. 
  []
 
-
-Overfull \hbox (2.62762pt too wide) detected at line 72
+[5]
+Overfull \hbox (2.62762pt too wide) detected at line 76
 \T1/pbk/l/n/10.95 4.2.12. 
  []
 
-[5]
-LaTeX Info: Redefining \sptext on input line 160.
-LaTeX Info: Redefining \. on input line 160.
-LaTeX Info: Redefining \% on input line 160.
- [6])
+LaTeX Info: Redefining \sptext on input line 162.
+LaTeX Info: Redefining \. on input line 162.
+LaTeX Info: Redefining \% on input line 162.
+[6])
 \tf@toc=\write7
 \openout7 = `plantilla_TFM.toc'.
 
@@ -1541,7 +1540,7 @@ LaTeX Info: Redefining \% on input line 1.
 ]
 Cap\'{\i }tulo 2.
 [5]
-<imagenes/cap2/drone-architecture.png, id=554, 905.63344pt x 380.17032pt>
+<imagenes/cap2/drone-architecture.png, id=569, 905.63344pt x 380.17032pt>
 File: imagenes/cap2/drone-architecture.png Graphic file (type png)
 <use imagenes/cap2/drone-architecture.png>
 Package pdftex.def Info: imagenes/cap2/drone-architecture.png  used on input li
@@ -1565,7 +1564,7 @@ Cap\'{\i }tulo 3.
 LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <14.4> not available
 (Font)              Font shape `T1/pbk/db/it' tried instead on input line 3.
 LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <12> not available
-(Font)              Font shape `T1/pbk/db/n' tried instead on input line 9.
+(Font)              Font shape `T1/pbk/db/n' tried instead on input line 5.
 ) (secciones/04_Simulador.tex [9
 
 ] [10
@@ -1573,100 +1572,104 @@ LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <12> not available
 ]
 Cap\'{\i }tulo 4.
 LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <24.88> not available
-(Font)              Font shape `T1/pbk/db/it' tried instead on input line 1.
+(Font)              Font shape `T1/pbk/db/it' tried instead on input line 2.
 LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <12> not available
-(Font)              Font shape `T1/pbk/db/it' tried instead on input line 22.
+(Font)              Font shape `T1/pbk/db/it' tried instead on input line 23.
 [11]
-LaTeX Info: Redefining \. on input line 46.
-LaTeX Info: Redefining \% on input line 46.
+LaTeX Info: Redefining \. on input line 47.
+LaTeX Info: Redefining \% on input line 47.
  [12]
-<imagenes/cap4/habitat_lab_structure.png, id=608, 674.69585pt x 405.13402pt>
+<imagenes/cap4/habitat_lab_structure.png, id=623, 674.69585pt x 405.13402pt>
 File: imagenes/cap4/habitat_lab_structure.png Graphic file (type png)
 <use imagenes/cap4/habitat_lab_structure.png>
 Package pdftex.def Info: imagenes/cap4/habitat_lab_structure.png  used on input
- line 68.
+ line 69.
 (pdftex.def)             Requested size: 452.96826pt x 271.99475pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 86.
-LaTeX Info: Redefining \% on input line 86.
+LaTeX Info: Redefining \. on input line 87.
+LaTeX Info: Redefining \% on input line 87.
 [13]
 Underfull \vbox (badness 4765) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 99.
-LaTeX Info: Redefining \% on input line 99.
+LaTeX Info: Redefining \. on input line 100.
+LaTeX Info: Redefining \% on input line 100.
  [14 <./imagenes/cap4/habitat_lab_structure.png>]
-LaTeX Info: Redefining \. on input line 128.
-LaTeX Info: Redefining \% on input line 128.
+LaTeX Info: Redefining \. on input line 129.
+LaTeX Info: Redefining \% on input line 129.
  [15]
-Overfull \hbox (0.85814pt too wide) in paragraph at lines 141--142
+Overfull \hbox (0.85814pt too wide) in paragraph at lines 142--143
 []\T1/pbk/db/it/10.95 ObjectNavigationTask \T1/pbk/db/n/10.95 (na-ve-ga-ción a 
 ob-je-to): \T1/pbk/l/n/10.95 Una va-rian-te de \T1/pbk/l/it/10.95 Na-vi-ga-tion
 -Task\T1/pbk/l/n/10.95 ,
  []
 
 
-Overfull \hbox (10.0355pt too wide) in paragraph at lines 147--148
+Overfull \hbox (10.0355pt too wide) in paragraph at lines 148--149
 []\T1/pbk/db/it/10.95 RearrangeTask \T1/pbk/db/n/10.95 (re-organización): \T1/p
 bk/l/n/10.95 Ta-reas in-tro-du-ci-das con \T1/pbk/l/it/10.95 Ha-bi-tat 2.0\T1/p
 bk/l/n/10.95 , \T1/pbk/l/it/10.95 Rearran-
  []
 
-LaTeX Info: Redefining \. on input line 160.
-LaTeX Info: Redefining \% on input line 160.
+LaTeX Info: Redefining \. on input line 161.
+LaTeX Info: Redefining \% on input line 161.
 [16]
-Overfull \hbox (19.71198pt too wide) in paragraph at lines 197--198
+Overfull \hbox (19.71198pt too wide) in paragraph at lines 198--199
 []\T1/pbk/db/it/10.95 RearrangeDatasetV0 \T1/pbk/l/n/10.95 pa-ra ta-reas de re-
 or-ga-ni-za-ción (\T1/pbk/l/it/10.95 Rearran-ge-Pick-Task \T1/pbk/l/n/10.95 y \
 T1/pbk/l/it/10.95 Rearran-
  []
 
-LaTeX Info: Redefining \. on input line 201.
-LaTeX Info: Redefining \% on input line 201.
+LaTeX Info: Redefining \. on input line 199.
+LaTeX Info: Redefining \% on input line 199.
 [17]
 LaTeX Font Info:    Trying to load font information for TS1+pbk on input line 2
-11.
+12.
  (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/psnfss\ts1pbk.fd
 File: ts1pbk.fd 2001/06/04 font definitions for TS1/pbk.
 )
 LaTeX Font Info:    Font shape `TS1/pbk/m/n' in size <10.95> not available
-(Font)              Font shape `TS1/pbk/l/n' tried instead on input line 211.
-<imagenes/cap4/matterport.png, id=642, 1797.71625pt x 530.98375pt>
+(Font)              Font shape `TS1/pbk/l/n' tried instead on input line 212.
+<imagenes/cap4/matterport.png, id=657, 1797.71625pt x 530.98375pt>
 File: imagenes/cap4/matterport.png Graphic file (type png)
 <use imagenes/cap4/matterport.png>
-Package pdftex.def Info: imagenes/cap4/matterport.png  used on input line 222.
+Package pdftex.def Info: imagenes/cap4/matterport.png  used on input line 223.
 (pdftex.def)             Requested size: 452.96826pt x 133.79077pt.
-LaTeX Info: Redefining \. on input line 235.
-LaTeX Info: Redefining \% on input line 235.
+LaTeX Info: Redefining \. on input line 233.
+LaTeX Info: Redefining \% on input line 233.
  [18 <./imagenes/cap4/matterport.png>]
-<imagenes/cap4/gibson.jpg, id=652, 1541.76pt x 513.92pt>
+<imagenes/cap4/gibson.jpg, id=667, 1541.76pt x 513.92pt>
 File: imagenes/cap4/gibson.jpg Graphic file (type jpg)
 <use imagenes/cap4/gibson.jpg>
-Package pdftex.def Info: imagenes/cap4/gibson.jpg  used on input line 239.
+Package pdftex.def Info: imagenes/cap4/gibson.jpg  used on input line 240.
 (pdftex.def)             Requested size: 452.96826pt x 150.98558pt.
-<imagenes/cap4/replicaCAD.png, id=659, 954.56625pt x 270.25969pt>
+<imagenes/cap4/replicaCAD.png, id=674, 954.56625pt x 270.25969pt>
 File: imagenes/cap4/replicaCAD.png Graphic file (type png)
 <use imagenes/cap4/replicaCAD.png>
-Package pdftex.def Info: imagenes/cap4/replicaCAD.png  used on input line 258.
+Package pdftex.def Info: imagenes/cap4/replicaCAD.png  used on input line 259.
 (pdftex.def)             Requested size: 452.96826pt x 128.2427pt.
 
-Overfull \hbox (2.45145pt too wide) in paragraph at lines 263--264
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (2.45145pt too wide) in paragraph at lines 264--265
 []\T1/pbk/db/it/10.95 Habitat-Matterport 3D Re-search Da-ta-set \T1/pbk/db/n/10
 .95 [[]18[]]: \T1/pbk/l/it/10.95 Habitat-Matterport 3D Re-search
  []
 
-LaTeX Info: Redefining \. on input line 264.
-LaTeX Info: Redefining \% on input line 264.
-[19 <./imagenes/cap4/gibson.jpg> <./imagenes/cap4/replicaCAD.png>]
-<imagenes/cap4/hm3d.png, id=670, 3292.3pt x 1027.84pt>
+LaTeX Info: Redefining \. on input line 272.
+LaTeX Info: Redefining \% on input line 272.
+[19 <./imagenes/cap4/gibson.jpg>]
+<imagenes/cap4/hm3d.png, id=684, 3292.3pt x 1027.84pt>
 File: imagenes/cap4/hm3d.png Graphic file (type png)
 <use imagenes/cap4/hm3d.png>
-Package pdftex.def Info: imagenes/cap4/hm3d.png  used on input line 280.
+Package pdftex.def Info: imagenes/cap4/hm3d.png  used on input line 281.
 (pdftex.def)             Requested size: 452.96826pt x 141.40292pt.
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 33
-7.
+8.
 
 (C:\Users\Luna\AppData\Roaming\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
@@ -1674,73 +1677,79 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 342.
-LaTeX Info: Redefining \% on input line 342.
-[20 <./imagenes/cap4/hm3d.png (PNG copy)>]
-LaTeX Info: Redefining \. on input line 361.
-LaTeX Info: Redefining \% on input line 361.
- [21]
-<imagenes/cap4/cameras.png, id=685, 650.43pt x 214.55156pt>
+LaTeX Info: Redefining \. on input line 345.
+LaTeX Info: Redefining \% on input line 345.
+[20 <./imagenes/cap4/replicaCAD.png> <./imagenes/cap4/hm3d.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 360.
+LaTeX Info: Redefining \% on input line 360.
+
+[21]
+<imagenes/cap4/cameras.png, id=700, 650.43pt x 214.55156pt>
 File: imagenes/cap4/cameras.png Graphic file (type png)
 <use imagenes/cap4/cameras.png>
-Package pdftex.def Info: imagenes/cap4/cameras.png  used on input line 384.
+Package pdftex.def Info: imagenes/cap4/cameras.png  used on input line 383.
 (pdftex.def)             Requested size: 452.96826pt x 149.41899pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 396.
-LaTeX Info: Redefining \% on input line 396.
+LaTeX Info: Redefining \. on input line 395.
+LaTeX Info: Redefining \% on input line 395.
 [22]
-LaTeX Info: Redefining \. on input line 416.
-LaTeX Info: Redefining \% on input line 416.
+LaTeX Info: Redefining \. on input line 415.
+LaTeX Info: Redefining \% on input line 415.
  [23 <./imagenes/cap4/cameras.png>]
-LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <8> not available
-(Font)              Font shape `T1/pbk/l/n' tried instead on input line 416.
-LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <6> not available
-(Font)              Font shape `T1/pbk/l/n' tried instead on input line 416.
-<imagenes/cap4/topdownmap.png, id=702, 493.0922pt x 290.58563pt>
+<imagenes/cap4/topdownmap.png, id=717, 493.0922pt x 290.58563pt>
 File: imagenes/cap4/topdownmap.png Graphic file (type png)
 <use imagenes/cap4/topdownmap.png>
-Package pdftex.def Info: imagenes/cap4/topdownmap.png  used on input line 422.
+Package pdftex.def Info: imagenes/cap4/topdownmap.png  used on input line 425.
 (pdftex.def)             Requested size: 271.7837pt x 160.17287pt.
-LaTeX Info: Redefining \. on input line 443.
-LaTeX Info: Redefining \% on input line 443.
+LaTeX Info: Redefining \. on input line 439.
+LaTeX Info: Redefining \% on input line 439.
  [24 <./imagenes/cap4/topdownmap.png>]
-LaTeX Info: Redefining \. on input line 483.
-LaTeX Info: Redefining \% on input line 483.
+LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <8> not available
+(Font)              Font shape `T1/pbk/l/n' tried instead on input line 466.
+LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <6> not available
+(Font)              Font shape `T1/pbk/l/n' tried instead on input line 466.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Info: Redefining \. on input line 492.
+LaTeX Info: Redefining \% on input line 492.
 [25]
-Overfull \hbox (3.17691pt too wide) in paragraph at lines 506--507
+Overfull \hbox (3.17691pt too wide) in paragraph at lines 509--510
 []\T1/pbk/l/it/10.95 Habitat Ba-se-li-nes \T1/pbk/l/n/10.95 ofre-ce al-gu-nos a
 gen-tes pre-cons-trui-dos (prin-ci-pal-men-te agen-tes heu-
  []
 
-LaTeX Info: Redefining \. on input line 514.
-LaTeX Info: Redefining \% on input line 514.
+LaTeX Info: Redefining \. on input line 516.
+LaTeX Info: Redefining \% on input line 516.
 [26]
-LaTeX Info: Redefining \. on input line 552.
-LaTeX Info: Redefining \% on input line 552.
+LaTeX Info: Redefining \. on input line 551.
+LaTeX Info: Redefining \% on input line 551.
  [27]
-LaTeX Info: Redefining \. on input line 619.
-LaTeX Info: Redefining \% on input line 619.
+LaTeX Info: Redefining \. on input line 617.
+LaTeX Info: Redefining \% on input line 617.
  [28]
-LaTeX Info: Redefining \. on input line 624.
-LaTeX Info: Redefining \% on input line 624.
+Underfull \vbox (badness 1466) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 623.
+LaTeX Info: Redefining \% on input line 623.
  [29]
-Overfull \hbox (11.7903pt too wide) in paragraph at lines 650--651
+Overfull \hbox (11.7903pt too wide) in paragraph at lines 651--652
 []\T1/pbk/db/n/10.95 Políticas de ac-cio-nes\T1/pbk/l/n/10.95 , usan-do el de-c
 o-ra-dor \T1/pbk/l/it/10.95 @ba-se-li-ne_registry.register_policy\T1/pbk/l/n/10
 .95 . 
  []
 
-LaTeX Info: Redefining \. on input line 666.
-LaTeX Info: Redefining \% on input line 666.
+LaTeX Info: Redefining \. on input line 664.
+LaTeX Info: Redefining \% on input line 664.
 [30]
 LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <9> not available
-(Font)              Font shape `T1/pbk/l/n' tried instead on input line 680.
-LaTeX Info: Redefining \. on input line 692.
-LaTeX Info: Redefining \% on input line 692.
+(Font)              Font shape `T1/pbk/l/n' tried instead on input line 681.
+LaTeX Info: Redefining \. on input line 690.
+LaTeX Info: Redefining \% on input line 690.
  [31] (C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
@@ -1752,158 +1761,246 @@ LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [32]
 Cap\'{\i }tulo 5.
-<imagenes/cap5/normalized.png, id=819, 192.72pt x 192.72pt>
-File: imagenes/cap5/normalized.png Graphic file (type png)
-<use imagenes/cap5/normalized.png>
-Package pdftex.def Info: imagenes/cap5/normalized.png  used on input line 22.
-(pdftex.def)             Requested size: 192.71951pt x 192.71951pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [33
 
 ]
+<imagenes/cap5/normalized.png, id=839, 192.72pt x 192.72pt>
+File: imagenes/cap5/normalized.png Graphic file (type png)
+<use imagenes/cap5/normalized.png>
+Package pdftex.def Info: imagenes/cap5/normalized.png  used on input line 45.
+(pdftex.def)             Requested size: 192.71951pt x 192.71951pt.
 LaTeX Info: Redefining \. on input line 51.
 LaTeX Info: Redefining \% on input line 51.
  [34 <./imagenes/cap5/normalized.png (PNG copy)>]
-LaTeX Info: Redefining \. on input line 79.
-LaTeX Info: Redefining \% on input line 79.
+LaTeX Info: Redefining \. on input line 81.
+LaTeX Info: Redefining \% on input line 81.
  [35]
+LaTeX Info: Redefining \. on input line 114.
+LaTeX Info: Redefining \% on input line 114.
+ [36]
 File: imagenes/cap5/normalized.png Graphic file (type png)
 <use imagenes/cap5/normalized.png>
-Package pdftex.def Info: imagenes/cap5/normalized.png  used on input line 104.
+Package pdftex.def Info: imagenes/cap5/normalized.png  used on input line 130.
 (pdftex.def)             Requested size: 215.16267pt x 215.16267pt.
 LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <10> not available
-(Font)              Font shape `T1/pbk/l/n' tried instead on input line 105.
-<imagenes/cap5/trimmed.png, id=842, 192.72pt x 139.27031pt>
+(Font)              Font shape `T1/pbk/l/n' tried instead on input line 131.
+<imagenes/cap5/trimmed.png, id=863, 192.72pt x 139.27031pt>
 File: imagenes/cap5/trimmed.png Graphic file (type png)
 <use imagenes/cap5/trimmed.png>
-Package pdftex.def Info: imagenes/cap5/trimmed.png  used on input line 109.
+Package pdftex.def Info: imagenes/cap5/trimmed.png  used on input line 135.
 (pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
-<imagenes/cap5/filled.png, id=843, 192.72pt x 139.27031pt>
+<imagenes/cap5/filled.png, id=864, 192.72pt x 139.27031pt>
 File: imagenes/cap5/filled.png Graphic file (type png)
 <use imagenes/cap5/filled.png>
-Package pdftex.def Info: imagenes/cap5/filled.png  used on input line 115.
+Package pdftex.def Info: imagenes/cap5/filled.png  used on input line 141.
 (pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
-<imagenes/cap5/thresholded.png, id=844, 192.72pt x 139.27031pt>
+<imagenes/cap5/thresholded.png, id=865, 192.72pt x 139.27031pt>
 File: imagenes/cap5/thresholded.png Graphic file (type png)
 <use imagenes/cap5/thresholded.png>
-Package pdftex.def Info: imagenes/cap5/thresholded.png  used on input line 120.
+Package pdftex.def Info: imagenes/cap5/thresholded.png  used on input line 146.
 
 (pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
-<imagenes/cap5/cleaned.png, id=845, 192.72pt x 139.27031pt>
+<imagenes/cap5/cleaned.png, id=866, 192.72pt x 139.27031pt>
 File: imagenes/cap5/cleaned.png Graphic file (type png)
 <use imagenes/cap5/cleaned.png>
-Package pdftex.def Info: imagenes/cap5/cleaned.png  used on input line 126.
+Package pdftex.def Info: imagenes/cap5/cleaned.png  used on input line 152.
 (pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
-<imagenes/cap5/dilated.png, id=846, 192.72pt x 139.27031pt>
+<imagenes/cap5/dilated.png, id=867, 192.72pt x 139.27031pt>
 File: imagenes/cap5/dilated.png Graphic file (type png)
 <use imagenes/cap5/dilated.png>
-Package pdftex.def Info: imagenes/cap5/dilated.png  used on input line 131.
+Package pdftex.def Info: imagenes/cap5/dilated.png  used on input line 157.
 (pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
-LaTeX Info: Redefining \. on input line 149.
-LaTeX Info: Redefining \% on input line 149.
- [36]
-LaTeX Info: Redefining \. on input line 149.
-LaTeX Info: Redefining \% on input line 149.
- [37 <./imagenes/cap5/trimmed.png (PNG copy)> <./imagenes/cap5/filled.png (PNG 
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Info: Redefining \. on input line 197.
+LaTeX Info: Redefining \% on input line 197.
+[37]
+LaTeX Info: Redefining \. on input line 197.
+LaTeX Info: Redefining \% on input line 197.
+ [38 <./imagenes/cap5/trimmed.png (PNG copy)> <./imagenes/cap5/filled.png (PNG 
 copy)> <./imagenes/cap5/thresholded.png (PNG copy)> <./imagenes/cap5/cleaned.pn
 g (PNG copy)> <./imagenes/cap5/dilated.png (PNG copy)>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 198.
-LaTeX Info: Redefining \% on input line 198.
-[38]
-LaTeX Info: Redefining \. on input line 219.
-LaTeX Info: Redefining \% on input line 219.
- [39]
-LaTeX Info: Redefining \. on input line 260.
-LaTeX Info: Redefining \% on input line 260.
- [40]) (secciones/06_Experimentacion.tex
+LaTeX Info: Redefining \. on input line 232.
+LaTeX Info: Redefining \% on input line 232.
+[39]
+LaTeX Info: Redefining \. on input line 251.
+LaTeX Info: Redefining \% on input line 251.
+ [40]
+LaTeX Info: Redefining \. on input line 285.
+LaTeX Info: Redefining \% on input line 285.
+ [41]
+LaTeX Info: Redefining \. on input line 322.
+LaTeX Info: Redefining \% on input line 322.
+ [42]
+<imagenes/cap5/arquitectura1.png, id=912, 543.02875pt x 904.37875pt>
+File: imagenes/cap5/arquitectura1.png Graphic file (type png)
+<use imagenes/cap5/arquitectura1.png>
+Package pdftex.def Info: imagenes/cap5/arquitectura1.png  used on input line 33
+6.
+(pdftex.def)             Requested size: 384.64993pt x 640.61174pt.
+LaTeX Info: Redefining \. on input line 358.
+LaTeX Info: Redefining \% on input line 358.
+ [43]
+LaTeX Info: Redefining \. on input line 358.
+LaTeX Info: Redefining \% on input line 358.
+ [44 <./imagenes/cap5/arquitectura1.png>]
+LaTeX Info: Redefining \. on input line 381.
+LaTeX Info: Redefining \% on input line 381.
+ [45]
+LaTeX Info: Redefining \. on input line 404.
+LaTeX Info: Redefining \% on input line 404.
+ [46]
+<imagenes/cap5/arquitectura2.png, id=952, 573.14125pt x 1014.79124pt>
+File: imagenes/cap5/arquitectura2.png Graphic file (type png)
+<use imagenes/cap5/arquitectura2.png>
+Package pdftex.def Info: imagenes/cap5/arquitectura2.png  used on input line 41
+6.
+(pdftex.def)             Requested size: 361.8155pt x 640.61174pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (3.11877pt too wide) in paragraph at lines 457--458
+[]\T1/pbk/l/n/10.95 Como ya se ha men-cio-na-do, la ac-tua-ción del agen-te si-
+gue el pa-ra-dig-ma de exploración-
+ []
+
+LaTeX Info: Redefining \. on input line 461.
+LaTeX Info: Redefining \% on input line 461.
+[47]
+LaTeX Info: Redefining \. on input line 461.
+LaTeX Info: Redefining \% on input line 461.
+ [48 <./imagenes/cap5/arquitectura2.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Info: Redefining \. on input line 499.
+LaTeX Info: Redefining \% on input line 499.
+[49]
+LaTeX Info: Redefining \. on input line 516.
+LaTeX Info: Redefining \% on input line 516.
+ [50]
+
+LaTeX Warning: Command \~ invalid in math mode on input line 537.
+
+Missing character: There is no ñ in font cmr10!
+LaTeX Info: Redefining \. on input line 568.
+LaTeX Info: Redefining \% on input line 568.
+[51]
+Overfull \hbox (5.34145pt too wide) detected at line 583
+\OML/cmm/m/it/10.95 exp[]q\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 exp[]a\OT1/cm
+r/m/n/10.95 ) = []
+ []
+
+LaTeX Info: Redefining \. on input line 585.
+LaTeX Info: Redefining \% on input line 585.
+[52]
+Overfull \hbox (1.68323pt too wide) in paragraph at lines 603--604
+[]\T1/pbk/l/n/10.95 Además, el agen-te al-ma-ce-na re-gis-tros de su pro-gre-so
+ du-ran-te el en-tre-na-mien-to (\T1/pbk/l/it/10.95 check-
+ []
+
+) (secciones/06_Experimentacion.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [41] [42
+ [53] [54
 
 ]
 Cap\'{\i }tulo 6.
-) (secciones/07_Conclusiones.tex [43] [44
+) (secciones/07_Conclusiones.tex [55] [56
 
 ]
 Cap\'{\i }tulo 7.
-) [45] [46
+) [57] [58
 
 ]
 LaTeX Font Info:    Font shape `T1/pbk/m/sc' in size <10.95> not available
 (Font)              Font shape `T1/pbk/l/sc' tried instead on input line 51.
- [47]
+ [59]
+Overfull \hbox (8.82208pt too wide) in paragraph at lines 52--52
+\T1/pbk/l/n/10.95 con-vo-lu-tio-nal neu-ral net-works,'' \T1/pbk/l/it/10.95 Com
+-mu-ni-ca-tions of the ACM\T1/pbk/l/n/10.95 , vol. 60, págs. 84[]90,
+ []
+
+
+Overfull \hbox (23.92894pt too wide) in paragraph at lines 52--52
+\T1/pbk/l/n/10.95 Human-Level Per-for-man-ce on Ima-ge-Net Clas-si-fi-ca-tion,'
+' \T1/pbk/l/it/10.95 CoRR\T1/pbk/l/n/10.95 , vol. ab-s/1502.01852,
+ []
+
 LaTeX Info: Redefining \. on input line 56.
 LaTeX Info: Redefining \% on input line 56.
- [48] (secciones/09A_Manual_usuario.tex
+[60] (secciones/09A_Manual_usuario.tex
 Ap\'{e}ndice A.
-) (secciones/09B_Ficheros_config.tex [49
+) (secciones/09B_Ficheros_config.tex [61
 
 
-] [50
+] [62
 
 ]
 Ap\'{e}ndice B.
-[51]
+[63]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 71.
 LaTeX Info: Redefining \% on input line 71.
- [52]
+ [64]
 LaTeX Info: Redefining \. on input line 117.
 LaTeX Info: Redefining \% on input line 117.
 
-[53]
+[65]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 157.
 LaTeX Info: Redefining \% on input line 157.
- [54]
+ [66]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 188.
 LaTeX Info: Redefining \% on input line 188.
- [55]
+ [67]
 LaTeX Info: Redefining \. on input line 229.
 LaTeX Info: Redefining \% on input line 229.
 
-[56]
+[68]
 LaTeX Info: Redefining \. on input line 275.
 LaTeX Info: Redefining \% on input line 275.
- [57]) (secciones/09C_Graficas.tex
+ [69]) (secciones/09C_Graficas.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [58]
+ [70]
 Ap\'{e}ndice C.
-) (secciones/09D_CD.tex [59
+) (secciones/09D_CD.tex [71
 
-] [60
+] [72
 
 ]
 Ap\'{e}ndice D.
-) [61] (plantilla_TFM.aux
+) [73] (plantilla_TFM.aux
 LaTeX Info: Redefining \sptext on input line 33.
 LaTeX Info: Redefining \. on input line 33.
 LaTeX Info: Redefining \% on input line 33.
 )
 Package rerunfilecheck Info: File `plantilla_TFM.out' has not changed.
-(rerunfilecheck)             Checksum: B15060D0EC3D3E576C4FC9C88E41208D;13889.
+(rerunfilecheck)             Checksum: 72066E1B897435C988BFA8187946A0A2;14411.
 Package logreq Info: Writing requests to 'plantilla_TFM.run.xml'.
 \openout1 = `plantilla_TFM.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47182 strings out of 478868
- 960942 string characters out of 2858669
- 1946862 words of memory out of 3000000
- 63840 multiletter control sequences out of 15000+600000
+ 47279 strings out of 478868
+ 963389 string characters out of 2858669
+ 1955234 words of memory out of 3000000
+ 63887 multiletter control sequences out of 15000+600000
  447322 words of font info for 112 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 160i,12n,149p,1882b,2752s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 160i,18n,149p,1882b,2752s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1925,9 +2022,9 @@ ubkd8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/bookman/ubkdi8a.pfb><C:/Pro
 gram Files/MiKTeX/fonts/type1/urw/bookman/ubkl8a.pfb><C:/Program Files/MiKTeX/f
 onts/type1/urw/bookman/ubkli8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/cou
 rier/ucrb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on plantilla_TFM.pdf (73 pages, 3752148 bytes).
+Output written on plantilla_TFM.pdf (85 pages, 3908773 bytes).
 PDF statistics:
- 1421 PDF objects out of 1440 (max. 8388607)
- 525 named destinations out of 1000 (max. 500000)
- 733 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1557 PDF objects out of 1728 (max. 8388607)
+ 573 named destinations out of 1000 (max. 500000)
+ 751 words of extra memory for PDF output out of 10000 (max. 10000000)
 

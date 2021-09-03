@@ -17,7 +17,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Imagen de color (izquierda), profundidad (centro) y normales (derecha) de un escenario de \textit {Gibson} \cite {xiazamirhe2018gibsonenv}.\relax }}{19}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Escenario original de \textit {Replica} (izquierda) y escenario reconstruido de \textit {ReplicaCAD} (derecha) \cite {szot2021habitat}.\relax }}{19}{figure.caption.9}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Escenario original de \textit {Replica} (izquierda) y escenario reconstruido de \textit {ReplicaCAD} (derecha) \cite {szot2021habitat}.\relax }}{20}{figure.caption.9}%
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Imagen de color (izquierda), profundidad (centro) y mapa (derecha) de una escena de \textit {HM3D} \cite {habitatmp3d}.\relax }}{20}{figure.caption.10}%
 \defcounter {refsection}{0}\relax 
@@ -27,7 +27,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Mapa de un escenario de \textit {HM3D} \cite {habitatmp3d}.\relax }}{24}{figure.caption.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Pseudocódigo del bucle principal de entrenamiento.\relax }}{25}{figure.caption.14}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Pseudocódigo del bucle principal de entrenamiento.\relax }}{26}{figure.caption.14}%
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {4.10}{\ignorespaces Fichero de configuración por defecto para tareas de navegación usando \textit {Gibson}.\relax }}{29}{figure.caption.15}%
 \defcounter {refsection}{0}\relax 
@@ -35,11 +35,21 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Ejemplo de imagen de profundidad usada como parte del estado.\relax }}{34}{figure.caption.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Procesamiento realizado sobre la imagen de profundidad.\relax }}{37}{figure.caption.17}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Procesamiento realizado sobre la imagen de profundidad.\relax }}{38}{figure.caption.17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Pseudocódigo del método de contornos para identificar distancias a obstáculos.\relax }}{38}{figure.caption.18}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Pseudocódigo del método de contornos para identificar distancias a obstáculos.\relax }}{39}{figure.caption.18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Pseudocódigo del método de columnas para identificar distancias a obstáculos.\relax }}{39}{figure.caption.19}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Pseudocódigo del método de columnas para identificar distancias a obstáculos.\relax }}{40}{figure.caption.19}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Arquitectura de la red neuronal - Propuesta 1 (CNN).\relax }}{44}{figure.caption.20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Arquitectura de la red neuronal - Propuesta 2 (Mixta).\relax }}{48}{figure.caption.21}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Proceso de actuación del agente.\relax }}{49}{figure.caption.22}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Proceso de entrenamiento del agente.\relax }}{50}{figure.caption.23}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Proceso de aprendizaje a partir de las experiencias (estándar).\relax }}{52}{figure.caption.24}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

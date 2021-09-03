@@ -1,3 +1,4 @@
+
 \chapter{\textit{Habitat}: Simulador \textit{Habitat Sim} y \textit{Habitat Lab}}
 
 En este capítulo se describirá en profundidad el simulador utilizado, \textit{Habitat Sim 2.0}, y su librería de Python \textit{Habitat Lab}. Además, se presentarán los principales componentes usados por la librería, detallando su funcionamiento y su uso. Finalmente, se explicará la instalación del simulador y las dependencias necesarias.
@@ -50,7 +51,7 @@ El rendimiento del simulador es superior al de \textit{Habitat Sim}, especialmen
 \textit{Habitat Lab} (originalmente conocido como \textit{Habitat-API}) \cite{habitat19iccv} es una librería modular de alto nivel desarrollada para \textit{Python}, con el fin de facilitar el uso de \textit{Habitat Sim} y el desarrollo de agentes físicos. El principal objetivo de la librería es permitir a los usuarios:
 
 \begin{itemize}
-	\item \textbf{Definir tareas para agentes físicos}: Se ofrecen tareas típicas (como navegación, seguimiento de orden, búsqu eda de objetos...) y \textit{APIs} para desarrollar tareas propias.
+	\item \textbf{Definir tareas para agentes físicos}: Se ofrecen tareas típicas (como navegación, seguimiento de orden, búsqueda de objetos...) y \textit{APIs} para desarrollar tareas propias.
 	\item \textbf{Configurar agentes físicos:} Se permite modificar al agente físico ajustando su forma  física, los sensores disponibles, las acciones posibles...
 	\item \textbf{Entrenar agentes físicos:} Se ofrece soporte para técnicas clásicas (como \textit{SLAM}) además de entrenamiento por refuerzo y entrenamiento por imitación.
 	\item \textbf{Evaluar agentes físicos:} Se ofrecen métricas estándares \cite{DBLP:journals/corr/abs-1807-06757} usadas para evaluar el rendimiento de los agentes.
@@ -71,7 +72,7 @@ La arquitectura de \textit{Habitat} (y, especialmente, la de la librería \texti
 \end{figure}
 
 \begin{enumerate}
-	\item \textbf{Tarea (\textit{Task)}:} La tarea a realizar por el agente, gestiona los objetivos y el éxito de la tarea usando métricas del simulador.
+	\item \textbf{Tarea (\textit{Task)}:} El problema concreto a resolver por el agente, gestiona los objetivos y el éxito de la tarea usando métricas del simulador.
 	\item \textbf{Episodio (\textit{Episode)}:} Especificación del episodio a realizar, conteniendo información como la posición y ángulo iniciales del agente, posición de la meta...
 	\item \textbf{Entorno (\textit{Environment)}:} Concepto principal del simulador, abstrae toda la información necesaria para permitir el trabajo con el simulador y el agente físico.
 \end{enumerate}
@@ -111,7 +112,7 @@ Cualquier entorno personalizado que se quiera crear debe ser una subclase de \te
 \begin{itemize}
 	\item \textbf{get{\_}reward(observaciones):} A partir de las observaciones del agente, calcula una recompensa o penalización para éste. En general, el procesamiento de recompensas se implementa directamente en el entorno a través de este método.
 	
-	\item \textbf{get{\_}reward{\_}range():} Este método únicamente devuelve los limites de la recompensa (el rango $[min, max]$ en el que se encuentra).
+	\item \textbf{get{\_}reward{\_}range():} Este método únicamente devuelve los límites de la recompensa (el rango $[min, max]$ en el que se encuentra).
 	
 	\item \textbf{get{\_}done(observaciones):} A partir de las observaciones del agente, calcula si el episodio ha acabado (ya sea de forma satisfactoria o fallida). En este método se implementan comprobaciones como colisiones u otras condiciones de parada.
 	
@@ -181,7 +182,7 @@ Los episodios son creados y gestionados automáticamente por los conjuntos de da
 Un \textbf{conjunto de datos \textit{(dataset)}} es un contenedor y gestor de episodios a realizar, encargándose de:
 
 \begin{itemize}
-	\item \textbf{Cargar los escenarios desde memoria}, convirtiendo los \textit{meshes} al formato de \textit{state graph} esperado.
+	\item \textbf{Cargar los escenarios desde memoria}, convirtiendo los \textit{meshes} (información sobre la estructura tridimensional del escenario) al formato de \textit{state graph} esperado.
 	\item \textbf{Crear los episodios} automáticamente a partir de la información del conjunto de datos.
 	\item \textbf{Gestionar la iteración de episodios}, ordenándolos de forma que se reduzcan las lecturas de ficheros.
 	\item Permitir al usuario \textbf{filtrar los episodios} en base a criterios especificados.
@@ -243,13 +244,13 @@ La primera versión de \textit{Habitat Lab} ofrece por defecto soporte a \textbf
 
 \end{itemize}
 
-En general, tanto \textit{Matterport3D} como \textit{Gibson} son conjuntos de datos extensos con información similar, pudiendo cumplir las mismas funciones. Ahora bien, \textit{Gibson} se considera un conjunto más \textit{"facil"} para el entrenamiento de agentes físicos \cite{habitat19iccv}, al estar formado por escenarios más pequeños.
+En general, tanto \textit{Matterport3D} como \textit{Gibson} son conjuntos de datos extensos con información similar, pudiendo cumplir las mismas funciones. Ahora bien, \textit{Gibson} se considera un conjunto más \textit{"fácil"} para el entrenamiento de agentes físicos \cite{habitat19iccv}, al estar formado por escenarios más pequeños.
 
 \textit{Habitat 2.0} añadió soporte a \textbf{dos} conjuntos de datos adicionales por defecto:
 \begin{itemize}
 	\item \textbf{\textit{ReplicaCAD} \cite{szot2021habitat}:} \textit{ReplicaCAD} es una recreación del conjunto de datos \textit{Replica} \cite{DBLP:journals/corr/abs-1906-05797}, adaptado para el motor de físicas de \textit{Habitat 2.0}. Se puede ver un ejemplo de esta recreación en la Figura \ref{fig:chap4-replicaCAD}.
 	
-	El conjunto de datos cuenta con \textbf{6} cuartos (teniendo cada cuarto \textbf{5} variaciones y ruido añadido proceduralmente), donde todos los objetos incluyen físicas y anotaciones semánticas.
+	El conjunto de datos cuenta con \textbf{6} cuartos (teniendo cada cuarto \textbf{5} variaciones y ruido añadido proceduralmente), donde todos los objetos incluyen simulaciones físicas y anotaciones semánticas.
 	
 	Este conjunto de datos está diseñado expresamente para tareas de reorganización, no estando preparado para otras tareas como navegación.
 	
@@ -339,8 +340,6 @@ Especificamente, se espera una carpeta base \textit{data} (o un enlace simbólic
 \label{fig:tree}
 \end{figure}
 
-\newpage
-
 \begin{itemize}
 	\item \textbf{\textit{scene{\_}datasets}:} Esta carpeta contiene los modelos 3D de las escenas de cada conjunto de datos, estando cada conjunto contenido en una carpeta con su nombre. Los escenarios en general se encuentran en formato \textit{.glb}, aunque pueden usarse otros.
 	\item \textbf{\textit{datasets}:} Esta carpeta contiene, para cada tarea, la definición de todos los escenarios (posición inicial, meta...) para cada conjunto de datos. \textit{Habitat Lab} ofrece estos conjuntos, pudiendo descargarse desde el repositorio de \textit{GitHub}. 
@@ -354,7 +353,7 @@ Las acciones derivan de la clase base \textit{SimulatorTaskAction}. Cada tarea i
 
 \begin{itemize}
 	\item \textbf{\textit{MOVE{\_}FORWARD}:} Mueve el agente hacia adelante. Por defecto, el agente avanza $0.25m$.
-	\item \textbf{\textit{TURN{\_}RIGHT / TURN{\_}LEFT}:} Gira al agente sobre si mismo hacia la derecha o la izquierda respectivamente. Por defecto, el agente rota $10$ grados.
+	\item \textbf{\textit{TURN{\_}RIGHT / TURN{\_}LEFT}:} Gira al agente sobre sí mismo hacia la derecha o la izquierda respectivamente. Por defecto, el agente rota $10$ grados.
 	\item \textbf{\textit{LOOK{\_}UP / LOOK{\_}DOWN}:} Mueve el ángulo de visión del agente hacia arriba o hacia abajo respectivamente. Por defecto, el ángulo se mueve $15$ grados.
 	\item \textbf{\textit{TELEPORT}:} Teletransporta al agente a las coordenadas indicadas.
 	\item \textbf{\textit{VELOCITY{\_}CONTROL}:} Ajusta la velocidad lineal y angular del agente a la indicada.
@@ -373,7 +372,7 @@ La clase \textit{Sensor} implementa la funcionalidad básica, existiendo gran ca
 	\item \textbf{Cámaras:} Las cámaras ofrecen información visual (imágenes) del entorno, devuelta en forma de matriz de valores numéricos. Por defecto, las cámaras apuntan hacia el frente del agente con un ángulo de visión de 90 grados. Existen tres tipos básicos de cámaras disponibles:
 	\begin{itemize}
 		\item \textbf{Cámara de color (\textit{RGB{\_}SENSOR}):} Devuelve una imagen en color (siguiendo el formato RGB).
-		\item \textbf{Cámara de profundidad (\textit{DEPTH{\_}SENSOR}):} Devuelve una imagen en escala de grises representando la profundidad percibida por la cámara. Los valores de esta imagen se encuentran en el rango $[0, 1]$ siendo $0.0$ lo más cercano a la cámara y $1.0$ lo más lejano.
+		\item \textbf{Cámara de profundidad (\textit{DEPTH{\_}SENSOR}):} Devuelve una imagen en escala de grises representando la profundidad percibida por la cámara. Los valores de esta imagen se representan en forma de números reales en el rango $[0, 1]$ siendo $0.0$ lo más cercano a la cámara y $1.0$ lo más lejano.
 		\item \textbf{Cámara semántica (\textit{SEMANTIC{\_}SENSOR}):} Devuelve una imagen seccionada en categorías semánticas (como suelo, techo...). Cada categoría semántica tiene un color asociado. Esta cámara solo puede usarse en conjuntos de datos compatibles con anotaciones semánticas. 
 	\end{itemize}
 	
@@ -389,7 +388,7 @@ La clase \textit{Sensor} implementa la funcionalidad básica, existiendo gran ca
 	\item \textbf{Indicadores de posición:} Los indicadores de posición dan información al agente sobre su propia posición o la de la meta. Estos sensores son exclusivos de tareas de navegación, siendo los principales:
 	\begin{itemize}
 	\item \textbf{\textit{GPS (GPS{\_}SENSOR)}:} Indica las coordenadas actuales del agente.
-	\item \textbf{Brújula \textit{(COMPASS{\_}SENSOR}:} Indica la orientación actual del agente.
+	\item \textbf{Brújula \textit{(COMPASS{\_}SENSOR}):} Indica la orientación actual del agente.
 	\item \textbf{Meta \textit{(POINTGOAL{\_}SENSOR)}:} Indica las coordenadas de la meta.
 	\item \textbf{Combinado \textit{(POINTGOAL{\_}WITH{\_}GPS{\_}COMPASS{\_}SENSOR)}:} Una combinación de los tres sensores anteriores, indicando las coordenadas de agente y meta y el ángulo del agente. Además, indica la distancia del agente a la meta.
 	\item \textbf{Proximidad \textit{(PROXIMITY{\_}SENSOR)}:} Indica la distancia en metros del obstáculo más cercano al agente.
@@ -412,9 +411,13 @@ La clase \textit{Measure} implementa la funcionalidad básica de las métricas, 
 	
 	Esta métrica es una mejor estimación del rendimiento de los agentes, al ser capaz de penalizar a los agentes por tomar rutas subóptimas. Ahora bien, es una métrica estricta, siendo un valor de $0.5$ suficiente para esperar un buen rendimiento por parte del agente.
 	
-	\item \textbf{\textit{SPL} suavizado (\textit{SOFT{\_}SPL}):} Variante de \textit{SPL} diseñada para ser una métrica menos estricta. La diferencia es que el valor $S_i$ pasa de ser binario a lineal, pasando éste a valer:
-	\[S_i = 1 - (\text{porcentaje de distancia recorrida hasta la meta})\]
-	\item \textbf{Colisiones \textit{(COLLISIONS)}:} Indica el numero total de colisiones hasta el momento y si el agente está colisionando actualmente.
+	\item \textbf{\textit{SPL} suavizado (\textit{SOFT{\_}SPL}):} Variante de \textit{SPL} diseñada para ser una métrica menos estricta. La diferencia es que el valor $S_i$ pasa de ser binario a lineal. El nuevo valor de la métrica es:
+	\[ \frac{1}{N} \sum^{N}_{i=1} S_{i} \frac{l_i}{max(p_i,l_i)} \]
+	Donde $N$ es el número total de episodios, $l_i$ es la distancia más corta entre la posición inicial y la meta en el episodio $i$, $p_i$ es la distancia recorrida por el agente y $S_i$ es:
+	\[S_i = 1 - \frac{p^{euc}_i}{l^{euc}_i}\]
+	Donde $l^{euc}_i$ es la distancia euclidiana entre la posición inicial y la final, y $p^{euc}_i$ es la distancia euclidiana entre el agente y la posición final. Esto es equivalente al porcentaje de la distancia que ha recorrido el agente (donde $S_i = 0$ equivale a un agente que no se ha acercado a la meta y $S_i=1$ equivale a un agente que ha alcanzado la meta).
+	
+	\item \textbf{Colisiones \textit{(COLLISIONS)}:} Indica el número total de colisiones hasta el momento y si el agente está colisionando actualmente.
 	\item \textbf{Mapa del escenario \textit{(TOP{\_}DOWN{\_}MAP)}:} Mapa en plano cenital donde se muestra el escenario entero. Además, se muestra la posición actual del agente, el camino recorrido hasta el momento por el agente (en azul) y la ruta óptima desde la posición inicial hasta la meta (en verde). Se puede ver un ejemplo de un mapa en la Figura \ref{fig:chap4-topdownmap}.
 	
 \begin{figure}[h]
@@ -510,8 +513,6 @@ En contra de lo que pueda dar a entender el nombre del concepto, los agentes no 
 \subsection{\textit{Benchmarks}}
 
 \textit{Habitat} ofrece por defecto un \textit{benchmark} con el que se puede evaluar el rendimiento de los agentes ya entrenados. El benchmark recibe como entrada un agente (definido previamente) y el número de episodios que se quiere evaluar (por defecto todos los posibles), y se encarga de:
-
-\newpage
 
 \begin{itemize}
 	\item Crear y gestionar el entorno (usando un entorno \textit{Env}).
@@ -689,8 +690,6 @@ Si bien es posible utilizar \textit{dockers} para instalar el entorno del simula
 	
 	Contando con una instalación válida de \textit{Conda}, los siguientes comandos en una terminal crean un entorno con las versiones adecuadas de \textit{Python} y \textit{cMake} e instalan \textit{Habitat Sim}:
 
-\newpage
-
 \begin{lstlisting}[language=bash]
 # Crea el entorno de Conda con las versiones adecuadas de Python y cMake
 conda create -n habitat python=3.6 cmake=3.14.0
@@ -717,4 +716,4 @@ python setup.py develop --all
 \end{lstlisting}	
 \end{enumerate}
 
-Para comprobar que la instalación se ha realizado correctamente, \textit{Habitat Lab} ofrece el fichero \textit{examples/example.py}. Si no ha habido ningún problema en la instalación, al ejecutar el fichero se imprimirá en la terminal el número de pasos que ha realizado el agente.
+Para comprobar que la instalación se ha realizado correctamente, \textit{Habitat Lab} ofrece el fichero \textit{examples/example.py}. Si no ha habido ningún problema en la instalación, al ejecutar el fichero se realizará una simulación con un agente de ejemplo ofrecido por defecto por \textit{Habitat}, imprimiendo en la terminal el número de pasos realizado.
