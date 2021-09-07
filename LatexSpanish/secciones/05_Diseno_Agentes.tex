@@ -17,12 +17,12 @@ Las características del agente físico simulado son las siguientes:
 	Esta forma física no se corresponde a ningún robot real, siendo la del agente por defecto simulado por \textit{Habitat}.
 	\item \textbf{Capacidad de movimiento:} El agente únicamente es capaz de desplazarse hacia delante, pudiendo moverse $0.25$ metros en cada paso simulado.
 	
-	Para cambiar la dirección de su movimiento, el agente necesita rotar sobre si mismo. Ésto lo hace en intervalos de $10$ grados en cada paso simulado. El agente no puede girar y desplazarse en el mismo paso.
+	Para cambiar la dirección de su movimiento, el agente necesita rotar sobre sí mismo. Ésto lo hace en intervalos de $10$ grados en cada paso simulado. El agente no puede girar y desplazarse en el mismo paso.
 	\item \textbf{Sensores disponibles:} El agente cuenta con acceso a los siguientes sensores:
 	\begin{itemize}
 		\item \textbf{Cámara de profundidad:} Una cámara de profundidad (\textit{DEPTH{\_}SENSOR)} situada a una altura de $1.25$ metros respecto al suelo, apuntando a la dirección en la que se desplaza el agente.
 		
-		Esta cámara genera imágenes de profundidad de $(256x256)$ píxeles con valores en el rango $[0.0, 1.0]$. La cámara tiene un ángulo de visión de $90$ grados, y es capaz de detectar objetos hasta una distancia de $10$ metros.
+		Esta cámara genera imágenes de profundidad de $(256x256)$ pixeles con valores en el rango $[0.0, 1.0]$. La cámara tiene un ángulo de visión de $90$ grados, y es capaz de detectar objetos hasta una distancia de $10$ metros.
 		\item \textbf{Brújula y GPS (\textit{POINTGOAL{\_}WITH{\_}GPS{\_}COMPASS{\_}SENSOR}):} Una brújula y un GPS que conocen la posición exacta de la meta en todo momento. Estos sensores ofrecen el \textbf{ángulo} y la \textbf{distancia euclidiana} hasta la meta en forma de valor decimal.
 	\end{itemize}
 	\item \textbf{Métricas usadas:} El agente ofrece las siguientes métricas para su evaluación posterior:
@@ -38,7 +38,7 @@ Las características del agente físico simulado son las siguientes:
 El \textbf{estado} (la percepción que tiene el agente del entorno) consta de tres elementos:
 
 \begin{itemize}
-	\item \textbf{Imagen de profundidad:} Una imagen en escala de grises representando las observaciones de la cámara de profundidad. Esta imagen tiene un tamaño de $(256 x 256)$ píxeles, con los valores de cada celda en el rango $[0.0, 1.0]$ (donde $0.0$ o negro significa cercanía a la cámara y $1.0$ o blanco significa lejanía). Se puede ver un ejemplo de la imagen en la Figura \ref{fig:chap5-estado}.
+	\item \textbf{Imagen de profundidad:} Una imagen en escala de grises representando las observaciones de la cámara de profundidad. Esta imagen tiene un tamaño de $(256 x 256)$ pixeles, con los valores de cada celda en el rango $[0.0, 1.0]$ (donde $0.0$ o negro significa cercanía a la cámara y $1.0$ o blanco significa lejanía). Se puede ver un ejemplo de la imagen en la Figura \ref{fig:chap5-estado}.
 	
 \begin{figure}[h]
     \centering
@@ -118,7 +118,7 @@ Para calcular las recompensas posteriormente, es necesario identificar los obst�
 	
 	Para eliminar este ruido, se usa una técnica de \textit{apertura morfológica}, que consiste en una dilatación (aumentar el volumen de los objetos en la imagen) seguida de una erosión (disminuir el volumen de los objetos en la imagen). Esto reduce el ruido incluido dentro de los contornos, sin afectar demasiado al volumen final.
 	
-	\item \textbf{Dilatación:} El paso final consiste en dilatar (aumentar el volumen) de la imagen, para evitar perdidas de información provocadas por la eliminación de ruido del paso previo. Esta dilatación final no afectará al proceso de identificación de obstáculos por su funcionamiento, que se verá posteriormente.
+	\item \textbf{Dilatación:} El paso final consiste en dilatar (aumentar el volumen) de la imagen, para evitar pérdidas de información provocadas por la eliminación de ruido del paso previo. Esta dilatación final no afectará al proceso de identificación de obstáculos por su funcionamiento, que se verá posteriormente.
 \end{enumerate}
 
 Se puede observar un ejemplo de este proceso en la Figura \ref{fig:chap5-imageprocess}.
@@ -169,7 +169,7 @@ Tras el preprocesamiento de la imagen, es necesario identificar los obstáculos 
 \begin{itemize}
 	\item \textbf{Método de contornos:} Este método se basa en la propuesta original de Carlos Sampedro \textit{et al.} \cite{Sampedro2018}. 
 	
-	La idea principal del método es identificar los contornos que tengan un área mínimo (experimentalmente determinado como $250$ pixeles) en la imagen preprocesada. A partir de estos contornos, se crean máscaras en la imagen original para extraer los obstáculos de nuevo en escala de grises. Finalmente, se obtiene la cercanía de esos obstáculos (a partir del pixel de valor mínimo), usando la siguiente estimación:
+	La idea principal del método es identificar los contornos que tengan un área mínima (experimentalmente determinado como $250$ pixeles) en la imagen preprocesada. A partir de estos contornos, se crean máscaras en la imagen original para extraer los obstáculos de nuevo en escala de grises. Finalmente, se obtiene la cercanía de esos obstáculos (a partir del pixel de valor mínimo), usando la siguiente estimación:
 	\[distancia = \frac{(pixel\_min / 256) * distancia\_estimada}{umbral\_obstaculo}\]
 Donde $pixel\_min$ es el pixel de menor valor en el obstáculo (en el rango ${0, 255}$), $distancia\_estimada$ es un valor heurístico que indica la distancia a la que se encontraría un obstáculo en el umbral (estimado como $2$ metros) y $umbral\_obstaculo$ es el umbral que se ha usado durante la umbralización ($0.15$).
 
@@ -179,7 +179,7 @@ Se puede ver el pseudocódigo del proceso en la Figura \ref{alg:contour}.
 \begin{algorithm}[H]
 \SetAlgorithmName{Algoritmo}{algoritmo}{Lista de algoritmos}
 \caption{Identificación de distancias con método de contornos}
-\textbf{Variables:} Imagen preprocesada $imagen\_p$, imagen recortada $imagen\_r$, umbral usado durante preprocesamiento $umbral$, distancia estimada hasta el umbral en metros $dist$, área mínima de los contornos en píxeles $area\_min$.\\
+\textbf{Variables:} Imagen preprocesada $imagen\_p$, imagen recortada $imagen\_r$, umbral usado durante preprocesamiento $umbral$, distancia estimada hasta el umbral en metros $dist$, área mínima de los contornos en pixeles $area\_min$.\\
 \textbf{1.} Inicializa una lista para almacenar las distancias obtenidas, $distancias$.\\
 \textbf{2.} Extrae los contornos de la imagen $imagen\_p$ a una lista $contornos$.\\
 \textbf{3.} Para cada contorno $cont$ de area $area\_contorno$ en $contornos$, con $area\_contorno \geq area\_min$:\\
@@ -198,7 +198,7 @@ Se puede ver el pseudocódigo del proceso en la Figura \ref{alg:contour}.
 
 	\item \textbf{Método de columnas:} Un método original, consistente en dividir la imagen  en columnas de misma anchura, siendo cada columna un posible obstáculo. 
 	
-	El método consiste en dividir la imagen preprocesada en $8$ (elegido experimentalmente) columnas de anchura idéntica. Tras esto, se cuenta el número de píxeles blancos (obstáculos) en cada columna, considerando las columnas que tengan una cantidad superior al área mínima ($250$ píxeles como se ha mencionado previamente) como obstáculos. Para estas columnas, se estima la distancia a partir de una columna equivalente de la imagen original, usando la fórmula descrita previamente:
+	El método consiste en dividir la imagen preprocesada en $8$ (elegido experimentalmente) columnas de anchura idéntica. Tras esto, se cuenta el número de pixeles blancos (obstáculos) en cada columna, considerando las columnas que tengan una cantidad superior al área mínima ($250$ pixeles como se ha mencionado previamente) como obstáculos. Para estas columnas, se estima la distancia a partir de una columna equivalente de la imagen original, usando la fórmula descrita previamente:
 	\[distancia = \frac{(pixel\_min / 256) * distancia\_estimada}{umbral\_obstaculo}\]
 Donde $pixel\_min$ es el pixel de menor valor en el obstáculo (en el rango ${0, 255}$), $distancia\_estimada$ es un valor heurístico que indica la distancia a la que se encontraría un obstáculo en el umbral (estimado como $2$ metros) y $umbral\_obstaculo$ es el umbral que se ha usado durante la umbralización ($0.15$).
 
@@ -208,7 +208,7 @@ Se puede ver el pseudocódigo del proceso en la Figura \ref{alg:column}.
 \begin{algorithm}[H]
 \SetAlgorithmName{Algoritmo}{algoritmo}{Lista de algoritmos}
 \caption{Identificación de distancias con método de columnas}
-\textbf{Variables:} Imagen preprocesada $imagen\_p$, imagen recortada $imagen\_r$, umbral usado durante preprocesamiento $umbral$, distancia estimada hasta el umbral en metros $dist$, área mínima de los contornos en píxeles $area\_min$.\\
+\textbf{Variables:} Imagen preprocesada $imagen\_p$, imagen recortada $imagen\_r$, umbral usado durante preprocesamiento $umbral$, distancia estimada hasta el umbral en metros $dist$, área mínima de los contornos en pixeles $area\_min$.\\
 \textbf{1.} Divide las imágenes $imagen\_p$ y $imagen\_r$ en columnas de anchuras iguales, $columnas\_p$ y $columnas\_r$.\\
 \textbf{2.} Para cada columna $col$ con $pixeles$ pixeles blancos en $columnas\_p$ y $col\_r$ en $columnas\_r$, cumpliendo que $pixeles \geq area\_min$:\\
 \Indp\textbf{2.1.} Obtén la distancia mínima en $col\_r$ (el valor mínimo), $dist\_obs$.\\
@@ -221,7 +221,7 @@ Se puede ver el pseudocódigo del proceso en la Figura \ref{alg:column}.
 \label{alg:column}
 \end{figure}
 
-Este método se propone al considerar que el método anterior daría la misma importancia a un obstáculo grande (que ocupa gran parte de la pantalla) y a uno pequeño siempre y cuando estuviesen a la misma distancia. La idea es remediar ese problema, dando más peso a los obstáculos más grandes. Además, al evitar tener que usar algoritmos de búsqueda de contornos, se espera que la velocidad de ejecución sea mayor.
+Este método se propone al considerar que el método anterior daría la misma importancia a un obstáculo grande (que ocupa gran parte de la pantalla) y a uno pequeño, siempre y cuando estuviesen a la misma distancia. La idea es remediar ese problema, dando más peso a los obstáculos más grandes. Además, al evitar tener que usar algoritmos de búsqueda de contornos, se espera que la velocidad de ejecución sea mayor.
 
 \end{itemize}
 
@@ -231,7 +231,7 @@ Tras el cálculo de las distancias a los obstáculos, se calcula el valor de los
 
 El \textbf{potencial atractivo} es la fuerza con la que la meta atrae al agente. Cuanto más cerca esté el agente de la meta, mayor debe ser su influencia. Este potencial se obtiene con la siguiente fórmula:
 \[U_{atr} = \alpha p_{goal}(t_r)\]
-Donde $\alpha$ es una ganancia positiva usada para aumentar la influencia del potencial (estimada empíricamente como $100$) y $p_{goal}(t_r)$ es la distancia euclídea entre la posición actual del agente y la meta.
+Donde $\alpha$ es una ganancia positiva usada para aumentar la influencia del potencial (estimada empíricamente como $100$) y $p_{goal}(t_r)$ es la distancia euclidiana entre la posición actual del agente y la meta.
 
 El \textbf{potencial repulsivo} es la suma de las fuerzas con las que los obstáculos repelen al agente. Cuantos más obstáculos perciba el agente y más cerca se encuentren, mayor debe ser su influencia. Este potencial se obtiene con la siguiente fórmula:
 \[U_{rep} = \beta \sum_{i=1}^{N}(\frac{1}{k+l_i}-\frac{1}{k+l_{max}})\]
@@ -256,7 +256,7 @@ Tras haber calculado los potenciales y el valor del estado, es posible obtener l
 
 \begin{itemize}
 
-\item Si el episodio ha finalizado (ya sea por la acción correspondiente o por limite de acciones) y el agente no está en rango de la meta: \textbf{-100}.
+\item Si el episodio ha finalizado (ya sea por la acción correspondiente o por límite de acciones) y el agente no está en rango de la meta: \textbf{-100}.
 
 La penalización por finalizar un episodio sin éxito es muy alta para evitar que el agente finalice el episodio antes de tiempo con la intención de evitar penalizaciones por sus acciones.
 
@@ -438,9 +438,9 @@ El proceso de actuación del agente está basado en el proceso de actuación est
 \begin{algorithm}[H]
 \SetAlgorithmName{Algoritmo}{algoritmo}{Lista de algoritmos}
 \caption{Actuación del agente}
-\textbf{Entradas:} Estado $s$, formado por una imagen de profundidad $depth$ y dos valores numéricos, la distancia a la meta $dist$ y  el ángulo hacia la meta $angle$.\\
+\textbf{Entradas:} Estado $s$, formado por una imagen de profundidad $depth$ y dos valores numéricos, la distancia a la meta $dist$ y el ángulo hacia la meta $angle$.\\
 \textbf{Variables internas del agente:} Probabilidad de acción aleatoria $\epsilon$, lista de acciones posibles $action\_list$.
- el agente conserva una variable $\epsilon$ para el ratio de exploración / explotación.\\
+ El agente conserva una variable $\epsilon$ para el ratio de exploración / explotación.\\
 \textbf{1.} Genera un valor aleatorio $rand$ en el rango $[0.0, 1.0]$.\\
 \textbf{2.} Si $rand < \epsilon$:\\
 \Indp \textbf{2.1} Exploración. Se elige una acción $action$ de $action\_list$ aleatoriamente, siguiendo una distribución uniforme.\\
@@ -555,7 +555,7 @@ exp\_q(exp\_a)=
 
 Hay algunos detalles importantes que remarcar sobre el proceso:
 \begin{itemize}
-	\item Por defecto, el tamaño de la muestra es de $64 experiencias$. Se ha optado por no entrenar al agente hasta que el \textit{Replay Memory} contenga al menos 64 experiencias, como en la propuesta original de \textit{Deep Q Learning}, para evitar problemas con la subdivisión de las muestras (como se verá a continuación).
+	\item Por defecto, el tamaño de la muestra es de $64$ experiencias. Se ha optado por no entrenar al agente hasta que el \textit{Replay Memory} contenga al menos 64 experiencias, como en la propuesta original de \textit{Deep Q Learning}, para evitar problemas con la subdivisión de las muestras (como se verá a continuación).
 	\item El aprendizaje se realiza en \textit{batch} (en paralelo). Esto significa que todas las muestras son pasadas a través de la red neuronal de forma simultanea, aprovechando el paralelismo ofrecido por las GPUs y mejorando el rendimiento.
 	\item Para mejorar el uso en memoria, cada muestra se divide en submuestras de menor tamaño (por defecto, muestras de $64$ experiencias se dividen en submuestras de $32$ experiencias), que son pasadas consecutivamente por la red neuronal.
 	

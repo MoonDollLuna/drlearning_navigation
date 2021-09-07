@@ -733,6 +733,1762 @@
     \field{year}{2021}
   \endentry
 
+  \entry{alma991004256519704990}{book}{}
+    \name{author}{2}{}{%
+      {{hash=RS}{%
+         family={Russell},
+         familyi={R\bibinitperiod},
+         given={Stuart},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=NP}{%
+         family={Norvig},
+         familyi={N\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Prentice Hall}%
+    }
+    \keyw{ties4530}
+    \strng{namehash}{RSNP1}
+    \strng{fullhash}{RSNP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{3}
+    \field{title}{Artificial Intelligence: A Modern Approach}
+    \field{year}{2010}
+  \endentry
+
+  \entry{Goodfellow-et-al-2016}{book}{}
+    \name{author}{3}{}{%
+      {{hash=GI}{%
+         family={Goodfellow},
+         familyi={G\bibinitperiod},
+         given={Ian},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=BY}{%
+         family={Bengio},
+         familyi={B\bibinitperiod},
+         given={Yoshua},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Courville},
+         familyi={C\bibinitperiod},
+         given={Aaron},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {MIT Press}%
+    }
+    \strng{namehash}{GIBYCA1}
+    \strng{fullhash}{GIBYCA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{\url{http://www.deeplearningbook.org}}
+    \field{title}{Deep Learning}
+    \field{year}{2016}
+  \endentry
+
+  \entry{10.5555/3161223}{book}{}
+    \name{author}{2}{}{%
+      {{hash=BN}{%
+         family={Buduma},
+         familyi={B\bibinitperiod},
+         given={Nikhil},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=LN}{%
+         family={Locascio},
+         familyi={L\bibinitperiod},
+         given={Nicholas},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {O'Reilly Media, Inc.}%
+    }
+    \strng{namehash}{BNLN1}
+    \strng{fullhash}{BNLN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    With the reinvigoration of neural networks in the 2000s, deep learning has
+  become an extremely active area of research, one thats paving the way for
+  modern machine learning. In this practical book, author Nikhil Buduma
+  provides examples and clear explanations to guide you through major concepts
+  of this complicated field. Companies such as Google, Microsoft, and Facebook
+  are actively growing in-house deep-learning teams. For the rest of us,
+  however, deep learning is still a pretty complex and difficult subject to
+  grasp. If youre familiar with Python, and have a background in calculus,
+  along with a basic understanding of machine learning, this book will get you
+  started. Examine the foundations of machine learning and neural networks
+  Learn how to train feed-forward neural networks Use Tensor Flow to implement
+  your first neural network Manage problems that arise as you begin to make
+  networks deeper Build neural networks that analyze complex images Perform
+  effective dimensionality reduction using autoencoders Dive deep into sequence
+  analysis to examine language Understand the fundamentals of reinforcement
+  learning%
+    }
+    \field{edition}{1st}
+    \field{isbn}{1491925612}
+    \field{title}{Fundamentals of Deep Learning: Designing Next-Generation
+  Machine Intelligence Algorithms}
+    \field{year}{2017}
+  \endentry
+
+  \entry{Zhang2003ArtificialNN}{article}{}
+    \name{author}{3}{}{%
+      {{hash=jZQ}{%
+         prefix={jun},
+         prefixi={j\bibinitperiod},
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Qi},
+         giveni={Q\bibinitperiod},
+      }}%
+      {{hash=GK}{%
+         family={Gupta},
+         familyi={G\bibinitperiod},
+         given={K.},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=DV}{%
+         family={Devabhaktuni},
+         familyi={D\bibinitperiod},
+         given={V.},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ZQjGKDV1}
+    \strng{fullhash}{ZQjGKDV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{1339\bibrangedash 1350}
+    \field{title}{Artificial neural networks for RF and microwave design - from
+  theory to practice}
+    \field{volume}{51}
+    \field{journaltitle}{IEEE Transactions on Microwave Theory and Techniques}
+    \field{year}{2003}
+  \endentry
+
+  \entry{Rumelhart:1986we}{article}{}
+    \name{author}{3}{}{%
+      {{hash=RDE}{%
+         family={Rumelhart},
+         familyi={R\bibinitperiod},
+         given={David\bibnamedelima E.},
+         giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=HGE}{%
+         family={Hinton},
+         familyi={H\bibinitperiod},
+         given={Geoffrey\bibnamedelima E.},
+         giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=WRJ}{%
+         family={Williams},
+         familyi={W\bibinitperiod},
+         given={Ronald\bibnamedelima J.},
+         giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \keyw{imported}
+    \strng{namehash}{RDEHGEWRJ1}
+    \strng{fullhash}{RDEHGEWRJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1038/323533a0
+    \endverb
+    \field{number}{6088}
+    \field{pages}{533\bibrangedash 536}
+    \field{title}{{Learning Representations by Back-propagating Errors}}
+    \verb{url}
+    \verb http://www.nature.com/articles/323533a0
+    \endverb
+    \field{volume}{323}
+    \field{journaltitle}{Nature}
+    \field{year}{1986}
+  \endentry
+
+  \entry{Shorten2019ASO}{article}{}
+    \name{author}{2}{}{%
+      {{hash=SC}{%
+         family={Shorten},
+         familyi={S\bibinitperiod},
+         given={Connor},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=KT}{%
+         family={Khoshgoftaar},
+         familyi={K\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SCKT1}
+    \strng{fullhash}{SCKT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{1\bibrangedash 48}
+    \field{title}{A survey on Image Data Augmentation for Deep Learning}
+    \field{volume}{6}
+    \field{journaltitle}{Journal of Big Data}
+    \field{year}{2019}
+  \endentry
+
+  \entry{gradientKolen}{inbook}{}
+    \name{author}{2}{}{%
+      {{hash=KJF}{%
+         family={Kolen},
+         familyi={K\bibinitperiod},
+         given={John\bibnamedelima F.},
+         giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=KSC}{%
+         family={Kremer},
+         familyi={K\bibinitperiod},
+         given={Stefan\bibnamedelima C.},
+         giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KJFKSC1}
+    \strng{fullhash}{KJFKSC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{A Field Guide to Dynamical Recurrent Networks}
+    \verb{doi}
+    \verb 10.1109/9780470544037.ch14
+    \endverb
+    \field{pages}{237\bibrangedash 243}
+    \field{title}{Gradient Flow in Recurrent Nets: The Difficulty of Learning
+  LongTerm Dependencies}
+    \field{year}{2001}
+  \endentry
+
+  \entry{10.1162/neco.1989.1.4.541}{article}{}
+    \name{author}{7}{}{%
+      {{hash=LY}{%
+         family={LeCun},
+         familyi={L\bibinitperiod},
+         given={Y.},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=BB}{%
+         family={Boser},
+         familyi={B\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=DJS}{%
+         family={Denker},
+         familyi={D\bibinitperiod},
+         given={J.\bibnamedelima S.},
+         giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=HD}{%
+         family={Henderson},
+         familyi={H\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=HRE}{%
+         family={Howard},
+         familyi={H\bibinitperiod},
+         given={R.\bibnamedelima E.},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=HW}{%
+         family={Hubbard},
+         familyi={H\bibinitperiod},
+         given={W.},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=JLD}{%
+         family={Jackel},
+         familyi={J\bibinitperiod},
+         given={L.\bibnamedelima D.},
+         giveni={L\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {MIT Press}%
+    }
+    \strng{namehash}{LYBBDJS+1}
+    \strng{fullhash}{LYBBDJSHDHREHWJLD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    The ability of learning networks to generalize can be greatly enhanced by
+  providing constraints from the task domain. This paper demonstrates how such
+  constraints can be integrated into a backpropagation network through the
+  architecture of the network. This approach has been successfully applied to
+  the recognition of handwritten zip code digits provided by the U.S. Postal
+  Service. A single network learns the entire recognition operation, going from
+  the normalized image of the character to the final classification.%
+    }
+    \verb{doi}
+    \verb 10.1162/neco.1989.1.4.541
+    \endverb
+    \field{issn}{0899-7667}
+    \field{number}{4}
+    \field{pages}{541–551}
+    \field{title}{Backpropagation Applied to Handwritten Zip Code Recognition}
+    \verb{url}
+    \verb https://doi.org/10.1162/neco.1989.1.4.541
+    \endverb
+    \field{volume}{1}
+    \list{location}{1}{%
+      {Cambridge, MA, USA}%
+    }
+    \field{journaltitle}{Neural Comput.}
+    \field{month}{12}
+    \field{year}{1989}
+  \endentry
+
+  \entry{Krizhevsky2012ImageNetCW}{article}{}
+    \name{author}{3}{}{%
+      {{hash=KA}{%
+         family={Krizhevsky},
+         familyi={K\bibinitperiod},
+         given={A},
+         giveni={A},
+      }}%
+      {{hash=SI}{%
+         family={Sutskever},
+         familyi={S\bibinitperiod},
+         given={Ilya},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=HGE}{%
+         family={Hinton},
+         familyi={H\bibinitperiod},
+         given={Geoffrey\bibnamedelima E},
+         giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KASIHGE1}
+    \strng{fullhash}{KASIHGE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{84\bibrangedash 90}
+    \field{title}{{ImageNet classification with deep convolutional neural
+  networks}}
+    \field{volume}{60}
+    \field{journaltitle}{Communications of the ACM}
+    \field{year}{2012}
+  \endentry
+
+  \entry{Zhou1988ComputationOO}{article}{}
+    \name{author}{2}{}{%
+      {{hash=ZY}{%
+         family={Zhou},
+         familyi={Z\bibinitperiod},
+         given={Y.},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=CR}{%
+         family={Chellappa},
+         familyi={C\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ZYCR1}
+    \strng{fullhash}{ZYCR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{71\bibrangedash 78 vol.2}
+    \field{title}{Computation of optical flow using a neural network}
+    \field{journaltitle}{IEEE 1988 International Conference on Neural Networks}
+    \field{year}{1988}
+  \endentry
+
+  \entry{Sutton1998}{book}{}
+    \name{author}{2}{}{%
+      {{hash=SRS}{%
+         family={Sutton},
+         familyi={S\bibinitperiod},
+         given={Richard\bibnamedelima S.},
+         giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=BAG}{%
+         family={Barto},
+         familyi={B\bibinitperiod},
+         given={Andrew\bibnamedelima G.},
+         giveni={A\bibinitperiod\bibinitdelim G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {The MIT Press}%
+    }
+    \strng{namehash}{SRSBAG1}
+    \strng{fullhash}{SRSBAG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{Second Edition}
+    \field{title}{Reinforcement Learning: An Introduction}
+    \verb{url}
+    \verb http://incompleteideas.net/book/the-book-2nd.html
+    \endverb
+    \field{year}{2018}
+  \endentry
+
+  \entry{qlearning}{thesis}{}
+    \name{author}{1}{}{%
+      {{hash=WCJCH}{%
+         family={Watkins},
+         familyi={W\bibinitperiod},
+         given={C.\bibnamedelima J. C.\bibnamedelima H.},
+         giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim
+  C\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+    }
+    \keyw{juergen}
+    \strng{namehash}{WCJCH1}
+    \strng{fullhash}{WCJCH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Learning from Delayed Rewards}
+    \list{institution}{1}{%
+      {King's College, Oxford}%
+    }
+    \field{type}{phdthesis}
+    \field{year}{1989}
+  \endentry
+
+  \entry{sarsa}{report}{}
+    \name{author}{2}{}{%
+      {{hash=RGA}{%
+         family={Rummery},
+         familyi={R\bibinitperiod},
+         given={G.\bibnamedelima A.},
+         giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=NM}{%
+         family={Niranjan},
+         familyi={N\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \keyw{nn}
+    \strng{namehash}{RGANM1}
+    \strng{fullhash}{RGANM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{TR 166}
+    \field{title}{On-Line {Q}-Learning Using Connectionist Systems}
+    \list{location}{1}{%
+      {Cambridge, England}%
+    }
+    \list{institution}{1}{%
+      {Cambridge University Engineering Department}%
+    }
+    \field{type}{techreport}
+    \field{year}{1994}
+  \endentry
+
+  \entry{Witten1977AnAO}{article}{}
+    \name{author}{1}{}{%
+      {{hash=WI}{%
+         family={Witten},
+         familyi={W\bibinitperiod},
+         given={I.},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WI1}
+    \strng{fullhash}{WI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{286\bibrangedash 295}
+    \field{title}{An Adaptive Optimal Controller for Discrete-Time Markov
+  Environments}
+    \field{volume}{34}
+    \field{journaltitle}{Inf. Control.}
+    \field{year}{1977}
+  \endentry
+
+  \entry{DBLP:journals/corr/abs-1811-12560}{article}{}
+    \name{author}{5}{}{%
+      {{hash=FV}{%
+         family={Fran{\c{c}}ois{-}Lavet},
+         familyi={F\bibinitperiod},
+         given={Vincent},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=HP}{%
+         family={Henderson},
+         familyi={H\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=IR}{%
+         family={Islam},
+         familyi={I\bibinitperiod},
+         given={Riashat},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=BMG}{%
+         family={Bellemare},
+         familyi={B\bibinitperiod},
+         given={Marc\bibnamedelima G.},
+         giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod},
+      }}%
+      {{hash=PJ}{%
+         family={Pineau},
+         familyi={P\bibinitperiod},
+         given={Joelle},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FVHPIR+1}
+    \strng{fullhash}{FVHPIRBMGPJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 1811.12560
+    \endverb
+    \field{title}{An Introduction to Deep Reinforcement Learning}
+    \verb{url}
+    \verb http://arxiv.org/abs/1811.12560
+    \endverb
+    \field{volume}{abs/1811.12560}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2018}
+  \endentry
+
+  \entry{NIPS1995_fd06b8ea}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=GGJ}{%
+         family={Gordon},
+         familyi={G\bibinitperiod},
+         given={Geoffrey\bibnamedelima J},
+         giveni={G\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \name{editor}{3}{}{%
+      {{hash=TD}{%
+         family={Touretzky},
+         familyi={T\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=MMC}{%
+         family={Mozer},
+         familyi={M\bibinitperiod},
+         given={M.\bibnamedelima C.},
+         giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=HM}{%
+         family={Hasselmo},
+         familyi={H\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {MIT Press}%
+    }
+    \strng{namehash}{GGJ1}
+    \strng{fullhash}{GGJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Advances in Neural Information Processing Systems}
+    \field{title}{Stable Fitted Reinforcement Learning}
+    \verb{url}
+    \verb https://proceedings.neurips.cc/paper/1995/file/fd06b8ea02fe5b1c2496fe
+    \verb 1700e9d16c-Paper.pdf
+    \endverb
+    \field{volume}{8}
+    \field{year}{1996}
+  \endentry
+
+  \entry{10.1007/11564096_32}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=RM}{%
+         family={Riedmiller},
+         familyi={R\bibinitperiod},
+         given={Martin},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \name{editor}{5}{}{%
+      {{hash=GJ}{%
+         family={Gama},
+         familyi={G\bibinitperiod},
+         given={Jo{\~a}o},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CR}{%
+         family={Camacho},
+         familyi={C\bibinitperiod},
+         given={Rui},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=BPB}{%
+         family={Brazdil},
+         familyi={B\bibinitperiod},
+         given={Pavel\bibnamedelima B.},
+         giveni={P\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=JAM}{%
+         family={Jorge},
+         familyi={J\bibinitperiod},
+         given={Al{\'i}pio\bibnamedelima M{\'a}rio},
+         giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=TL}{%
+         family={Torgo},
+         familyi={T\bibinitperiod},
+         given={Lu{\'i}s},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer Berlin Heidelberg}%
+    }
+    \strng{namehash}{RM1}
+    \strng{fullhash}{RM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    This paper introduces NFQ, an algorithm for efficient and effective
+  training of a Q-value function represented by a multi-layer perceptron. Based
+  on the principle of storing and reusing transition experiences, a model-free,
+  neural network based Reinforcement Learning algorithm is proposed. The method
+  is evaluated on three benchmark problems. It is shown empirically, that
+  reasonably few interactions with the plant are needed to generate control
+  policies of high quality.%
+    }
+    \field{booktitle}{Machine Learning: ECML 2005}
+    \field{isbn}{978-3-540-31692-3}
+    \field{pages}{317\bibrangedash 328}
+    \field{title}{Neural Fitted Q Iteration -- First Experiences with a Data
+  Efficient Neural Reinforcement Learning Method}
+    \list{location}{1}{%
+      {Berlin, Heidelberg}%
+    }
+    \field{year}{2005}
+  \endentry
+
+  \entry{Mnih2015HumanlevelCT}{article}{}
+    \name{author}{19}{}{%
+      {{hash=MV}{%
+         family={Mnih},
+         familyi={M\bibinitperiod},
+         given={V.},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=KK}{%
+         family={Kavukcuoglu},
+         familyi={K\bibinitperiod},
+         given={K.},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=SD}{%
+         family={Silver},
+         familyi={S\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=RAA}{%
+         family={Rusu},
+         familyi={R\bibinitperiod},
+         given={Andrei\bibnamedelima A.},
+         giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=VJ}{%
+         family={Veness},
+         familyi={V\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=BMG}{%
+         family={Bellemare},
+         familyi={B\bibinitperiod},
+         given={Marc\bibnamedelima G.},
+         giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod},
+      }}%
+      {{hash=GA}{%
+         family={Graves},
+         familyi={G\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=RMA}{%
+         family={Riedmiller},
+         familyi={R\bibinitperiod},
+         given={Martin\bibnamedelima A.},
+         giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=FA}{%
+         family={Fidjeland},
+         familyi={F\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=OG}{%
+         family={Ostrovski},
+         familyi={O\bibinitperiod},
+         given={Georg},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=PS}{%
+         family={Petersen},
+         familyi={P\bibinitperiod},
+         given={Stig},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=BC}{%
+         family={Beattie},
+         familyi={B\bibinitperiod},
+         given={Charlie},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=SA}{%
+         family={Sadik},
+         familyi={S\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=AI}{%
+         family={Antonoglou},
+         familyi={A\bibinitperiod},
+         given={Ioannis},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=KH}{%
+         family={King},
+         familyi={K\bibinitperiod},
+         given={Helen},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=KD}{%
+         family={Kumaran},
+         familyi={K\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=WD}{%
+         family={Wierstra},
+         familyi={W\bibinitperiod},
+         given={Daan},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=LS}{%
+         family={Legg},
+         familyi={L\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=HD}{%
+         family={Hassabis},
+         familyi={H\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MVKKSD+1}
+    \strng{fullhash}{MVKKSDRAAVJBMGGARMAFAOGPSBCSAAIKHKDWDLSHD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{529\bibrangedash 533}
+    \field{title}{Human-level control through deep reinforcement learning}
+    \field{volume}{518}
+    \field{journaltitle}{Nature}
+    \field{year}{2015}
+  \endentry
+
+  \entry{DBLP:journals/corr/abs-1710-02298}{article}{}
+    \name{author}{10}{}{%
+      {{hash=HM}{%
+         family={Hessel},
+         familyi={H\bibinitperiod},
+         given={Matteo},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Modayil},
+         familyi={M\bibinitperiod},
+         given={Joseph},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=vHH}{%
+         prefix={van},
+         prefixi={v\bibinitperiod},
+         family={Hasselt},
+         familyi={H\bibinitperiod},
+         given={Hado},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=ST}{%
+         family={Schaul},
+         familyi={S\bibinitperiod},
+         given={Tom},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=OG}{%
+         family={Ostrovski},
+         familyi={O\bibinitperiod},
+         given={Georg},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=DW}{%
+         family={Dabney},
+         familyi={D\bibinitperiod},
+         given={Will},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=HD}{%
+         family={Horgan},
+         familyi={H\bibinitperiod},
+         given={Daniel},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=PB}{%
+         family={Piot},
+         familyi={P\bibinitperiod},
+         given={Bilal},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=AMG}{%
+         family={Azar},
+         familyi={A\bibinitperiod},
+         given={Mohammad\bibnamedelima Gheshlaghi},
+         giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod},
+      }}%
+      {{hash=SD}{%
+         family={Silver},
+         familyi={S\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HMMJHHv+1}
+    \strng{fullhash}{HMMJHHvSTOGDWHDPBAMGSD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 1710.02298
+    \endverb
+    \field{title}{Rainbow: Combining Improvements in Deep Reinforcement
+  Learning}
+    \verb{url}
+    \verb http://arxiv.org/abs/1710.02298
+    \endverb
+    \field{volume}{abs/1710.02298}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2017}
+  \endentry
+
+  \entry{doubleqlearning}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=VHH}{%
+         family={Van\bibnamedelima Hasselt},
+         familyi={V\bibinitperiod\bibinitdelim H\bibinitperiod},
+         given={Hado},
+         giveni={H\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{VHH1}
+    \strng{fullhash}{VHH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{2613\bibrangedash 2621}
+    \field{title}{Double Q-learning.}
+    \field{month}{01}
+    \field{year}{2010}
+  \endentry
+
+  \entry{DBLP:journals/corr/HasseltGS15}{article}{}
+    \name{author}{3}{}{%
+      {{hash=vHH}{%
+         prefix={van},
+         prefixi={v\bibinitperiod},
+         family={Hasselt},
+         familyi={H\bibinitperiod},
+         given={Hado},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=GA}{%
+         family={Guez},
+         familyi={G\bibinitperiod},
+         given={Arthur},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=SD}{%
+         family={Silver},
+         familyi={S\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HHvGASD1}
+    \strng{fullhash}{HHvGASD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 1509.06461
+    \endverb
+    \field{title}{Deep Reinforcement Learning with Double Q-learning}
+    \verb{url}
+    \verb http://arxiv.org/abs/1509.06461
+    \endverb
+    \field{volume}{abs/1509.06461}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2015}
+  \endentry
+
+  \entry{schaul2015prioritized}{misc}{}
+    \name{author}{4}{}{%
+      {{hash=ST}{%
+         family={Schaul},
+         familyi={S\bibinitperiod},
+         given={Tom},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=QJ}{%
+         family={Quan},
+         familyi={Q\bibinitperiod},
+         given={John},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=AI}{%
+         family={Antonoglou},
+         familyi={A\bibinitperiod},
+         given={Ioannis},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=SD}{%
+         family={Silver},
+         familyi={S\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \keyw{final reinforcement_learning thema:double_dqn}
+    \strng{namehash}{STQJAI+1}
+    \strng{fullhash}{STQJAISD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    Experience replay lets online reinforcement learning agents remember and
+  reuse experiences from the past. In prior work, experience transitions were
+  uniformly sampled from a replay memory. However, this approach simply replays
+  transitions at the same frequency that they were originally experienced,
+  regardless of their significance. In this paper we develop a framework for
+  prioritizing experience, so as to replay important transitions more
+  frequently, and therefore learn more efficiently. We use prioritized
+  experience replay in Deep Q-Networks (DQN), a reinforcement learning
+  algorithm that achieved human-level performance across many Atari games. DQN
+  with prioritized experience replay achieves a new state-of-the-art,
+  outperforming DQN with uniform replay on 41 out of 49 games.%
+    }
+    \field{note}{cite arxiv:1511.05952Comment: Published at ICLR 2016}
+    \field{title}{Prioritized Experience Replay}
+    \verb{url}
+    \verb http://arxiv.org/abs/1511.05952
+    \endverb
+    \field{year}{2015}
+  \endentry
+
+  \entry{DBLP:journals/corr/WangFL15}{article}{}
+    \name{author}{3}{}{%
+      {{hash=WZ}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={Ziyu},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=dFN}{%
+         prefix={de},
+         prefixi={d\bibinitperiod},
+         family={Freitas},
+         familyi={F\bibinitperiod},
+         given={Nando},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=LM}{%
+         family={Lanctot},
+         familyi={L\bibinitperiod},
+         given={Marc},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WZFNdLM1}
+    \strng{fullhash}{WZFNdLM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 1511.06581
+    \endverb
+    \field{title}{Dueling Network Architectures for Deep Reinforcement
+  Learning}
+    \verb{url}
+    \verb http://arxiv.org/abs/1511.06581
+    \endverb
+    \field{volume}{abs/1511.06581}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2015}
+  \endentry
+
+  \entry{10.1023/A:1022633531479}{article}{}
+    \name{author}{1}{}{%
+      {{hash=SRS}{%
+         family={Sutton},
+         familyi={S\bibinitperiod},
+         given={Richard\bibnamedelima S.},
+         giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Kluwer Academic Publishers}%
+    }
+    \keyw{Incremental learning, evaluation functions, prediction, credit
+  assignment, connectionism}
+    \strng{namehash}{SRS1}
+    \strng{fullhash}{SRS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    This article introduces a class of incremental learning procedures
+  specialized for prediction – that is, for using past experience with an
+  incompletely known system to predict its future behavior. Whereas
+  conventional prediction-learning methods assign credit by means of the
+  difference between predicted and actual outcomes, the new methods assign
+  credit by means of the difference between temporally successive predictions.
+  Although such temporal-difference methods have been used in Samuel's checker
+  player, Holland's bucket brigade, and the author's Adaptive Heuristic Critic,
+  they have remained poorly understood. Here we prove their convergence and
+  optimality for special cases and relate them to supervised-learning methods.
+  For most real-world prediction problems, temporal-difference methods require
+  less memory and less peak computation than conventional methods and they
+  produce more accurate predictions. We argue that most problems to which
+  supervised learning is currently applied are really prediction problems of
+  the sort to which temporal-difference methods can be applied to advantage.%
+    }
+    \verb{doi}
+    \verb 10.1023/A:1022633531479
+    \endverb
+    \field{issn}{0885-6125}
+    \field{number}{1}
+    \field{pages}{9–44}
+    \field{title}{Learning to Predict by the Methods of Temporal Differences}
+    \verb{url}
+    \verb https://doi.org/10.1023/A:1022633531479
+    \endverb
+    \field{volume}{3}
+    \list{location}{1}{%
+      {USA}%
+    }
+    \field{journaltitle}{Mach. Learn.}
+    \field{month}{08}
+    \field{year}{1988}
+  \endentry
+
+  \entry{DBLP:journals/corr/BellemareDM17}{article}{}
+    \name{author}{3}{}{%
+      {{hash=BMG}{%
+         family={Bellemare},
+         familyi={B\bibinitperiod},
+         given={Marc\bibnamedelima G.},
+         giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod},
+      }}%
+      {{hash=DW}{%
+         family={Dabney},
+         familyi={D\bibinitperiod},
+         given={Will},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=MR}{%
+         family={Munos},
+         familyi={M\bibinitperiod},
+         given={R{\'{e}}mi},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BMGDWMR1}
+    \strng{fullhash}{BMGDWMR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 1707.06887
+    \endverb
+    \field{title}{A Distributional Perspective on Reinforcement Learning}
+    \verb{url}
+    \verb http://arxiv.org/abs/1707.06887
+    \endverb
+    \field{volume}{abs/1707.06887}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2017}
+  \endentry
+
+  \entry{DBLP:journals/corr/FortunatoAPMOGM17}{article}{}
+    \name{author}{12}{}{%
+      {{hash=FM}{%
+         family={Fortunato},
+         familyi={F\bibinitperiod},
+         given={Meire},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=AMG}{%
+         family={Azar},
+         familyi={A\bibinitperiod},
+         given={Mohammad\bibnamedelima Gheshlaghi},
+         giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod},
+      }}%
+      {{hash=PB}{%
+         family={Piot},
+         familyi={P\bibinitperiod},
+         given={Bilal},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Menick},
+         familyi={M\bibinitperiod},
+         given={Jacob},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=OI}{%
+         family={Osband},
+         familyi={O\bibinitperiod},
+         given={Ian},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=GA}{%
+         family={Graves},
+         familyi={G\bibinitperiod},
+         given={Alex},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MV}{%
+         family={Mnih},
+         familyi={M\bibinitperiod},
+         given={Vlad},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=MR}{%
+         family={Munos},
+         familyi={M\bibinitperiod},
+         given={R{\'{e}}mi},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=HD}{%
+         family={Hassabis},
+         familyi={H\bibinitperiod},
+         given={Demis},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=PO}{%
+         family={Pietquin},
+         familyi={P\bibinitperiod},
+         given={Olivier},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=BC}{%
+         family={Blundell},
+         familyi={B\bibinitperiod},
+         given={Charles},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=LS}{%
+         family={Legg},
+         familyi={L\bibinitperiod},
+         given={Shane},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FMAMGPB+1}
+    \strng{fullhash}{FMAMGPBMJOIGAMVMRHDPOBCLS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 1706.10295
+    \endverb
+    \field{title}{Noisy Networks for Exploration}
+    \verb{url}
+    \verb http://arxiv.org/abs/1706.10295
+    \endverb
+    \field{volume}{abs/1706.10295}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2017}
+  \endentry
+
+  \entry{PETERS2008682}{article}{}
+    \name{author}{2}{}{%
+      {{hash=PJ}{%
+         family={Peters},
+         familyi={P\bibinitperiod},
+         given={Jan},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Schaal},
+         familyi={S\bibinitperiod},
+         given={Stefan},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \keyw{Reinforcement learning, Policy gradient methods, Natural gradients,
+  Natural Actor-Critic, Motor skills, Motor primitives}
+    \strng{namehash}{PJSS1}
+    \strng{fullhash}{PJSS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    Autonomous learning is one of the hallmarks of human and animal behavior,
+  and understanding the principles of learning will be crucial in order to
+  achieve true autonomy in advanced machines like humanoid robots. In this
+  paper, we examine learning of complex motor skills with human-like limbs.
+  While supervised learning can offer useful tools for bootstrapping behavior,
+  e.g., by learning from demonstration, it is only reinforcement learning that
+  offers a general approach to the final trial-and-error improvement that is
+  needed by each individual acquiring a skill. Neither neurobiological nor
+  machine learning studies have, so far, offered compelling results on how
+  reinforcement learning can be scaled to the high-dimensional continuous state
+  and action spaces of humans or humanoids. Here, we combine two recent
+  research developments on learning motor control in order to achieve this
+  scaling. First, we interpret the idea of modular motor control by means of
+  motor primitives as a suitable way to generate parameterized control policies
+  for reinforcement learning. Second, we combine motor primitives with the
+  theory of stochastic policy gradient learning, which currently seems to be
+  the only feasible framework for reinforcement learning for humanoids. We
+  evaluate different policy gradient methods with a focus on their
+  applicability to parameterized motor primitives. We compare these algorithms
+  in the context of motor primitive learning, and show that our most modern
+  algorithm, the Episodic Natural Actor-Critic outperforms previous algorithms
+  by at least an order of magnitude. We demonstrate the efficiency of this
+  reinforcement learning method in the application of learning to hit a
+  baseball with an anthropomorphic robot arm.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.neunet.2008.02.003
+    \endverb
+    \field{issn}{0893-6080}
+    \field{note}{Robotics and Neuroscience}
+    \field{number}{4}
+    \field{pages}{682\bibrangedash 697}
+    \field{title}{Reinforcement learning of motor skills with policy gradients}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0893608008000701
+    \endverb
+    \field{volume}{21}
+    \field{journaltitle}{Neural Networks}
+    \field{year}{2008}
+  \endentry
+
+  \entry{DBLP:journals/corr/MnihBMGLHSK16}{article}{}
+    \name{author}{8}{}{%
+      {{hash=MV}{%
+         family={Mnih},
+         familyi={M\bibinitperiod},
+         given={Volodymyr},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=BAP}{%
+         family={Badia},
+         familyi={B\bibinitperiod},
+         given={Adri{\`{a}}\bibnamedelima Puigdom{\`{e}}nech},
+         giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Mirza},
+         familyi={M\bibinitperiod},
+         given={Mehdi},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=GA}{%
+         family={Graves},
+         familyi={G\bibinitperiod},
+         given={Alex},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=LTP}{%
+         family={Lillicrap},
+         familyi={L\bibinitperiod},
+         given={Timothy\bibnamedelima P.},
+         giveni={T\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=HT}{%
+         family={Harley},
+         familyi={H\bibinitperiod},
+         given={Tim},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=SD}{%
+         family={Silver},
+         familyi={S\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=KK}{%
+         family={Kavukcuoglu},
+         familyi={K\bibinitperiod},
+         given={Koray},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MVBAPMM+1}
+    \strng{fullhash}{MVBAPMMGALTPHTSDKK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 1602.01783
+    \endverb
+    \field{title}{Asynchronous Methods for Deep Reinforcement Learning}
+    \verb{url}
+    \verb http://arxiv.org/abs/1602.01783
+    \endverb
+    \field{volume}{abs/1602.01783}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2016}
+  \endentry
+
+  \entry{vitay_2020}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=VJ}{%
+         family={Vitay},
+         familyi={V\bibinitperiod},
+         given={Julien},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Julien Vitay}%
+    }
+    \strng{namehash}{VJ1}
+    \strng{fullhash}{VJ1}
+    \field{labelnamesource}{author}
+    \verb{url}
+    \verb https://julien-vitay.net/deeprl/DeepRL.html
+    \endverb
+    \field{journaltitle}{Deep Reinforcement Learning}
+    \field{year}{2020}
+  \endentry
+
+  \entry{pmlr-v37-schulman15}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=SJ}{%
+         family={Schulman},
+         familyi={S\bibinitperiod},
+         given={John},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=LS}{%
+         family={Levine},
+         familyi={L\bibinitperiod},
+         given={Sergey},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=AP}{%
+         family={Abbeel},
+         familyi={A\bibinitperiod},
+         given={Pieter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=JM}{%
+         family={Jordan},
+         familyi={J\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MP}{%
+         family={Moritz},
+         familyi={M\bibinitperiod},
+         given={Philipp},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \name{editor}{2}{}{%
+      {{hash=BF}{%
+         family={Bach},
+         familyi={B\bibinitperiod},
+         given={Francis},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=BD}{%
+         family={Blei},
+         familyi={B\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {PMLR}%
+    }
+    \strng{namehash}{SJLSAP+1}
+    \strng{fullhash}{SJLSAPJMMP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    In this article, we describe a method for optimizing control policies, with
+  guaranteed monotonic improvement. By making several approximations to the
+  theoretically-justified scheme, we develop a practical algorithm, called
+  Trust Region Policy Optimization (TRPO). This algorithm is effective for
+  optimizing large nonlinear policies such as neural networks. Our experiments
+  demonstrate its robust performance on a wide variety of tasks: learning
+  simulated robotic swimming, hopping, and walking gaits; and playing Atari
+  games using images of the screen as input. Despite its approximations that
+  deviate from the theory, TRPO tends to give monotonic improvement, with
+  little tuning of hyperparameters.%
+    }
+    \field{booktitle}{Proceedings of the 32nd International Conference on
+  Machine Learning}
+    \field{pages}{1889\bibrangedash 1897}
+    \field{series}{Proceedings of Machine Learning Research}
+    \field{title}{Trust Region Policy Optimization}
+    \verb{url}
+    \verb https://proceedings.mlr.press/v37/schulman15.html
+    \endverb
+    \field{volume}{37}
+    \list{location}{1}{%
+      {Lille, France}%
+    }
+    \verb{file}
+    \verb http://proceedings.mlr.press/v37/schulman15.pdf
+    \endverb
+    \field{year}{2015}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{DBLP:journals/corr/SchulmanWDRK17}{article}{}
+    \name{author}{5}{}{%
+      {{hash=SJ}{%
+         family={Schulman},
+         familyi={S\bibinitperiod},
+         given={John},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=WF}{%
+         family={Wolski},
+         familyi={W\bibinitperiod},
+         given={Filip},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=DP}{%
+         family={Dhariwal},
+         familyi={D\bibinitperiod},
+         given={Prafulla},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=RA}{%
+         family={Radford},
+         familyi={R\bibinitperiod},
+         given={Alec},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KO}{%
+         family={Klimov},
+         familyi={K\bibinitperiod},
+         given={Oleg},
+         giveni={O\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SJWFDP+1}
+    \strng{fullhash}{SJWFDPRAKO1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 1707.06347
+    \endverb
+    \field{title}{Proximal Policy Optimization Algorithms}
+    \verb{url}
+    \verb http://arxiv.org/abs/1707.06347
+    \endverb
+    \field{volume}{abs/1707.06347}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2017}
+  \endentry
+
+  \entry{10.5555/3152585}{book}{}
+    \name{author}{1}{}{%
+      {{hash=CP}{%
+         family={Corke},
+         familyi={C\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer Publishing Company, Incorporated}%
+    }
+    \strng{namehash}{CP1}
+    \strng{fullhash}{CP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    Robotic vision, the combination of robotics and computer vision, involves
+  the application of computer algorithms to data acquired from sensors. The
+  research community has developed a large body of such algorithms but for a
+  newcomer to the field this can be quite daunting. For over 20 years the
+  author has maintained two open-source MATLAB Toolboxes, one for robotics and
+  one for vision. They provide implementations of many important algorithms and
+  allow users to work with real problems, not just trivial examples. This book
+  makes the fundamental algorithms of robotics, vision and control accessible
+  to all. It weaves together theory, algorithms and examples in a narrative
+  that covers robotics and computer vision separately and together. Using the
+  latest versions of the Toolboxes the author shows how complex problems can be
+  decomposed and solved using just a few simple lines of code. The topics
+  covered are guided by real problems observed by the author over many years as
+  a practitioner of both robotics and computer vision. It is written in an
+  accessible but informative style, easy to read and absorb, and includes over
+  1000 MATLAB and Simulink examples and over 400 figures. The book is a real
+  walk through the fundamentals of mobile robots, arm robots. then camera
+  models, image processing, feature extraction and multi-view geometry and
+  finally bringing it all together with an extensive discussion of visual servo
+  systems. This second edition is completely revised, updated and extended with
+  coverage of Lie groups, matrix exponentials and twists; inertial navigation;
+  differential drive robots; lattice planners; pose-graph SLAM and map making;
+  restructured material on arm-robot kinematics and dynamics; series-elastic
+  actuators and operational-space control; Lab color spaces; light field
+  cameras; structured light, bundle adjustment and visual odometry; and
+  photometric visual servoing. An authoritative book, reaching across fields,
+  thoughtfully conceived and brilliantly accomplished! OUSSAMA KHATIB,
+  Stanford%
+    }
+    \field{edition}{2nd}
+    \field{isbn}{3319544128}
+    \field{title}{Robotics, Vision and Control: Fundamental Algorithms In
+  MATLAB, Second Edition}
+    \field{year}{2017}
+  \endentry
+
+  \entry{mappingexploration}{book}{}
+    \name{author}{1}{}{%
+      {{hash=SC}{%
+         family={Stachniss},
+         familyi={S\bibinitperiod},
+         given={Cyrill},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SC1}
+    \strng{fullhash}{SC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1007/978-3-642-01097-2
+    \endverb
+    \field{isbn}{978-3-642-01096-5}
+    \field{title}{Robotic Mapping and Exploration}
+    \field{volume}{55}
+    \field{month}{01}
+    \field{year}{2009}
+  \endentry
+
+  \entry{journals/algorithmica/LumelskyS87}{article}{}
+    \name{author}{2}{}{%
+      {{hash=LVJ}{%
+         family={Lumelsky},
+         familyi={L\bibinitperiod},
+         given={Vladimir\bibnamedelima J.},
+         giveni={V\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=SAA}{%
+         family={Stepanov},
+         familyi={S\bibinitperiod},
+         given={Alexander\bibnamedelima A.},
+         giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \keyw{dblp}
+    \strng{namehash}{LVJSAA1}
+    \strng{fullhash}{LVJSAA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{403\bibrangedash 430}
+    \field{title}{Path-Planning Strategies for a Point Mobile Automaton Moving
+  Amidst Unknown Obstacles of Arbitrary Shape.}
+    \verb{url}
+    \verb http://dblp.uni-trier.de/db/journals/algorithmica/algorithmica2.html#
+    \verb LumelskyS87
+    \endverb
+    \field{volume}{2}
+    \field{journaltitle}{Algorithmica}
+    \field{year}{1987}
+  \endentry
+
+  \entry{lavalle:2006}{book}{}
+    \name{author}{1}{}{%
+      {{hash=LSM}{%
+         family={Lavalle},
+         familyi={L\bibinitperiod},
+         given={Steven\bibnamedelima M.},
+         giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Cambridge University Press}%
+    }
+    \keyw{imported}
+    \strng{namehash}{LSM1}
+    \strng{fullhash}{LSM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{isbn}{0521862051}
+    \field{title}{Planning Algorithms}
+    \field{year}{2006}
+  \endentry
+
+  \entry{291936}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=QS}{%
+         family={Quinlan},
+         familyi={Q\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=KO}{%
+         family={Khatib},
+         familyi={K\bibinitperiod},
+         given={O.},
+         giveni={O\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{QSKO1}
+    \strng{fullhash}{QSKO1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{[1993] Proceedings IEEE International Conference on
+  Robotics and Automation}
+    \verb{doi}
+    \verb 10.1109/ROBOT.1993.291936
+    \endverb
+    \field{pages}{802\bibrangedash 807 vol.2}
+    \field{title}{Elastic bands: connecting path planning and control}
+    \field{year}{1993}
+  \endentry
+
+  \entry{131810}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=KY}{%
+         family={Koren},
+         familyi={K\bibinitperiod},
+         given={Y.},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=BJ}{%
+         family={Borenstein},
+         familyi={B\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KYBJ1}
+    \strng{fullhash}{KYBJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings. 1991 IEEE International Conference on
+  Robotics and Automation}
+    \verb{doi}
+    \verb 10.1109/ROBOT.1991.131810
+    \endverb
+    \field{pages}{1398\bibrangedash 1404 vol.2}
+    \field{title}{Potential field methods and their inherent limitations for
+  mobile robot navigation}
+    \field{year}{1991}
+  \endentry
+
+  \entry{andrews1983impedance}{book}{}
+    \name{author}{1}{}{%
+      {{hash=AJ}{%
+         family={Andrews},
+         familyi={A\bibinitperiod},
+         given={J.R.},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Massachusetts Institute of Technology, Department of Mechanical
+  Engineering}%
+    }
+    \strng{namehash}{AJ1}
+    \strng{fullhash}{AJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Impedance Control as a Framework for Implementing Obstacle
+  Avoidance in a Manipulator}
+    \verb{url}
+    \verb https://books.google.es/books?id=OcmcNwAACAAJ
+    \endverb
+    \field{year}{1983}
+  \endentry
+
+  \entry{doi:10.1177/027836498900800406}{article}{}
+    \name{author}{1}{}{%
+      {{hash=ARC}{%
+         family={Arkin},
+         familyi={A\bibinitperiod},
+         given={Ronald\bibnamedelima C.},
+         giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ARC1}
+    \strng{fullhash}{ARC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1177/027836498900800406
+    \endverb
+    \field{number}{4}
+    \field{pages}{92\bibrangedash 112}
+    \field{title}{Motor Schema — Based Mobile Robot Navigation}
+    \verb{url}
+    \verb https://doi.org/10.1177/027836498900800406
+    \endverb
+    \field{volume}{8}
+    \field{journaltitle}{The International Journal of Robotics Research}
+    \field{year}{1989}
+  \endentry
+
+  \entry{Tai2017VirtualtorealDR}{article}{}
+    \name{author}{3}{}{%
+      {{hash=TL}{%
+         family={Tai},
+         familyi={T\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=PG}{%
+         family={Paolo},
+         familyi={P\bibinitperiod},
+         given={Giuseppe},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=LM}{%
+         family={Liu},
+         familyi={L\bibinitperiod},
+         given={Ming},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TLPGLM1}
+    \strng{fullhash}{TLPGLM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{31\bibrangedash 36}
+    \field{title}{Virtual-to-real deep reinforcement learning: Continuous
+  control of mobile robots for mapless navigation}
+    \field{journaltitle}{2017 IEEE/RSJ International Conference on Intelligent
+  Robots and Systems (IROS)}
+    \field{year}{2017}
+  \endentry
+
   \entry{DBLP:journals/corr/abs-2104-01111}{article}{}
     \name{author}{6}{}{%
       {{hash=CX}{%
@@ -1341,39 +3097,6 @@
     \verb https://yaml.org/
     \endverb
     \field{year}{2001}
-  \endentry
-
-  \entry{Krizhevsky2012ImageNetCW}{article}{}
-    \name{author}{3}{}{%
-      {{hash=KA}{%
-         family={Krizhevsky},
-         familyi={K\bibinitperiod},
-         given={A},
-         giveni={A},
-      }}%
-      {{hash=SI}{%
-         family={Sutskever},
-         familyi={S\bibinitperiod},
-         given={Ilya},
-         giveni={I\bibinitperiod},
-      }}%
-      {{hash=HGE}{%
-         family={Hinton},
-         familyi={H\bibinitperiod},
-         given={Geoffrey\bibnamedelima E},
-         giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{KASIHGE1}
-    \strng{fullhash}{KASIHGE1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{pages}{84\bibrangedash 90}
-    \field{title}{{ImageNet classification with deep convolutional neural
-  networks}}
-    \field{volume}{60}
-    \field{journaltitle}{Communications of the ACM}
-    \field{year}{2012}
   \endentry
 
   \entry{Salimans2016}{article}{}

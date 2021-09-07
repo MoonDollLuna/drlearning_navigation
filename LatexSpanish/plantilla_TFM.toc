@@ -21,144 +21,158 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.1}Redes neuronales y \textit {Deep Learning}}{9}{section.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.1}Redes neuronales superficiales}{9}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.1}Redes neuronales}{9}{subsection.3.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.2}Redes neuronales profundas}{9}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.2}Aprendizaje por representación y \textit {Deep Learning}}{13}{subsection.3.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Aprendizaje por refuerzo}{9}{section.3.2}%
+\contentsline {subsection}{\numberline {3.1.3}Redes neuronales convolucionales}{14}{subsection.3.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.1}Algoritmos de aprendizaje por refuerzo clásicos}{9}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.2}Aprendizaje por refuerzo}{15}{section.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.2}Algoritmos de aprendizaje por refuerzo profundos}{9}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.1}Métodos de aprendizaje por refuerzo clásicos}{17}{subsection.3.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Algoritmos de navegación automática}{9}{section.3.3}%
+\contentsline {subsubsection}{\numberline {3.2.1.1}Q-Learning}{18}{subsubsection.3.2.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}\textit {Habitat}: Simulador \textit {Habitat Sim} y \textit {Habitat Lab}}{11}{chapter.4}%
+\contentsline {subsubsection}{\numberline {3.2.1.2}SARSA}{19}{subsubsection.3.2.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}\textit {Habitat}}{11}{section.4.1}%
+\contentsline {subsubsection}{\numberline {3.2.1.3}Métodos de actor-crítico}{19}{subsubsection.3.2.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}Simulador \textit {Habitat Sim}}{12}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {3.2.2}Métodos de aprendizaje por refuerzo profundos}{20}{subsection.3.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}Librería \textit {Habitat Lab}}{13}{subsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}Familia de métodos de \textit {Deep Q-Learning}}{20}{subsubsection.3.2.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Conceptos principales de \textit {Habitat}}{13}{section.4.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.2}Familia de métodos de actor-crítico}{23}{subsubsection.3.2.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Entornos}{14}{subsection.4.2.1}%
+\contentsline {section}{\numberline {3.3}Algoritmos de navegación autónoma}{24}{section.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.1.1}\textit {Env}}{15}{subsubsection.4.2.1.1}%
+\contentsline {subsection}{\numberline {3.3.1}Algoritmos de navegación reactiva clásicos}{25}{subsection.3.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.1.2}\textit {RLEnv}}{15}{subsubsection.4.2.1.2}%
+\contentsline {subsection}{\numberline {3.3.2}Antecedentes al trabajo en navegación autónoma reactiva}{26}{subsection.3.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Tareas}{16}{subsection.4.2.2}%
+\contentsline {chapter}{\numberline {4}\textit {Habitat}: Simulador \textit {Habitat Sim} y \textit {Habitat Lab}}{29}{chapter.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Episodios}{16}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.1}\textit {Habitat}}{29}{section.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.4}Conjuntos de datos}{17}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.1.1}Simulador \textit {Habitat Sim}}{30}{subsection.4.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.4.1}Conjuntos de datos disponibles}{18}{subsubsection.4.2.4.1}%
+\contentsline {subsection}{\numberline {4.1.2}Librería \textit {Habitat Lab}}{31}{subsection.4.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.4.2}Estructura de los conjuntos de datos}{20}{subsubsection.4.2.4.2}%
+\contentsline {section}{\numberline {4.2}Conceptos principales de \textit {Habitat}}{31}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.5}Acciones}{21}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.1}Entornos}{32}{subsection.4.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.6}Sensores}{22}{subsection.4.2.6}%
+\contentsline {subsubsection}{\numberline {4.2.1.1}\textit {Env}}{33}{subsubsection.4.2.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.7}Métricas}{23}{subsection.4.2.7}%
+\contentsline {subsubsection}{\numberline {4.2.1.2}\textit {RLEnv}}{33}{subsubsection.4.2.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.8}Entrenadores}{24}{subsection.4.2.8}%
+\contentsline {subsection}{\numberline {4.2.2}Tareas}{34}{subsection.4.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.9}Agentes}{26}{subsection.4.2.9}%
+\contentsline {subsection}{\numberline {4.2.3}Episodios}{34}{subsection.4.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.10}\textit {Benchmarks}}{27}{subsection.4.2.10}%
+\contentsline {subsection}{\numberline {4.2.4}Conjuntos de datos}{35}{subsection.4.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.11}Ficheros de configuración}{27}{subsection.4.2.11}%
+\contentsline {subsubsection}{\numberline {4.2.4.1}Conjuntos de datos disponibles}{36}{subsubsection.4.2.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.12}Registros}{30}{subsection.4.2.12}%
+\contentsline {subsubsection}{\numberline {4.2.4.2}Estructura de los conjuntos de datos}{38}{subsubsection.4.2.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Instalación de \textit {Habitat}}{30}{section.4.3}%
+\contentsline {subsection}{\numberline {4.2.5}Acciones}{39}{subsection.4.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.1}Requisitos}{31}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.2.6}Sensores}{40}{subsection.4.2.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.2}Proceso de instalación}{31}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.2.7}Métricas}{41}{subsection.4.2.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Diseño del agente}{33}{chapter.5}%
+\contentsline {subsection}{\numberline {4.2.8}Entrenadores}{42}{subsection.4.2.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Caracterización del conocimiento}{33}{section.5.1}%
+\contentsline {subsection}{\numberline {4.2.9}Agentes}{44}{subsection.4.2.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.1}Características del agente físico en \textit {Habitat}}{33}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {4.2.10}\textit {Benchmarks}}{45}{subsection.4.2.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.2}Estado}{34}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {4.2.11}Ficheros de configuración}{45}{subsection.4.2.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.3}Acciones}{35}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {4.2.12}Registros}{48}{subsection.4.2.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.4}Recompensas}{35}{subsection.5.1.4}%
+\contentsline {section}{\numberline {4.3}Instalación de \textit {Habitat}}{48}{section.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.1.4.1}Preprocesamiento de la imagen de profundidad}{36}{subsubsection.5.1.4.1}%
+\contentsline {subsection}{\numberline {4.3.1}Requisitos}{49}{subsection.4.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.1.4.2}Identificación de los obstáculos y la distancia en la imagen}{37}{subsubsection.5.1.4.2}%
+\contentsline {subsection}{\numberline {4.3.2}Proceso de instalación}{49}{subsection.4.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.1.4.3}Cálculo del potencial atractivo y repulsivo}{39}{subsubsection.5.1.4.3}%
+\contentsline {chapter}{\numberline {5}Diseño del agente}{51}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.1.4.4}Cálculo de la recompensa final}{41}{subsubsection.5.1.4.4}%
+\contentsline {section}{\numberline {5.1}Caracterización del conocimiento}{51}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Arquitectura del agente}{42}{section.5.2}%
+\contentsline {subsection}{\numberline {5.1.1}Características del agente físico en \textit {Habitat}}{51}{subsection.5.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.1}Propuesta 1: Red convolucional (CNN)}{42}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.1.2}Estado}{52}{subsection.5.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.2}Propuesta 2: Red mixta (CNN + MLP)}{45}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.1.3}Acciones}{53}{subsection.5.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Actuación del agente}{47}{section.5.3}%
+\contentsline {subsection}{\numberline {5.1.4}Recompensas}{53}{subsection.5.1.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Entrenamiento del agente}{49}{section.5.4}%
+\contentsline {subsubsection}{\numberline {5.1.4.1}Preprocesamiento de la imagen de profundidad}{54}{subsubsection.5.1.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.1}\textit {Replay Memory} y memorización de la experiencia}{50}{subsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.1.4.2}Identificación de los obstáculos y la distancia en la imagen}{55}{subsubsection.5.1.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.2}Aprendizaje a partir de las experiencias}{51}{subsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.1.4.3}Cálculo del potencial atractivo y repulsivo}{57}{subsubsection.5.1.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.3}Documentación del entrenamiento}{53}{subsection.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.1.4.4}Cálculo de la recompensa final}{59}{subsubsection.5.1.4.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Experimentación}{55}{chapter.6}%
+\contentsline {section}{\numberline {5.2}Arquitectura del agente}{60}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Experimentos realizados y parametros utilizados}{55}{section.6.1}%
+\contentsline {subsection}{\numberline {5.2.1}Propuesta 1: Red convolucional (CNN)}{60}{subsection.5.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1.1}Parametros utilizados}{55}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {5.2.2}Propuesta 2: Red mixta (CNN + MLP)}{63}{subsection.5.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1.2}Experimentos realizados}{55}{subsection.6.1.2}%
+\contentsline {section}{\numberline {5.3}Actuación del agente}{65}{section.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1.3}Elección del conjunto de datos}{55}{subsection.6.1.3}%
+\contentsline {section}{\numberline {5.4}Entrenamiento del agente}{67}{section.5.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Resultados obtenidos}{55}{section.6.2}%
+\contentsline {subsection}{\numberline {5.4.1}\textit {Replay Memory} y memorización de la experiencia}{68}{subsection.5.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.3}Comparativa y análisis de resultados}{55}{section.6.3}%
+\contentsline {subsection}{\numberline {5.4.2}Aprendizaje a partir de las experiencias}{69}{subsection.5.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3.1}Comparativa durante el entrenamiento}{55}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {5.4.3}Documentación del entrenamiento}{71}{subsection.5.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3.2}Comparativa de los agentes entrenados}{55}{subsection.6.3.2}%
+\contentsline {chapter}{\numberline {6}Experimentación}{73}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Conclusiones}{57}{chapter.7}%
+\contentsline {section}{\numberline {6.1}Experimentos realizados y parametros utilizados}{73}{section.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.1}Conclusiones}{57}{section.7.1}%
+\contentsline {subsection}{\numberline {6.1.1}Parametros utilizados}{73}{subsection.6.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.2}Trabajo futuro}{57}{section.7.2}%
+\contentsline {subsection}{\numberline {6.1.2}Experimentos realizados}{73}{subsection.6.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.3}Agradecimientos}{57}{section.7.3}%
+\contentsline {subsection}{\numberline {6.1.3}Elección del conjunto de datos}{73}{subsection.6.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Bibliografía}{57}{section.7.3}%
+\contentsline {section}{\numberline {6.2}Resultados obtenidos}{73}{section.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Anexos}{61}{chapter*.25}%
+\contentsline {section}{\numberline {6.3}Comparativa y análisis de resultados}{73}{section.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}Manual de usuario}{61}{appendix.Alph1}%
+\contentsline {subsection}{\numberline {6.3.1}Comparativa durante el entrenamiento}{73}{subsection.6.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {B}Ficheros de configuración}{63}{appendix.Alph2}%
+\contentsline {subsection}{\numberline {6.3.2}Comparativa de los agentes entrenados}{73}{subsection.6.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.1}Fichero base}{63}{section.Alph2.1}%
+\contentsline {chapter}{\numberline {7}Conclusiones}{75}{chapter.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.2}Ficheros de entrenamiento}{65}{section.Alph2.2}%
+\contentsline {section}{\numberline {7.1}Conclusiones}{75}{section.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.3}Ficheros de \textit {benchmark}}{68}{section.Alph2.3}%
+\contentsline {section}{\numberline {7.2}Trabajo futuro}{75}{section.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.4}Fichero de generación de video}{69}{section.Alph2.4}%
+\contentsline {chapter}{Bibliografía}{75}{section.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {C}Generación de gráficas}{71}{appendix.Alph3}%
+\contentsline {chapter}{Anexos}{82}{chapter*.34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {D}Contenidos del entregable}{73}{appendix.Alph4}%
+\contentsline {chapter}{\numberline {A}Manual de usuario}{83}{appendix.Alph1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {B}Ficheros de configuración}{85}{appendix.Alph2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.1}Fichero base}{85}{section.Alph2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.2}Ficheros de entrenamiento}{87}{section.Alph2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.3}Ficheros de \textit {benchmark}}{90}{section.Alph2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.4}Fichero de generación de video}{91}{section.Alph2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {C}Generación de gráficas}{93}{appendix.Alph3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {D}Contenidos del entregable}{95}{appendix.Alph4}%
