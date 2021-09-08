@@ -1109,6 +1109,31 @@
     \field{year}{1988}
   \endentry
 
+  \entry{cswiki18}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=WCS}{%
+         family={Wiki},
+         familyi={W\bibinitperiod},
+         given={Computer\bibnamedelima Science},
+         giveni={C\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Computer Science Wiki}%
+    }
+    \strng{namehash}{WCS1}
+    \strng{fullhash}{WCS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Max-pooling / Pooling}
+    \verb{url}
+    \verb https://computersciencewiki.org/index.php/Max-pooling_/_Pooling
+    \endverb
+    \field{journaltitle}{Computer Science Wiki}
+    \field{year}{2018}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
   \entry{Sutton1998}{book}{}
     \name{author}{2}{}{%
       {{hash=SRS}{%

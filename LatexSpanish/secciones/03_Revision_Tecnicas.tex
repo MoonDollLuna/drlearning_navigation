@@ -99,7 +99,7 @@ La familia de modelos más característica de \textit{Deep Learning} es las rede
 Ahora bien, el aumento del tamaño de las redes neuronales profundas (tanto en neuronas como en capas) conlleva una serie de problemas:
 
 \begin{itemize}
-	\item Conforme aumenta el tamaño de la red, aumenta el numero de parámetros (pesos) a ajustar. Esto significa que se necesitan conjuntos de entrenamiento exponencialmente más grandes para alcanzar buenos resultados y, por tanto, un mayor coste computacional y de tiempo para el entrenamiento.
+	\item Conforme aumenta el tamaño de la red, aumenta el número de parámetros (pesos) a ajustar. Esto significa que se necesitan conjuntos de entrenamiento exponencialmente más grandes para alcanzar buenos resultados y, por tanto, un mayor coste computacional y de tiempo para el entrenamiento.
 	
 	Esto se ha solucionado principalmente mediante el uso de ordenadores más potentes, conjuntos de datos más grandes y técnicas para ampliar los conjuntos de datos ya existentes como el \textit{data augmentation} \cite{Shorten2019ASO}. 
 	
@@ -113,7 +113,7 @@ Si bien las redes neuronales profundas son uno de los modelos más usados en \te
 
 \subsection{Redes neuronales convolucionales}
 
-Una \textbf{red neuronal convolucional} es una red neuronal que usa funciones de convolución, diseñada para trabajar con entradas en forma de matrices (como lineas de tiempo o imágenes) \cite{Goodfellow-et-al-2016}. Éstas fueron originalmente propuestas por Yann LeCun \textit{et al.} en 1989 \cite{10.1162/neco.1989.1.4.541}, si bien cobraron importancia tras \textit{AlexNet} \cite{Krizhevsky2012ImageNetCW} y sus resultados en la competición de \textit{ImageNet}.
+Una \textbf{red neuronal convolucional} es una red neuronal que usa funciones de convolución, diseñada para trabajar con entradas en forma de matrices (como líneas de tiempo o imágenes) \cite{Goodfellow-et-al-2016}. Éstas fueron originalmente propuestas por Yann LeCun \textit{et al.} en 1989 \cite{10.1162/neco.1989.1.4.541}, si bien cobraron importancia tras \textit{AlexNet} \cite{Krizhevsky2012ImageNetCW} y sus resultados en la competición de \textit{ImageNet}.
 
 En el campo del aprendizaje automático, una \textbf{convolución} es una operación matemática lineal aplicada sobre dos funciones de números reales: una \textbf{entrada (\textit{input})} $I$, generalmente una matriz de datos como puede ser una imagen; y un \textbf{nucleo (\textit{kernel})} $K$, una matriz de parámetros entrenables. La salida de esta operación es otra matriz, típicamente conocida como el \textbf{mapa de características (\textit{feature map})} $S$ \cite{Goodfellow-et-al-2016}. Esta función normalmente se define como:
 \[S(i,j)=(K*I)(i,j)=\sum_m \sum_n I(i-m,j-n)K(m,n)\]
@@ -146,8 +146,18 @@ Por lo general, una capa de convolución en una red neuronal convolucional tiene
 	\item Una \textbf{función de activación} aplicada sobre el mapa de características obtenido de la convolución. Generalmente se utiliza \textit{ReLU}.
 	\item Una función de \textbf{\textit{pooling}}. Una función de \textit{pooling} es una función matemática similar a la convolución que sustituye una región de la red de tamaño $(m,n)$ por un único estadístico de los valores de la región. Ésto se realiza principalmente para reducir el tamaño de la salida (permitiendo encadenar más convoluciones) y para mejorar la capacidad de invariancia de la convolución.
 	
-	Generalmente, el estadístico más utilizado para la función de \textit{pooling} es el \textbf{máximo} \cite{Zhou1988ComputationOO}, aunque también es común utilizar la \textbf{media}.
+	Generalmente, el estadístico más utilizado para la función de \textit{pooling} es el \textbf{máximo} \cite{Zhou1988ComputationOO}, aunque también es común utilizar la \textbf{media}. Se puede ver un ejemplo de una operación de \textit{pooling} por máximo en la Figura \ref{fig:chap3-pool}.
 \end{enumerate}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imagenes/cap3/pooling.png}
+    \caption{Ejemplo de \textit{pooling} usando estadístico de máximo \cite{cswiki18}.}
+    \label{fig:chap3-pool}
+\end{figure}
+
+
+
 
 \section{Aprendizaje por refuerzo}
 
@@ -163,7 +173,7 @@ Los dos componentes principales de un problema de aprendizaje por refuerzo son e
 \begin{itemize}
  \item \textbf{Estado ($s$):} Una representación del estado actual del entorno, tal cual lo interpreta el agente. Esta representación $s_t$ pertenece a un conjunto de estados $S$.
  
- La definición del estado debe cumplir la \textbf{Propiedad de Markov:} el estado, por si mismo, debe ser capaz de representar toda la información relevante \cite{Sutton1998}. Esto significa que el estado que se alcance tras realizar una acción debe depender únicamente del estado actual, y no de ningún estado o acción previa.
+ La definición del estado debe cumplir la \textbf{Propiedad de Markov:} el estado, por sí mismo, debe ser capaz de representar toda la información relevante \cite{Sutton1998}. Esto significa que el estado que se alcance tras realizar una acción debe depender únicamente del estado actual, y no de ningún estado o acción previa.
  \item \textbf{Acción ($a$):} Una actuación llevada a cabo por el agente según el estado actual $s_t$. Una acción $a_t$ pertenece a un conjunto posible de acciones en un estado concreto, $A(s)$.
  \item \textbf{Recompensa ($r$):} Un valor numérico positivo (recompensa) o negativo (penalización) otorgada por el entorno tras la actuación del agente. El objetivo del agente a largo plazo es \textbf{maximizar la recompensa obtenida}.
  
@@ -190,7 +200,7 @@ Además del agente y el entorno, hay otros cuatro conceptos de gran importancia 
 \begin{itemize}
 \item \textbf{Política $(\pi)$:} Método de actuación de un agente ante un estado $s$ en un instante concreto, definiéndose como una función $\pi(s) = a$. La política es uno de los puntos claves del aprendizaje automático, siendo el objetivo a optimizar y pudiendo determinar la actuación del agente por sí misma.
 \item \textbf{Modelo:} Representación aproximada del entorno y su comportamiento usada por el agente para predecir estados y recompensas del entorno ante una acción. Este concepto es opcional, no siendo usado por todos los métodos de aprendizaje por refuerzo.
-\item \textbf{Modelo de recompensas ($R(s)$ / $R(s,a)$):} Función que, para un estado $s$ (o un par estado-acción $s, a$) devuelve la recompensa adecuada al agente. Este modelo es parte del entorno y asocia a cada estado su "deseabilidad" inmediata (teniendo los estados deseables una recompensa mayor a los que no).
+\item \textbf{Modelo de recompensas ($R(s)$ / $R(s,a)$):} Función que, para un estado $s$ (o un par estado-acción $s, a$) devuelve la recompensa adecuada al agente. Este modelo es parte del entorno y asocia a cada estado su deseabilidad inmediata (teniendo los estados deseables una recompensa mayor a los que no lo son).
 
 Este modelo no puede ser alterado por el agente, si bien la política del agente suele alterarse como respuesta al modelo de recompensas.
 
@@ -211,7 +221,6 @@ Se pueden distinguir dos aproximaciones a los modelos de aprendizaje por refuerz
 \end{itemize}
 
 A continuación, se describen algunos de los principales métodos de aprendizaje por refuerzo usados.
-
 
 \subsubsection{Q-Learning}
 
@@ -251,7 +260,7 @@ Un problema que presenta el algoritmo de \textit{Q-Learning} es que, por defecto
 
 Para solventar este problema se utiliza una política $\epsilon-greedy$ \cite{Sutton1998} (también conocida como exploración-explotación), introduciendo un parámetro adicional $\epsilon$. Antes de elegir la acción a realizar, el agente calcula un número aleatorio en el rango $[0.0, 1.0]$. Si este número es mayor o igual que $\epsilon$ se elige la acción que maximiza la utilidad (explotación). En otro caso, se elige una acción aleatoria (exploración). 
 
-De esta forma se puede obtener un equilibrio entre la exploración de nuevos estados y la explotación de la política óptima.
+De esta forma se puede obtener un equilibrio entre la exploración de nuevos estados y la explotación de la política actual.
 
 \subsubsection{SARSA}
 
@@ -282,7 +291,7 @@ Ahora bien, los métodos de actor-crítico no fueron muy utilizados tradicionalm
 
 \subsection{Métodos de aprendizaje por refuerzo profundos}
 
-Los algoritmos descritos previamente tienen una serie de limitaciones que deben cumplirse para garantizar que acaben convergiendo \cite{DBLP:journals/corr/abs-1811-12560}:
+Los algoritmos descritos previamente tienen una serie de limitaciones, que se traducen en un conjunto de requisitos que deben cumplirse para garantizar que acaben convergiendo \cite{DBLP:journals/corr/abs-1811-12560}:
 \begin{itemize}
 	\item Los pares de estado-acción deben poder representarse de forma discreta.
 	\item Todas las acciones tienen que realizarse en todos los estados varias veces (tiene que haber suficiente exploración como para que no sea necesario un modelo del entorno)
@@ -367,7 +376,7 @@ Ahora bien, esta familia de métodos también presenta una serie de desventajas,
 Los métodos de \textbf{actor-crítico}, como ya se vio anteriormente, están compuestos por dos elementos separados explícitamente: un \textbf{actor} (la política que elige las acciones) y un \textbf{crítico} (la función de utilidad que evalúa la actuación del actor) \cite{Sutton1998}. En general, la arquitectura de actor-crítico se utiliza junto a métodos de \textbf{gradiente de políticas} \cite{PETERS2008682}, consistentes en optimizar la política para maximizar la utilidad esperada de usar dicha política (generando trayectorias que maximizan las recompensas, y evitando trayectorias con penalizaciones). 
 
 Existen varias formas de plantear los métodos de gradiente de políticas, siendo una de ellas los métodos de \textbf{actor-crítico con ventaja} (\textit{Advantage Actor-Critic}) \cite{DBLP:journals/corr/MnihBMGLHSK16}. Esta familia de métodos utiliza una función de utilidad $Q(s,a)$ para optimizar las políticas, de forma similar a Q-Learning. Ahora bien, para evitar la variabilidad inherente a estas funciones, se utiliza un \textit{baseline} a la hora de usar los gradientes conocido como \textbf{ventaja}, siguiendo la fórmula:
-\[A(s,a)=Q(s,a)-V(s,a)\]
+\[A(s,a)=Q(s,a)-V(s)\]
 Donde $A(s,a)$ es la ventaja de aplicar, $Q(s,a)$ la utilidad de un par estado-acción y $V(s)$ la valoración del crítico a un estado.
 
 Los principales métodos de esta aproximación son los siguientes:
@@ -480,7 +489,7 @@ Ahora bien, hay dos propuestas concretas que sirven como antecedentes directos a
 \begin{itemize}
 	\item La propuesta de Tai \textit{et al.} en 2017 \cite{Tai2017VirtualtorealDR}, consistente en el entrenamiento de un robot terrestre con movimiento omnidireccional en dos dimensiones usando un algoritmo de aprendizaje por refuerzo profundo basado en actor-crítico.
 	
-	El agente cuenta únicamente con la posición relativa de la meta y un conjunto de laseres como sensores de entrada, aprendiendo a partir de estos el movimiento continuo (la salida) que debe realizar el agente para desplazarse por el entorno y alcanzar la meta.
+	El agente cuenta únicamente con la posición relativa de la meta y un conjunto de láseres como sensores de entrada, aprendiendo a partir de estos el movimiento continuo (la salida) que debe realizar el agente para desplazarse por el entorno y alcanzar la meta.
 	\item La propuesta de Carlos Sampedro \textit{et al.} en 2018 \cite{Sampedro2018}. Esta propuesta es similar en concepto a la propuesta de Tai (un robot entrenado usando aprendizaje por refuerzo profundo a partir un conjunto de láseres como entrada, indicando la dirección en la que debe desplazarse el agente para alcanzar la meta).
 	
 	Las principales diferencias en este caso son la inclusión principios de \textbf{campos de potenciales} para guiar y mejorar el proceso de entrenamiento y para hacer la navegación más robusta frente a errores en la lectura de los sensores o casos límite; y el uso de un agente aéreo (navegando a una altura constante) frente a un agente terrestre.
