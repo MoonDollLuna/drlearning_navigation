@@ -50,15 +50,20 @@ average_episodes = 50
 # If True, EPS graphs are generated along the png files
 eps = False
 
+# If specified (not None), all data will be cut short at the specified number of episodes
+episode_limit = None
+
 
 # UTILITY METHODS #
 
-def load_from_file(file_path):
+def load_from_file(file_path, episode_limit=None):
     """
     Given a file path, loads and returns all the relevant information
 
     :param file_path: Path to the .csv file to be loaded
     :type file_path: str
+    :param episode_limit: (OPTIONAL) If specified, files are read up to the given limit
+    :type episode_limit: int
     :return: A vector with the following info:
                 * List of episode IDs
                 * List of episode times
@@ -99,6 +104,16 @@ def load_from_file(file_path):
             episode_final_distances.append(float(row[4]))
             episode_successful.append(row[6] == "True")
             episode_rewards.append(float(row[7]))
+
+    # Trim the logs if a limit is specified
+    if episode_limit:
+        episode_ids = episode_ids[0:episode_limit]
+        episode_times = episode_times[0:episode_limit]
+        episode_actions = episode_actions[0:episode_limit]
+        episode_initial_distances = episode_initial_distances[0:episode_limit]
+        episode_final_distances = episode_final_distances[0:episode_limit]
+        episode_successful = episode_successful[0:episode_limit]
+        episode_rewards = episode_rewards[0:episode_limit]
 
     return episode_ids, episode_times, episode_actions, episode_initial_distances, \
            episode_final_distances, episode_successful, episode_rewards
@@ -337,7 +352,7 @@ def bar_plot(dictionary, key, y_ax_title, file_name, eps):
 
 # MAIN METHOD #
 
-def graph_generation(files_loaded_list, average_episodes_used, eps_used):
+def graph_generation(files_loaded_list, average_episodes_used, eps_used, episode_limit=None):
     """
     From a list of loaded files, generates the appropriate graphs
 
@@ -351,6 +366,8 @@ def graph_generation(files_loaded_list, average_episodes_used, eps_used):
     :type average_episodes_used: int
     :param eps_used: If TRUE, graphs will be stored in EPS in addition to PNG
     :type eps_used: bool
+    :param episode_limit: (OPTIONAL) If specified, log files are read up to the given episode
+    :type episode_limit: int
     """
 
     # Loaded info is stored in a dictionary with the following structure
@@ -371,7 +388,8 @@ def graph_generation(files_loaded_list, average_episodes_used, eps_used):
             legend_name = file_info[1]
 
         # Read the file
-        ids, times, actions, initial_distances, final_distances, successful, rewards = load_from_file(file_path)
+        ids, times, actions, initial_distances, final_distances, successful, rewards = load_from_file(file_path,
+                                                                                                      episode_limit)
 
         # Process the additional info necessary for graph generations
         # Cumulative time
@@ -426,45 +444,45 @@ def graph_generation(files_loaded_list, average_episodes_used, eps_used):
     # Time taken
     assisted_graph_plot(general_ids, loaded_info, "times",
                         "Episodios completados", "Duración del episodio (segs)", True,
-                        "times", eps)
+                        "times", eps_used)
     assisted_graph_plot(general_smoothed_ids, loaded_info, "smoothed_times",
                         "Episodios completados", "Duración del episodio (segs)", True,
-                        "smoothed_times", eps)
+                        "smoothed_times", eps_used)
 
     # Cumulative time taken
     assisted_graph_plot(general_ids, loaded_info, "cumulative_times",
                         "Episodios completados", "Duración total (segs)", True,
-                        "cumulative_times", eps)
+                        "cumulative_times", eps_used)
     assisted_graph_plot(general_smoothed_ids, loaded_info, "cumulative_smoothed_times",
                         "Episodios completados", "Duración total (segs)", True,
-                        "cumulative_smoothed_times", eps)
+                        "cumulative_smoothed_times", eps_used)
 
     # Actions taken
     assisted_graph_plot(general_ids, loaded_info, "actions",
                         "Episodios completados", "Acciones realizadas", True,
-                        "actions", eps)
+                        "actions", eps_used)
     assisted_graph_plot(general_smoothed_ids, loaded_info, "smoothed_actions",
                         "Episodios completados", "Acciones realizadas", True,
-                        "smoothed_actions", eps)
+                        "smoothed_actions", eps_used)
 
     # Distance travelled
     assisted_graph_plot(general_ids, loaded_info, "distances",
                         "Episodios completados", "Porcentaje de distancia hasta la meta recorrida", True,
-                        "distances", eps, top_y_lim=1.0)
+                        "distances", eps_used, top_y_lim=1.0)
     assisted_graph_plot(general_smoothed_ids, loaded_info, "smoothed_distances",
                         "Episodios completados", "Porcentaje de distancia hasta la meta recorrida", True,
-                        "smoothed_distances", eps, top_y_lim=1.0)
+                        "smoothed_distances", eps_used, top_y_lim=1.0)
 
     # Rewards
     assisted_graph_plot(general_ids, loaded_info, "rewards",
                         "Episodios completados", "Recompensa media", False,
-                        "rewards", eps)
+                        "rewards", eps_used)
     assisted_graph_plot(general_smoothed_ids, loaded_info, "smoothed_rewards",
                         "Episodios completados", "Recompensa media", False,
-                        "smoothed_rewards", eps)
+                        "smoothed_rewards", eps_used)
 
     # Generate a bar plot graph for the successful episodes amount
-    bar_plot(loaded_info, "successful", "Episodios completados con éxito", "success", eps)
+    bar_plot(loaded_info, "successful", "Episodios completados con éxito", "success", eps_used)
 
     print("Graphs generated successfully")
 
@@ -529,6 +547,14 @@ if __name__ == "__main__":
                         action='store_true',
                         help="If specified, graphs will be stored in EPS format in addition to PNG format.")
 
+    # EPISODE_LIMIT (-el or --episode_limit)
+    # If specified, files will be read up to the given episode.
+    # Useful when logs have different number of episodes
+    parser.add_argument('-el',
+                        "--episode_limit",
+                        type=int,
+                        help="If specified, log files will be read up to the given episode. Must be a positive integer.")
+
     # ARGUMENT PARSING #
 
     # Parse the arguments and check that they are valid
@@ -545,10 +571,17 @@ if __name__ == "__main__":
         if average_episodes <= 0:
             print("ERROR: Average episode count must be a positive integer.")
             sys.exit()
+
     if arguments["eps"] is not None:
         eps = True
+
+    if arguments["episode_limit"] is not None:
+        episode_limit = arguments["episode_limit"]
+        if episode_limit <= 0:
+            print("ERROR: Episode limit must be a positive integer")
 
     # Execute the main code
     graph_generation(files_loaded,
                      average_episodes,
-                     eps)
+                     eps,
+                     episode_limit)

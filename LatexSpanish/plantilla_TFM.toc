@@ -133,23 +133,31 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.4.3}Documentación del entrenamiento}{71}{subsection.5.4.3}%
 \defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.5}Implementación}{71}{section.5.5}%
+\defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {6}Experimentación}{73}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Experimentos realizados y parametros utilizados}{73}{section.6.1}%
+\contentsline {section}{\numberline {6.1}Detalles de la experimentación}{73}{section.6.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.1.1}Parametros utilizados}{73}{subsection.6.1.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.1.2}Experimentos realizados}{73}{subsection.6.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1.3}Elección del conjunto de datos}{73}{subsection.6.1.3}%
-\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6.2}Resultados obtenidos}{73}{section.6.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.2.1}Elección del conjunto de datos}{73}{subsection.6.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.2.2}Agentes con \textit {Deep Q-Learning} estándar}{73}{subsection.6.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.2.3}Agentes con \textit {Deep Q-Learning} priorizado}{73}{subsection.6.2.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6.3}Comparativa y análisis de resultados}{73}{section.6.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.3.1}Comparativa durante el entrenamiento}{73}{subsection.6.3.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.3.2}Comparativa de los agentes entrenados}{73}{subsection.6.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.3.3}Análisis de los resultados}{73}{subsection.6.3.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {7}Conclusiones}{75}{chapter.7}%
 \defcounter {refsection}{0}\relax 
