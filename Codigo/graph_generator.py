@@ -33,14 +33,12 @@ import sys
 import csv
 import textwrap
 from os.path import splitext
-import math
 from itertools import accumulate
 from statistics import mean
 
 import matplotlib.pyplot as plt
-from matplotlib.figure import Figure
-import numpy as np
-from scipy.signal import lfilter
+import matplotlib as mpl
+mpl.rcParams['agg.path.chunksize'] = 10000
 
 # USER DEFINED VARIABLES #
 
@@ -83,8 +81,10 @@ def load_from_file(file_path):
 
     # Open the file using the default Python reader
     with open(file_path, "r") as file:
+
         # Use a CSV reader to read the file
-        read_rows = csv.reader(file,
+        # Comments and whitespace lines are filtered
+        read_rows = csv.reader(filter(lambda filter_row: filter_row[0] != "\n" and filter_row[0] != '#', file),
                                delimiter=",")
 
         # Ignore the first row (column titles)
@@ -97,7 +97,7 @@ def load_from_file(file_path):
             episode_actions.append(int(row[2]))
             episode_initial_distances.append(float(row[3]))
             episode_final_distances.append(float(row[4]))
-            episode_successful.append(bool(row[6]))
+            episode_successful.append(row[6] == "True")
             episode_rewards.append(float(row[7]))
 
     return episode_ids, episode_times, episode_actions, episode_initial_distances, \
@@ -209,7 +209,7 @@ def extract_key_from_dict(dictionary, key):
 # GRAPH METHODS #
 
 def graph_plot(x_axis, y_axis_list, legend_titles,
-               x_ax_title, y_ax_title, file_name, eps):
+               x_ax_title, y_ax_title, fix_y_axis, file_name, eps, top_y_lim=None):
     """
     Generates and saves a graph from the specified info
 
@@ -223,10 +223,14 @@ def graph_plot(x_axis, y_axis_list, legend_titles,
     :type x_ax_title: str
     :param y_ax_title: Title of the Y axis
     :type y_ax_title: str
+    :param fix_y_axis: If TRUE, the y axis will be fixed to 0
+    :type fix_y_axis: bool
     :param file_name: Name to be used for the filename. Folder name is constant
     :type file_name: str
     :param eps: If TRUE, the graph will also be stored in EPS format
     :type eps: bool
+    :param top_y_lim: If specified, the Y axis is limited to the specified value on top
+    :type top_y_lim: float
     """
 
     # Create the figure
@@ -240,11 +244,16 @@ def graph_plot(x_axis, y_axis_list, legend_titles,
     plt.xlabel(x_ax_title)
     plt.ylabel(y_ax_title)
 
+    # If necessary, fix the Y axis
+    if fix_y_axis:
+        plt.ylim(bottom=0)
+
+    # If necessary, limit the Y axis on top
+    if top_y_lim:
+        plt.ylim(top=top_y_lim)
+
     # Specify the number of ticks for the X axis (16 ticks)
     plt.locator_params(axis='x', nbins=16)
-
-    # Fix the Y axis to 0
-    plt.ylim(bottom=0)
 
     # Show the legend
     plt.legend()
@@ -269,14 +278,14 @@ def graph_plot(x_axis, y_axis_list, legend_titles,
 
 
 def assisted_graph_plot(x_axis, dictionary, key,
-                        x_ax_title, y_ax_title, file_name, eps):
+                        x_ax_title, y_ax_title, fix_y_axis, file_name, eps, top_y_lim=None):
     """Helper function for graph_plot that automatically handles the info extracting process"""
 
     # Get the legend names and y axis values
     legends, y_axis = extract_key_from_dict(dictionary, key)
 
     # Generate the graph
-    graph_plot(x_axis, y_axis, legends, x_ax_title, y_ax_title, file_name, eps)
+    graph_plot(x_axis, y_axis, legends, x_ax_title, y_ax_title, fix_y_axis, file_name, eps, top_y_lim)
 
 
 def bar_plot(dictionary, key, y_ax_title, file_name, eps):
@@ -416,46 +425,46 @@ def graph_generation(files_loaded_list, average_episodes_used, eps_used):
     # Generate all graphs (original and smoothed)
     # Time taken
     assisted_graph_plot(general_ids, loaded_info, "times",
-                        "Episodios completados", "Duración del episodio (segs)",
+                        "Episodios completados", "Duración del episodio (segs)", True,
                         "times", eps)
     assisted_graph_plot(general_smoothed_ids, loaded_info, "smoothed_times",
-                        "Episodios completados", "Duración del episodio (segs)",
+                        "Episodios completados", "Duración del episodio (segs)", True,
                         "smoothed_times", eps)
 
     # Cumulative time taken
     assisted_graph_plot(general_ids, loaded_info, "cumulative_times",
-                        "Episodios completados", "Duración total (segs)",
+                        "Episodios completados", "Duración total (segs)", True,
                         "cumulative_times", eps)
     assisted_graph_plot(general_smoothed_ids, loaded_info, "cumulative_smoothed_times",
-                        "Episodios completados", "Duración total (segs)",
+                        "Episodios completados", "Duración total (segs)", True,
                         "cumulative_smoothed_times", eps)
 
     # Actions taken
     assisted_graph_plot(general_ids, loaded_info, "actions",
-                        "Episodios completados", "Acciones realizadas",
+                        "Episodios completados", "Acciones realizadas", True,
                         "actions", eps)
     assisted_graph_plot(general_smoothed_ids, loaded_info, "smoothed_actions",
-                        "Episodios completados", "Acciones realizadas",
+                        "Episodios completados", "Acciones realizadas", True,
                         "smoothed_actions", eps)
 
     # Distance travelled
     assisted_graph_plot(general_ids, loaded_info, "distances",
-                        "Episodios completados", "Porcentaje de distancia hasta la meta recorrida (metros)",
-                        "distances", eps)
+                        "Episodios completados", "Porcentaje de distancia hasta la meta recorrida", True,
+                        "distances", eps, top_y_lim=1.0)
     assisted_graph_plot(general_smoothed_ids, loaded_info, "smoothed_distances",
-                        "Episodios completados", "Porcentaje de distancia hasta la meta recorrida (metros)",
-                        "smoothed_distances", eps)
+                        "Episodios completados", "Porcentaje de distancia hasta la meta recorrida", True,
+                        "smoothed_distances", eps, top_y_lim=1.0)
 
     # Rewards
     assisted_graph_plot(general_ids, loaded_info, "rewards",
-                        "Episodios completados", "Recompensa media",
+                        "Episodios completados", "Recompensa media", False,
                         "rewards", eps)
     assisted_graph_plot(general_smoothed_ids, loaded_info, "smoothed_rewards",
-                        "Episodios completados", "Recompensa media",
+                        "Episodios completados", "Recompensa media", False,
                         "smoothed_rewards", eps)
 
     # Generate a bar plot graph for the successful episodes amount
-    bar_plot(loaded_info, "rewards", "Episodios completados con éxito", "success", eps)
+    bar_plot(loaded_info, "successful", "Episodios completados con éxito", "success", eps)
 
     print("Graphs generated successfully")
 
@@ -515,7 +524,7 @@ if __name__ == "__main__":
 
     # EPS (-eps or --eps)
     # If TRUE, graphs will be stored in .eps format in addition to .png format
-    parser.add_argument('-n',
+    parser.add_argument('-eps',
                         '--eps',
                         action='store_true',
                         help="If specified, graphs will be stored in EPS format in addition to PNG format.")
@@ -536,6 +545,8 @@ if __name__ == "__main__":
         if average_episodes <= 0:
             print("ERROR: Average episode count must be a positive integer.")
             sys.exit()
+    if arguments["eps"] is not None:
+        eps = True
 
     # Execute the main code
     graph_generation(files_loaded,

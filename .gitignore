@@ -3,4 +3,5 @@ Codigo/Training/
 *.pyc
 */__pycache__/
 Codigo/wipe_gpu.sh
+Codigo/Logs/
 *.pyc
