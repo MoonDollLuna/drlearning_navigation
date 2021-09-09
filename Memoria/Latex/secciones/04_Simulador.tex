@@ -1,7 +1,7 @@
 
 \chapter{\textit{Habitat}: Simulador \textit{Habitat Sim} y \textit{Habitat Lab}}
 
-En este capítulo se describirá en profundidad el simulador utilizado, \textit{Habitat Sim 2.0}, y su librería de Python \textit{Habitat Lab}. Además, se presentarán los principales componentes usados por la librería, detallando su funcionamiento y su uso. Finalmente, se explicará la instalación del simulador y las dependencias necesarias.
+En este capítulo se describe en profundidad el simulador utilizado, \textit{Habitat Sim 2.0}, y su librería de Python \textit{Habitat Lab}. Además, se presentan los principales componentes usados por la librería, detallando su funcionamiento y su uso. Finalmente, se explica el proceso de instalación del simulador y las dependencias necesarias para su funcionamiento.
 
 \section{\textit{Habitat}}
 
@@ -121,7 +121,7 @@ Cualquier entorno personalizado que se quiera crear debe ser una subclase de \te
 
 Por defecto, \textit{RLEnv} no implementa los métodos descritos previamente, por lo que es necesario realizar un entorno personalizado para el entrenamiento. Ahora bien, \textit{Habitat Baselines} ofrece \textit{NavRLEnv}, una implementación básica de entorno pensado para problemas de navegación a objetivo que sirve como punto de partida para otras implementaciones más complejas.
 
-En este trabajo, se ha implementado un entorno personalizado (\textit{ReactiveNavigationEnv}) como subclase de \textit{NavRLEnv}, con definiciones propias de los métodos previos para usar el sistema de recompensas basado en potenciales propuesto (descrito en más detalle en el Capítulo 5).
+En este trabajo, se ha implementado un entorno personalizado (\textit{ReactiveNavigationEnv}) como subclase de \textit{NavRLEnv}, con definiciones propias de los métodos previos para usar el sistema de recompensas basado en potenciales propuesto (descrito en más detalle en el siguiente capítulo).
 
 \subsection{Tareas}
 
@@ -572,7 +572,7 @@ Los principales bloques del fichero de configuración son:
 	Existen más claves dentro de esta categoría, pudiendo observarse en los ficheros de configuración de ejemplo.
 \end{itemize}
 
-Se puede ver un ejemplo de un fichero de configuración para una tarea de navegación usando \textit{Gibson} en la Figura \ref{fig:chap4-conf}. Además, se pueden ver los ficheros de configuración desarrollados (documentados en inglés) en el Anexo B (Ficheros de configuración).
+Se puede ver un ejemplo de un fichero de configuración para una tarea de navegación usando \textit{Gibson} en la Figura \ref{fig:chap4-conf}. Además, se pueden ver los ficheros de configuración desarrollados (documentados en inglés) en el Anexo A (Ficheros de configuración).
 
 \begin{figure}[!ht]
 \centering

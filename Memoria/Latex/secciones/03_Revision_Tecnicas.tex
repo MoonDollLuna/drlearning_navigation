@@ -1,5 +1,5 @@
 \chapter{Revisión de técnicas}
-En este capítulo se describirán las técnicas y algoritmos que preceden y en los que se basa el trabajo descrito en esta memoria. Concretamente, se realizará una introducción a redes neuronales y \textit{Deep Learning}, tras la cual se hablarán de los principales métodos de aprendizaje por refuerzo clásicos y actuales. Finalmente, se estudiarán algunos de los principales algoritmos de navegación autónoma existentes.
+En este capítulo se describen las técnicas y algoritmos que preceden y en los que se basa el trabajo descrito en esta memoria. Concretamente, se realiza una introducción a las redes neuronales y \textit{Deep Learning}, tras la cual se habla de los principales métodos de aprendizaje por refuerzo clásicos y actuales. Finalmente, se estudian algunos de los principales algoritmos de navegación autónoma existentes.
 
 \section{Redes neuronales y \textit{Deep Learning}}
 
@@ -373,7 +373,7 @@ Ahora bien, esta familia de métodos también presenta una serie de desventajas,
 
 \subsubsection{Familia de métodos de actor-crítico}
 
-Los métodos de \textbf{actor-crítico}, como ya se vio anteriormente, están compuestos por dos elementos separados explícitamente: un \textbf{actor} (la política que elige las acciones) y un \textbf{crítico} (la función de utilidad que evalúa la actuación del actor) \cite{Sutton1998}. En general, la arquitectura de actor-crítico se utiliza junto a métodos de \textbf{gradiente de políticas} \cite{PETERS2008682}, consistentes en optimizar la política para maximizar la utilidad esperada de usar dicha política (generando trayectorias que maximizan las recompensas, y evitando trayectorias con penalizaciones). 
+Los métodos de \textbf{actor-crítico}, como ya se vio anteriormente, están compuestos por dos elementos separados explícitamente: un \textbf{actor} (la política que elige las acciones) y un \textbf{crítico} (la función de utilidad que evalúa la actuación del actor) \cite{Sutton1998}. En general, la arquitectura de actor-crítico se utiliza junto a métodos de \textbf{gradiente de políticas} \cite{PETERS2008682}, consistentes en optimizar la política para maximizar la utilidad esperada de usar dicha política (generando trayectorias que maximizan las recompensas, y evitando trayectorias con penalizaciones), obteniendo una política \textbf{estocástica} (con distribuciones de probabilidades para cada acción) frente a una política \textbf{determinista} como la usada por \textit{Deep Q-Learning}. 
 
 Existen varias formas de plantear los métodos de gradiente de políticas, siendo una de ellas los métodos de \textbf{actor-crítico con ventaja} (\textit{Advantage Actor-Critic}) \cite{DBLP:journals/corr/MnihBMGLHSK16}. Esta familia de métodos utiliza una función de utilidad $Q(s,a)$ para optimizar las políticas, de forma similar a Q-Learning. Ahora bien, para evitar la variabilidad inherente a estas funciones, se utiliza un \textit{baseline} a la hora de usar los gradientes conocido como \textbf{ventaja}, siguiendo la fórmula:
 \[A(s,a)=Q(s,a)-V(s)\]
@@ -389,6 +389,20 @@ Los principales métodos de esta aproximación son los siguientes:
 	
 	\item \textbf{\textit{Advantage Actor-Critic (A2C)}:} Este método es una variante de \textit{A3C} \cite{DBLP:journals/corr/MnihBMGLHSK16} cuya única diferencia es que los agentes pasan de ser asíncronos a estar sincronizados (los agentes y las actualizaciones se realizan una tras otra en orden). Pese a parecer peor, el método resulta más eficiente al poder aprovechar mejor la paralelización disponible.
 \end{itemize} 
+
+Un segundo planteamiento son los métodos de \textbf{gradiente de política determinista} \cite{vitay_2020}. Esta familia de métodos pretende aunar las ventajas de los métodos de gradientes de políticas (el paradigma de actor-crítico, el buen funcionamiento en espacios continuos o de alta dimensionalidad y la estabilidad) con los beneficios que ofrecen los métodos basados en utilidad como \textit{Deep Q-Learning} (el funcionamiento \textit{off-policy} y la mayor eficiencia a la hora del aprendizaje) \cite{vitay_2020}.
+
+Los principales métodos de este planteamiento son los siguientes:
+\begin{itemize}
+	\item \textbf{\textit{Deep Deterministic Policy Gradient (DDPG)}:} Propuesto por Timothy Lillicrap \textit{et al.} en 2016 \cite{journals/corr/LillicrapHPHETS15}, el método consiste en aplicar las ideas principales de \textit{Deep Q-Learning} al planteamiento de actor-crítico para mejorar su rendimiento, usando \textit{Experience Replay} para almacenar y muestrear experiencias previas; y usando una segunda red neuronal profunda como red objetivo para calcular la utilidad del estado alcanzado.
+	\item \textbf{\textit{Distributed Distributional DDPG (D4PG)}:} Una variante de \textit{DDPG} propuesta en 2018 por Gabriel Barth-Maron \textit{et al.} \cite{DBLP:journals/corr/abs-1804-08617} que incluye varias propuestas adicionales para mejorar el rendimiento del método:
+	\begin{itemize}
+		\item Uso de aprendizaje por refuerzo distribucional (basado en estimar la distribución de probabilidades)
+		\item Uso de varios pasos a la hora de actualizar la política, frente al uso de un único paso.
+		\item Varios agentes actuando en paralelo, almacenando sus experiencias en un \textit{Replay Memory} compartido por todos.
+		\item Uso de la técnica de \textit{Prioritized Experience Replay} para muestrear el \textit{Replay Memory} dando más prioridad a las experiencias con más error.
+	\end{itemize}
+\end{itemize}
 
 Otro planteamiento son los métodos de \textbf{gradiente natural} \cite{PETERS2008682}. Los métodos tradicionales de gradientes usados durante el entrenamiento de redes neuronales actualizan los pesos de la red en dirección opuesta al gradiente del error para alejarse de éste, buscando la modificación más pequeña de los parámetros que consiga la disminución más grande del error. Estos cambios grandes del error provocan que las estimaciones de la utilidad no sean certeras (estimando políticas desfasadas), introduciendo sesgos durante el entrenamiento \cite{vitay_2020}.
 
@@ -465,7 +479,7 @@ El robot cuenta con un sensor indicándole los contornos de los obstáculos en u
 	\item \textbf{\textit{BUG2}:} El robot se mueve hacia la meta. Si hay obstáculos en su camino, el robot recorre el contorno hasta que deja de haber un obstáculo entre su posición y la meta.
 \end{itemize}
 
-Otra familia de algoritmos de navegación automática son los algoritmos de \textbf{banda elástica (\textit{elastic band})}, propuestos por Quinlan \textit{et al.} en 1993 \cite{291936}. Estos algoritmos son híbridos entre algoritmos de planificación global y reactiva, planificando rutas globales (desde la posición inicial del robot hasta la meta) que se modifican de forma local ante los obstáculos no previstos que se encuentran.
+Otra familia de algoritmos de navegación autónoma son los algoritmos de \textbf{banda elástica (\textit{elastic band})}, propuestos por Quinlan \textit{et al.} en 1993 \cite{291936}. Estos algoritmos son híbridos entre algoritmos de planificación global y reactiva, planificando rutas globales (desde la posición inicial del robot hasta la meta) que se modifican de forma local ante los obstáculos no previstos que se encuentran.
 
 Finalmente os algoritmos de \textbf{campos de potenciales} \cite{131810}, sugeridos inicialmente por Andrews en 1983 \cite{andrews1983impedance}, son una familia de algoritmos de navegación reactiva populares. Este algoritmo funciona mediante la creación de dos tipos de fuerzas artificiales en el entorno \cite{131810}:
 
@@ -484,13 +498,33 @@ Ahora bien, estas implementaciones iniciales presentaban velocidades de movimien
 
 Actualmente existe una amplia gama de robots con técnicas de navegación autónoma reactiva sin mapas, siendo frecuente el uso de técnicas de aprendizaje por refuerzo profundo para el entrenamiento del agente, permitiendo la resolución de problemas complejos de navegación y el uso de agentes aéreos (drones) con movimiento omnidireccional en tres dimensiones \cite{Sampedro2018}. 
 
-Ahora bien, hay dos propuestas concretas que sirven como antecedentes directos al trabajo realizado:
+La navegación autónoma de robots en interiores también es un campo de gran interés tanto para la investigación como para la industria, existiendo gran cantidad de grupos dedicados a la propuesta y desarrollo de agentes capaces de resolver estos problemas de forma eficaz.
+
+Algunos ejemplos de este interés \textit{Habitat Challenge}, un desafío anual organizado por  \textit{Facebook AI Research} (el grupo de investigación de inteligencia artificial de Facebook) parte de la \textit{Conference on Computer Vision and Pattern Recognition (CVPR)} en el que se buscan los mejores algoritmos para resolver problemas de \textbf{navegación autónoma a metas} \cite{habitat2020sim2real} (aunque también incluye problemas de \textbf{navegación autónoma a objetos} \cite{batra2020objectnav}) aplicados a agentes físicos en entornos de interiores. Algunas de las mejores propuestas de estos últimos años han sido:
+ 
+\begin{itemize}
+	\item \textbf{Devendra Singh Chaplot \textit{et al.} (2019)} \cite{DBLP:journals/corr/abs-2004-05155}: Se propone un nuevo algoritmo, \textit{Active Neural SLAM (Simultaneous Localization And Mapping)}, que combina las capacidades de planificadores de ruta clásicos como SLAM con la capacidad del aprendizaje por refuerzo profundo para generar políticas de acciones locales y globales. Esta propuesta obtuvo el primer puesto del \textit{Habitat Challenge 2019}.
+	\item \textbf{Santhosh K. Ramakrishnan \textit{et al.} (2020)} \cite{DBLP:journals/corr/abs-2008-09285}: Se propone un sistema de navegación entrenado con aprendizaje por refuerzo que, a partir de sus observaciones a través de una cámara RGB, es capaz de inferir la posición de los objetos más allá de su ángulo de visión para mejorar su rendimiento a la hora de generar un mapa de su entorno. Esta propuesta alcanzó el primer puesto del \textit{Habitat Challenge 2020}.
+	 \item \textbf{Samyak Datta \textit{et al.} (2020)} \cite{DBLP:journals/corr/abs-2009-03231}: Se propone un sistema de navegación entrenado con aprendizaje por refuerzo (\textit{PPO}) que tiene en cuenta el ruido existente en entornos reales (problemas durante la actuación, desviaciones entre la posición real y estimada...) y hace especial hincapié en solventar los problemas causados por éste. Esta propuesta alcanzó el segundo puesto del \textit{Habitat Challenge 2020}.
+	 \item \textbf{Ruslan Partsey (2021)} \cite{Partsey2021}: Se desarrolla un agente que usa técnicas de odometría (usar datos de sensores de movimiento para estimar la posición real) visual con aprendizaje por refuerzo para conseguir una navegación eficiente en entornos con ruido. Esta propuesta alcanzó el primer puesto del \textit{Habitat Challenge 2021}.
+\end{itemize}
+
+Si bien todas las propuestas anteriores utilizan técnicas de aprendizaje por refuerzo, la gran mayoría de éstas utilizan enfoques basados en el mapeado y navegación de los entornos, frente a una propuesta puramente reactiva (sin mapa) como la de éste trabajo.
+
+El antecedente más directo al trabajo descrito en esta memoria es la propuesta realizada por \textbf{Carlos Sampedro \textit{et al.} (2018)} \cite{Sampedro2018}, siendo éste trabajo una adaptación y continuación directa. El agente propuesto utiliza un método basado en campos de potenciales, entrenado con aprendizaje por refuerzo profundo para navegar un dron aéreo a través de entornos de interior, usando un conjunto de láseres (para percibir el entorno a su alrededor) y la posición relativa del propio dron respecto a la meta, con buenos resultados. Esta arquitectura se puede observar en la Figura \ref{fig:chap2-drone}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imagenes/cap2/drone-architecture.png}
+    \caption{Arquitectura propuesta para el sistema de navegación reactivo original \cite{Sampedro2018}.}
+    \label{fig:chap2-drone}
+\end{figure}
+
+Ahora bien, existen diferencias destacables entre la propuesta original y el trabajo descrito en esta memoria:
 
 \begin{itemize}
-	\item La propuesta de Tai \textit{et al.} en 2017 \cite{Tai2017VirtualtorealDR}, consistente en el entrenamiento de un robot terrestre con movimiento omnidireccional en dos dimensiones usando un algoritmo de aprendizaje por refuerzo profundo basado en actor-crítico.
-	
-	El agente cuenta únicamente con la posición relativa de la meta y un conjunto de láseres como sensores de entrada, aprendiendo a partir de estos el movimiento continuo (la salida) que debe realizar el agente para desplazarse por el entorno y alcanzar la meta.
-	\item La propuesta de Carlos Sampedro \textit{et al.} en 2018 \cite{Sampedro2018}. Esta propuesta es similar en concepto a la propuesta de Tai (un robot entrenado usando aprendizaje por refuerzo profundo a partir un conjunto de láseres como entrada, indicando la dirección en la que debe desplazarse el agente para alcanzar la meta).
-	
-	Las principales diferencias en este caso son la inclusión principios de \textbf{campos de potenciales} para guiar y mejorar el proceso de entrenamiento y para hacer la navegación más robusta frente a errores en la lectura de los sensores o casos límite; y el uso de un agente aéreo (navegando a una altura constante) frente a un agente terrestre.
+	\item \textbf{Movimientos del agente:} La propuesta original utiliza como agente a un dron multirotor, capaz de navegar por el aire (aunque se mantiene a una altura constante) y de realizar movimiento omnidireccional. En cambio, el trabajo desarrollado utiliza un robot terrestre (susceptible a obstáculos en el suelo) incapaz de movimiento omnidireccional, siendo necesario el giro del agente para poder esquivar obstáculos y desplazarse.
+	\item \textbf{Sensores del agente:} Mientras que la propuesta original utiliza un conjunto de láseres para percibir su entorno, el trabajo desarrollado propone un agente con una única cámara de profundidad frontal. Si bien el conjunto de láseres resulta más caro que una cámara de profundidad, también ofrece un ángulo de visión mayor de los obstáculos del entorno.
+	\item \textbf{Complejidad del entorno:} La propuesta original entrena al agente en entornos de interior simples (contando con espacios simples con obstáculos dispersos), frente a los entornos usados por el trabajo desarrollado (siendo recreaciones del interior de domicilios, incluyendo topografías más complejas con cuartos y una mayor cantidad de obstáculos y ruido).
 \end{itemize}
+

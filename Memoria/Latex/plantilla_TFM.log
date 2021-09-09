@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.9.8)  9 SEP 2021 02:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.9.8)  10 SEP 2021 01:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1435,7 +1435,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
  (./secciones/00B_Portada.tex
-<./imagenes/EscUpm.png, id=383, 245.91875pt x 200.75pt>
+<./imagenes/EscUpm.png, id=359, 245.91875pt x 200.75pt>
 File: ./imagenes/EscUpm.png Graphic file (type png)
 <use ./imagenes/EscUpm.png>
 Package pdftex.def Info: ./imagenes/EscUpm.png  used on input line 12.
@@ -1467,7 +1467,7 @@ LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <14.4> not available
 (Font)              Font shape `T1/pbk/l/n' tried instead on input line 18.
 LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <14.4> not available
 (Font)              Font shape `T1/pbk/db/n' tried instead on input line 19.
-<./imagenes/FacInformatica.png, id=385, 160.6pt x 170.6375pt>
+<./imagenes/FacInformatica.png, id=361, 160.6pt x 170.6375pt>
 File: ./imagenes/FacInformatica.png Graphic file (type png)
 <use ./imagenes/FacInformatica.png>
 Package pdftex.def Info: ./imagenes/FacInformatica.png  used on input line 23.
@@ -1509,25 +1509,35 @@ LaTeX Info: Redefining \% on input line 2.
 LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <10.95> not available
 (Font)              Font shape `T1/pbk/db/n' tried instead on input line 4.
 LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <10.95> not available
-(Font)              Font shape `T1/pbk/db/it' tried instead on input line 52.
+(Font)              Font shape `T1/pbk/db/it' tried instead on input line 44.
  [7]
-Overfull \hbox (2.62762pt too wide) detected at line 88
-\T1/pbk/l/n/10.95 4.2.10. 
+Overfull \hbox (2.62762pt too wide) detected at line 80
+\T1/pbk/l/n/10.95 3.2.10. 
  []
 
 
-Overfull \hbox (2.62762pt too wide) detected at line 90
-\T1/pbk/l/n/10.95 4.2.11. 
+Overfull \hbox (2.62762pt too wide) detected at line 82
+\T1/pbk/l/n/10.95 3.2.11. 
  []
 
 
-Overfull \hbox (2.62762pt too wide) detected at line 92
-\T1/pbk/l/n/10.95 4.2.12. 
+Overfull \hbox (2.62762pt too wide) detected at line 84
+\T1/pbk/l/n/10.95 3.2.12. 
  []
 
-LaTeX Info: Redefining \. on input line 172.
-LaTeX Info: Redefining \% on input line 172.
-[8])
+LaTeX Info: Redefining \. on input line 168.
+LaTeX Info: Redefining \% on input line 168.
+[8]
+Overfull \hbox (3.3943pt too wide) detected at line 176
+ []\T1/pbk/l/n/10.95 102
+ []
+
+
+Overfull \hbox (3.3943pt too wide) detected at line 178
+ []\T1/pbk/l/n/10.95 103
+ []
+
+)
 \tf@toc=\write7
 \openout7 = `plantilla_TFM.toc'.
 
@@ -1539,17 +1549,62 @@ LaTeX Info: Redefining \% on input line 30.
 LaTeX Info: Redefining \. on input line 2.
 LaTeX Info: Redefining \% on input line 2.
 
-Overfull \hbox (0.17174pt too wide) in paragraph at lines 16--16
+Overfull \hbox (0.17174pt too wide) in paragraph at lines 12--12
  [][] [][]\T1/pbk/l/n/10.95 Algoritmo de re-tro-pro-pa-ga-ción pa-ra en-tre-na-
 mien-to de per-cep-tro-nes mul- 
  []
 
 
-Overfull \hbox (2.18968pt too wide) detected at line 50
-\T1/pbk/l/n/10.95 4.10. 
+Overfull \hbox (2.18968pt too wide) detected at line 26
+\T1/pbk/l/n/10.95 2.10. 
  []
 
-[11])
+
+Overfull \hbox (2.18968pt too wide) detected at line 48
+\T1/pbk/l/n/10.95 3.10. 
+ []
+
+[11]
+Overfull \hbox (2.18968pt too wide) detected at line 90
+\T1/pbk/l/n/10.95 5.10. 
+ []
+
+
+Overfull \hbox (2.18968pt too wide) detected at line 92
+\T1/pbk/l/n/10.95 5.11. 
+ []
+
+
+Overfull \hbox (2.18968pt too wide) detected at line 94
+\T1/pbk/l/n/10.95 5.12. 
+ []
+
+
+Overfull \hbox (2.18968pt too wide) detected at line 96
+\T1/pbk/l/n/10.95 5.13. 
+ []
+
+
+Overfull \hbox (2.18968pt too wide) detected at line 98
+\T1/pbk/l/n/10.95 5.14. 
+ []
+
+
+Overfull \hbox (2.18968pt too wide) detected at line 100
+\T1/pbk/l/n/10.95 5.15. 
+ []
+
+
+Overfull \hbox (2.18968pt too wide) detected at line 102
+\T1/pbk/l/n/10.95 5.16. 
+ []
+
+
+Overfull \hbox (2.18968pt too wide) detected at line 104
+\T1/pbk/l/n/10.95 5.17. 
+ []
+
+)
 \tf@lof=\write8
 \openout8 = `plantilla_TFM.lof'.
 
@@ -1572,61 +1627,38 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.14 
-      [1
+l.18 	\item E
+             studio y anÃ¡lisis de los resultados, realizando comparaciÃ³n c...
+[1
 
 ]
-LaTeX Info: Redefining \. on input line 34.
-LaTeX Info: Redefining \% on input line 34.
+LaTeX Info: Redefining \. on input line 44.
+LaTeX Info: Redefining \% on input line 44.
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.34 	\item \textbf
-                   {CapÃ­tulo 6:} En este capÃ­tulo se detalla la experiment...
-[2]) (./secciones/02_Descripcion_del_problema.tex
+l.44 	\item \textbf
+                   {CapÃ­tulo 3:} En este capÃ­tulo se presentan tanto \text...
+[2]) (./secciones/03_Revision_Tecnicas.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [3] [4
 
 ]
 Cap\'{\i }tulo 2.
-[5]
-<imagenes/cap2/drone-architecture.png, id=692, 905.63344pt x 380.17032pt>
-File: imagenes/cap2/drone-architecture.png Graphic file (type png)
-<use imagenes/cap2/drone-architecture.png>
-Package pdftex.def Info: imagenes/cap2/drone-architecture.png  used on input li
-ne 36.
-(pdftex.def)             Requested size: 452.96826pt x 190.1485pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Info: Redefining \. on input line 45.
-LaTeX Info: Redefining \% on input line 45.
-[6]
-LaTeX Info: Redefining \. on input line 60.
-LaTeX Info: Redefining \% on input line 60.
- [7 <./imagenes/cap2/drone-architecture.PNG>])
-(./secciones/03_Revision_Tecnicas.tex
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [8]
-Cap\'{\i }tulo 3.
 LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <14.4> not available
 (Font)              Font shape `T1/pbk/db/it' tried instead on input line 4.
 LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <12> not available
 (Font)              Font shape `T1/pbk/l/n' tried instead on input line 8.
 LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <12> not available
 (Font)              Font shape `T1/pbk/db/n' tried instead on input line 8.
-<imagenes/cap3/neuron.png, id=717, 844.65562pt x 365.86688pt>
+<imagenes/cap3/neuron.png, id=688, 844.65562pt x 365.86688pt>
 File: imagenes/cap3/neuron.png Graphic file (type png)
 <use imagenes/cap3/neuron.png>
 Package pdftex.def Info: imagenes/cap3/neuron.png  used on input line 15.
 (pdftex.def)             Requested size: 317.0764pt x 137.34488pt.
-[9
-
- <./imagenes/cap3/neuron.PNG>]
+[5 <./imagenes/cap3/neuron.PNG>]
 LaTeX Font Info:    Trying to load font information for TS1+pbk on input line 2
 7.
 
@@ -1637,8 +1669,8 @@ LaTeX Font Info:    Font shape `TS1/pbk/m/n' in size <10.95> not available
 (Font)              Font shape `TS1/pbk/l/n' tried instead on input line 27.
 LaTeX Info: Redefining \. on input line 42.
 LaTeX Info: Redefining \% on input line 42.
- [10]
-<imagenes/cap3/mlp.png, id=750, 542.025pt x 246.9225pt>
+ [6]
+<imagenes/cap3/mlp.png, id=720, 542.025pt x 246.9225pt>
 File: imagenes/cap3/mlp.png Graphic file (type png)
 <use imagenes/cap3/mlp.png>
 Package pdftex.def Info: imagenes/cap3/mlp.png  used on input line 51.
@@ -1650,22 +1682,22 @@ Underfull \vbox (badness 6559) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 92.
 LaTeX Info: Redefining \% on input line 92.
- [11 <./imagenes/cap3/mlp.PNG>]
+ [7 <./imagenes/cap3/mlp.PNG>]
 LaTeX Info: Redefining \. on input line 92.
 LaTeX Info: Redefining \% on input line 92.
- [12]
+ [8]
 LaTeX Info: Redefining \. on input line 113.
 LaTeX Info: Redefining \% on input line 113.
- [13]
-<imagenes/cap3/conv.png, id=790, 517.935pt x 499.11469pt>
+ [9]
+<imagenes/cap3/conv.png, id=761, 517.935pt x 499.11469pt>
 File: imagenes/cap3/conv.png Graphic file (type png)
 <use imagenes/cap3/conv.png>
 Package pdftex.def Info: imagenes/cap3/conv.png  used on input line 123.
 (pdftex.def)             Requested size: 317.0764pt x 305.5638pt.
 LaTeX Info: Redefining \. on input line 129.
 LaTeX Info: Redefining \% on input line 129.
- [14 <./imagenes/cap3/conv.PNG>]
-<imagenes/cap3/pooling.png, id=807, 164.25pt x 68.547pt>
+ [10 <./imagenes/cap3/conv.PNG>]
+<imagenes/cap3/pooling.png, id=777, 164.25pt x 68.547pt>
 File: imagenes/cap3/pooling.png Graphic file (type png)
 <use imagenes/cap3/pooling.png>
 Package pdftex.def Info: imagenes/cap3/pooling.png  used on input line 154.
@@ -1676,8 +1708,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Info: Redefining \. on input line 167.
 LaTeX Info: Redefining \% on input line 167.
-[15]
-<imagenes/cap3/rl.png, id=826, 332.74312pt x 131.74219pt>
+[11]
+<imagenes/cap3/rl.png, id=795, 332.74312pt x 131.74219pt>
 File: imagenes/cap3/rl.png Graphic file (type png)
 <use imagenes/cap3/rl.png>
 Package pdftex.def Info: imagenes/cap3/rl.png  used on input line 187.
@@ -1688,22 +1720,22 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Info: Redefining \. on input line 196.
 LaTeX Info: Redefining \% on input line 196.
-[16 <./imagenes/cap3/pooling.png>]
+[12 <./imagenes/cap3/pooling.png>]
 LaTeX Info: Redefining \. on input line 215.
 LaTeX Info: Redefining \% on input line 215.
- [17 <./imagenes/cap3/rl.png>]
+ [13 <./imagenes/cap3/rl.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Info: Redefining \. on input line 268.
 LaTeX Info: Redefining \% on input line 268.
-[18]
+[14]
 LaTeX Info: Redefining \. on input line 283.
 LaTeX Info: Redefining \% on input line 283.
- [19]
+ [15]
 LaTeX Info: Redefining \. on input line 310.
 LaTeX Info: Redefining \% on input line 310.
- [20]
+ [16]
 LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <8> not available
 (Font)              Font shape `T1/pbk/l/n' tried instead on input line 348.
 LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <6> not available
@@ -1714,37 +1746,46 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Info: Redefining \. on input line 362.
 LaTeX Info: Redefining \% on input line 362.
-[21]
+[17]
 LaTeX Info: Redefining \. on input line 368.
 LaTeX Info: Redefining \% on input line 368.
+ [18]
+LaTeX Info: Redefining \. on input line 391.
+LaTeX Info: Redefining \% on input line 391.
+ [19]
+LaTeX Info: Redefining \. on input line 415.
+LaTeX Info: Redefining \% on input line 415.
+ [20]
+LaTeX Info: Redefining \. on input line 455.
+LaTeX Info: Redefining \% on input line 455.
+ [21]
+LaTeX Info: Redefining \. on input line 484.
+LaTeX Info: Redefining \% on input line 484.
  [22]
-LaTeX Info: Redefining \. on input line 394.
-LaTeX Info: Redefining \% on input line 394.
+LaTeX Info: Redefining \. on input line 508.
+LaTeX Info: Redefining \% on input line 508.
  [23]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Info: Redefining \. on input line 442.
-LaTeX Info: Redefining \% on input line 442.
-[24]
-LaTeX Info: Redefining \. on input line 463.
-LaTeX Info: Redefining \% on input line 463.
- [25]
-LaTeX Info: Redefining \. on input line 491.
-LaTeX Info: Redefining \% on input line 491.
- [26]) (./secciones/04_Simulador.tex
+<imagenes/cap2/drone-architecture.png, id=981, 905.63344pt x 380.17032pt>
+File: imagenes/cap2/drone-architecture.png Graphic file (type png)
+<use imagenes/cap2/drone-architecture.png>
+Package pdftex.def Info: imagenes/cap2/drone-architecture.png  used on input li
+ne 518.
+(pdftex.def)             Requested size: 452.96826pt x 190.1485pt.
+LaTeX Info: Redefining \. on input line 527.
+LaTeX Info: Redefining \% on input line 527.
+ [24 <./imagenes/cap2/drone-architecture.PNG>]) (./secciones/04_Simulador.tex
 LaTeX Info: Redefining \. on input line 2.
 LaTeX Info: Redefining \% on input line 2.
- [27] [28
+ [25] [26
 
 ]
-Cap\'{\i }tulo 4.
+Cap\'{\i }tulo 3.
 LaTeX Font Info:    Font shape `T1/pbk/b/it' in size <24.88> not available
 (Font)              Font shape `T1/pbk/db/it' tried instead on input line 2.
-[29]
+[27]
 LaTeX Info: Redefining \. on input line 47.
 LaTeX Info: Redefining \% on input line 47.
- [30]
+ [28]
 <imagenes/cap4/habitat_lab_structure.png, id=1023, 674.69585pt x 405.13402pt>
 File: imagenes/cap4/habitat_lab_structure.png Graphic file (type png)
 <use imagenes/cap4/habitat_lab_structure.png>
@@ -1757,15 +1798,15 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Info: Redefining \. on input line 87.
 LaTeX Info: Redefining \% on input line 87.
-[31]
+[29]
 Underfull \vbox (badness 4765) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 100.
 LaTeX Info: Redefining \% on input line 100.
- [32 <./imagenes/cap4/habitat_lab_structure.png>]
+ [30 <./imagenes/cap4/habitat_lab_structure.png>]
 LaTeX Info: Redefining \. on input line 129.
 LaTeX Info: Redefining \% on input line 129.
- [33]
+ [31]
 Overfull \hbox (0.85814pt too wide) in paragraph at lines 142--143
 []\T1/pbk/db/it/10.95 ObjectNavigationTask \T1/pbk/db/n/10.95 (na-ve-ga-ción a 
 ob-je-to): \T1/pbk/l/n/10.95 Una va-rian-te de \T1/pbk/l/it/10.95 Na-vi-ga-tion
@@ -1781,7 +1822,7 @@ bk/l/n/10.95 , \T1/pbk/l/it/10.95 Rearran-
 
 LaTeX Info: Redefining \. on input line 161.
 LaTeX Info: Redefining \% on input line 161.
-[34]
+[32]
 Overfull \hbox (19.71198pt too wide) in paragraph at lines 198--199
 []\T1/pbk/db/it/10.95 RearrangeDatasetV0 \T1/pbk/l/n/10.95 pa-ra ta-reas de re-
 or-ga-ni-za-ción (\T1/pbk/l/it/10.95 Rearran-ge-Pick-Task \T1/pbk/l/n/10.95 y \
@@ -1790,21 +1831,21 @@ T1/pbk/l/it/10.95 Rearran-
 
 LaTeX Info: Redefining \. on input line 199.
 LaTeX Info: Redefining \% on input line 199.
-[35]
-<imagenes/cap4/matterport.png, id=1056, 1797.71625pt x 530.98375pt>
+[33]
+<imagenes/cap4/matterport.png, id=1057, 1797.71625pt x 530.98375pt>
 File: imagenes/cap4/matterport.png Graphic file (type png)
 <use imagenes/cap4/matterport.png>
 Package pdftex.def Info: imagenes/cap4/matterport.png  used on input line 223.
 (pdftex.def)             Requested size: 452.96826pt x 133.79077pt.
 LaTeX Info: Redefining \. on input line 233.
 LaTeX Info: Redefining \% on input line 233.
- [36 <./imagenes/cap4/matterport.png>]
-<imagenes/cap4/gibson.jpg, id=1066, 1541.76pt x 513.92pt>
+ [34 <./imagenes/cap4/matterport.png>]
+<imagenes/cap4/gibson.jpg, id=1067, 1541.76pt x 513.92pt>
 File: imagenes/cap4/gibson.jpg Graphic file (type jpg)
 <use imagenes/cap4/gibson.jpg>
 Package pdftex.def Info: imagenes/cap4/gibson.jpg  used on input line 240.
 (pdftex.def)             Requested size: 452.96826pt x 150.98558pt.
-<imagenes/cap4/replicaCAD.png, id=1073, 954.56625pt x 270.25969pt>
+<imagenes/cap4/replicaCAD.png, id=1074, 954.56625pt x 270.25969pt>
 File: imagenes/cap4/replicaCAD.png Graphic file (type png)
 <use imagenes/cap4/replicaCAD.png>
 Package pdftex.def Info: imagenes/cap4/replicaCAD.png  used on input line 259.
@@ -1821,8 +1862,8 @@ Overfull \hbox (2.45145pt too wide) in paragraph at lines 264--265
 
 LaTeX Info: Redefining \. on input line 272.
 LaTeX Info: Redefining \% on input line 272.
-[37 <./imagenes/cap4/gibson.jpg>]
-<imagenes/cap4/hm3d.png, id=1082, 3292.3pt x 1027.84pt>
+[35 <./imagenes/cap4/gibson.jpg>]
+<imagenes/cap4/hm3d.png, id=1083, 3292.3pt x 1027.84pt>
 File: imagenes/cap4/hm3d.png Graphic file (type png)
 <use imagenes/cap4/hm3d.png>
 Package pdftex.def Info: imagenes/cap4/hm3d.png  used on input line 281.
@@ -1838,11 +1879,11 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Info: Redefining \. on input line 345.
 LaTeX Info: Redefining \% on input line 345.
-[38 <./imagenes/cap4/replicaCAD.PNG> <./imagenes/cap4/hm3d.png (PNG copy)>]
+[36 <./imagenes/cap4/replicaCAD.PNG> <./imagenes/cap4/hm3d.png (PNG copy)>]
 LaTeX Info: Redefining \. on input line 360.
 LaTeX Info: Redefining \% on input line 360.
 
-[39]
+[37]
 <imagenes/cap4/cameras.png, id=1099, 650.43pt x 214.55156pt>
 File: imagenes/cap4/cameras.png Graphic file (type png)
 <use imagenes/cap4/cameras.png>
@@ -1854,57 +1895,55 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Info: Redefining \. on input line 395.
 LaTeX Info: Redefining \% on input line 395.
-[40]
-LaTeX Info: Redefining \. on input line 415.
-LaTeX Info: Redefining \% on input line 415.
- [41 <./imagenes/cap4/cameras.PNG>]
-<imagenes/cap4/topdownmap.png, id=1113, 493.0922pt x 290.58563pt>
+[38]
+LaTeX Info: Redefining \. on input line 414.
+LaTeX Info: Redefining \% on input line 414.
+ [39 <./imagenes/cap4/cameras.PNG>]
+<imagenes/cap4/topdownmap.png, id=1114, 493.0922pt x 290.58563pt>
 File: imagenes/cap4/topdownmap.png Graphic file (type png)
 <use imagenes/cap4/topdownmap.png>
 Package pdftex.def Info: imagenes/cap4/topdownmap.png  used on input line 425.
 (pdftex.def)             Requested size: 271.7837pt x 160.17287pt.
-LaTeX Info: Redefining \. on input line 439.
-LaTeX Info: Redefining \% on input line 439.
- [42 <./imagenes/cap4/topdownmap.PNG>]
+LaTeX Info: Redefining \. on input line 437.
+LaTeX Info: Redefining \% on input line 437.
+ [40 <./imagenes/cap4/topdownmap.PNG>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 492.
-LaTeX Info: Redefining \% on input line 492.
-[43]
+LaTeX Info: Redefining \. on input line 489.
+LaTeX Info: Redefining \% on input line 489.
+[41]
 Overfull \hbox (3.17691pt too wide) in paragraph at lines 509--510
 []\T1/pbk/l/it/10.95 Habitat Ba-se-li-nes \T1/pbk/l/n/10.95 ofre-ce al-gu-nos a
 gen-tes pre-cons-trui-dos (prin-ci-pal-men-te agen-tes heu-
  []
 
-LaTeX Info: Redefining \. on input line 516.
-LaTeX Info: Redefining \% on input line 516.
-[44]
-LaTeX Info: Redefining \. on input line 551.
-LaTeX Info: Redefining \% on input line 551.
+LaTeX Info: Redefining \. on input line 512.
+LaTeX Info: Redefining \% on input line 512.
+[42]
+LaTeX Info: Redefining \. on input line 548.
+LaTeX Info: Redefining \% on input line 548.
+ [43]
+LaTeX Info: Redefining \. on input line 576.
+LaTeX Info: Redefining \% on input line 576.
+ [44]
+LaTeX Info: Redefining \. on input line 621.
+LaTeX Info: Redefining \% on input line 621.
  [45]
-LaTeX Info: Redefining \. on input line 617.
-LaTeX Info: Redefining \% on input line 617.
- [46]
-Underfull \vbox (badness 1466) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 623.
-LaTeX Info: Redefining \% on input line 623.
- [47]
 Overfull \hbox (11.7903pt too wide) in paragraph at lines 651--652
 []\T1/pbk/db/n/10.95 Políticas de ac-cio-nes\T1/pbk/l/n/10.95 , usan-do el de-c
 o-ra-dor \T1/pbk/l/it/10.95 @ba-se-li-ne_registry.register_policy\T1/pbk/l/n/10
 .95 . 
  []
 
-LaTeX Info: Redefining \. on input line 664.
-LaTeX Info: Redefining \% on input line 664.
-[48]
+LaTeX Info: Redefining \. on input line 659.
+LaTeX Info: Redefining \% on input line 659.
+[46]
 LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <9> not available
 (Font)              Font shape `T1/pbk/l/n' tried instead on input line 681.
 LaTeX Info: Redefining \. on input line 690.
 LaTeX Info: Redefining \% on input line 690.
- [49] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+ [47] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -1913,149 +1952,145 @@ File: lstlang1.sty 2019/09/10 1.8c listings language file
 (./secciones/05_Diseno_Agentes.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [50]
-Cap\'{\i }tulo 5.
-[51
+ [48]
+Cap\'{\i }tulo 4.
+[49
 
 ]
-<imagenes/cap5/normalized.png, id=1235, 192.72pt x 192.72pt>
+<imagenes/cap5/normalized.png, id=1236, 192.72pt x 192.72pt>
 File: imagenes/cap5/normalized.png Graphic file (type png)
 <use imagenes/cap5/normalized.png>
-Package pdftex.def Info: imagenes/cap5/normalized.png  used on input line 45.
+Package pdftex.def Info: imagenes/cap5/normalized.png  used on input line 51.
 (pdftex.def)             Requested size: 192.71951pt x 192.71951pt.
-LaTeX Info: Redefining \. on input line 51.
-LaTeX Info: Redefining \% on input line 51.
- [52 <./imagenes/cap5/normalized.png (PNG copy)>]
-LaTeX Info: Redefining \. on input line 81.
-LaTeX Info: Redefining \% on input line 81.
- [53]
-LaTeX Info: Redefining \. on input line 114.
-LaTeX Info: Redefining \% on input line 114.
- [54]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Info: Redefining \. on input line 57.
+LaTeX Info: Redefining \% on input line 57.
+[50]
+Underfull \vbox (badness 1259) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 77.
+LaTeX Info: Redefining \% on input line 77.
+ [51 <./imagenes/cap5/normalized.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 107.
+LaTeX Info: Redefining \% on input line 107.
+ [52]
 File: imagenes/cap5/normalized.png Graphic file (type png)
 <use imagenes/cap5/normalized.png>
-Package pdftex.def Info: imagenes/cap5/normalized.png  used on input line 130.
+Package pdftex.def Info: imagenes/cap5/normalized.png  used on input line 136.
 (pdftex.def)             Requested size: 215.16267pt x 215.16267pt.
 LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <10> not available
-(Font)              Font shape `T1/pbk/l/n' tried instead on input line 131.
+(Font)              Font shape `T1/pbk/l/n' tried instead on input line 137.
 <imagenes/cap5/trimmed.png, id=1259, 192.72pt x 139.27031pt>
 File: imagenes/cap5/trimmed.png Graphic file (type png)
 <use imagenes/cap5/trimmed.png>
-Package pdftex.def Info: imagenes/cap5/trimmed.png  used on input line 135.
+Package pdftex.def Info: imagenes/cap5/trimmed.png  used on input line 141.
 (pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
 <imagenes/cap5/filled.png, id=1260, 192.72pt x 139.27031pt>
 File: imagenes/cap5/filled.png Graphic file (type png)
 <use imagenes/cap5/filled.png>
-Package pdftex.def Info: imagenes/cap5/filled.png  used on input line 141.
+Package pdftex.def Info: imagenes/cap5/filled.png  used on input line 147.
 (pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
 <imagenes/cap5/thresholded.png, id=1261, 192.72pt x 139.27031pt>
 File: imagenes/cap5/thresholded.png Graphic file (type png)
 <use imagenes/cap5/thresholded.png>
-Package pdftex.def Info: imagenes/cap5/thresholded.png  used on input line 146.
+Package pdftex.def Info: imagenes/cap5/thresholded.png  used on input line 152.
 
 (pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
 <imagenes/cap5/cleaned.png, id=1262, 192.72pt x 139.27031pt>
 File: imagenes/cap5/cleaned.png Graphic file (type png)
 <use imagenes/cap5/cleaned.png>
-Package pdftex.def Info: imagenes/cap5/cleaned.png  used on input line 152.
+Package pdftex.def Info: imagenes/cap5/cleaned.png  used on input line 158.
 (pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
 <imagenes/cap5/dilated.png, id=1263, 192.72pt x 139.27031pt>
 File: imagenes/cap5/dilated.png Graphic file (type png)
 <use imagenes/cap5/dilated.png>
-Package pdftex.def Info: imagenes/cap5/dilated.png  used on input line 157.
+Package pdftex.def Info: imagenes/cap5/dilated.png  used on input line 163.
 (pdftex.def)             Requested size: 215.16267pt x 155.48865pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Info: Redefining \. on input line 197.
-LaTeX Info: Redefining \% on input line 197.
-[55]
-LaTeX Info: Redefining \. on input line 197.
-LaTeX Info: Redefining \% on input line 197.
- [56 <./imagenes/cap5/trimmed.png (PNG copy)> <./imagenes/cap5/filled.png (PNG 
+LaTeX Info: Redefining \. on input line 179.
+LaTeX Info: Redefining \% on input line 179.
+ [53]
+LaTeX Info: Redefining \. on input line 179.
+LaTeX Info: Redefining \% on input line 179.
+ [54 <./imagenes/cap5/trimmed.png (PNG copy)> <./imagenes/cap5/filled.png (PNG 
 copy)> <./imagenes/cap5/thresholded.png (PNG copy)> <./imagenes/cap5/cleaned.pn
 g (PNG copy)> <./imagenes/cap5/dilated.png (PNG copy)>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Info: Redefining \. on input line 232.
-LaTeX Info: Redefining \% on input line 232.
-[57]
-LaTeX Info: Redefining \. on input line 251.
-LaTeX Info: Redefining \% on input line 251.
+LaTeX Info: Redefining \. on input line 209.
+LaTeX Info: Redefining \% on input line 209.
+ [55]
+LaTeX Info: Redefining \. on input line 243.
+LaTeX Info: Redefining \% on input line 243.
+ [56]
+LaTeX Info: Redefining \. on input line 287.
+LaTeX Info: Redefining \% on input line 287.
+ [57]
+LaTeX Info: Redefining \. on input line 319.
+LaTeX Info: Redefining \% on input line 319.
  [58]
-LaTeX Info: Redefining \. on input line 285.
-LaTeX Info: Redefining \% on input line 285.
- [59]
-LaTeX Info: Redefining \. on input line 322.
-LaTeX Info: Redefining \% on input line 322.
- [60]
-<imagenes/cap5/arquitectura1.png, id=1306, 543.02875pt x 904.37875pt>
+<imagenes/cap5/arquitectura1.png, id=1307, 543.02875pt x 904.37875pt>
 File: imagenes/cap5/arquitectura1.png Graphic file (type png)
 <use imagenes/cap5/arquitectura1.png>
 Package pdftex.def Info: imagenes/cap5/arquitectura1.png  used on input line 33
-6.
+8.
 (pdftex.def)             Requested size: 384.64993pt x 640.61174pt.
-LaTeX Info: Redefining \. on input line 358.
-LaTeX Info: Redefining \% on input line 358.
+LaTeX Info: Redefining \. on input line 357.
+LaTeX Info: Redefining \% on input line 357.
+ [59]
+LaTeX Info: Redefining \. on input line 357.
+LaTeX Info: Redefining \% on input line 357.
+ [60 <./imagenes/cap5/arquitectura1.png>]
+LaTeX Info: Redefining \. on input line 379.
+LaTeX Info: Redefining \% on input line 379.
  [61]
-LaTeX Info: Redefining \. on input line 358.
-LaTeX Info: Redefining \% on input line 358.
- [62 <./imagenes/cap5/arquitectura1.png>]
-LaTeX Info: Redefining \. on input line 381.
-LaTeX Info: Redefining \% on input line 381.
- [63]
 LaTeX Info: Redefining \. on input line 404.
 LaTeX Info: Redefining \% on input line 404.
- [64]
+ [62]
 <imagenes/cap5/arquitectura2.png, id=1346, 573.14125pt x 1014.79124pt>
 File: imagenes/cap5/arquitectura2.png Graphic file (type png)
 <use imagenes/cap5/arquitectura2.png>
 Package pdftex.def Info: imagenes/cap5/arquitectura2.png  used on input line 41
-6.
+8.
 (pdftex.def)             Requested size: 361.8155pt x 640.61174pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (3.11877pt too wide) in paragraph at lines 457--458
+Overfull \hbox (3.11877pt too wide) in paragraph at lines 459--460
 []\T1/pbk/l/n/10.95 Como ya se ha men-cio-na-do, la ac-tua-ción del agen-te si-
 gue el pa-ra-dig-ma de exploración-
  []
 
-LaTeX Info: Redefining \. on input line 461.
-LaTeX Info: Redefining \% on input line 461.
-[65]
-LaTeX Info: Redefining \. on input line 461.
-LaTeX Info: Redefining \% on input line 461.
- [66 <./imagenes/cap5/arquitectura2.png>]
+LaTeX Info: Redefining \. on input line 460.
+LaTeX Info: Redefining \% on input line 460.
+[63]
+LaTeX Info: Redefining \. on input line 460.
+LaTeX Info: Redefining \% on input line 460.
+ [64 <./imagenes/cap5/arquitectura2.png>]
+LaTeX Info: Redefining \. on input line 496.
+LaTeX Info: Redefining \% on input line 496.
+ [65]
+LaTeX Info: Redefining \. on input line 515.
+LaTeX Info: Redefining \% on input line 515.
+ [66]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Info: Redefining \. on input line 499.
-LaTeX Info: Redefining \% on input line 499.
-[67]
-LaTeX Info: Redefining \. on input line 516.
-LaTeX Info: Redefining \% on input line 516.
- [68]
-
-LaTeX Warning: Command \~ invalid in math mode on input line 537.
+LaTeX Warning: Command \~ invalid in math mode on input line 539.
 
 Missing character: There is no ñ in font cmr10!
-LaTeX Info: Redefining \. on input line 568.
-LaTeX Info: Redefining \% on input line 568.
-[69]
-Overfull \hbox (5.34145pt too wide) detected at line 583
+LaTeX Info: Redefining \. on input line 565.
+LaTeX Info: Redefining \% on input line 565.
+[67]
+Overfull \hbox (5.34145pt too wide) detected at line 585
 \OML/cmm/m/it/10.95 exp[]q\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 exp[]a\OT1/cm
 r/m/n/10.95 ) = []
  []
 
 LaTeX Info: Redefining \. on input line 585.
 LaTeX Info: Redefining \% on input line 585.
-[70]
-Overfull \hbox (1.68323pt too wide) in paragraph at lines 603--604
+[68]
+Overfull \hbox (1.68323pt too wide) in paragraph at lines 605--606
 []\T1/pbk/l/n/10.95 Además, el agen-te al-ma-ce-na re-gis-tros de su pro-gre-so
  du-ran-te el en-tre-na-mien-to (\T1/pbk/l/it/10.95 check-
  []
@@ -2063,143 +2098,541 @@ Overfull \hbox (1.68323pt too wide) in paragraph at lines 603--604
 ) (./secciones/06_Experimentacion.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [71] [72
+ [69] [70
+
+]
+Cap\'{\i }tulo 5.
+[71]
+LaTeX Info: Redefining \. on input line 90.
+LaTeX Info: Redefining \% on input line 90.
+ [72]
+LaTeX Info: Redefining \. on input line 121.
+LaTeX Info: Redefining \% on input line 121.
+ [73]
+LaTeX Info: Redefining \. on input line 152.
+LaTeX Info: Redefining \% on input line 152.
+ [74]
+Package epstopdf Info: Source file: <imagenes/cap6/dataset/success.eps>
+(epstopdf)                    date: 2021-09-09 03:44:04
+(epstopdf)                    size: 19346 bytes
+(epstopdf)             Output file: <imagenes/cap6/dataset/success-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2021-09-09 03:49:39
+(epstopdf)                    size: 13122 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/dataset/succ
+ess-eps-converted-to.pdf imagenes/cap6/dataset/success.eps>
+(epstopdf)             \includegraphics on input line 171.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/dataset/success-eps-converted-to.pdf, id=1424, 726.87558pt x 365
+.0739pt>
+File: imagenes/cap6/dataset/success-eps-converted-to.pdf Graphic file (type pdf
+)
+<use imagenes/cap6/dataset/success-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/dataset/success-eps-converted-to.pdf  us
+ed on input line 171.
+(pdftex.def)             Requested size: 407.66867pt x 204.7575pt.
+LaTeX Info: Redefining \. on input line 177.
+LaTeX Info: Redefining \% on input line 177.
+ [75 <./imagenes/cap6/dataset/success-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <imagenes/cap6/dataset/smoothed_distances.e
+ps>
+(epstopdf)                    date: 2021-09-09 03:43:49
+(epstopdf)                    size: 37012 bytes
+(epstopdf)             Output file: <imagenes/cap6/dataset/smoothed_distances-e
+ps-converted-to.pdf>
+(epstopdf)                    date: 2021-09-09 03:55:28
+(epstopdf)                    size: 18413 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/dataset/smoo
+thed_distances-eps-converted-to.pdf imagenes/cap6/dataset/smoothed_distances.ep
+s>
+(epstopdf)             \includegraphics on input line 180.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/dataset/smoothed_distances-eps-converted-to.pdf, id=1463, 611.26
+366pt x 382.60942pt>
+File: imagenes/cap6/dataset/smoothed_distances-eps-converted-to.pdf Graphic fil
+e (type pdf)
+<use imagenes/cap6/dataset/smoothed_distances-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/dataset/smoothed_distances-eps-converted
+-to.pdf  used on input line 180.
+(pdftex.def)             Requested size: 407.66867pt x 255.17351pt.
+Package epstopdf Info: Source file: <imagenes/cap6/standard/success.eps>
+(epstopdf)                    date: 2021-09-08 21:41:51
+(epstopdf)                    size: 20483 bytes
+(epstopdf)             Output file: <imagenes/cap6/standard/success-eps-convert
+ed-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:31:05
+(epstopdf)                    size: 12761 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/standard/suc
+cess-eps-converted-to.pdf imagenes/cap6/standard/success.eps>
+(epstopdf)             \includegraphics on input line 195.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/standard/success-eps-converted-to.pdf, id=1467, 726.87558pt x 36
+5.0739pt>
+File: imagenes/cap6/standard/success-eps-converted-to.pdf Graphic file (type pd
+f)
+<use imagenes/cap6/standard/success-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/standard/success-eps-converted-to.pdf  u
+sed on input line 195.
+(pdftex.def)             Requested size: 407.66867pt x 204.7575pt.
+LaTeX Info: Redefining \. on input line 199.
+LaTeX Info: Redefining \% on input line 199.
+[76 <./imagenes/cap6/dataset/smoothed_distances-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <imagenes/cap6/standard/cumulative_smoothed
+_times.eps>
+(epstopdf)                    date: 2021-09-08 21:41:12
+(epstopdf)                    size: 33480 bytes
+(epstopdf)             Output file: <imagenes/cap6/standard/cumulative_smoothed
+_times-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:27:49
+(epstopdf)                    size: 16955 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/standard/cum
+ulative_smoothed_times-eps-converted-to.pdf imagenes/cap6/standard/cumulative_s
+moothed_times.eps>
+(epstopdf)             \includegraphics on input line 206.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/standard/cumulative_smoothed_times-eps-converted-to.pdf, id=1507
+, 627.62483pt x 378.79518pt>
+File: imagenes/cap6/standard/cumulative_smoothed_times-eps-converted-to.pdf Gra
+phic file (type pdf)
+<use imagenes/cap6/standard/cumulative_smoothed_times-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/standard/cumulative_smoothed_times-eps-c
+onverted-to.pdf  used on input line 206.
+(pdftex.def)             Requested size: 407.66867pt x 246.05211pt.
+LaTeX Info: Redefining \. on input line 212.
+LaTeX Info: Redefining \% on input line 212.
+ [77 <./imagenes/cap6/standard/success-eps-converted-to.pdf> <./imagenes/cap6/s
+tandard/cumulative_smoothed_times-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <imagenes/cap6/standard/smoothed_actions.ep
+s>
+(epstopdf)                    date: 2021-09-08 21:41:18
+(epstopdf)                    size: 49583 bytes
+(epstopdf)             Output file: <imagenes/cap6/standard/smoothed_actions-ep
+s-converted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:31:05
+(epstopdf)                    size: 18811 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/standard/smo
+othed_actions-eps-converted-to.pdf imagenes/cap6/standard/smoothed_actions.eps>
+
+(epstopdf)             \includegraphics on input line 219.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/standard/smoothed_actions-eps-converted-to.pdf, id=1577, 614.445
+59pt x 378.79518pt>
+File: imagenes/cap6/standard/smoothed_actions-eps-converted-to.pdf Graphic file
+ (type pdf)
+<use imagenes/cap6/standard/smoothed_actions-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/standard/smoothed_actions-eps-converted-
+to.pdf  used on input line 219.
+(pdftex.def)             Requested size: 362.37598pt x 223.40051pt.
+LaTeX Info: Redefining \. on input line 227.
+LaTeX Info: Redefining \% on input line 227.
+ [78 <./imagenes/cap6/standard/smoothed_actions-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <imagenes/cap6/standard/smoothed_distances.
+eps>
+(epstopdf)                    date: 2021-09-08 21:41:28
+(epstopdf)                    size: 51345 bytes
+(epstopdf)             Output file: <imagenes/cap6/standard/smoothed_distances-
+eps-converted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:31:05
+(epstopdf)                    size: 21608 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/standard/smo
+othed_distances-eps-converted-to.pdf imagenes/cap6/standard/smoothed_distances.
+eps>
+(epstopdf)             \includegraphics on input line 230.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/standard/smoothed_distances-eps-converted-to.pdf, id=1614, 611.2
+6366pt x 382.60942pt>
+File: imagenes/cap6/standard/smoothed_distances-eps-converted-to.pdf Graphic fi
+le (type pdf)
+<use imagenes/cap6/standard/smoothed_distances-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/standard/smoothed_distances-eps-converte
+d-to.pdf  used on input line 230.
+(pdftex.def)             Requested size: 407.66867pt x 255.17351pt.
+Package epstopdf Info: Source file: <imagenes/cap6/standard/smoothed_rewards.ep
+s>
+(epstopdf)                    date: 2021-09-08 21:41:49
+(epstopdf)                    size: 50948 bytes
+(epstopdf)             Output file: <imagenes/cap6/standard/smoothed_rewards-ep
+s-converted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:31:06
+(epstopdf)                    size: 21377 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/standard/smo
+othed_rewards-eps-converted-to.pdf imagenes/cap6/standard/smoothed_rewards.eps>
+
+(epstopdf)             \includegraphics on input line 243.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/standard/smoothed_rewards-eps-converted-to.pdf, id=1616, 622.857
+01pt x 378.79518pt>
+File: imagenes/cap6/standard/smoothed_rewards-eps-converted-to.pdf Graphic file
+ (type pdf)
+<use imagenes/cap6/standard/smoothed_rewards-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/standard/smoothed_rewards-eps-converted-
+to.pdf  used on input line 243.
+(pdftex.def)             Requested size: 407.66867pt x 247.93059pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 247.
+LaTeX Info: Redefining \% on input line 247.
+ [79 <./imagenes/cap6/standard/smoothed_distances-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <imagenes/cap6/prioritized/success.eps>
+(epstopdf)                    date: 2021-09-08 22:56:00
+(epstopdf)                    size: 19944 bytes
+(epstopdf)             Output file: <imagenes/cap6/prioritized/success-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:55:21
+(epstopdf)                    size: 12730 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/prioritized/
+success-eps-converted-to.pdf imagenes/cap6/prioritized/success.eps>
+(epstopdf)             \includegraphics on input line 254.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/prioritized/success-eps-converted-to.pdf, id=1656, 720.49174pt x
+ 365.0739pt>
+File: imagenes/cap6/prioritized/success-eps-converted-to.pdf Graphic file (type
+ pdf)
+<use imagenes/cap6/prioritized/success-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/prioritized/success-eps-converted-to.pdf
+  used on input line 254.
+(pdftex.def)             Requested size: 407.66867pt x 206.56793pt.
+LaTeX Info: Redefining \. on input line 260.
+LaTeX Info: Redefining \% on input line 260.
+ [80 <./imagenes/cap6/standard/smoothed_rewards-eps-converted-to.pdf> <./imagen
+es/cap6/prioritized/success-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <imagenes/cap6/prioritized/cumulative_smoot
+hed_times.eps>
+(epstopdf)                    date: 2021-09-08 22:55:38
+(epstopdf)                    size: 37989 bytes
+(epstopdf)             Output file: <imagenes/cap6/prioritized/cumulative_smoot
+hed_times-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:55:21
+(epstopdf)                    size: 17655 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/prioritized/
+cumulative_smoothed_times-eps-converted-to.pdf imagenes/cap6/prioritized/cumula
+tive_smoothed_times.eps>
+(epstopdf)             \includegraphics on input line 267.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/prioritized/cumulative_smoothed_times-eps-converted-to.pdf, id=1
+725, 627.62483pt x 378.79518pt>
+File: imagenes/cap6/prioritized/cumulative_smoothed_times-eps-converted-to.pdf 
+Graphic file (type pdf)
+<use imagenes/cap6/prioritized/cumulative_smoothed_times-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/prioritized/cumulative_smoothed_times-ep
+s-converted-to.pdf  used on input line 267.
+(pdftex.def)             Requested size: 407.66867pt x 246.05211pt.
+Package epstopdf Info: Source file: <imagenes/cap6/prioritized/smoothed_actions
+.eps>
+(epstopdf)                    date: 2021-09-08 22:55:44
+(epstopdf)                    size: 51497 bytes
+(epstopdf)             Output file: <imagenes/cap6/prioritized/smoothed_actions
+-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:55:21
+(epstopdf)                    size: 18249 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/prioritized/
+smoothed_actions-eps-converted-to.pdf imagenes/cap6/prioritized/smoothed_action
+s.eps>
+(epstopdf)             \includegraphics on input line 280.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/prioritized/smoothed_actions-eps-converted-to.pdf, id=1727, 614.
+44559pt x 378.79518pt>
+File: imagenes/cap6/prioritized/smoothed_actions-eps-converted-to.pdf Graphic f
+ile (type pdf)
+<use imagenes/cap6/prioritized/smoothed_actions-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/prioritized/smoothed_actions-eps-convert
+ed-to.pdf  used on input line 280.
+(pdftex.def)             Requested size: 407.66867pt x 251.32341pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Info: Redefining \. on input line 286.
+LaTeX Info: Redefining \% on input line 286.
+[81 <./imagenes/cap6/prioritized/cumulative_smoothed_times-eps-converted-to.pdf
+>]
+Package epstopdf Info: Source file: <imagenes/cap6/prioritized/smoothed_distanc
+es.eps>
+(epstopdf)                    date: 2021-09-08 22:55:50
+(epstopdf)                    size: 54353 bytes
+(epstopdf)             Output file: <imagenes/cap6/prioritized/smoothed_distanc
+es-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:55:21
+(epstopdf)                    size: 22778 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/prioritized/
+smoothed_distances-eps-converted-to.pdf imagenes/cap6/prioritized/smoothed_dist
+ances.eps>
+(epstopdf)             \includegraphics on input line 289.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/prioritized/smoothed_distances-eps-converted-to.pdf, id=1766, 61
+1.26366pt x 382.60942pt>
+File: imagenes/cap6/prioritized/smoothed_distances-eps-converted-to.pdf Graphic
+ file (type pdf)
+<use imagenes/cap6/prioritized/smoothed_distances-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/prioritized/smoothed_distances-eps-conve
+rted-to.pdf  used on input line 289.
+(pdftex.def)             Requested size: 407.66867pt x 255.17351pt.
+LaTeX Info: Redefining \. on input line 295.
+LaTeX Info: Redefining \% on input line 295.
+ [82 <./imagenes/cap6/prioritized/smoothed_actions-eps-converted-to.pdf> <./ima
+genes/cap6/prioritized/smoothed_distances-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <imagenes/cap6/prioritized/smoothed_rewards
+.eps>
+(epstopdf)                    date: 2021-09-08 22:55:58
+(epstopdf)                    size: 54133 bytes
+(epstopdf)             Output file: <imagenes/cap6/prioritized/smoothed_rewards
+-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:55:21
+(epstopdf)                    size: 22708 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/prioritized/
+smoothed_rewards-eps-converted-to.pdf imagenes/cap6/prioritized/smoothed_reward
+s.eps>
+(epstopdf)             \includegraphics on input line 302.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/prioritized/smoothed_rewards-eps-converted-to.pdf, id=1839, 622.
+85701pt x 378.79518pt>
+File: imagenes/cap6/prioritized/smoothed_rewards-eps-converted-to.pdf Graphic f
+ile (type pdf)
+<use imagenes/cap6/prioritized/smoothed_rewards-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/prioritized/smoothed_rewards-eps-convert
+ed-to.pdf  used on input line 302.
+(pdftex.def)             Requested size: 407.66867pt x 247.93059pt.
+LaTeX Info: Redefining \. on input line 318.
+LaTeX Info: Redefining \% on input line 318.
+ [83 <./imagenes/cap6/prioritized/smoothed_rewards-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <imagenes/cap6/comparison/success.eps>
+(epstopdf)                    date: 2021-09-08 23:25:15
+(epstopdf)                    size: 21081 bytes
+(epstopdf)             Output file: <imagenes/cap6/comparison/success-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:55:21
+(epstopdf)                    size: 13295 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/comparison/s
+uccess-eps-converted-to.pdf imagenes/cap6/comparison/success.eps>
+(epstopdf)             \includegraphics on input line 333.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/comparison/success-eps-converted-to.pdf, id=1880, 720.49174pt x 
+365.0739pt>
+File: imagenes/cap6/comparison/success-eps-converted-to.pdf Graphic file (type 
+pdf)
+<use imagenes/cap6/comparison/success-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/comparison/success-eps-converted-to.pdf 
+ used on input line 333.
+(pdftex.def)             Requested size: 407.66867pt x 206.56793pt.
+LaTeX Info: Redefining \. on input line 339.
+LaTeX Info: Redefining \% on input line 339.
+ [84 <./imagenes/cap6/comparison/success-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <imagenes/cap6/comparison/cumulative_smooth
+ed_times.eps>
+(epstopdf)                    date: 2021-09-08 23:24:52
+(epstopdf)                    size: 34206 bytes
+(epstopdf)             Output file: <imagenes/cap6/comparison/cumulative_smooth
+ed_times-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:55:22
+(epstopdf)                    size: 16693 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/comparison/c
+umulative_smoothed_times-eps-converted-to.pdf imagenes/cap6/comparison/cumulati
+ve_smoothed_times.eps>
+(epstopdf)             \includegraphics on input line 344.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/comparison/cumulative_smoothed_times-eps-converted-to.pdf, id=19
+19, 627.62483pt x 378.79518pt>
+File: imagenes/cap6/comparison/cumulative_smoothed_times-eps-converted-to.pdf G
+raphic file (type pdf)
+<use imagenes/cap6/comparison/cumulative_smoothed_times-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/comparison/cumulative_smoothed_times-eps
+-converted-to.pdf  used on input line 344.
+(pdftex.def)             Requested size: 407.66867pt x 246.05211pt.
+Package epstopdf Info: Source file: <imagenes/cap6/comparison/smoothed_actions.
+eps>
+(epstopdf)                    date: 2021-09-08 23:24:58
+(epstopdf)                    size: 52408 bytes
+(epstopdf)             Output file: <imagenes/cap6/comparison/smoothed_actions-
+eps-converted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:55:22
+(epstopdf)                    size: 17107 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/comparison/s
+moothed_actions-eps-converted-to.pdf imagenes/cap6/comparison/smoothed_actions.
+eps>
+(epstopdf)             \includegraphics on input line 355.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/comparison/smoothed_actions-eps-converted-to.pdf, id=1921, 614.4
+4559pt x 378.79518pt>
+File: imagenes/cap6/comparison/smoothed_actions-eps-converted-to.pdf Graphic fi
+le (type pdf)
+<use imagenes/cap6/comparison/smoothed_actions-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/comparison/smoothed_actions-eps-converte
+d-to.pdf  used on input line 355.
+(pdftex.def)             Requested size: 407.66867pt x 251.32341pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package epstopdf Info: Source file: <imagenes/cap6/comparison/smoothed_distance
+s.eps>
+(epstopdf)                    date: 2021-09-08 23:25:04
+(epstopdf)                    size: 55011 bytes
+(epstopdf)             Output file: <imagenes/cap6/comparison/smoothed_distance
+s-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:55:22
+(epstopdf)                    size: 22446 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/comparison/s
+moothed_distances-eps-converted-to.pdf imagenes/cap6/comparison/smoothed_distan
+ces.eps>
+(epstopdf)             \includegraphics on input line 364.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/comparison/smoothed_distances-eps-converted-to.pdf, id=1923, 611
+.26366pt x 382.60942pt>
+File: imagenes/cap6/comparison/smoothed_distances-eps-converted-to.pdf Graphic 
+file (type pdf)
+<use imagenes/cap6/comparison/smoothed_distances-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/comparison/smoothed_distances-eps-conver
+ted-to.pdf  used on input line 364.
+(pdftex.def)             Requested size: 407.66867pt x 255.17351pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package epstopdf Info: Source file: <imagenes/cap6/comparison/smoothed_rewards.
+eps>
+(epstopdf)                    date: 2021-09-08 23:25:12
+(epstopdf)                    size: 55256 bytes
+(epstopdf)             Output file: <imagenes/cap6/comparison/smoothed_rewards-
+eps-converted-to.pdf>
+(epstopdf)                    date: 2021-09-09 04:55:22
+(epstopdf)                    size: 23136 bytes
+(epstopdf)             Command: <repstopdf --outfile=imagenes/cap6/comparison/s
+moothed_rewards-eps-converted-to.pdf imagenes/cap6/comparison/smoothed_rewards.
+eps>
+(epstopdf)             \includegraphics on input line 371.
+Package epstopdf Info: Output file is already uptodate.
+<imagenes/cap6/comparison/smoothed_rewards-eps-converted-to.pdf, id=1924, 622.8
+5701pt x 378.79518pt>
+File: imagenes/cap6/comparison/smoothed_rewards-eps-converted-to.pdf Graphic fi
+le (type pdf)
+<use imagenes/cap6/comparison/smoothed_rewards-eps-converted-to.pdf>
+Package pdftex.def Info: imagenes/cap6/comparison/smoothed_rewards-eps-converte
+d-to.pdf  used on input line 371.
+(pdftex.def)             Requested size: 407.66867pt x 247.93059pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./secciones/07_Conclusiones.tex
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [85 <./imagenes/cap6/comparison/cumulative_smoothed_times-eps-converted-to.pdf
+>] [86 <./imagenes/cap6/comparison/smoothed_actions-eps-converted-to.pdf> <./im
+agenes/cap6/comparison/smoothed_distances-eps-converted-to.pdf>]
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [87 <./imagenes/cap6/comparison/smoothed_rewards-eps-converted-to.pdf>]
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [88
 
 ]
 Cap\'{\i }tulo 6.
-[73]
-LaTeX Info: Redefining \. on input line 90.
-LaTeX Info: Redefining \% on input line 90.
- [74]
-LaTeX Info: Redefining \. on input line 121.
-LaTeX Info: Redefining \% on input line 121.
- [75]
-LaTeX Info: Redefining \. on input line 153.
-LaTeX Info: Redefining \% on input line 153.
- [76]) (./secciones/07_Conclusiones.tex
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [77] [78
-
-]
-Cap\'{\i }tulo 7.
-) [79] [80
+) [89] [90
 
 ]
 LaTeX Font Info:    Font shape `T1/pbk/m/sc' in size <10.95> not available
-(Font)              Font shape `T1/pbk/l/sc' tried instead on input line 55.
- [81]
-Overfull \hbox (0.28125pt too wide) in paragraph at lines 56--56
+(Font)              Font shape `T1/pbk/l/sc' tried instead on input line 53.
+
+Overfull \hbox (0.28125pt too wide) in paragraph at lines 54--54
 \T1/pbk/l/it/10.95 Generation Ma-chi-ne In-te-lli-gen-ce Al-go-rithms\T1/pbk/l/
 n/10.95 , 1st. O'Reilly Me-dia, Inc., 2017, \T1/pbk/l/sc/10.95 isbn\T1/pbk/l/n/
 10.95 :
  []
 
 
-Overfull \hbox (8.82208pt too wide) in paragraph at lines 56--56
+Overfull \hbox (8.82208pt too wide) in paragraph at lines 54--54
 \T1/pbk/l/n/10.95 con-vo-lu-tio-nal neu-ral net-works,'' \T1/pbk/l/it/10.95 Com
 -mu-ni-ca-tions of the ACM\T1/pbk/l/n/10.95 , vol. 60, págs. 84[]90,
  []
 
-
-Overfull \hbox (26.07312pt too wide) in paragraph at lines 56--56
+[91]
+Overfull \hbox (26.07312pt too wide) in paragraph at lines 54--54
 []\T1/pbk/l/n/10.95 C. S. Wi-ki, \T1/pbk/l/it/10.95 Max-pooling / Poo-ling\T1/p
 bk/l/n/10.95 , 2018. di-rec-ción: []$\T1/pcr/m/n/10.95 https : / / computerscie
 ncewiki .
  []
 
-LaTeX Info: Redefining \. on input line 55.
-LaTeX Info: Redefining \% on input line 55.
-[82]
-Overfull \hbox (5.6953pt too wide) in paragraph at lines 56--56
+
+Overfull \hbox (5.6953pt too wide) in paragraph at lines 54--54
 \T1/pbk/l/n/10.95 Rein-for-ce-ment Lear-ning,'' \T1/pbk/l/it/10.95 CoRR\T1/pbk/
 l/n/10.95 , vol. ab-s/1511.06581, 2015. ar-Xiv: []$\T1/pcr/m/n/10.95 1511 . 065
 81$[]\T1/pbk/l/n/10.95 .
  []
 
-LaTeX Info: Redefining \. on input line 55.
-LaTeX Info: Redefining \% on input line 55.
-[83]
-LaTeX Info: Redefining \. on input line 55.
-LaTeX Info: Redefining \% on input line 55.
- [84]
-Overfull \hbox (23.92894pt too wide) in paragraph at lines 56--56
+LaTeX Info: Redefining \. on input line 53.
+LaTeX Info: Redefining \% on input line 53.
+[92]
+LaTeX Info: Redefining \. on input line 53.
+LaTeX Info: Redefining \% on input line 53.
+ [93]
+LaTeX Info: Redefining \. on input line 53.
+LaTeX Info: Redefining \% on input line 53.
+ [94]
+Overfull \hbox (23.92894pt too wide) in paragraph at lines 54--54
 \T1/pbk/l/n/10.95 Human-Level Per-for-man-ce on Ima-ge-Net Clas-si-fi-ca-tion,'
 ' \T1/pbk/l/it/10.95 CoRR\T1/pbk/l/n/10.95 , vol. ab-s/1502.01852,
  []
 
-LaTeX Info: Redefining \. on input line 60.
-LaTeX Info: Redefining \% on input line 60.
-[85] (./secciones/09A_Manual_usuario.tex [86
+LaTeX Info: Redefining \. on input line 58.
+LaTeX Info: Redefining \% on input line 58.
+[95] (./secciones/09B_Ficheros_config.tex [96
 
 
 ]
 Ap\'{e}ndice A.
-) (./secciones/09B_Ficheros_config.tex [87] [88
-
-]
-Ap\'{e}ndice B.
-[89]
+[97]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 71.
 LaTeX Info: Redefining \% on input line 71.
- [90]
+ [98]
 LaTeX Info: Redefining \. on input line 119.
 LaTeX Info: Redefining \% on input line 119.
 
-[91]
+[99]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 157.
 LaTeX Info: Redefining \% on input line 157.
- [92]
+ [100]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 188.
 LaTeX Info: Redefining \% on input line 188.
- [93]
+ [101]
 LaTeX Info: Redefining \. on input line 231.
 LaTeX Info: Redefining \% on input line 231.
 
-[94]
+[102]
 LaTeX Info: Redefining \. on input line 279.
 LaTeX Info: Redefining \% on input line 279.
- [95]) (./secciones/09C_Graficas.tex
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [96]
-Ap\'{e}ndice C.
-) (./secciones/09D_CD.tex [97
-
-] [98
-
-]
-Ap\'{e}ndice D.
-) [99]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 70.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 70.
+ [103])
+LaTeX Info: Redefining \. on input line 64.
+LaTeX Info: Redefining \% on input line 64.
+ [104]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 64.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 64.
  (./plantilla_TFM.aux
 LaTeX Info: Redefining \. on input line 32.
 LaTeX Info: Redefining \% on input line 32.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 70.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 70.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 64.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 64.
 Package rerunfilecheck Info: File `plantilla_TFM.out' has not changed.
-(rerunfilecheck)             Checksum: 321D0758BC75EB77F20E32A52304BFBC;7245.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 70.
+(rerunfilecheck)             Checksum: F46542A4B9E24C78BBD0F62554A17992;6881.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 64.
 Package logreq Info: Writing requests to 'plantilla_TFM.run.xml'.
 \openout1 = `plantilla_TFM.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44183 strings out of 483007
- 917041 string characters out of 5961758
- 1731687 words of memory out of 5000000
- 57797 multiletter control sequences out of 15000+600000
+ 44290 strings out of 483007
+ 923333 string characters out of 5961758
+ 1736003 words of memory out of 5000000
+ 57890 multiletter control sequences out of 15000+600000
  574057 words of font info for 102 fonts, out of 8000000 for 9000
  107 hyphenation exceptions out of 8191
- 170i,22n,201p,1621b,3795s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 170i,22n,201p,1621b,3832s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -2224,10 +2657,10 @@ ive/texmf-dist/fonts/type1/urw/bookman/ubkdi8a.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/bookman/ubkl8a.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/urw/bookman/ubkli8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courie
 r/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on plantilla_TFM.pdf (115 pages, 3975004 bytes).
+Output written on plantilla_TFM.pdf (120 pages, 4245413 bytes).
 PDF statistics:
- 2073 PDF objects out of 2073 (max. 8388607)
- 1871 compressed objects within 19 object streams
- 684 named destinations out of 1000 (max. 500000)
- 880 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2710 PDF objects out of 2984 (max. 8388607)
+ 1989 compressed objects within 20 object streams
+ 700 named destinations out of 1000 (max. 500000)
+ 917 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,12 +1,18 @@
 \chapter{Diseño del agente}
 
-En este capítulo se detallará el diseño del agente propuesto para la resolución del problema. 
+En este capítulo se detalla el diseño del agente propuesto para la resolución del problema. 
 
-Se empezará presentando la formalización del conocimiento usada (estado, acción y recompensa) y las características físicas del agente. Tras esto, se describirán las dos arquitecturas propuestas para el agente: una primera basada en una red neuronal convolucional, y una segunda basada en una red profunda híbrida. Finalmente, se explicará el proceso de actuación y entrenamiento del agente.
+Se empieza presentando la formalización del conocimiento usada (estado, acción y recompensa) y las características tanto del problema como del agente físico. Tras esto, se describen las dos arquitecturas propuestas para el agente: una primera basada en una red neuronal convolucional, y una segunda basada en una red profunda híbrida. Finalmente, se explica el proceso de actuación y entrenamiento del agente, junto a unos breves detalles sobre la implementación del sistema.
 
 \section{Caracterización del conocimiento}
 
-En esta sección se describe la caracterización del conocimiento realizada, centrándose en los puntos principales del aprendizaje por refuerzo: el \textbf{estado}, las \textbf{acciones} disponibles y las \textbf{recompensas} que recibe el agente. Además, se describen las características del agente propuesto dentro del entorno \textit{Habitat}.
+En esta sección se describe la caracterización del conocimiento realizada, centrándose en los puntos principales del aprendizaje por refuerzo: el \textbf{estado}, las \textbf{acciones} disponibles y las \textbf{recompensas} que recibe el agente. Además, se describen las características del problema de diseño a resolver y las particularidades del agente propuesto dentro del entorno \textit{Habitat}.
+
+\subsection{Definición del problema de diseño}
+
+El problema a resolver es el diseño de un agente físico (un robot) capaz de navegar desde una posición inicial hasta una posición final (conocidas sus coordenadas) en un entorno de interior del que no se tiene conocimiento previo (como puede ser el interior de una casa) de forma eficiente. Este problema se encuadra en el campo de la navegación autónoma, concretamente en el de la \textbf{navegación a meta} (\textit{Point Goal Navigation}) \textbf{sin exploración previa} del entorno \cite{DBLP:journals/corr/abs-1807-06757}.
+
+Para lograr esto, es necesario entrenar al agente en un entorno controlado para que aprenda a navegar de forma autónoma en interiores desconocidos, usando alguna técnica de aprendizaje por refuerzo. Además. se busca que el agente sea capaz de navegar \textbf{sin exploración previa} (como se ha mencionado anteriormente), buscando un sistema reactivo frente a uno basado en exploración-navegación.
 
 \subsection{Características del agente físico en \textit{Habitat}}
 
@@ -29,7 +35,7 @@ Las características del agente físico simulado son las siguientes:
 	\begin{itemize}
 		\item \textbf{Distancia hasta la meta}: Un valor numérico que indica la distancia euclidiana hasta la meta (la distancia euclidiana entre el agente y la meta) en metros.
 		\item \textbf{Éxito:} Un valor booleano que indica si el agente está en la meta (verdadero) o falso. El agente se considera en la meta si se encuentra a menos de $0.3$ metros de esta.
-		\item \textbf{\textit{SPL} y \textit{Soft SPL}:} Dos valores numéricos que indican la métrica de \textit{Success weighted by Path Length} \cite{DBLP:journals/corr/abs-1807-06757} y su variante suavizada. Ambas fórmulas fueron definidas en el Capítulo 4.
+		\item \textbf{\textit{SPL} y \textit{Soft SPL}:} Dos valores numéricos que indican la métrica de \textit{Success weighted by Path Length} \cite{DBLP:journals/corr/abs-1807-06757} y su variante suavizada. Ambas fórmulas fueron definidas en el capítulo anterior.
 	\end{itemize}
 \end{itemize}
 
@@ -73,7 +79,7 @@ El agente es capaz de realizar \textbf{cuatro} acciones en total:
 	\item \textbf{Finalizar el episodio}. La inclusión de una acción para finalizar el episodio es una de las principales sugerencias de Peter Anderson \textit{et al.} \cite{DBLP:journals/corr/abs-1807-06757} para la evaluación de agentes físicos.
 \end{itemize}
 
-Como se comentó en el Capítulo 2 y se puede observar, el agente no es capaz de un movimiento omnidireccional (como sí podría un dron volador). El agente únicamente puede desplazarse hacia adelante, necesitando rotar sobre sí mismo para cambiar la dirección de su movimiento.
+Como se ha mencionado previamente y se puede observar, el agente no es capaz de un movimiento omnidireccional (como sí podría un dron volador). El agente únicamente puede desplazarse hacia adelante, necesitando rotar sobre sí mismo para cambiar la dirección de su movimiento.
 
 \subsection{Recompensas}
 
@@ -194,8 +200,6 @@ Se puede ver el pseudocódigo del proceso en la Figura \ref{alg:contour}.
 \label{alg:contour}
 \end{figure}
 
-\newpage 
-
 	\item \textbf{Método de columnas:} Un método original, consistente en dividir la imagen  en columnas de misma anchura, siendo cada columna un posible obstáculo. 
 	
 	El método consiste en dividir la imagen preprocesada en $8$ (elegido experimentalmente) columnas de anchura idéntica. Tras esto, se cuenta el número de pixeles blancos (obstáculos) en cada columna, considerando las columnas que tengan una cantidad superior al área mínima ($250$ pixeles como se ha mencionado previamente) como obstáculos. Para estas columnas, se estima la distancia a partir de una columna equivalente de la imagen original, usando la fórmula descrita previamente:
@@ -281,8 +285,6 @@ Una alternativa propuesta es incluir una regla adicional al cálculo de recompen
 	
 	Con esta regla adicional, se penaliza notablemente que el agente colisione con los obstáculos, fomentando que evite cualquier colisión con el entorno. Estas colisiones se comprueban usando la métrica \textit{COLLISIONS}.
 \end{itemize}
-
-\newpage
 
 \section{Arquitectura del agente}
 
@@ -598,7 +600,7 @@ Al final de cada episodio, el agente documenta el progreso durante el entrenamie
 	\item Recompensa media obtenida.
 \end{itemize}
 
-A partir de estas métricas se realizará un análisis del rendimiento del agente durante el entrenamiento en el Capítulo 6.
+A partir de estas métricas se realizará un análisis del rendimiento del agente durante el entrenamiento en el siguiente capítulo.
 
 Además, el agente almacena registros de su progreso durante el entrenamiento (\textit{checkpoints}), almacenando un total de \textbf{100} \textit{checkpoints} a lo largo de todo el entrenamiento (aproximadamente uno cada 150 episodios). Estos \textit{checkpoints} (ficheros de formato \textit{.pt}) contienen la siguiente información:
 \begin{itemize}

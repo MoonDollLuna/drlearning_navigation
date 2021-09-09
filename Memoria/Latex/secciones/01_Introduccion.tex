@@ -1,38 +1,50 @@
 \chapter{Introducción}
 
-En este capítulo se realizará una breve introducción a los contenidos que serán expuestos posteriormente a lo largo de la memoria. Tras esta presentación, se expondrá la motivación que ha propiciado el desarrollo de este trabajo. Finalmente, se describirá la estructura seguida por la memoria.
-
-\section{Introducción}
-
 La \textbf{navegación autónoma} de robots en entornos desconocidos y complejos es un problema de gran interés en la actualidad para el que se ha propuesto una amplia gama de soluciones, buscando que éstas sean a la vez eficientes durante su entrenamiento y capaces de navegar entornos de forma exitosa. Una de las familias de algoritmos más relevantes para este propósito son los \textbf{algoritmos de aprendizaje por refuerzo}, capaz de aprender de forma autónoma a navegar entornos desconocidos a partir de experiencia previa, con gran éxito.
 
 Además, la \textbf{simulación virtual} tanto de estos robots como de otros problemas es un campo en crecimiento, especialmente durante la pandemia del CoVID-19, al verse limitadas las capacidades de experimentación en entornos físicos.  Por tanto el objetivo de este trabajo es aunar el \textbf{desarrollo de un algoritmo híbrido eficiente} para la navegación en entornos complejos (como el interior de un domicilio) con el \textbf{estudio y uso de \textit{Habitat Sim}}, un simulador novedoso para el entrenamiento y evaluación de agentes robóticos físicos.
 
-Esta memoria comienza con una revisión de las principales técnicas usadas actualmente tanto en \textit{Deep Learning} como en aprendizaje por refuerzo y en navegación autónoma de robots (centrándose en los algoritmos de \textit{Artificial Potential Field}, o \textit{APF} por sus siglas en inglés). Tras ésto, se realiza un estudio en detalle del simulador \textit{Habitat Sim} y su principal librería / \textit{API} para \textit{Python}, \textit{Habitat  Lab}; centrándose en los principales componentes de la librería, su funcionamiento y su uso. Posteriormente, se describe el diseño e implementación que se ha realizado en el trabajo, haciendo hincapié en la representación del conocimiento (problema a resolver y definiciones de estado, acción y recompensa), las arquitecturas del agente propuestas y su funcionamiento tanto durante el entrenamiento como la actuación. 
+\section{Objetivos}
 
-Se procede después a la explicación de los experimentos realizados (tanto los parámetros usados como los experimentos a realizar), analizando el rendimiento de las variantes propuestas del agente durante el entrenamiento y en una evaluación posterior, analizando estos resultados y comparándolos con otros agentes usados como \textit{benchmarks}. Finalmente, se interpretarán estos resultados, extrayendo unas conclusiones y ofreciendo futuras líneas de trabajo a partir del conocimiento adquirido.
+El principal objetivo de este trabajo es el estudio y aplicación de técnicas de aprendizaje por refuerzo profundo y navegación autónoma basada en campos de potenciales para el desarrollo de un agente capaz de navegar entornos de interior, evaluando su viabilidad y eficacia.
+
+Para cumplir este objetivo, es necesario a su vez cumplir una serie de objetivos parciales:
+
+\begin{itemize}
+	\item Revisión de bibliografía para comprender plenamente las técnicas a usar durante el desarrollo.
+	\item Búsqueda y evaluación de librerías y herramientas disponibles para el desarrollo del agente (incluyendo simuladores, entornos de trabajo...)
+	\item Caracterización, formalización e implementación del agente y de posibles variaciones propuestas dentro del entorno elegido, para poder ser evaluado posteriormente.
+	\item Realización de experimentos para estudiar el comportamiento del agente durante el entrenamiento y posteriormente al enfrentarse a problemas reales.
+	\item Estudio y análisis de los resultados, realizando comparación con \textit{benchmarks} para extraer observaciones y conclusiones que permitan valorar la viabilidad y eficacia del agente propuesto.
+\end{itemize}
+
+Este trabajo además aborda un segundo objetivo, el estudio y uso del simulador \textit{Habitat Sim}, con el fin de evaluar su utilidad de cara a posteriores trabajos. Para esto, se plantean los siguientes objetivos parciales:
+
+\begin{itemize}
+	\item Revisión y estudio de documentación oficial y ejemplos ofrecidos por el simulador.
+	\item Desarrollo del agente descrito previamente en el marco del simulador, usando las herramientas ofrecidas.
+	\item Creación de documentación sobre el uso adecuado del simulador para facilitar trabajos posteriores.
+	\item Evaluación de la idoneidad del simulador para la resolución de problemas de navegación autónoma.
+\end{itemize}
 
 \section{Motivación}
 
 Este trabajo se puede entender como una continuación del trabajo realizado por C. Sampedro \textit{et al.} en 2018 \cite{Sampedro2018}, en el que se desarrolla con buenos resultados un sistema de navegación autónomo para drones aéreos usando aprendizaje por refuerzo profundo con campos de potenciales artificiales y láseres para percibir el entorno. Una de las metas de este trabajo es estudiar si la implementación de un algoritmo de características similares pero aplicado a robots terrestres usando cámaras de profundidad en interiores (domicilios, fábricas...) sería igualmente efectivo.
 
-Además, la situación de pandemia actual ha dejado en evidencia la necesidad del uso de simuladores, especialmente para algoritmos que necesiten un entrenamiento largo y que puedan necesitar equipamiento especializado para ello (como robots, drones, instalaciones especializadas...). Por eso, otra de las principales metas del trabajo es el estudio de la herramienta \textit{Habitat Sim} \cite{habitat19iccv} \cite{szot2021habitat}, viendo su viabilidad de cara a futuros trabajos.
-
-Para acabar, otra razón no despreciable para la elección de esta temática de trabajo es el propio interés de la alumna por el campo del aprendizaje por refuerzo profundo. Ya se realizó un trabajo previo estudiando la aplicación de estas técnicas a juegos reales como Tetris \cite{Jimenez2020}, y este trabajo sirve para ampliar más el conocimiento y aplicarlo a tecnologías modernas y a otros campos de interés.
+Además, el uso de simuladores para el entrenamiento y evaluación de algoritmos es hoy en día algo habitual, especialmente para algoritmos que necesiten un entrenamiento largo y que puedan necesitar equipamiento especializado para ello (como robots, drones, instalaciones especializadas...). Por eso, otra de las principales metas del trabajo es el estudio del entorno \textit{Habitat} \cite{habitat19iccv} \cite{szot2021habitat}, viendo su viabilidad de cara a futuros trabajos.
 
 \section{Estructura}
 
 
-Esta memoria está dividida en un total de 7 capítulos, que serán descritos brevemente a continuación.
+Esta memoria está dividida en un total de 6 capítulos, que sonn descritos brevemente a continuación.
 
 \begin{itemize}
-	\item \textbf{Capítulo 1:} En este capítulo se introduce el trabajo desarrollado, la motivación que ha llevado a éste y la estructura general de la memoria.
-	\item \textbf{Capítulo 2:} En este capítulo se describe en profundidad el problema a resolver, presentando los antecedentes previos al trabajo realizado y detallando los objetivos que se esperan cumplir.
-	\item \textbf{Capítulo 3:} En este capítulo se realiza una revisión de las principales técnicas en los campos relacionados con el trabajo: \textit{deep learning} y redes neuronales convolucionales, aprendizaje por refuerzo (estudiando tanto las técnicas clásicas como las técnicas de aprendizaje por refuerzo profundo) y algunos de los principales algoritmos de navegación automática.
-	\item \textbf{Capítulo 4:} En este capítulo se presentan tanto \textit{Habitat Sim} como \textit{Habitat Lab}, las principales herramientas usadas durante el desarrollo del trabajo. Tras esto, se exponen los principales componentes de Habitat Lab, explicando su funcionamiento y uso. Finalmente, se habla sobre la instalación y las dependencias necesarias del simulador.
-	\item \textbf{Capítulo 5:} En este capítulo se detalla el diseño del agente de navegación reactiva propuesto. Se describe tanto la representación del conocimiento (estado, acciones y recompensas) como la arquitectura, el método de actuación y el entrenamiento llevado a cabo por el agente. Finalmente, se realiza una breve explicación del funcionamiento y la arquitectura del resto de agentes usados como \textit{benchmarks} y comparativas ofrecidos por \textit{Habitat Lab}.
-	\item \textbf{Capítulo 6:} En este capítulo se detalla la experimentación realizada, indicando los parametros utilizados. Además, se presentan los resultados y el rendimiento obtenido por los agentes tanto durante el entrenamiento como durante la evaluación posterior.
-	\item \textbf{Capítulo 7:} Finalmente, en este capítulo se presentan las conclusiones alcanzadas tras el desarrollo del trabajo, proponiendo posibles líneas de trabajo futuro para continuarlo.
+	\item \textbf{Capítulo 1:} En este capítulo se introduce el trabajo desarrollado, los objetivos que se esperan cumplir, la motivación que ha llevado a éste y la estructura general de la memoria.
+	\item \textbf{Capítulo 2:} En este capítulo se realiza una revisión de las principales técnicas en los campos relacionados con el trabajo: \textit{deep learning} y redes neuronales convolucionales, aprendizaje por refuerzo (estudiando tanto las técnicas clásicas como las técnicas de aprendizaje por refuerzo profundo) y algunos de los principales algoritmos de navegación automática, incluyendo un análisis de los antecedentes más directos.
+	\item \textbf{Capítulo 3:} En este capítulo se presentan tanto \textit{Habitat Sim} como \textit{Habitat Lab}, las principales herramientas usadas durante el desarrollo del trabajo. Tras esto, se exponen los principales componentes de Habitat Lab, explicando su funcionamiento y uso. Finalmente, se habla sobre la instalación y las dependencias necesarias del simulador.
+	\item \textbf{Capítulo 4:} En este capítulo se detalla el diseño del agente de navegación reactiva propuesto. Se describe tanto la representación del conocimiento (estado, acciones y recompensas) como la arquitectura, el método de actuación y el entrenamiento llevado a cabo por el agente. Finalmente, se realiza una breve explicación del funcionamiento y la arquitectura del resto de agentes usados como \textit{benchmarks} y comparativas ofrecidos por \textit{Habitat Lab}.
+	\item \textbf{Capítulo 5:} En este capítulo se detalla la experimentación realizada, indicando los parametros utilizados. Además, se presentan los resultados y el rendimiento obtenido por los agentes tanto durante el entrenamiento como durante la evaluación posterior.
+	\item \textbf{Capítulo 6:} Finalmente, en este capítulo se presentan las conclusiones alcanzadas tras el desarrollo del trabajo, proponiendo posibles líneas de trabajo futuro para continuarlo.
 \end{itemize}
 
 Además, al final de la memoria se incluye una bibliografía en la que se encuentra la lista de fuentes y referencias usadas a lo largo de ésta.

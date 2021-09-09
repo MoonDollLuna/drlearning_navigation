@@ -73,7 +73,7 @@ from envs.reactive_navigation_env import ReactiveNavigationEnv
 # from trainers.reactive_navigation_trainer_keras import ReactiveNavigationTrainerKeras
 
 # Agent imports
-from agents.reactive_navigation_agent import ReactiveNavigationAgent
+from agents.reactive_navigation_agent import ReactiveNavigationAgent, InformedReactiveNavigationAgent
 from habitat_baselines.agents.simple_agents import RandomAgent, RandomForwardAgent, GoalFollower
 from habitat_baselines.agents.ppo_agents import PPOAgent
 
@@ -95,7 +95,7 @@ config_paths_training = {
 
 # Benchmark config file
 # All agents share the same config file to be used during the benchmarking process
-config_path_benchmark = "./configs/benchmarks/benchmark_matterport.yaml"
+config_path_benchmark = "./configs/benchmarks/benchmark_gibson.yaml"
 
 # Video config file
 # All agents share the same config file to be used during video generation
@@ -131,6 +131,8 @@ dataset_paths = {
 # PROPOSED:
 #   - reactive          - The developed agent, using reactive navigation and deep reinforcement learning
 #                         Note that there are several variations of the proposed algorithm
+#   - informed_reactive - A variation of the reactive navigation agent that uses additional information
+#                         during evaluation (using the distance sensor to automatically stop if the goal is reached)
 agent_type = "reactive"
 
 # dataset - Specifies the dataset to be used
@@ -242,23 +244,28 @@ def benchmark_main(config_path, pretrained_weights=None):
     # Instantiate the appropriate agent and the benchmark
     if agent_type == "random":
         # Random agent
-        agent = RandomAgent(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
-                            benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+        agent = RandomAgent(benchmark_config.TASK.SUCCESS_DISTANCE,
+                            benchmark_config.TASK.GOAL_SENSOR_UUID)
     elif agent_type == "random_forward":
         # Random forward agent
-        agent = RandomForwardAgent(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
-                                   benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+        agent = RandomForwardAgent(benchmark_config.TASK.SUCCESS_DISTANCE,
+                                   benchmark_config.TASK.GOAL_SENSOR_UUID)
     elif agent_type == "goal_follower":
         # Goal follower
-        agent = GoalFollower(benchmark_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
-                             benchmark_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
+        agent = GoalFollower(benchmark_config.TASK.SUCCESS_DISTANCE,
+                             benchmark_config.TASK.GOAL_SENSOR_UUID)
     elif agent_type == "ppo":
         # PPO agent
         agent = PPOAgent(benchmark_config)
+    elif agent_type == "informed_reactive":
+        # Informed reactive agent
+        agent = InformedReactiveNavigationAgent(benchmark_config,
+                                                float(benchmark_config.TASK.SUCCESS),
+                                                weights=pretrained_weights)
     else:
         # Reactive agent (default)
         agent = ReactiveNavigationAgent(benchmark_config,
-                                        pretrained_weights)
+                                        weights=pretrained_weights)
 
     # Note that the CONFIG PATH is passed to the benchmark
     # (instead of an already instantiated Config object)
@@ -266,7 +273,7 @@ def benchmark_main(config_path, pretrained_weights=None):
     benchmark = Benchmark(config_path)
 
     # Evaluate the agent and print the metrics
-    episode_count = 100
+    episode_count = 250
     metrics = benchmark.evaluate(agent, episode_count)
 
     print("= EVALUATION METRICS =\n")
@@ -332,6 +339,11 @@ def video_main(config_path, video_dataset, pretrained_weights=None):
     elif agent_type == "ppo":
         # PPO agent
         agent = PPOAgent(video_config)
+    elif agent_type == "informed_reactive":
+        # Informed reactive agent
+        agent = InformedReactiveNavigationAgent(video_config,
+                                                float(video_config.TASK_CONFIG.TASK.SUCCESS),
+                                                weights=pretrained_weights)
     else:
         # Reactive agent (default)
         agent = ReactiveNavigationAgent(video_config,
@@ -416,7 +428,7 @@ if __name__ == "__main__":
     # agent_type
     parser.add_argument("-ag",
                         "--agent_type",
-                        choices=["random", "random_forward", "goal_follower", "ppo", "reactive"],
+                        choices=["random", "random_forward", "goal_follower", "ppo", "reactive, informed_reactive"],
                         help=textwrap.dedent("""\
                         Agent type used by the simulator. Agent types are as follows:
                             * random: A completely random agent, to be used as a benchmark
@@ -428,6 +440,9 @@ if __name__ == "__main__":
                                    (ppo) provided by habitat-lab
                             * reactive: The developed agent, using reactive navigation and deep reinforcement learning
                                         Note that there are several variations of the proposed algorithm
+                            * informed_reactive: A variation of the reactive navigation agent that 
+                                                 uses additional information during evaluation (using the 
+                                                 distance sensor to automatically stop if the goal is reached)
                         DEFAULT: {}""".format(agent_type)))
 
     # dataset
@@ -489,7 +504,7 @@ if __name__ == "__main__":
     # Ensure that the combination of agent type / mode is appropriate
     if mode == "training" and agent_type not in ["ppo", "reactive"]:
         # Print an error message and abort the execution
-        print("ERROR: Only RL-capable agents (ppo and reactive) can be used in training mode")
+        print("ERROR: Only pure RL-capable agents (ppo and reactive) can be used in training mode")
         sys.exit()
 
     # Choose the appropriate config file to be used
