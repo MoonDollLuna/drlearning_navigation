@@ -62,27 +62,28 @@
 \BOOKMARK [2][-]{subsection.4.4.2}{Aprendizaje a partir de las experiencias}{section.4.4}% 62
 \BOOKMARK [2][-]{subsection.4.4.3}{Documentaci\363n del entrenamiento}{section.4.4}% 63
 \BOOKMARK [1][-]{section.4.5}{Implementaci\363n}{chapter.4}% 64
-\BOOKMARK [0][-]{chapter.5}{Experimentaci\363n}{}% 65
-\BOOKMARK [1][-]{section.5.1}{Detalles de la experimentaci\363n}{chapter.5}% 66
-\BOOKMARK [2][-]{subsection.5.1.1}{Par\341metros generales utilizados}{section.5.1}% 67
-\BOOKMARK [2][-]{subsection.5.1.2}{Experimentos realizados}{section.5.1}% 68
-\BOOKMARK [2][-]{subsection.5.1.3}{Gr\341ficos generados durante el entrenamiento}{section.5.1}% 69
-\BOOKMARK [2][-]{subsection.5.1.4}{M\351tricas usadas durante la evaluaci\363n}{section.5.1}% 70
-\BOOKMARK [1][-]{section.5.2}{Resultados obtenidos}{chapter.5}% 71
-\BOOKMARK [2][-]{subsection.5.2.1}{Elecci\363n del conjunto de datos}{section.5.2}% 72
-\BOOKMARK [2][-]{subsection.5.2.2}{Agentes con Deep Q-Learning est\341ndar}{section.5.2}% 73
-\BOOKMARK [2][-]{subsection.5.2.3}{Agentes con Deep Q-Learning priorizado}{section.5.2}% 74
-\BOOKMARK [1][-]{section.5.3}{Comparativa y an\341lisis de los resultados}{chapter.5}% 75
-\BOOKMARK [2][-]{subsection.5.3.1}{Comparativa durante el entrenamiento}{section.5.3}% 76
-\BOOKMARK [2][-]{subsection.5.3.2}{Comparativa durante la evaluaci\363n}{section.5.3}% 77
-\BOOKMARK [2][-]{subsection.5.3.3}{Conclusiones del an\341lisis}{section.5.3}% 78
-\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 79
-\BOOKMARK [1][-]{section.6.1}{Conclusiones}{chapter.6}% 80
-\BOOKMARK [1][-]{section.6.2}{Trabajo futuro}{chapter.6}% 81
-\BOOKMARK [0][-]{section.6.2}{Bibliograf\355a}{}% 82
-\BOOKMARK [0][-]{chapter*.56}{Anexos}{}% 83
-\BOOKMARK [0][-]{appendix.Alph1}{Ficheros de configuraci\363n}{}% 84
-\BOOKMARK [1][-]{section.Alph1.1}{Fichero base}{appendix.Alph1}% 85
-\BOOKMARK [1][-]{section.Alph1.2}{Ficheros de entrenamiento}{appendix.Alph1}% 86
-\BOOKMARK [1][-]{section.Alph1.3}{Ficheros de benchmark}{appendix.Alph1}% 87
-\BOOKMARK [1][-]{section.Alph1.4}{Fichero de generaci\363n de video}{appendix.Alph1}% 88
+\BOOKMARK [2][-]{subsection.4.5.1}{Dependencias}{section.4.5}% 65
+\BOOKMARK [2][-]{subsection.4.5.2}{Estructura del c\363digo}{section.4.5}% 66
+\BOOKMARK [0][-]{chapter.5}{Experimentaci\363n}{}% 67
+\BOOKMARK [1][-]{section.5.1}{Detalles de la experimentaci\363n}{chapter.5}% 68
+\BOOKMARK [2][-]{subsection.5.1.1}{Par\341metros generales utilizados}{section.5.1}% 69
+\BOOKMARK [2][-]{subsection.5.1.2}{Experimentos realizados}{section.5.1}% 70
+\BOOKMARK [2][-]{subsection.5.1.3}{Gr\341ficos generados durante el entrenamiento}{section.5.1}% 71
+\BOOKMARK [2][-]{subsection.5.1.4}{M\351tricas usadas durante la evaluaci\363n}{section.5.1}% 72
+\BOOKMARK [1][-]{section.5.2}{Resultados obtenidos}{chapter.5}% 73
+\BOOKMARK [2][-]{subsection.5.2.1}{Elecci\363n del conjunto de datos}{section.5.2}% 74
+\BOOKMARK [2][-]{subsection.5.2.2}{Agentes con Deep Q-Learning est\341ndar}{section.5.2}% 75
+\BOOKMARK [2][-]{subsection.5.2.3}{Agentes con Deep Q-Learning priorizado}{section.5.2}% 76
+\BOOKMARK [1][-]{section.5.3}{Comparativa y an\341lisis de los resultados}{chapter.5}% 77
+\BOOKMARK [2][-]{subsection.5.3.1}{Comparativa durante el entrenamiento}{section.5.3}% 78
+\BOOKMARK [2][-]{subsection.5.3.2}{Comparativa durante la evaluaci\363n}{section.5.3}% 79
+\BOOKMARK [2][-]{subsection.5.3.3}{Conclusiones del an\341lisis}{section.5.3}% 80
+\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 81
+\BOOKMARK [1][-]{section.6.1}{Trabajo futuro}{chapter.6}% 82
+\BOOKMARK [0][-]{section.6.1}{Bibliograf\355a}{}% 83
+\BOOKMARK [0][-]{chapter*.57}{Anexos}{}% 84
+\BOOKMARK [0][-]{appendix.Alph1}{Ficheros de configuraci\363n}{}% 85
+\BOOKMARK [1][-]{section.Alph1.1}{Fichero base}{appendix.Alph1}% 86
+\BOOKMARK [1][-]{section.Alph1.2}{Ficheros de entrenamiento}{appendix.Alph1}% 87
+\BOOKMARK [1][-]{section.Alph1.3}{Ficheros de benchmark}{appendix.Alph1}% 88
+\BOOKMARK [1][-]{section.Alph1.4}{Fichero de generaci\363n de video}{appendix.Alph1}% 89

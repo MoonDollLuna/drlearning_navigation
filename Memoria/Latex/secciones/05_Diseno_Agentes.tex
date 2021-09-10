@@ -611,3 +611,44 @@ Además, el agente almacena registros de su progreso durante el entrenamiento (\
 A partir de estos \textit{checkpoints} es posible reanudar el entrenamiento en cualquier momento, y usarlos como los pesos finales para el agente entrenado.
 
 \section{Implementación}
+
+En esta sección se comenta la implementación realizada del agente, centrándose en las dependencias para el uso del código y en la estructura de los ficheros del proyecto.
+
+El proyecto ha sido desarrollado en \textit{Python 3.6}. La implementación completa se encuentra disponible de forma pública en el siguiente repositorio de \textit{GitHub}: \url{https://github.com/MoonDollLuna/drlearning_navigation}
+
+\subsection{Dependencias}
+
+El código desarrollado ha sido ejecutado utilizando la siguiente configuración de \textit{hardware}, \textit{software} y sistema operativo:
+
+\begin{itemize}
+	\item \textbf{Sistema operativo:} Ubuntu \textit{v20.04} (Focal Fossa).
+	\item \textbf{Tarjeta gráfica:} NVidia GTX 1660 Ti.
+	\item \textbf{Driver de NVidia:} \textit{v470.57.02} (CUDA \textit{v11.4}).
+	\item \textbf{CUDA:} \textit{v10.1.243}.
+	\item \textbf{cuDNN:} \textit{v7.6.5} para CUDA 10.1.
+	\item \textbf{Python:} \textit{v3.6.13}.
+\end{itemize}
+
+Además, se usa las siguientes versiones de las librerías de \textit{Python}:
+\begin{itemize}
+	\item \textit{habitat / habitat-sim}: \textit{v0.2.1} (Habitat 2.0).
+	\item \textit{opencv-python}: \textit{v4.5.3.56}.
+	\item \textit{numpy}: \textit{v1.19.5}.
+	\item \textit{torch}: \textit{v1.9.0}.
+\end{itemize}
+
+El código desarrollado ha sido probado únicamente en esta configuración, no pudiendo garantizarse un funcionamiento adecuado con versiones o componentes distintos a los mencionados.
+
+\subsection{Estructura del código}
+
+La estructura del código desarrollado para el proyecto, detallando los componentes contenidos en cada fichero, es la siguiente:
+\begin{itemize}
+	\item \textbf{agents/reactive{\_}navigation{\_}agent.py:} Incluye la implementación del agente reactivo usado durante la evaluación, para ser evaluado con los \textit{benchmarks} de \textit{Habitat}.
+	\item \textbf{configs}: Incluye todos los ficheros de configuración usados (para todas las posibles configuraciones de entrenamiento y para evaluación).
+	\item \textbf{envs/reactive{\_}navigation{\_}env.py:} Incluye el entorno específico implementado para el entrenamiento del agente, incluyendo la generación de recompensas descrita en este capítulo.
+	\item \textbf{models/experience{\_}replay.py:} Incluye la implementación de estado, experiencia y \textit{Replay Memory} (tanto la versión estándar como la priorizada) usadas durante el entrenamiento del agente reactivo.
+	\item \textbf{models/reactive{\_}navigation.py:} Incluye la implementación de la arquitectura del agente como tal (la red neuronal descrita en la segunda aproximación), junto a los métodos necesarios para facilitar su uso (entrenamiento y actuación).
+	\item \textbf{trainers/reactive{\_}navigation{\_}trainer.py:} Incluye la implementación del entrenador del agente. Se ha implementado una versión propia de \textit{Deep Q-Learning}, adaptada al flujo de trabajo de \textit{Habitat}.
+	\item \textbf{utils/log{\_}manager.py:} Incluye la implementación del gestor del \textit{log}, encargado de registrar en un fichero de texto los resultados del agente durante el entrenamiento.
+	\item \textbf{navigation.py:} Incluye la implementación del entorno de trabajo del proyecto, encargándose de lanzar las ejecuciones del simulador en el modo que sea necesario (entrenamiento, evaluación o generación de vídeo).
+\end{itemize}

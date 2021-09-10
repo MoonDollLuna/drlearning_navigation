@@ -330,7 +330,7 @@ Comparando la tasa de acierto de los agentes - como se puede ver en la Figura \r
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.9\textwidth]{imagenes/cap6/comparison/success.eps}
+    \includegraphics[width=0.8\textwidth]{imagenes/cap6/comparison/success.eps}
     \caption{Comparativa de agentes durante el entrenamiento - Episodios completados con éxito.}
     \label{fig:chap6-comparison-success}
 \end{figure}
@@ -341,39 +341,115 @@ Este resultado también es coherente con las técnicas utilizadas. Si bien el ap
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.9\textwidth]{imagenes/cap6/comparison/cumulative_smoothed_times.eps}
+    \includegraphics[width=0.8\textwidth]{imagenes/cap6/comparison/cumulative_smoothed_times.eps}
     \caption{Comparativa de agentes durante el entrenamiento - Tiempo total de entrenamiento.}
     \label{fig:chap6-comparison-time}
 \end{figure}
 
 Observando las acciones realizadas durante el entrenamiento - representadas en la Figura \ref{fig:chap6-comparison-actions} - se ve que los agentes priorizados siguen la forma que se ha dado hasta ahora: un crecimiento paulatino hasta que se acerca el final del entrenamiento, tras el cual alcanzan un pico de acciones y vuelve a estabilizarse el número de acciones promedio. 
 
-En cambio, los agentes estándares no han sido capaces de aumentar el número de acciones realizadas en 3000 episodios, manteniéndose constante alrededor de las \textbf{5} acciones. Esto puede deberse a la falta de entrenamiento, provocando que realice acciones aleatorias en la práctica, frente a la política entrenada de los agente priorizados.
+En cambio, los agentes estándares no han sido capaces de aumentar el número de acciones realizadas en 3000 episodios, manteniéndose constante alrededor de las \textbf{5} acciones. Esto puede deberse a la falta de aprendizaje de los agentes estándares, provocando que realice acciones aleatorias en la práctica, frente a la política entrenada de los agente priorizados.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.9\textwidth]{imagenes/cap6/comparison/smoothed_actions.eps}
+    \includegraphics[width=0.8\textwidth]{imagenes/cap6/comparison/smoothed_actions.eps}
     \caption{Comparativa de agentes durante el entrenamiento - Acciones realizadas por episodio.}
     \label{fig:chap6-comparison-actions}
 \end{figure}
 
-Comparando la distancia recorrida por los agentes - disponible en la Figura \ref{fig:chap6-comparison-distances} - 
+Comparando la distancia recorrida por los agentes - disponible en la Figura \ref{fig:chap6-comparison-distances} - se vuelve a ver una separación entre el rendimiento de ambos tipos de agentes. Los agentes priorizados mejoran su rendimiento más rápidamente, empezando a recorrer distancias mayores a partir de los 1000 episodios y mejorando hasta un pico a los 2500 episodios (si bien su rendimiento es inestable, con picos notables). Tras este pico, se vuelve a estabilizar el rendimiento del agente, recorriendo de media alrededor del $15\%$ de la distancia. Ahora bien, el agente de \textbf{contornos priorizado} recorre una distancia ligeramente superior, si bien se puede afirmar que son equivalentes en la práctica.
 
-\begin{figure}[h]
+\newpage
+
+Frente a esto, los agentes estándares recorren en promedio una distancia mucho menor, mejorando ligeramente su resultado a partir de los 2000 episodios pero sin superar valores de aproximadamente el $5\%$. De nuevo, esto demuestra la velocidad de aprendizaje de \textit{Prioritized Experience Replay} (siendo capaz de recorrer una distancia mayor en menor número de episodios que los agentes estándares).
+
+\begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\textwidth]{imagenes/cap6/comparison/smoothed_distances.eps}
+    \includegraphics[width=0.8\textwidth]{imagenes/cap6/comparison/smoothed_distances.eps}
     \caption{Comparativa de agentes durante el entrenamiento - Distancia recorrida por episodio.}
     \label{fig:chap6-comparison-distances}
 \end{figure}
 
+Finalmente, comparando las recompensa media obtenida por los agentes - como se puede observar en la Figura \ref{fig:chap6-comparison-rewards} - se observa como los agentes priorizados presentan un comportamiento muy parecido, mejorando su recompensa media (sin llegar a valores positivos), alcanzando un techo alrededor de los 2500 episodios. Tras este techo, las recompensas acaban disminuyendo ligeramente y normalizándose por encima de $-20$.
+
+Como comparación, los agentes estándares tienen una recompensa media con un crecimiento mucho más lento y estable, manteniéndose la recompensa media alrededor de $-40$.
+
+De nuevo, el comportamiento de las recompensas se corresponde con lo visto hasta el momento. Los agentes priorizados realizan un mayor número de acciones (lo que acerca la recompensa media hacia $0$), y además realizan un aprendizaje más rápido (llevando a acciones con recompensas mayores y, por tanto, una recompensa promedio más elevada).
+
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.9\textwidth]{imagenes/cap6/comparison/smoothed_rewards.eps}
+    \includegraphics[width=0.8\textwidth]{imagenes/cap6/comparison/smoothed_rewards.eps}
     \caption{Comparativa de agentes durante el entrenamiento - Recompensa media por episodio.}
     \label{fig:chap6-comparison-rewards}
 \end{figure}
 
 \subsection{Comparativa durante la evaluación}
 
+De cara a poder estimar el rendimiento real de los agentes al enfrentarse a problemas desconocidos (problemas nuevos en entornos no incluidos en el conjunto de entrenamiento) se procede a comparar su rendimiento ante un conjunto de evaluación separado del conjunto de datos usado durante el entrenamiento.
+
+Se evaluará el rendimiento de todos los agentes durante un total de \textbf{250 episodios}. Además de los agentes entrenados (cuyo rendimiento se ha descrito en las secciones previas), se incluye en la comparativa una serie de agentes ofrecidos por defecto por \textit{Habitat}:
+
+\begin{itemize}
+	\item \textbf{baselines:} Agentes simples usados como base. Se espera que el agente propuesto presente un rendimiento superior a los agentes de \textit{baseline}, siendo éstos:
+	\begin{itemize}
+	\item \textit{random:} Un agente puramente aleatorio, el agente realiza una acción aleatoria en cada paso.
+	\item \textit{random{\_}forward:} Una variante del agente \textit{random} con sesgo hacia el movimiento hacia alante. El agente avanza el $80\%$ de las acciones, teniendo un $20\%$ de posibilidades de rotar.
+	\item \textit{goal{\_}follower:} Un agente heurístico simple, que rota hasta estar enfocado hacia la meta. Tras ésto, el agente procede a moverse hacia delante sin tener en cuenta ningún obstáculo.
+	\end{itemize}
+	
+	Es importante destacar que los agentes aleatorios ofrecidos por \textit{Habitat} no son puramente aleatorios, sino que utilizan información adicional. Concretamente, los agentes aleatorios no pueden elegir al azar la acción \textbf{STOP} (para detener el episodio). En su lugar, conocen la distancia a la meta, utilizando automáticamente la acción si el agente alcanza la meta.
+	
+	\item \textbf{ppo:} Un agente utilizando el algoritmo de \textit{Proximal Policy Optimization} con un sistema de recompensas básico ofrecido por \textit{Habitat}. Este agente se utiliza como \textbf{objetivo}, siendo los resultados de este agente los resultados que se busca alcanzar.
+	
+\end{itemize}
+
+Los resultados de esta evaluación se pueden observar en el Cuadro \ref{tab:results}. El agente con los mejores resultados de cada grupo se encuentra indicado en negrita.
+
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}ccrrrrr@{}}
+\cmidrule(l){2-7}
+\multicolumn{1}{l}{}                                                           & \textbf{Agente}                                                            & \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Distancia a\\ la meta (m)\end{tabular}}} & \multicolumn{1}{l}{\textbf{\begin{tabular}[c]{@{}l@{}}Tasa de\\ éxito\end{tabular}}} & \multicolumn{1}{l}{\textbf{SPL}} & \multicolumn{1}{l}{\textbf{SPL suavizado}} & \multicolumn{1}{c}{\textbf{Colisiones}} \\ \midrule
+\multirow{3}{*}{Baselines}                                                     & \begin{tabular}[c]{@{}c@{}}Aleatorio\\ (Habitat)\end{tabular}              & 6.5227                                                                                         & 0.076                                                                                & 0.0512                           & 0.0845                                     & 139.228                                 \\ \cmidrule(l){2-7} 
+                                                                               & \begin{tabular}[c]{@{}c@{}}Aleatorio\\ (Forward)\end{tabular}              & 6.3152                                                                                         & 0.032                                                                                & 0.0264                           & 0.0638                                     & 379.344                                 \\ \cmidrule(l){2-7} 
+                                                                               & \textbf{\begin{tabular}[c]{@{}c@{}}Goal\\ Follower\end{tabular}}           & \textbf{3.2310}                                                                                & \textbf{0.352}                                                                       & \textbf{0.3502}                  & \textbf{0.3886}                            & \textbf{318.552}                        \\ \midrule
+\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}}Agentes\\ estándares\end{tabular}}  & Contornos                                                                  & 5.7175                                                                                         & 0.0                                                                                  & 0.0                              & 0.1179                                     & 364.944                                 \\ \cmidrule(l){2-7} 
+                                                                               & Columnas                                                                   & 5.3395                                                                                         & 0.0                                                                                  & 0.0                              & 0.1096                                     & 224.292                                 \\ \cmidrule(l){2-7} 
+                                                                               & \textbf{\begin{tabular}[c]{@{}c@{}}Contornos\\ (Colisiones)\end{tabular}}  & \textbf{4.3832}                                                                                & \textbf{0.0}                                                                         & \textbf{0.0}                     & \textbf{0.1665}                            & \textbf{338.46}                         \\ \cmidrule(l){2-7} 
+                                                                               & \textit{\begin{tabular}[c]{@{}c@{}}Columnas\\ (Colisiones)\end{tabular}}   & \textit{5.6652}                                                                                & \textit{0.0}                                                                         & \textit{0.0}                     & \textit{0}                                 & \textit{0}                              \\ \midrule
+\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}}Agentes\\ priorizados\end{tabular}} & \textbf{Contornos}                                                         & \textbf{4.6862}                                                                                & \textbf{0.0}                                                                         & \textbf{0.0}                     & \textbf{0.1679}                            & \textbf{97.76}                          \\ \cmidrule(l){2-7} 
+                                                                               & Columnas                                                                   & 5.4865                                                                                         & 0.0                                                                                  & 0.0                              & 0.1538                                     & 42.884                                  \\ \cmidrule(l){2-7} 
+                                                                               & \begin{tabular}[c]{@{}c@{}}Contornos\\ (Colisiones)\end{tabular}           & 5.5804                                                                                         & 0.0                                                                                  & 0.0                              & 0.1132                                     & 18.312                                  \\ \cmidrule(l){2-7} 
+                                                                               & \begin{tabular}[c]{@{}c@{}}Columnas\\ (Colisiones)\end{tabular}            & 4.9178                                                                                         & 0.0                                                                                  & 0.0                              & 0.0803                                     & 11.332                                  \\ \midrule
+PPO                                                                            & \textbf{\begin{tabular}[c]{@{}c@{}}Profundidad\\ (15000 eps)\end{tabular}} & \textbf{0.6578}                                                                                & \textbf{0.932}                                                                       & \textbf{0.7677}                  & \textbf{0.7669}                            & \textbf{17.036}                         \\ \bottomrule
+\end{tabular}%
+}
+\caption{Resultados de los agentes durante la evaluación - Media de 250 episodios.}
+\label{tab:results}
+\end{table}
+
+\newpage
+
+El primer resultado más llamativo es el rendimiento del \textbf{agente estándar de contornos con colisiones}, siendo el mejor agente de todos los agentes estándares y el segundo mejor de todos los agentes entrenados. Esto contrasta con su rendimiento durante el entrenamiento (donde presentaba uno de los peores resultados).
+
+Otro resultado destacable es el resultado del \textbf{agente estándar de columnas con colisiones}, sin ninguna colisión y con un \textit{SPL} suavizado de 0.0 (no ha hecho ningún progreso hacia la meta en ningún episodio). Esto se corresponde con los resultados ofrecidos por el agente durante su entrenamiento (con la gran caída de sus recompensas y de la distancia recorrida). Es probable que esto se deba a que el agente haya aprendido a rotar sobre si mismo sin desplazarse para minimizar las posibles penalizaciones de las colisiones.
+
+Por lo demás, el resultado de los agentes entrenados concuerda con lo visto durante el entrenamiento: los agentes priorizados son en general mejores que sus equivalentes estándares pese a haber sido entrenados durante menos episodios, y los agentes usando colisiones ofrecen (salvo la excepción ya mencionada) peores resultados.
+
+Se puede observar que, en general, \textbf{los agentes propuestos han mejorado su rendimiento}, ofreciendo mejores resultados que los agentes aleatorios (si bien estos agentes tienen una tasa de éxito mayor, sus valores de \textit{SPL} suavizado son notablemente peores, lo que indica que en promedio se acercan menos a la meta).
+
+Ahora bien, también se puede decir que \textbf{los agentes propuestos no son útiles para la tarea propuesta}, debido a su baja tasa de acierto, siendo superados por un agente heurístico muy simple como es \textit{goal{\_}follower}.
+
+Finalmente, se puede ver que el agente utilizando \textit{PPO} es, con gran diferencia, el mejor agente, teniendo una tasa de acierto superior al $90\%$ (si bien su \textit{SPL} indica que las trayectorias usadas no son óptimas).
 
 \subsection{Conclusiones del análisis}
+
+De los análisis realizados, se pueden extraer algunas conclusiones sobre los experimentos y el trabajo realizado en general:
+\begin{itemize}
+	\item Los agentes propuestos han mejorado su rendimiento respecto a los \textit{baselines} básicos aleatorios, lo que indica que \textbf{la arquitectura propuesta es aplicable al problema a resolver}.
+	\item Pese a esto, \textbf{la aplicación de la arquitectura propuesta al problema no es recomendable}, al ofrecer peores resultados que otras arquitecturas existentes (como heurísticas o \textit{PPO}).
+	\item \textbf{No existe diferencia notable entre los sistemas de recompensas propuestos}. Los resultados de las recompensas por \textbf{contornos} y por \textbf{columnas} son muy similares tanto durante el entrenamiento como durante la evaluación, por lo que el uso del sistema propuesto de recompensas por columnas no ofrece ningún beneficio sustancial.
+	\item Por lo general, \textbf{el uso de colisiones empeora el rendimiento del agente}. Salvo la excepción vista en la evaluación, los agentes usando colisiones (independientemente del resto de características) han ofrecido peores resultados tanto durante el entrenamiento como durante la evaluación.
+	\item \textbf{Prioritized Experience Replay ofrece resultados mejores a cambio de un mayor tiempo de entrenamiento}. Como se ha visto, el agente propuesto con mejor resultado ha sido un agente priorizado, y los agentes priorizados ofrecen mejores resultados en promedio pese a haber sido entrenados durante solo \textbf{3000} episodios (frente a los 15000 episodios de los agentes estándares). Ahora bien, el tiempo de entrenamiento de estos agentes es también notablemente superior, lo que supone un sacrificio de rendimiento por tiempo.
+\end{itemize}

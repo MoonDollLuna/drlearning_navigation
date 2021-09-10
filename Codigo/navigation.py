@@ -256,11 +256,22 @@ def benchmark_main(config_path, pretrained_weights=None):
                              benchmark_config.TASK.GOAL_SENSOR_UUID)
     elif agent_type == "ppo":
         # PPO agent
+
+        # Specify the necessary info in the config file
+        benchmark_config.defrost()
+        benchmark_config.INPUT_TYPE = "depth"
+        benchmark_config.RESOLUTION = 256
+        benchmark_config.PTH_GPU_ID = 0
+        benchmark_config.HIDDEN_SIZE = 512
+        benchmark_config.RANDOM_SEED = 0
+        benchmark_config.freeze()
+
         agent = PPOAgent(benchmark_config)
+
     elif agent_type == "informed_reactive":
         # Informed reactive agent
         agent = InformedReactiveNavigationAgent(benchmark_config,
-                                                float(benchmark_config.TASK.SUCCESS),
+                                                benchmark_config.TASK.SUCCESS_DISTANCE,
                                                 weights=pretrained_weights)
     else:
         # Reactive agent (default)
@@ -338,11 +349,22 @@ def video_main(config_path, video_dataset, pretrained_weights=None):
                              video_config.TASK_CONFIG.TASK.GOAL_SENSOR_UUID)
     elif agent_type == "ppo":
         # PPO agent
+
+        # Specify the necessary info in the config file
+        video_config.defrost()
+        video_config.INPUT_TYPE = "depth"
+        video_config.RESOLUTION = 256
+        video_config.PTH_GPU_ID = 0
+        video_config.HIDDEN_SIZE = 512
+        video_config.RANDOM_SEED = 0
+        video_config.freeze()
+
         agent = PPOAgent(video_config)
+
     elif agent_type == "informed_reactive":
         # Informed reactive agent
         agent = InformedReactiveNavigationAgent(video_config,
-                                                float(video_config.TASK_CONFIG.TASK.SUCCESS),
+                                                video_config.TASK_CONFIG.TASK.SUCCESS_DISTANCE,
                                                 weights=pretrained_weights)
     else:
         # Reactive agent (default)
@@ -428,7 +450,7 @@ if __name__ == "__main__":
     # agent_type
     parser.add_argument("-ag",
                         "--agent_type",
-                        choices=["random", "random_forward", "goal_follower", "ppo", "reactive, informed_reactive"],
+                        choices=["random", "random_forward", "goal_follower", "ppo", "reactive", "informed_reactive"],
                         help=textwrap.dedent("""\
                         Agent type used by the simulator. Agent types are as follows:
                             * random: A completely random agent, to be used as a benchmark

@@ -129,50 +129,52 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.5}Implementación}{69}{section.4.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Experimentación}{71}{chapter.5}%
+\contentsline {subsection}{\numberline {4.5.1}Dependencias}{70}{subsection.4.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Detalles de la experimentación}{71}{section.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Estructura del código}{70}{subsection.4.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.1}Parámetros generales utilizados}{71}{subsection.5.1.1}%
+\contentsline {chapter}{\numberline {5}Experimentación}{73}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.2}Experimentos realizados}{72}{subsection.5.1.2}%
+\contentsline {section}{\numberline {5.1}Detalles de la experimentación}{73}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.3}Gráficos generados durante el entrenamiento}{73}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.1}Parámetros generales utilizados}{73}{subsection.5.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.4}Métricas usadas durante la evaluación}{74}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.2}Experimentos realizados}{74}{subsection.5.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Resultados obtenidos}{75}{section.5.2}%
+\contentsline {subsection}{\numberline {5.1.3}Gráficos generados durante el entrenamiento}{75}{subsection.5.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.1}Elección del conjunto de datos}{75}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.1.4}Métricas usadas durante la evaluación}{76}{subsection.5.1.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.2}Agentes con \textit {Deep Q-Learning} estándar}{76}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.2}Resultados obtenidos}{77}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.3}Agentes con \textit {Deep Q-Learning} priorizado}{80}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.1}Elección del conjunto de datos}{77}{subsection.5.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Comparativa y análisis de los resultados}{83}{section.5.3}%
+\contentsline {subsection}{\numberline {5.2.2}Agentes con \textit {Deep Q-Learning} estándar}{78}{subsection.5.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3.1}Comparativa durante el entrenamiento}{83}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.2.3}Agentes con \textit {Deep Q-Learning} priorizado}{82}{subsection.5.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3.2}Comparativa durante la evaluación}{85}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.3}Comparativa y análisis de los resultados}{85}{section.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3.3}Conclusiones del análisis}{85}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.1}Comparativa durante el entrenamiento}{85}{subsection.5.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Conclusiones}{89}{chapter.6}%
+\contentsline {subsection}{\numberline {5.3.2}Comparativa durante la evaluación}{89}{subsection.5.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Conclusiones}{89}{section.6.1}%
+\contentsline {subsection}{\numberline {5.3.3}Conclusiones del análisis}{91}{subsection.5.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Trabajo futuro}{89}{section.6.2}%
+\contentsline {chapter}{\numberline {6}Conclusiones}{93}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Bibliografía}{89}{section.6.2}%
+\contentsline {section}{\numberline {6.1}Trabajo futuro}{94}{section.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Anexos}{96}{chapter*.56}%
+\contentsline {chapter}{Bibliografía}{95}{section.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}Ficheros de configuración}{97}{appendix.Alph1}%
+\contentsline {chapter}{Anexos}{102}{chapter*.57}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.1}Fichero base}{97}{section.Alph1.1}%
+\contentsline {chapter}{\numberline {A}Ficheros de configuración}{103}{appendix.Alph1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.2}Ficheros de entrenamiento}{99}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.1}Fichero base}{103}{section.Alph1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.3}Ficheros de \textit {benchmark}}{102}{section.Alph1.3}%
+\contentsline {section}{\numberline {A.2}Ficheros de entrenamiento}{105}{section.Alph1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.4}Fichero de generación de video}{103}{section.Alph1.4}%
+\contentsline {section}{\numberline {A.3}Ficheros de \textit {benchmark}}{108}{section.Alph1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.4}Fichero de generación de video}{109}{section.Alph1.4}%

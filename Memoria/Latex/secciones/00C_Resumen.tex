@@ -1,6 +1,16 @@
 \chapter*{Resumen}
 
-<<Aquí va el resumen del TFM. Extensión máxima 2 páginas.>>
+La navegación eficiente de robots físicos en entornos domésticos como domicilios es un área de gran interés en la actualidad, existiendo un gran desarrollo de propuestas y \textbf{simuladores} enfocados a resolver esta tarea. Una de los métodos que más peso ha ganado es el uso de técnicas de \textbf{aprendizaje por refuerzo profundo}, permitiendo el entrenamiento y desarrollo de agentes físicos capaces de navegar estos entornos de forma efectiva.
+
+El objetivo del trabajo consiste en el desarrollo de un agente físico basado en técnicas de \textbf{campos de potenciales} capaz de navegar entornos de interiores usando una cámara de profundidad e información sobre la posición de la meta, entrenado mediante \textbf{Deep Q-Learning} - un método de aprendizaje por refuerzo profundo - usando el entorno \textit{Habitat} para su desarrollo.
+
+Se ha realizado una revisión de las principales técnicas relacionadas con el trabajo: \textit{Deep Learning}, algunos de los principales métodos de aprendizaje por refuerzo actuales - centrándose en \textit{Deep Q-Learning}, sus variantes y los métodos de actor-crítico - y los antecedentes al trabajo realizado.
+
+Se ha realizado además una tarea de documentación del entorno \textit{Habitat}, explicando sus dos principales componentes: \textbf{Habitat Sim}, un simulador de agentes físicos de alto rendimiento, y \textbf{Habitat Lab}, una librería de alto nivel para \textit{Python}. De esta librería se han expuesto y documentado los principales componentes y su uso, además de los pasos necesarios para la instalación del entorno.
+
+Para el desarrollo del agente se ha realizado una formalización del conocimiento necesario, detallando la definición del problema a resolver, las características físicas del agente y los conceptos de estado, acción y métodos de recompensas a utilizar. Se han propuesto dos arquitecturas para el agente, junto a sus métodos de actuación y entrenamiento: una basada en \textbf{redes neuronales convolucionales} y una arquitectura mixta basada en \textbf{redes convolucionales y redes profundas}, siendo ésta la arquitectura elegida.
+
+Finalmente, tras la experimentación realizada evaluando las variantes del agente propuestas y comparando su rendimiento con el de otros agentes ya existentes, se observa que el agente propuesto \textbf{mejora su rendimiento frente a agentes de \textit{baseline} básicos}, pero pese a esto \textbf{no es viable para uso en interiores} al ofrecer resultados inferiores a los de otros agentes ya existentes.
 
 %%--------------
 \newpage
@@ -8,8 +18,27 @@
 
 \chapter*{Abstract}
 
-<<Abstract of the Master Project. Maximum length: 2 pages.>>
+Efficient navigation of embodied agents in indoor environments such as homes is a field of great interest currently, where new proposals and \textbf{simulators} designed for this task are proposed and developed frequently. One of the most successful approaches to this task is the use of \textbf{deep reinforcement learning} techniques, allowing the training and development of embodied agents able to traverse these environments efficiently.
 
+The goal of this project is the development of an embodied agent based on \textbf{artificial potential fields} able to navigate indoor environments using a depth camera and information about the position of the goal, trained by \textbf{Deep Q-Learning} - a popular deep reinforcement learning method - using the \textit{Habitat} environment as a framework.
+
+A review of the state of the art has been performed, focusing on the main ideas behind this project: \textit{Deep Learning}, the main Deep Reinforcement Learning methods used currently - focusing on \textit{Deep Q-Learning}, its proposed improvements and actor-critic methods - and the direct precedents to this project in the autonomous navigation field.
+
+In addition, documentation of the \textit{Habitat} environment has been developed, focusing on its two main components: \textbf{Habitat Sim}, an embodied agent high-performance simulator, and \textbf{Habitat Lab}, a high-level \textit{Python} library. The main components of \textit{Habitat Lab} have also been explained and documented, showing their usage and the installation steps.
+
+For the embodied agent development, some of the key concepts have been formalized: problem to solve, main physical characteristics of the embodied agent and the concepts of state, action and reward. Two architectures, along with their acting and training procedures have been proposed for the agent: one based on \textbf{convolutional neural networks} and another based on a mix of \textbf{convolutional and dense neural networks}. This second architecture has been chosen.
+
+After some experimentation evaluating the proposed agent variants and comparing their performance to other already existing agents, it has been shown that \textbf{the proposed agent displays better performance than basic \textit{baseline agents}}. However, despite this, \textbf{the proposed agent is not viable for the task}, showcasing worse performance metrics than already existing agents.
+
+\newpage
+
+\chapter*{Agradecimientos}
+
+En primer lugar, quiero agradecer a ambos de mis tutores, \textbf{Martín Molina González} y \textbf{María Julia Flores Gallego} su apoyo continuo durante el desarrollo de este trabajo. Pese a todas las dificultades que han surgido durante el trabajo, siempre han estado ahí para ayudarme a seguir adelante.
+
+También quiero agradecer al Departamento de Sistemas Informáticos y Minería de Datos (SIMD) de la Escuela Superior de Ingeniería Informática de Albacete (ESIIAB) y, especialmente, a \textbf{José Antonio Gámez Martín}, por su apoyo y ayuda durante el desarrollo del trabajo, aportándome consejos y facilidades para poder completar este trabajo y continuar eventualmente con un doctorado.
+
+Finalmente, quiero agradecer a \textbf{mi familia} y \textbf{mis amistades} el haber estado siempre ahí animándome y haber creído en mí en todo momento, aun cuando yo me veía incapaz de ello.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Final del resumen. 

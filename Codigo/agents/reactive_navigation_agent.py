@@ -130,7 +130,7 @@ class InformedReactiveNavigationAgent(ReactiveNavigationAgent):
         super().__init__(config, weights)
 
         # Store the goal size
-        self.goal_size = goal_size
+        self._goal_size = goal_size
 
     def act(self, observations):
         """

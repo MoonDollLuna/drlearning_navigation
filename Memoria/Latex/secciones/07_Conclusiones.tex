@@ -1,7 +1,37 @@
 \chapter{Conclusiones}
 
-\section{Conclusiones}
+A lo largo de este trabajo, se ha desarrollado un agente físico basado en los principios de campos de potenciales para navegación en entornos de interiores, usando una red neuronal mixta (basada en una mezcla de redes convolucionales y densas) entrenada mediante \textbf{Deep Q-Learning}. Este agente ha sido desarrollado en el marco de trabajo del entorno de \textit{Habitat}.
+
+Se puede afirmar que \textbf{se ha cumplido plenamente el principal objetivo de este trabajo} (el estudio y aplicación de técnicas para el desarrollo de un agente capaz de navegar entornos de interiores), habiendo realizado una tarea de análisis y documentación tanto del estado del arte actual como del entorno de \textit{Habitat}, facilitando así el trabajo posterior a otros investigadores al contar con indicaciones sobre el funcionamiento de los algoritmos y del simulador utilizados.
+
+Además, se ha desarrollado e implementado un agente físico para resolver la tarea de navegación en interiores. Se han propuesto varias arquitecturas para dicho agente, optando finalmente por una arquitectura híbrida novedosa para trabajar con entradas mixtas de imágenes y valores numéricos). También se han propuesto variantes para el agente desarrollado, incluyendo varios métodos de generación de recompensas o de entrenamiento.
+
+El agente y sus variantes han sido entrenados utilizando \textbf{Deep Q-Learning}, siendo necesario el uso de varios ordenadores para el entrenamiento debido a la elevada carga computacional. Estas variantes entrenadas han sido estudiadas y comparadas con otros agentes ya existentes, viendo que el trabajo propuesto ofrece mejores resultados que agentes básicos propuestos como \textit{baselines}.
+
+Si bien es cierto que los resultados indican que el agente desarrollado no es viable para la tarea de navegación en interiores, este resultado es comprensible, ya que el método de navegación reactiva basada en campos de potenciales (método en el que se fundamenta el agente) presenta problemas a la hora de enfrentarse a entornos complejos y ruidosos como puede ser el interior de un domicilio. Además, la extensión del entrenamiento se ha visto limitada por cuestiones de tiempo y de capacidad computacional, lo que ha impedido un entrenamiento más intenso que posiblemente hubiera mejorado los resultados.
+
+Es también posible afirmar que \textbf{se ha cumplido con creces el segundo objetivo del trabajo} (el estudio y uso del simulador \textit{Habitat}). Se ha desarrollado una documentación de los principales elementos del entorno, su funcionamiento y su uso para facilitar futuros trabajos en el mismo marco de trabajo. Además, se ha realizado toda la implementación y experimentación usando el simulador con buenos resultados, permitiendo una simulación veraz y eficiente en un ordenador doméstico estándar, sin necesidad de equipamiento u ordenadores especializados para el trabajo con el simulador.
+
+Actualmente, el trabajo se encuentra disponible en un repositorio público de \textit{Github} (\url{https://github.com/MoonDollLuna/drlearning_navigation}) bajo licencia \textit{MIT}, para permitir el uso y el desarrollo de modificaciones sobre el trabajo realizado por parte de cualquier usuario interesado.
 
 \section{Trabajo futuro}
 
-PLANTEAMIENTO EXTRA: AGENTE INFORMADO DURANTE ENTRENAMIENTO
+Existen varias formas de continuar este trabajo, de cara a mejorar su rendimiento y utilidad:
+\begin{itemize}
+	\item \textbf{Utilizar una arquitectura física distinta:} La arquitectura propuesta ha asumido un robot terrestre con movimiento limitado, utilizando una cámara de profundidad y un conjunto de brújula y GPS.
+	
+	Resultaría de interés evaluar el agente propuesto en una arquitectura física distinta, siendo algunas posibilidades el usar un robot aéreo con movimiento omnidireccional o utilizar un conjunto de cámaras de profundidad para que el agente cuente con un mayor rango de visión de los obstáculos a su alrededor.
+	\item \textbf{Utilizar un conjunto de datos más simple:} El conjunto de datos utilizado durante el entrenamiento (\textit{Gibson}) está formado por interiores de domicilios amueblados, siento estos escenarios complejos (al estar formados por varios cuartos con grandes cantidades de ruido y obstáculos).
+	
+	Una posibilidad sería utilizar un conjunto de datos más simple, similar al usado por Carlos Sampedro \textit{et al.} \cite{Sampedro2018} durante su trabajo (entornos amplios y abiertos con una menor densidad de obstáculos), para observar el rendimiento del agente en condiciones más propicias para la navegación por campo de potenciales.
+	
+	\item \textbf{Entrenar al agente usando un conjunto de datos con obstáculos dinámicos:} El soporte de \textit{Habitat} a los obstáculos dinámicos (obstáculos en movimiento) es muy limitado, por lo que el trabajo actual se ha centrado en el rendimiento en entornos estáticos como los ofrecidos por \textit{Gibson}.
+	
+	Sería de interés estudiar el rendimiento del agente propuesto en un entorno con obstáculos móviles, de cara a estudiar el rendimiento de la propuesta en éste caso.
+	
+	\item \textbf{Utilizar un método de aprendizaje por refuerzo profundo distinto:} El agente ha sido entrenado utilizando \textit{Deep Q-Learning} y variantes. Actualmente existen otros métodos de aprendizaje por refuerzo profundo (como \textit{Proximal Policy Optimization} o \textit{Deep Deterministic Policy Gradient}) ofreciendo muy buenos resultados, por lo que sería útil comparar el rendimiento actual del agente con el rendimiento usando alguna de las técnicas mencionadas.
+	
+	\item \textbf{Aplicar el agente propuesto a un robot real:} El entorno \textit{Habitat} ofrece la posibilidad de montar agentes desarrollados en su marco de trabajo en agentes físicos reales mediante \textit{Habitat-PyRobot}, una pasarela que conecta al simulador con la librería \textit{PyRobot}.
+	
+	De esta forma, se podría observar el rendimiento del agente entrenado (posiblemente con algunas de las posibilidades descritas previamente) en un entorno físico real.
+\end{itemize}
