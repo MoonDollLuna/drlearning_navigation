@@ -128,20 +128,20 @@ Como ya se mencionó en el capítulo anterior, el proceso de entrenamiento del a
 
 Ahora bien, no todas estas métricas son comparables de forma honesta. Por ejemplo, al tener cada episodio una distancia inicial distinta, la distancia recorrida no se puede comparar de forma directa. Por tanto, se ha optado por transformar algunas de las métricas para poder realizar una comparación más justa, generando los siguientes \textbf{gráficos} durante el entrenamiento:
 \begin{itemize}
-	\item Diagrama de lineas de la \textbf{duración cumulativa por episodio} (en segundos).
-	\item Diagrama de lineas de las acciones realizadas por episodio.
-	\item Diagrama de lineas del \textbf{porcentaje de distancia recorrido} hasta la meta.
+	\item Diagrama de líneas de la \textbf{duración cumulativa por episodio} (en segundos).
+	\item Diagrama de líneas de las acciones realizadas por episodio.
+	\item Diagrama de líneas del \textbf{porcentaje de distancia recorrido} hasta la meta.
 	
 	Este porcentaje, en el rango $[0.0, 1.0]$, indica el porcentaje total de distancia recorrido desde la posición inicial hasta la meta. Como ejemplo, un agente con distancia inicial de $10$ metros y distancia final de $5$ metros tendría un porcentaje de $0.5$.
 	
 	Se utiliza un porcentaje para normalizar la distancia recorrida por cada agente, cambiando la unidad de metros (no indicativa debido a la variabilidad en la longitud total de los episodios) a un porcentaje indicando la cantidad de episodio completada.
-	\item Diagrama de lineas de recompensa media por episodio.
+	\item Diagrama de líneas de recompensa media por episodio.
 	\item Diagrama de barras del \textbf{número total de episodios completados con éxito}.
 	
 	Este diagrama permite comparar el rendimiento de los agentes de forma más simple que intentar interpretar el diagrama de distancias para observar los episodios completados.
 \end{itemize}
 
-Todos los diagramas de lineas han sido \textbf{suavizados} usando como datos la \textbf{media de los valores de los últimos 50 episodios}. De esta forma se reduce notablemente el ruido en las gráficas (haciendolos más legibles) sin perder la información recogida en éstos.
+Todos los diagramas de líneas han sido \textbf{suavizados} usando como datos la \textbf{media de los valores de los últimos 50 episodios}. De esta forma se reduce notablemente el ruido en las gráficas (haciendolos más legibles) sin perder la información recogida en éstos.
 
 \subsection{Métricas usadas durante la evaluación}
 
@@ -433,7 +433,7 @@ PPO                                                                            &
 
 El primer resultado más llamativo es el rendimiento del \textbf{agente estándar de contornos con colisiones}, siendo el mejor agente de todos los agentes estándares y el segundo mejor de todos los agentes entrenados. Esto contrasta con su rendimiento durante el entrenamiento (donde presentaba uno de los peores resultados).
 
-Otro resultado destacable es el resultado del \textbf{agente estándar de columnas con colisiones}, sin ninguna colisión y con un \textit{SPL} suavizado de 0.0 (no ha hecho ningún progreso hacia la meta en ningún episodio). Esto se corresponde con los resultados ofrecidos por el agente durante su entrenamiento (con la gran caída de sus recompensas y de la distancia recorrida). Es probable que esto se deba a que el agente haya aprendido a rotar sobre si mismo sin desplazarse para minimizar las posibles penalizaciones de las colisiones.
+Otro resultado destacable es el resultado del \textbf{agente estándar de columnas con colisiones}, sin ninguna colisión y con un \textit{SPL} suavizado de 0.0 (no ha hecho ningún progreso hacia la meta en ningún episodio). Esto se corresponde con los resultados ofrecidos por el agente durante su entrenamiento (con la gran caída de sus recompensas y de la distancia recorrida). Es probable que esto se deba a que el agente haya aprendido a rotar sobre sí mismo sin desplazarse para minimizar las posibles penalizaciones de las colisiones.
 
 Por lo demás, el resultado de los agentes entrenados concuerda con lo visto durante el entrenamiento: los agentes priorizados son en general mejores que sus equivalentes estándares pese a haber sido entrenados durante menos episodios, y los agentes usando colisiones ofrecen (salvo la excepción ya mencionada) peores resultados.
 

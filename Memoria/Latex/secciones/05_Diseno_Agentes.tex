@@ -650,5 +650,6 @@ La estructura del código desarrollado para el proyecto, detallando los componen
 	\item \textbf{models/reactive{\_}navigation.py:} Incluye la implementación de la arquitectura del agente como tal (la red neuronal descrita en la segunda aproximación), junto a los métodos necesarios para facilitar su uso (entrenamiento y actuación).
 	\item \textbf{trainers/reactive{\_}navigation{\_}trainer.py:} Incluye la implementación del entrenador del agente. Se ha implementado una versión propia de \textit{Deep Q-Learning}, adaptada al flujo de trabajo de \textit{Habitat}.
 	\item \textbf{utils/log{\_}manager.py:} Incluye la implementación del gestor del \textit{log}, encargado de registrar en un fichero de texto los resultados del agente durante el entrenamiento.
+	\item \textbf{weights:} Incluye todos los pesos pre-entrenados de las variantes propuestas del agente, junto a pesos pre-entrenados para un agente usando \textit{PPO} implementado por \textit{Habitat}.
 	\item \textbf{navigation.py:} Incluye la implementación del entorno de trabajo del proyecto, encargándose de lanzar las ejecuciones del simulador en el modo que sea necesario (entrenamiento, evaluación o generación de vídeo).
 \end{itemize}

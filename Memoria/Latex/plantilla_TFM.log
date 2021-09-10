@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.9.8)  10 SEP 2021 07:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.9.8)  10 SEP 2021 16:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2659,7 +2659,7 @@ Package logreq Info: Writing requests to 'plantilla_TFM.run.xml'.
 Here is how much of TeX's memory you used:
  44346 strings out of 483007
  924192 string characters out of 5961758
- 1735681 words of memory out of 5000000
+ 1736682 words of memory out of 5000000
  57934 multiletter control sequences out of 15000+600000
  574057 words of font info for 102 fonts, out of 8000000 for 9000
  107 hyphenation exceptions out of 8191
@@ -2688,7 +2688,7 @@ ive/texmf-dist/fonts/type1/urw/bookman/ubkdi8a.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/bookman/ubkl8a.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/urw/bookman/ubkli8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courie
 r/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on plantilla_TFM.pdf (126 pages, 4268634 bytes).
+Output written on plantilla_TFM.pdf (126 pages, 4268821 bytes).
 PDF statistics:
  2750 PDF objects out of 2984 (max. 8388607)
  2022 compressed objects within 21 object streams
